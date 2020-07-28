@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/validation.css') }}">
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/libs/validation.bundle.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/validation/layout.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/validation/core.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <h2>SDTT-like validation for recipes using ShEx and SHACL</h2>
+    <div class="custom-row">
+        <div class="inputs wrapper">
+            <div class="tests"></div>
+            <div>
+                <label for="file-data-input" class="custom-file-label">Choose a file</label>
+                <input type="file" class="custom-file-input" id="file-data-input"/>
+            </div>
+            <div>
+                <textarea id="text-data-input" class="form-control" cols="30" rows="15"></textarea>
+            </div>
+        </div>
+        <div class="shapes wrapper">
+
+        </div>
+    </div>
+    <div class="custom-row">
+        <div class="btn btn-light" id="validate-btn">Validate (Ctrl+Enter)</div>
+    </div>
+    <div class="custom-row">
+        <table id="results-table" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" class="cross"></th>
+                    <th scope="col">ShEx</th>
+                    <th scope="col">SHACL</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

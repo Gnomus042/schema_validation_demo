@@ -1,0 +1,16 @@
+:root {
+    --error-color: rgb(219, 73, 73);
+    --error-color-solid: rgb(213, 21, 21);
+    --warning-color: rgb(255,165,0);
+    --warning-color-solid: rgb(255,140,0);
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    padding: 20px;
+    font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+

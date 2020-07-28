@@ -1,0 +1,754 @@
+@prefix: <http://example.org/> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+
+:Boolean a sh:NodeShape;
+    sh:or (
+        sh:nodeKind sh:Literal
+        sh:datatype xsd:boolean
+    ).
+
+
+:CreativeWork a sh:NodeShape;
+	sh:targetClass schema:CreativeWork;
+	sh:node :Thing;
+	sh:property [
+		sh:path schema:about;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:accessMode;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:accessModeSufficient;
+		sh:class schema:ItemList;
+	];
+	sh:property [
+		sh:path schema:accessibilityAPI;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:accessibilityControl;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:accessibilityFeature;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:accessibilityHazard;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:accessibilitySummary;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:accountablePerson;
+		sh:class schema:Person;
+	];
+	sh:property [
+		sh:path schema:aggregateRating;
+		sh:class schema:AggregateRating;
+	];
+	sh:property [
+		sh:path schema:alternativeHeadline;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:associatedMedia;
+		sh:class schema:MediaObject;
+	];
+	sh:property [
+		sh:path schema:audience;
+		sh:class schema:Audience;
+	];
+	sh:property [
+		sh:path schema:audio;
+		sh:or (
+			sh:class schema:AudioObject
+			sh:class schema:Clip
+			sh:class schema:MusicRecording
+		);
+	];
+	sh:property [
+		sh:path schema:author;
+		sh:or (
+			sh:class schema:Person
+			sh:class schema:Organization
+		);
+	];
+	sh:property [
+		sh:path schema:award;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:awards;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:character;
+		sh:class schema:Person;
+	];
+	sh:property [
+		sh:path schema:citation;
+		sh:or (
+			sh:node :CreativeWork
+			sh:node :Text
+		);
+	];
+	sh:property [
+		sh:path schema:comment;
+		sh:class schema:Comment;
+	];
+	sh:property [
+		sh:path schema:commentCount;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:contentLocation;
+		sh:class schema:Place;
+	];
+	sh:property [
+		sh:path schema:contentRating;
+		sh:or (
+			sh:node :Text
+			sh:class schema:Rating
+		);
+	];
+	sh:property [
+		sh:path schema:contributor;
+		sh:or (
+			sh:class schema:Organization
+			sh:class schema:Person
+		);
+	];
+	sh:property [
+		sh:path schema:copyrightHolder;
+		sh:or (
+			sh:class schema:Person
+			sh:class schema:Organization
+		);
+	];
+	sh:property [
+		sh:path schema:copyrightYear;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:creator;
+		sh:or (
+			sh:class schema:Organization
+			sh:class schema:Person
+		);
+	];
+	sh:property [
+		sh:path schema:dateCreated;
+		sh:or (
+			sh:node :Date
+			sh:node :DateTime
+		);
+	];
+	sh:property [
+		sh:path schema:dateModified;
+		sh:or (
+			sh:node :DateTime
+			sh:node :Date
+		);
+	];
+	sh:property [
+		sh:path schema:datePublished;
+		sh:or (
+			sh:node :Date
+			sh:node :DateTime
+		);
+	];
+	sh:property [
+		sh:path schema:discussionUrl;
+		sh:class schema:URL;
+	];
+	sh:property [
+		sh:path schema:editor;
+		sh:class schema:Person;
+	];
+	sh:property [
+		sh:path schema:educationalAlignment;
+		sh:class schema:AlignmentObject;
+	];
+	sh:property [
+		sh:path schema:educationalUse;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:encoding;
+		sh:class schema:MediaObject;
+	];
+	sh:property [
+		sh:path schema:encodingFormat;
+		sh:or (
+			sh:class schema:URL
+			sh:node :Text
+		);
+	];
+	sh:property [
+		sh:path schema:encodings;
+		sh:class schema:MediaObject;
+	];
+	sh:property [
+		sh:path schema:exampleOfWork;
+		sh:node :CreativeWork;
+	];
+	sh:property [
+		sh:path schema:expires;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:fileFormat;
+		sh:or (
+			sh:class schema:URL
+			sh:node :Text
+		);
+	];
+	sh:property [
+		sh:path schema:funder;
+		sh:or (
+			sh:class schema:Organization
+			sh:class schema:Person
+		);
+	];
+	sh:property [
+		sh:path schema:genre;
+		sh:or (
+			sh:node :Text
+			sh:class schema:URL
+		);
+	];
+	sh:property [
+		sh:path schema:hasPart;
+		sh:node :CreativeWork;
+	];
+	sh:property [
+		sh:path schema:headline;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:inLanguage;
+		sh:or (
+			sh:node :Text
+			sh:class schema:Language
+		);
+	];
+	sh:property [
+		sh:path schema:interactionStatistic;
+		sh:class schema:InteractionCounter;
+	];
+	sh:property [
+		sh:path schema:interactivityType;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:isAccessibleForFree;
+		sh:node :Boolean;
+	];
+	sh:property [
+		sh:path schema:isBasedOn;
+		sh:or (
+			sh:class schema:Product
+			sh:node :CreativeWork
+			sh:class schema:URL
+		);
+	];
+	sh:property [
+		sh:path schema:isBasedOnUrl;
+		sh:or (
+			sh:class schema:Product
+			sh:class schema:URL
+			sh:node :CreativeWork
+		);
+	];
+	sh:property [
+		sh:path schema:isFamilyFriendly;
+		sh:node :Boolean;
+	];
+	sh:property [
+		sh:path schema:isPartOf;
+		sh:or (
+			sh:class schema:URL
+			sh:node :CreativeWork
+		);
+	];
+	sh:property [
+		sh:path schema:keywords;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:learningResourceType;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:license;
+		sh:or (
+			sh:class schema:URL
+			sh:node :CreativeWork
+		);
+	];
+	sh:property [
+		sh:path schema:locationCreated;
+		sh:class schema:Place;
+	];
+	sh:property [
+		sh:path schema:mainEntity;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:material;
+		sh:or (
+			sh:class schema:Product
+			sh:class schema:URL
+			sh:node :Text
+		);
+	];
+	sh:property [
+		sh:path schema:mentions;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:offers;
+		sh:or (
+			sh:class schema:Demand
+			sh:class schema:Offer
+		);
+	];
+	sh:property [
+		sh:path schema:position;
+		sh:or (
+			sh:node :Integer
+			sh:node :Text
+		);
+	];
+	sh:property [
+		sh:path schema:producer;
+		sh:or (
+			sh:class schema:Person
+			sh:class schema:Organization
+		);
+	];
+	sh:property [
+		sh:path schema:provider;
+		sh:or (
+			sh:class schema:Person
+			sh:class schema:Organization
+		);
+	];
+	sh:property [
+		sh:path schema:publication;
+		sh:class schema:PublicationEvent;
+	];
+	sh:property [
+		sh:path schema:publisher;
+		sh:or (
+			sh:class schema:Person
+			sh:class schema:Organization
+		);
+	];
+	sh:property [
+		sh:path schema:publishingPrinciples;
+		sh:or (
+			sh:node :CreativeWork
+			sh:class schema:URL
+		);
+	];
+	sh:property [
+		sh:path schema:recordedAt;
+		sh:class schema:Event;
+	];
+	sh:property [
+		sh:path schema:releasedEvent;
+		sh:class schema:PublicationEvent;
+	];
+	sh:property [
+		sh:path schema:review;
+		sh:class schema:Review;
+	];
+	sh:property [
+		sh:path schema:reviews;
+		sh:class schema:Review;
+	];
+	sh:property [
+		sh:path schema:schemaVersion;
+		sh:or (
+			sh:node :Text
+			sh:class schema:URL
+		);
+	];
+	sh:property [
+		sh:path schema:sourceOrganization;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:spatial;
+		sh:class schema:Place;
+	];
+	sh:property [
+		sh:path schema:spatialCoverage;
+		sh:class schema:Place;
+	];
+	sh:property [
+		sh:path schema:sponsor;
+		sh:or (
+			sh:class schema:Organization
+			sh:class schema:Person
+		);
+	];
+	sh:property [
+		sh:path schema:temporal;
+		sh:or (
+			sh:node :Text
+			sh:node :DateTime
+		);
+	];
+	sh:property [
+		sh:path schema:temporalCoverage;
+		sh:or (
+			sh:node :Text
+			sh:class schema:URL
+			sh:node :DateTime
+		);
+	];
+	sh:property [
+		sh:path schema:text;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:thumbnailUrl;
+		sh:class schema:URL;
+	];
+	sh:property [
+		sh:path schema:timeRequired;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:translator;
+		sh:or (
+			sh:class schema:Organization
+			sh:class schema:Person
+		);
+	];
+	sh:property [
+		sh:path schema:typicalAgeRange;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:version;
+		sh:or (
+			sh:node :Text
+			sh:node :Number
+		);
+	];
+	sh:property [
+		sh:path schema:video;
+		sh:or (
+			sh:class schema:Clip
+			sh:class schema:VideoObject
+		);
+	];
+	sh:property [
+		sh:path schema:workExample;
+		sh:node :CreativeWork;
+	].
+
+
+:Date a sh:NodeShape;
+    sh:node :Text;
+    sh:pattern "^[0-9]{4}-([0][0-9]|1[0-2])-([0-2][0-9]|3[01])$".
+
+
+:DateTime a sh:NodeShape;
+    sh:node :Text;
+    sh:pattern "^[0-9][0-9]:[0-9][0-9]:[0-9][0-9]".
+
+
+:Duration a sh:NodeShape;
+    sh:node :Text;
+    sh:pattern "^(-?)P(?=[0-9]|T[0-9])(?:([0-9]+)Y)?(?:([0-9]+)M)?(?:([0-9]+)([DW]))?(?:T(?:([0-9]+)H)?(?:([0-9]+)M)?(?:([0-9]+(?:\\.[0-9]+)?)S)?)?$".
+
+
+:HowTo a sh:NodeShape;
+	sh:targetClass schema:HowTo;
+	sh:node :CreativeWork;
+	sh:property [
+		sh:path schema:estimatedCost;
+		sh:or (
+			sh:class schema:MonetaryAmount
+			sh:node :Text
+		);
+	];
+	sh:property [
+		sh:path schema:performTime;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:prepTime;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:step;
+		sh:or (
+			sh:class schema:HowToStep
+			sh:node :Text
+			sh:node :CreativeWork
+			sh:class schema:HowToSection
+		);
+	];
+	sh:property [
+		sh:path schema:steps;
+		sh:or (
+			sh:node :CreativeWork
+			sh:class schema:ItemList
+			sh:node :Text
+		);
+	];
+	sh:property [
+		sh:path schema:supply;
+		sh:or (
+			sh:class schema:HowToSupply
+			sh:node :Text
+		);
+	];
+	sh:property [
+		sh:path schema:tool;
+		sh:or (
+			sh:class schema:HowToTool
+			sh:node :Text
+		);
+	];
+	sh:property [
+		sh:path schema:totalTime;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:yield;
+		sh:or (
+			sh:class schema:QuantitativeValue
+			sh:node :Text
+		);
+	].
+
+
+:Integer a sh:NodeShape;
+    sh:nodeKind sh:Literal;
+    sh:datatype xsd:integer.
+
+
+:Number a sh:NodeShape;
+    sh:nodeKind sh:Literal;
+    sh:or (
+        sh:datatype xsd:integer
+        sh:datatype xsd:decimal
+    ).
+
+
+:Recipe a sh:NodeShape;
+	sh:targetClass schema:Recipe;
+	sh:node :HowTo;
+	sh:property [
+		sh:path schema:cookTime;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:cookingMethod;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:ingredients;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:nutrition;
+		sh:class schema:NutritionInformation;
+	];
+	sh:property [
+		sh:path schema:recipeCategory;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:recipeCuisine;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:recipeIngredient;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:recipeInstructions;
+		sh:or (
+			sh:node :CreativeWork
+			sh:class schema:ItemList
+			sh:node :Text
+		);
+	];
+	sh:property [
+		sh:path schema:recipeYield;
+		sh:or (
+			sh:class schema:QuantitativeValue
+			sh:node :Text
+		);
+	].
+
+
+:Text a sh:NodeShape;
+    sh:or (
+        sh:datatype xsd:string
+        sh:nodeKind sh:Literal
+    ).
+
+
+:Thing a sh:NodeShape;
+	sh:targetClass schema:Thing;
+	sh:property [
+		sh:path schema:additionalType;
+		sh:class schema:URL;
+	];
+	sh:property [
+		sh:path schema:alternateName;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:description;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:disambiguatingDescription;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:identifier;
+		sh:or (
+			sh:node :Text
+			sh:class schema:PropertyValue
+			sh:class schema:URL
+		);
+	];
+	sh:property [
+		sh:path schema:image;
+		sh:or (
+			sh:class schema:URL
+			sh:class schema:ImageObject
+		);
+	];
+	sh:property [
+		sh:path schema:mainEntityOfPage;
+		sh:or (
+			sh:node :CreativeWork
+			sh:class schema:URL
+		);
+	];
+	sh:property [
+		sh:path schema:name;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:potentialAction;
+		sh:class schema:Action;
+	];
+	sh:property [
+		sh:path schema:sameAs;
+		sh:class schema:URL;
+	];
+	sh:property [
+		sh:path schema:subjectOf;
+		sh:or (
+			sh:class schema:Event
+			sh:node :CreativeWork
+		);
+	];
+	sh:property [
+		sh:path schema:url;
+		sh:class schema:URL;
+	].
+
+##################
+# Google-specific
+
+:GoogleRecipe a sh:NodeShape;
+    sh:targetClass schema:Recipe;
+    sh:node sh:Recipe;
+    sh:property [
+        sh:path schema:name;
+        sh:minCount 1;
+        sh:severity sh:Violation;
+    ];
+    sh:property [
+        sh:path schema:image;
+        sh:minCount 1;
+        sh:severity sh:Violation;
+    ];
+    sh:property [
+        sh:path schema:aggregateRating;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ];
+    sh:property [
+        sh:path schema:author;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ];
+    sh:property [
+        sh:path schema:cookTime;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ];
+    sh:property [
+        sh:path schema:datePublished;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ];
+    sh:property [
+        sh:path schema:description;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ];
+    sh:property [
+        sh:path schema:keywords;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ];
+    sh:property [
+        sh:path schema:prepTime;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ];
+    sh:property [
+        sh:path schema:recipeCategory;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ];
+    sh:property [
+        sh:path schema:recipeCuisine;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ];
+    sh:property [
+        sh:path schema:recipeIngredient;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ];
+    sh:property [
+        sh:path schema:recipeInstructions;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ];
+    sh:property [
+        sh:path schema:recipeYield;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ];
+    sh:property [
+        sh:path schema:totalTime;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ].
