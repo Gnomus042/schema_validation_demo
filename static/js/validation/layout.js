@@ -16,6 +16,23 @@ $('#file-data-input').change(() => {
     readTextFromFile(file).then(text => $("#text-data-input").val(text));
 });
 
+$(document).delegate('#text-data-input', 'keydown', function (e) {
+    var keyCode = e.keyCode || e.which;
+
+    if (keyCode == 9) {
+        e.preventDefault();
+        var start = this.selectionStart;
+        var end = this.selectionEnd;
+
+        $(this).val($(this).val().substring(0, start)
+            + "\t"
+            + $(this).val().substring(end));
+
+        this.selectionStart =
+            this.selectionEnd = start + 1;
+    }
+});
+
 function readTextFromFile(file) {
     let resolver;
     let promise = new Promise((res, rej) => {
@@ -28,6 +45,13 @@ function readTextFromFile(file) {
     reader.onload = onReaderLoad;
     reader.readAsText(file);
     return promise;
+}
+
+function initTests(tests) {
+    tests.forEach((test, idx) => {
+         $('.tests').append(`<div class="btn btn-light">Test ${idx+1}</div>`);
+         $('.tests>div').eq(idx).on('click', () => $("#text-data-input").val(test));
+    });
 }
 
 function prepareValidationTable() {

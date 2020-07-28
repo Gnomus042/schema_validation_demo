@@ -1,5 +1,5 @@
 const shexURL = window.location + 'static/validation/shex/full.shex';
-let context, shaclShapes, supportedServices;
+let context, shaclShapes, supportedServices, tests;
 
 // TODO fix this
 let shaclSupportedServices = ['Google'];
@@ -11,6 +11,9 @@ $.get('static/validation/shacl/full.shacl', data => shaclShapes = data);
 $.get('services', data => {
     supportedServices = data.services;
     prepareValidationTable(supportedServices);
+});
+$.get('tests', data => {
+   initTests(data.tests);
 });
 
 // SHACL helpers

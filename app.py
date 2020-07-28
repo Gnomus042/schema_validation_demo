@@ -18,7 +18,10 @@ def services():
 
 @app.route('/tests')
 def tests():
-    pass
+    tests = []
+    for filename in os.listdir(config.tests_path):
+        tests.append(open(f'{config.tests_path}/{filename}').read())
+    return jsonify(tests=tests)
 
 if __name__ == '__main__':
     app.run()

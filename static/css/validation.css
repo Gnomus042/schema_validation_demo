@@ -16,6 +16,17 @@
 
 .wrapper.inputs > div {
     margin-bottom: 0.5em;
+    position: relative;
+}
+
+.tests {
+    display: flex;
+    overflow:auto;
+}
+
+.tests > div {
+    margin-right: 0.2em;
+    width: 80px !important;
 }
 
 #results-table {
