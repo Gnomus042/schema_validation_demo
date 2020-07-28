@@ -50,7 +50,11 @@ function readTextFromFile(file) {
 function initTests(tests) {
     tests.forEach((test, idx) => {
         $('.tests').append(`<div class="btn btn-light">Test ${idx + 1}</div>`);
-        $('.tests>div').eq(idx).on('click', () => $("#text-data-input").val(test));
+        $('.tests>div').eq(idx).on('click', evt => {
+            $("#text-data-input").val(test);
+            $('.tests>div').removeClass('btn-dark');
+            $(evt.target).addClass('btn-dark');
+        });
     });
 }
 
@@ -157,6 +161,6 @@ function changeDisplayedShape() {
     let lang = $("#language-select").val();
     let service = $("#service-select").val();
     $.get(`shape/${lang}/${service}`, data => {
-       $('#shape-viewer').text(data.shape);
+        $('#shape-viewer').text(data.shape);
     });
 }
