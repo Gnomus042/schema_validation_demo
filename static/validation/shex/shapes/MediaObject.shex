@@ -1,0 +1,20 @@
+<#MediaObject> @<#CreativeWork> AND EXTRA a {
+	a [schema:Barcode schema:DataDownload schema:MusicVideoObject schema:AudioObject schema:ImageObject schema:VideoObject schema:MediaObject];
+	schema:associatedArticle @<#NewsArticle> *;
+	schema:bitrate @<#Text> ?;
+	schema:contentSize @<#Text> ?;
+	schema:contentUrl @<#URL> ?;
+	schema:duration @<#Duration> ?;
+	schema:embedUrl @<#URL> *;
+	schema:encodesCreativeWork @<#CreativeWork> *;
+	schema:encodingFormat (@<#URL> OR @<#Text>) ?;
+	schema:endTime (@<#DateTime> OR @<#Time>) ?;
+	schema:height (@<#QuantitativeValue> OR @<#Distance>) ?;
+	schema:playerType @<#Text> ?;
+	schema:productionCompany @<#Organization> *;
+	schema:regionsAllowed @<#Place> *;
+	schema:requiresSubscription (@<#MediaSubscription> OR @<#Boolean>) ?;
+	schema:startTime (@<#Time> OR @<#DateTime>) ?;
+	schema:uploadDate @<#Date> ?;
+	schema:width (@<#QuantitativeValue> OR @<#Distance>) ?;
+}

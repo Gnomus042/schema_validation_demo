@@ -1,0 +1,3 @@
+# TODO make a better regex and test it
+
+<#DateTime> (@<#Text> AND /^[0-9][0-9]:[0-9][0-9]:[0-9][0-9]/)

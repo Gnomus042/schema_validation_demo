@@ -1,0 +1,43 @@
+<#YandexRecipe> @<#Recipe> AND {
+    schema:name @<#Text>
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "The recipe or dish name.";
+
+    schema:recipeIngredient @<#Text> +
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "Ingredients in the recipe and their volumes or amounts (may be several).";
+}
+
+<#YandexRecipeStrict> @<#Recipe> AND {
+    schema:recipeInstructions ( @<#CreativeWork> OR  { a [schema:ItemList] } OR  @<#Text>) +
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "cooking instructions.";
+
+    schema:recipeCategory  @<#Text>
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "Type of dish: for example, hot main dish, dessert.";
+
+    schema:recipeYield @<#Text> +
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "Number of servings.";
+
+    schema:totalTime @<#Duration>
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "Cooking time (if missing, cookTime is used). Specified in the ISO 8601 format. For example, PT30M (30 minutes).";
+
+    schema:image @<#URL> OR @<#ImageObject> +
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description " URL of the cooking images (can be several). We recommend you to fill in this field for creating a better snippet.";
+
+    schema:author ({ a [schema:Person] } OR { a [schema:Organization] }) +
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "Author of the recipe.";
+
+    schema:recipeCuisine  @<#Text>
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "National cuisine the recipe belongs to. One recipe can contain only one cuisine—type element.";
+
+    schema:nutrition  { a [schema:NutritionInformation] }
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "Energy and nutrition value of the dish, meaning the number of calories and the amount of fat, protein, carbohydrates, vitamins, and so on.";
+}

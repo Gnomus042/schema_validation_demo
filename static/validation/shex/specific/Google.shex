@@ -1,0 +1,63 @@
+<#GoogleRecipe> @<#Recipe> AND{
+    schema:name @<#Text>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#name"
+    // techdoc:description "The name of the dish.";
+
+    schema:image @<#URL> OR @<#ImageObject> +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe"
+    // techdoc:description "Image of the completed dish.";
+}
+
+<#GoogleRecipeStrict> @<#Recipe> AND {
+    schema:aggregateRating { a [schema:AggregateRating] }
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#aggregateRating"
+    // techdoc:description "Annotation for the average review score assigned to the item.";
+
+    schema:author ({ a [schema:Person] } OR { a [schema:Organization] }) +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#author"
+    // techdoc:description "The name of the person or organization that wrote the recipe.";
+
+    schema:cookTime  @<#Duration>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#cookTime"
+    // techdoc:description "The time it takes to actually cook the dish in ISO 8601 format";
+
+    schema:datePublished (@<#Date> OR @<#DateTime>)
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#datePublished"
+    // techdoc:description "The date the recipe was published in ISO 8601 format";
+
+    schema:description @<#Text>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#description"
+    // techdoc:description "A short summary describing the dish.";
+
+    schema:keywords @<#Text>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#keywords"
+    // techdoc:description "Other terms for your recipe such as the season, the holiday, or other descriptors";
+
+    schema:prepTime @<#Duration>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#prepTime"
+    // techdoc:description "The length of time it takes to prepare the dish, in ISO 8601 format";
+
+    schema:recipeCategory  @<#Text>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#recipeCategoty"
+    // techdoc:description "The type of meal or course your recipe is about";
+
+    schema:recipeCuisine  @<#Text>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#recipeCusine"
+    // techdoc:description "The region associated with your recipe";
+
+    schema:recipeIngredient @<#Text> +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#recipeIngredient"
+    // techdoc:description "An ingredient used in the recipe.";
+
+    schema:recipeInstructions ( @<#CreativeWork> OR  { a [schema:ItemList] } OR  @<#Text>) +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#recipeInstructions"
+    // techdoc:description "The steps to make the dish";
+
+    schema:recipeYield @<#Text> +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#recipeYield"
+    // techdoc:description "The quantity produced by the recipe. Specify the number of servings produced from this recipe with just a number";
+
+    schema:totalTime @<#Duration>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#totalTime"
+    // techdoc:description "The total time it takes to prepare the cook the dish, in ISO 8601 format";
+}

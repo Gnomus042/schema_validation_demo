@@ -10,7 +10,8 @@ $.get('static/validation/context.json', data => context = data);
 $.get('static/validation/shacl/full.shacl', data => shaclShapes = data);
 $.get('services', data => {
     supportedServices = data.services;
-    prepareValidationTable(supportedServices);
+    prepareValidationTable();
+    initServiceSelect();
 });
 $.get('tests', data => {
    initTests(data.tests);

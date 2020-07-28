@@ -23,5 +23,11 @@ def tests():
         tests.append(open(f'{config.tests_path}/{filename}').read())
     return jsonify(tests=tests)
 
+
+@app.route('/shape/<lang>/<service>')
+def shape(lang, service):
+    return jsonify(shape=open(f'static/validation/{lang}/specific/{service}.{lang}').read())
+
+
 if __name__ == '__main__':
     app.run()

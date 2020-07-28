@@ -19,7 +19,7 @@ $('#file-data-input').change(() => {
 $(document).delegate('#text-data-input', 'keydown', function (e) {
     var keyCode = e.keyCode || e.which;
 
-    if (keyCode == 9) {
+    if (keyCode === 9) {
         e.preventDefault();
         var start = this.selectionStart;
         var end = this.selectionEnd;
@@ -49,8 +49,8 @@ function readTextFromFile(file) {
 
 function initTests(tests) {
     tests.forEach((test, idx) => {
-         $('.tests').append(`<div class="btn btn-light">Test ${idx+1}</div>`);
-         $('.tests>div').eq(idx).on('click', () => $("#text-data-input").val(test));
+        $('.tests').append(`<div class="btn btn-light">Test ${idx + 1}</div>`);
+        $('.tests>div').eq(idx).on('click', () => $("#text-data-input").val(test));
     });
 }
 
@@ -139,3 +139,24 @@ function fillDetailsItems(items, detailsField, type) {
     )
 }
 
+
+// shape viewer
+
+function initServiceSelect() {
+    let select = $("#service-select")
+    supportedServices.forEach(service => {
+        select.append(`<option value="${service}">${service}</option>`)
+    });
+    changeDisplayedShape();
+}
+
+$("#service-select").change(changeDisplayedShape);
+$("#language-select").change(changeDisplayedShape);
+
+function changeDisplayedShape() {
+    let lang = $("#language-select").val();
+    let service = $("#service-select").val();
+    $.get(`shape/${lang}/${service}`, data => {
+       $('#shape-viewer').text(data.shape);
+    });
+}

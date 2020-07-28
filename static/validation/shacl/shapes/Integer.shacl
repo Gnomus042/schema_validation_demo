@@ -1,0 +1,3 @@
+:Integer a sh:NodeShape;
+    sh:nodeKind sh:Literal;
+    sh:datatype xsd:integer.
