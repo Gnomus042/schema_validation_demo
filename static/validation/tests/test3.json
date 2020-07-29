@@ -6,7 +6,7 @@
   "name": "Grandma's Holiday Apple Pie",
   "image": {
     "@type": "ImageObject",
-    "url": "http://cdn.ampproject.org/leader.jpg",
+    "url": "leader.jpg",
     "height": 200,
     "width": 200
   },

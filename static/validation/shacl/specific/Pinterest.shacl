@@ -1,0 +1,38 @@
+:PinterestRecipe a sh:NodeShape;
+    sh:targetClass schema:Recipe;
+    sh:node :Recipe;
+    sh:property [
+        sh:path schema:name;
+        sh:minCount 1;
+        sh:severity sh:Violation;
+    ];
+    sh:property [
+        sh:path schema:ingredients;
+        sh:minCount 1;
+        sh:severity sh:Violation;
+    ];
+    sh:property [
+        sh:path schema:url;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ];
+    sh:property [
+        sh:path schema:image;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ];
+    sh:property [
+        sh:path schema:totalTime;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ];
+    sh:property [
+        sh:path schema:recipeYield;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ];
+    sh:property [
+        sh:path schema:aggregateRating;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+    ].

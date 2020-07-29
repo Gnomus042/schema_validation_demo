@@ -29,5 +29,12 @@ def shape(lang, service):
     return jsonify(shape=open(f'static/validation/{lang}/specific/{service}.{lang}').read())
 
 
+@app.route('/shacl/shapes/<service>')
+def shacl_shapes(service):
+    base = open(f'{config.shacl_path}/full.shacl').read()
+    specific = open(f'{config.shacl_path}/specific/{service}.shacl').read()
+    return base + specific
+
+
 if __name__ == '__main__':
     app.run()

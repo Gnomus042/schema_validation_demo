@@ -1,17 +1,18 @@
 const shexURL = window.location + 'static/validation/shex/full.shex';
-let context, shaclShapes, supportedServices, tests;
-
-// TODO fix this
-let shaclSupportedServices = ['Google'];
-
+let context, supportedServices, tests;
+let shaclShapes = new Map();
 
 // loading context and SHACL shapes
 $.get('static/validation/context.json', data => context = data);
-$.get('static/validation/shacl/full.shacl', data => shaclShapes = data);
 $.get('services', data => {
     supportedServices = data.services;
     prepareValidationTable();
     initServiceSelect();
+    supportedServices.forEach(service => {
+        $.get(`shacl/shapes/${service}`, shapes => {
+            shaclShapes.set(service, shapes);
+        });
+    })
 });
 $.get('tests', data => {
    initTests(data.tests);
@@ -31,8 +32,6 @@ function getShexReport(data, dataId, service) {
     Promise.all([shexErrors, shexWarnings])
         .then(res => {
             // TODO improve ugly duplicates removal
-
-
             let errors = [...new Set(res[0].map(JSON.stringify))];
             let warnings = [...new Set(res[1].map(JSON.stringify))];
             errors.forEach(err => {
@@ -53,17 +52,13 @@ function getShexReport(data, dataId, service) {
 function getShaclReport(data, service) {
     let resolver;
     let promise = new Promise((res, rej) => resolver = res);
-
-    if (shaclSupportedServices.indexOf(service) === -1) {
-        resolver({errors: undefined, warnings: undefined});
-    }
     let errors = [];
     let warnings = [];
-    validation.validateShacl(data, shaclShapes)
+    validation.validateShacl(data, shaclShapes.get(service))
         .then(report => {
             report.results.forEach(res => {
                 let simplified = {
-                    property: validation.clearURL(res.path.value),
+                    property: res.path ? validation.clearURL(res.path.value):"General violation",
                     description: res.message.map(x => x.value).join('/n')
                 }
                 validation.clearURL(res.severity.value) === "Violation" ? errors.push(simplified) : warnings.push(simplified);

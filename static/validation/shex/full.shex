@@ -385,7 +385,7 @@ BASE <http://schema.org/shex>
 }
 
 <#PinterestRecipeStrict> @<#Recipe> AND {
-    schema:url @<#URL> *
+    schema:url @<#URL> +
     // techdoc:url "https://developers.pinterest.com/docs/rich-pins/recipes/"
     // techdoc:description "The canonical URL for the page.";
 
