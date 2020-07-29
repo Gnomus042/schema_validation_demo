@@ -15,7 +15,7 @@ $.get('services', data => {
     })
 });
 $.get('tests', data => {
-   initTests(data.tests);
+    initTests(data.tests);
 });
 
 // SHACL helpers
@@ -39,11 +39,20 @@ function getShexReport(data, dataId, service) {
                     warnings.splice(warnings.indexOf(err), 1);
                 }
             });
-            errors = errors.map(JSON.parse);
-            errors.forEach(x => x.property = validation.clearURL(x.property));
-            warnings = warnings.map(JSON.parse);
-            warnings.forEach(x => x.property = validation.clearURL(x.property));
-            resolver({errors: errors, warnings: warnings});
+            let prepareItems = items => {
+                items = items.map(JSON.parse);
+                items.forEach(x => {
+                    x.property = validation.clearURL(x.property)
+                    if (x.target) {
+                        x.target = x.target.join(", ");
+                    }
+                    if (x.possibleValues) {
+                        x.possibleValues = x.possibleValues.join(", ");
+                    }
+                });
+                return items;
+            }
+            resolver({errors: prepareItems(errors), warnings: prepareItems(warnings)});
         });
     return promise;
 }
@@ -57,11 +66,13 @@ function getShaclReport(data, service) {
     validation.validateShacl(data, shaclShapes.get(service))
         .then(report => {
             report.results.forEach(res => {
-                let simplified = {
-                    property: res.path ? validation.clearURL(res.path.value):"General violation",
-                    description: res.message.map(x => x.value).join('/n')
+                if (res.path) {
+                    let simplified = {
+                        property: validation.clearURL(res.path.value),
+                        description: res.message.map(x => x.value).join('/n')
+                    }
+                    validation.clearURL(res.severity.value) === "Violation" ? errors.push(simplified) : warnings.push(simplified);
                 }
-                validation.clearURL(res.severity.value) === "Violation" ? errors.push(simplified) : warnings.push(simplified);
             });
             resolver({errors: errors, warnings: warnings});
         });

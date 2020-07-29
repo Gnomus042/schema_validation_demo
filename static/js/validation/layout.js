@@ -130,7 +130,10 @@ function fillDetailsItems(items, detailsField, type) {
             let additionalInfo = "";
             for (const [key, val] of Object.entries(item)) {
                 if (key !== 'property') {
-                    additionalInfo += `<div><span class="font-weight-bold">${key}:</span> ${val}</div>`
+                    console.log(val);
+                    let message = val.replace('<', "&lt;").replace('>', "&gt;");
+                    additionalInfo += `<div><span class="font-weight-bold">${key}:</span> 
+                           ${message}</div>`
                 }
             }
             detailsField.append(`
