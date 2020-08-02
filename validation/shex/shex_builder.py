@@ -8,8 +8,9 @@ def pack():
     shapes = [base]
     for shex_file in os.listdir('shapes'):
         shapes.append(open(f'shapes/{shex_file}').read())
-    for shex_file in os.listdir('specific'):
-        shapes.append(open(f'specific/{shex_file}').read())
+    for topic in os.listdir('specific'):
+        for shex_file in os.listdir(f'specific/{topic}'):
+            shapes.append(open(f'specific/{topic}/{shex_file}').read())
     full = fill_temp_holes(('\n' * 3).join(shapes))
     open('full.shex', 'w').write(full)
 

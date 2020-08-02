@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, send_file
 import os
 
 import config
@@ -16,6 +16,11 @@ def services():
     return jsonify(services=config.supported_services)
 
 
+@app.route('/services/allowed')
+def services_allowed():
+    return config.allowed_for_validation
+
+
 @app.route('/tests')
 def tests():
     tests = []
@@ -24,16 +29,28 @@ def tests():
     return jsonify(tests=tests)
 
 
-@app.route('/shape/<lang>/<service>')
-def shape(lang, service):
-    return jsonify(shape=open(f'static/validation/{lang}/specific/{service}.{lang}').read())
+@app.route('/shape/<lang>/<type>/<service>')
+def shape(lang, type, service):
+    return jsonify(shape=open(f'validation/{lang}/specific/{type}/{service}.{lang}').read())
+
+
+@app.route('/context')
+def context():
+    return send_file('validation/context.json')
+
+
+@app.route('/shex/shapes')
+def shex_shapes():
+    return send_file(f'{config.shex_path}/full.shex')
 
 
 @app.route('/shacl/shapes/<service>')
 def shacl_shapes(service):
     base = open(f'{config.shacl_path}/full.shacl').read()
-    specific = open(f'{config.shacl_path}/specific/{service}.shacl').read()
-    return base + specific
+    for dir in os.listdir(f'{config.shacl_path}/specific'):
+        specific = open(f'{config.shacl_path}/specific/{dir}/{service}.shacl').read()
+        base += specific
+    return base
 
 
 if __name__ == '__main__':

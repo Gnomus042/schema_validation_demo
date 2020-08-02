@@ -1,0 +1,71 @@
+<#GoogleDataset> @<#Dataset> AND EXTRA a {
+    schema:description @<#Text> MINLENGTH 50 AND MAXLENGTH 500
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "A short summary describing a dataset.";
+
+    schema:name @<#Text>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "A descriptive name of a dataset.";
+}
+
+<#GoogleDatasetStrict> @<#Dataset> AND EXTRA a {
+    schema:alternateName @<#Text> +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "Alternative names that have been used to refer to this dataset, such as aliases or abbreviations.";
+    
+    schema:creator @<#Person> OR @<#Organization> +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "The creator or author of this dataset.";
+
+    schema:citation @<#Text> OR @<#CreativeWork>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "Identifies academic articles that are recommended by the data provider be cited in addition to the dataset itself.";
+
+    schema:hasPart @<#URL> OR @<#Dataset> +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "If the dataset is a collection of smaller datasets, use the hasPart property to denote such relationship.";
+
+    schema:isPartOf @<#URL> OR @<#Dataset>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "If the dataset is a collection of smaller datasets, use the hasPart property to denote such relationship.";
+
+    schema:identifier @<#URL> OR @<#Text> OR @<#PropertyValue>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "An identifier, such as a DOI or a Compact Identifier.";
+
+    schema:keywords @<#Text>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "Keywords summarizing the dataset.";
+
+    schema:license @<#URL> OR @<#CreativeWork>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "A license under which the dataset is distributed.";
+
+    schema:measurementTechnique @<#Text> OR @<#URL>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "The technique, technology, or methodology used in a dataset, which can correspond to the variable(s) described in variableMeasured.";
+
+    schema:sameAs @<#URL>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "URL of a reference Web page that unambiguously indicates the dataset's identity, usually in a different repository.";
+
+    schema:spatialCoverage @<#Text> OR @<#Place>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "You can provide a single point that describes the spatial aspect of the dataset. ";
+
+    schema:temporalCoverage @<#Text>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "The data in the dataset covers a specific time interval.";
+
+    schema:variableMeasured @<#Text> OR @<#PropertyValue>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "The variable that this dataset measures.";
+
+    schema:version @<#Text> OR @<#Number>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "The version number for the dataset.";
+
+    schema:url @<#URL>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "Location of a page describing the dataset.";
+}

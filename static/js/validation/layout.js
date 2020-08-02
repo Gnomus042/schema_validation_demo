@@ -105,8 +105,10 @@ function fillValidationTable(report) {
     supportedServices.forEach((service, idx) => {
         let specReport = report.get(service);
 
-        fillSpecReport(specReport.shex, reportCells.eq(idx * 2));
-        if (specReport.shacl.errors) {
+        if (specReport.shex) {
+            fillSpecReport(specReport.shex, reportCells.eq(idx * 2));
+        }
+        if (specReport.shacl) {
             fillSpecReport(specReport.shacl, reportCells.eq(idx * 2 + 1));
         }
     })
@@ -162,8 +164,9 @@ $("#language-select").change(changeDisplayedShape);
 
 function changeDisplayedShape() {
     let lang = $("#language-select").val();
+    let type = $("#type-select").val();
     let service = $("#service-select").val();
-    $.get(`shape/${lang}/${service}`, data => {
+    $.get(`shape/${lang}/${type}/${service}`, data => {
         $('#shape-viewer').text(data.shape);
     });
 }

@@ -1,0 +1,9 @@
+<#Dataset> @<#CreativeWork> AND EXTRA a {
+	a [schema:DataFeed schema:Dataset];
+	schema:catalog @<#DataCatalog> * ;
+	schema:datasetTimeInterval @<#DateTime> * ;
+	schema:distribution @<#DataDownload> * ;
+	schema:includedDataCatalog @<#DataCatalog> *;
+	schema:includedInDataCatalog @<#DataCatalog> *;
+	schema:issn @<#Text> *;
+}
