@@ -24,7 +24,7 @@ def services_allowed():
 @app.route('/tests')
 def tests():
     tests = []
-    for filename in os.listdir(config.tests_path):
+    for filename in sorted(list(os.listdir(config.tests_path))):
         tests.append(open(f'{config.tests_path}/{filename}').read())
     return jsonify(tests=tests)
 
