@@ -133,7 +133,12 @@ function fillDetailsItems(items, detailsField, type) {
             for (const [key, val] of Object.entries(item)) {
                 if (key !== 'property') {
                     console.log(val);
-                    let message = val.replace('<', "&lt;").replace('>', "&gt;");
+                    let message = "";
+                    if (key === 'url') {
+                        message = `<a href='${val}' class='btn btn-light'>Details</a>`
+                    } else {
+                        message = val.replace('<', "&lt;").replace('>', "&gt;");
+                    }
                     additionalInfo += `<div><span class="font-weight-bold">${key}:</span> 
                            ${message}</div>`
                 }
@@ -161,6 +166,7 @@ function initServiceSelect() {
 
 $("#service-select").change(changeDisplayedShape);
 $("#language-select").change(changeDisplayedShape);
+$("#type-select").change(changeDisplayedShape);
 
 function changeDisplayedShape() {
     let lang = $("#language-select").val();
