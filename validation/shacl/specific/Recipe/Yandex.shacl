@@ -1,6 +1,5 @@
 :YandexRecipe a sh:NodeShape;
     sh:targetClass schema:Recipe;
-    sh:node :Recipe;
     sh:property [
         sh:path schema:name;
         sh:minCount 1;
