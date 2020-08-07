@@ -5,7 +5,7 @@
 }
 
 <#BingRecipeStrict> @<#Recipe> AND {
-    schema:author ({ a [schema:Person] } OR { a [schema:Organization] }) +
+    schema:author (@<#Person> OR { a [schema:Organization] }) +
     // techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
     // techdoc:description "The author of the recipe.";
 
@@ -41,7 +41,7 @@
     // techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
     // techdoc:description "The quantity of the dish prepared by the recipe (e.g. number of servings).";
 
-	schema:nutrition  { a [schema:NutritionInformation] }
+	schema:nutrition  @<#NutritionInformation>
 	// techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
 	// techdoc:description "Nutritional information of the dish the recipe is used to prepare.";
 

@@ -3,6 +3,7 @@ let context, supportedServices, tests;
 let shaclShapes = new Map();
 
 let allowedServices;
+let shaclSubclasses;
 
 
 // loading context and SHACL shapes
@@ -19,12 +20,15 @@ $.get('/services', data => {
 });
 $.get('/services/allowed', data => {
     allowedServices = data;
-})
+});
 $.get('tests', data => {
     initTests(data.tests);
 });
+$.get('shacl/subclasses', data => {
+    shaclSubclasses = data;
+});
 
-// SHACL helpers
+// ShEx helpers
 function stringToUrl(str) {
     var blob = new Blob([str], {type: 'text/plain'});
     return window.URL.createObjectURL(blob);
@@ -85,10 +89,9 @@ function getShaclReport(data, service) {
 
     let errors = [];
     let warnings = [];
-    validation.validateShacl(data, shaclShapes.get(service))
+    validation.validateShacl(data, shaclSubclasses, shaclShapes.get(service))
         .then(report => {
             report.results.forEach(res => {
-                console.log(res.path);
                 if (res.path) {
                     let simplified = {
                         property: validation.clearURL(res.path.value),

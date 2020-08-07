@@ -53,5 +53,10 @@ def shacl_shapes(service):
     return base
 
 
+@app.route('/shacl/subclasses')
+def shacl_subclasses():
+    return open(f'{config.shacl_path}/subclasses.ttl').read()
+
+
 if __name__ == '__main__':
     app.run()

@@ -10,16 +10,24 @@ BASE <http://schema.org/shex>
 <#Action> @<#Thing> AND EXTRA a {
 	a [schema:PerformAction schema:SearchAction schema:LikeAction schema:EatAction schema:RsvpAction schema:ResumeAction schema:DrinkAction schema:CancelAction schema:DepartAction schema:CheckInAction schema:DownloadAction schema:ReceiveAction schema:WinAction schema:WatchAction schema:TakeAction schema:DrawAction schema:GiveAction schema:WantAction schema:InteractAction schema:AssessAction schema:CheckOutAction schema:QuoteAction schema:FindAction schema:ReadAction schema:IgnoreAction schema:PreOrderAction schema:LendAction schema:ApplyAction schema:TransferAction schema:EndorseAction schema:UpdateAction schema:ListenAction schema:DeleteAction schema:SellAction schema:OrderAction schema:MarryAction schema:RejectAction schema:SendAction schema:LeaveAction schema:TradeAction schema:ControlAction schema:CheckAction schema:ShareAction schema:DisagreeAction schema:CommentAction schema:RegisterAction schema:ArriveAction schema:UnRegisterAction schema:ReactAction schema:ReserveAction schema:BefriendAction schema:BookmarkAction schema:InsertAction schema:LoseAction schema:DeactivateAction schema:InviteAction schema:ConfirmAction schema:SuspendAction schema:DiscoverAction schema:AskAction schema:DonateAction schema:ScheduleAction schema:ExerciseAction schema:OrganizeAction schema:TrackAction schema:ReplaceAction schema:AppendAction schema:ReviewAction schema:VoteAction schema:UseAction schema:ActivateAction schema:BorrowAction schema:AchieveAction schema:PaintAction schema:FilmAction schema:ChooseAction schema:SubscribeAction schema:AcceptAction schema:CookAction schema:AuthorizeAction schema:TieAction schema:TravelAction schema:DislikeAction schema:PayAction schema:PhotographAction schema:PlayAction schema:BuyAction schema:RentAction schema:TipAction schema:AllocateAction schema:CommunicateAction schema:PlanAction schema:AssignAction schema:InformAction schema:ConsumeAction schema:ReturnAction schema:AgreeAction schema:FollowAction schema:JoinAction schema:WearAction schema:ReplyAction schema:PrependAction schema:MoveAction schema:InstallAction schema:AddAction schema:CreateAction schema:ViewAction schema:WriteAction schema:Action];
 	schema:actionStatus { a [schema:ActionStatusType] } *;
-	schema:agent ({ a [schema:Person] } OR { a [schema:Organization] }) *;
+	schema:agent (@<#Person> OR { a [schema:Organization] }) *;
 	schema:endTime (@<#DateTime> OR @<#Time>) *;
 	schema:error @<#Thing> *;
 	schema:instrument @<#Thing> *;
 	schema:location ({ a [schema:VirtualLocation] } OR { a [schema:Place] } OR @<#Text> OR { a [schema:PostalAddress] }) *;
 	schema:object @<#Thing> *;
-	schema:participant ({ a [schema:Organization] } OR { a [schema:Person] }) *;
+	schema:participant ({ a [schema:Organization] } OR @<#Person>) *;
 	schema:result @<#Thing> *;
 	schema:startTime (@<#Time> OR @<#DateTime>) *;
 	schema:target { a [schema:EntryPoint] } *;
+}
+
+
+<#AggregateRating> @<#Rating> AND EXTRA a {
+	a [schema:EmployerAggregateRating schema:AggregateRating];
+	schema:itemReviewed @<#Thing> * ;
+	schema:ratingCount @<#Integer> * ;
+	schema:reviewCount @<#Integer> * ;
 }
 
 
@@ -36,63 +44,63 @@ BASE <http://schema.org/shex>
 	schema:accessibilityFeature @<#Text> *;
 	schema:accessibilityHazard @<#Text> *;
 	schema:accessibilitySummary @<#Text> *;
-	schema:accountablePerson { a [schema:Person] } *;
-	schema:aggregateRating { a [schema:AggregateRating] } *;
+	schema:accountablePerson @<#Person> *;
+	schema:aggregateRating @<#AggregateRating> *;
 	schema:alternativeHeadline @<#Text> *;
 	schema:associatedMedia @<#MediaObject> *;
 	schema:audience { a [schema:Audience] } *;
 	schema:audio ({ a [schema:AudioObject] } OR { a [schema:Clip] } OR { a [schema:MusicRecording] }) *;
-	schema:author ({ a [schema:Person] } OR { a [schema:Organization] }) *;
+	schema:author (@<#Person> OR { a [schema:Organization] }) *;
 	schema:award @<#Text> *;
 	schema:awards @<#Text> *;
-	schema:character { a [schema:Person] } *;
-	# schema:citation (@<#CreativeWork> OR @<#Text>) *;
+	schema:character @<#Person> *;
+	schema:citation (@<#CreativeWork> OR @<#Text>) *;
 	schema:comment { a [schema:Comment] } *;
-	schema:commentCount { a [schema:Integer] } *;
+	schema:commentCount @<#Integer> *;
 	schema:contentLocation { a [schema:Place] } *;
-	schema:contentRating (@<#Text> OR { a [schema:Rating] }) *;
-	schema:contributor ({ a [schema:Organization] } OR { a [schema:Person] }) *;
-	schema:copyrightHolder ({ a [schema:Person] } OR { a [schema:Organization] }) *;
+	schema:contentRating (@<#Text> OR @<#Rating>) *;
+	schema:contributor ({ a [schema:Organization] } OR @<#Person>) *;
+	schema:copyrightHolder (@<#Person> OR { a [schema:Organization] }) *;
 	schema:copyrightYear @<#Number> *;
-	schema:creator ({ a [schema:Organization] } OR { a [schema:Person] }) *;
+	schema:creator ({ a [schema:Organization] } OR @<#Person>) *;
 	schema:dateCreated (@<#Date> OR @<#DateTime>) *;
 	schema:dateModified (@<#DateTime> OR @<#Date>) *;
 	schema:datePublished (@<#Date> OR @<#DateTime>) *;
 	schema:discussionUrl @<#URL> *;
-	schema:editor { a [schema:Person] } *;
+	schema:editor @<#Person> *;
 	schema:educationalAlignment { a [schema:AlignmentObject] } *;
 	schema:educationalUse @<#Text> *;
 	schema:encoding @<#MediaObject> *;
 	schema:encodingFormat (@<#URL> OR @<#Text>) *;
 	schema:encodings @<#MediaObject> *;
-	# schema:exampleOfWork @<#CreativeWork> *;
+	schema:exampleOfWork @<#CreativeWork> *;
 	schema:expires @<#Date> *;
-	schema:funder ({ a [schema:Organization] } OR { a [schema:Person] }) *;
+	schema:funder ({ a [schema:Organization] } OR @<#Person>) *;
 	schema:genre (@<#Text> OR @<#URL>) *;
-	# schema:hasPart @<#CreativeWork> *;
+	schema:hasPart @<#CreativeWork> *;
 	schema:headline @<#Text> *;
 	schema:inLanguage (@<#Text> OR { a [schema:Language] }) *;
 	schema:interactionStatistic { a [schema:InteractionCounter] } *;
 	schema:interactivityType (@<#Text> AND /active|expositive|mixed/) *;
 	schema:isAccessibleForFree @<#Boolean> *;
-	# schema:isBasedOn ({ a [schema:Product] } OR @<#CreativeWork> OR @<#URL>) *;
-	# schema:isBasedOnUrl ({ a [schema:Product] } OR @<#URL> OR @<#CreativeWork>) *;
+	schema:isBasedOn ({ a [schema:Product] } OR @<#CreativeWork> OR @<#URL>) *;
+	schema:isBasedOnUrl ({ a [schema:Product] } OR @<#URL> OR @<#CreativeWork>) *;
 	schema:isFamilyFriendly @<#Boolean> *;
-	# schema:isPartOf (@<#URL> OR @<#CreativeWork>) *;
+	schema:isPartOf (@<#URL> OR @<#CreativeWork>) *;
 	schema:keywords @<#Text> *;
 	schema:learningResourceType @<#Text> *;
-	# schema:license (@<#URL> OR @<#CreativeWork>) *;
+	schema:license (@<#URL> OR @<#CreativeWork>) *;
 	schema:locationCreated { a [schema:Place] } *;
 	schema:mainEntity @<#Thing> *;
 	schema:material ({ a [schema:Product] } OR @<#URL> OR @<#Text>) *;
 	schema:mentions @<#Thing> *;
 	schema:offers ({ a [schema:Demand] } OR { a [schema:Offer] }) *;
-	schema:position ({ a [schema:Integer] } OR @<#Text>) *;
-	schema:producer ({ a [schema:Person] } OR { a [schema:Organization] }) *;
-	schema:provider ({ a [schema:Person] } OR { a [schema:Organization] }) *;
+	schema:position (@<#Integer> OR @<#Text>) *;
+	schema:producer (@<#Person> OR { a [schema:Organization] }) *;
+	schema:provider (@<#Person> OR { a [schema:Organization] }) *;
 	schema:publication { a [schema:PublicationEvent] } *;
-	schema:publisher ({ a [schema:Person] } OR { a [schema:Organization] }) *;
-	# schema:publishingPrinciples (@<#CreativeWork> OR @<#URL>) *;
+	schema:publisher (@<#Person> OR { a [schema:Organization] }) *;
+	schema:publishingPrinciples (@<#CreativeWork> OR @<#URL>) *;
 	schema:recordedAt { a [schema:Event] } *;
 	schema:releasedEvent { a [schema:PublicationEvent] } *;
 	schema:review { a [schema:Review] } *;
@@ -101,17 +109,17 @@ BASE <http://schema.org/shex>
 	schema:sourceOrganization { a [schema:Organization] } *;
 	schema:spatial { a [schema:Place] } *;
 	schema:spatialCoverage { a [schema:Place] } *;
-	schema:sponsor ({ a [schema:Organization] } OR { a [schema:Person] }) *;
+	schema:sponsor ({ a [schema:Organization] } OR @<#Person>) *;
 	schema:temporal (@<#Text> OR @<#DateTime>) *;
 	schema:temporalCoverage (@<#Text> OR @<#URL> OR @<#DateTime>) *;
 	schema:text @<#Text> *;
 	schema:thumbnailUrl @<#URL> *;
 	schema:timeRequired @<#Duration> *;
-	schema:translator ({ a [schema:Organization] } OR { a [schema:Person] }) *;
+	schema:translator ({ a [schema:Organization] } OR @<#Person>) *;
 	schema:typicalAgeRange @<#Text> *;
 	schema:version (@<#Text> OR @<#Number>) *;
 	schema:video ({ a [schema:Clip] } OR { a [schema:VideoObject] }) *;
-	# schema:workExample @<#CreativeWork> *;
+	schema:workExample @<#CreativeWork> *;
 }
 
 
@@ -154,18 +162,12 @@ BASE <http://schema.org/shex>
 }
 
 
-<#ImageObject> @<#MediaObject> AND EXTRA a {
-	a [schema:Barcode schema:ImageObject];
-	schema:caption (@<#Text> OR @<#MediaObject>) *;
-	schema:exifData (@<#Text> OR @<#PropertyValue>) *;
-	schema:representativeOfPage @<#Boolean> *;
-	schema:thumbnail @<#ImageObject> *;
-}
-
-
 <#Intangible> @<#Thing> AND EXTRA a {
 	a [schema:BroadcastFrequencySpecification schema:AlignmentObject schema:CableOrSatelliteService schema:Occupation schema:AggregateRating schema:QualitativeValue schema:Ticket schema:HowToItem schema:BankAccount schema:GeoCircle schema:Periodical schema:Enumeration schema:OfferItemCondition schema:SteeringPositionValue schema:Series schema:RadioSeries schema:BusinessFunction schema:WarrantyScope schema:DatedMoneySpecification schema:LocationFeatureSpecification schema:VideoGameSeries schema:RestrictedDiet schema:GeoCoordinates schema:Rating schema:OwnershipInfo schema:ReservationPackage schema:TypeAndQuantityNode schema:BroadcastService schema:ProgramMembership schema:FoodService schema:MovieSeries schema:FMRadioChannel schema:Energy schema:Offer schema:FinancialProduct schema:EntryPoint schema:BedType schema:DigitalDocumentPermission schema:Quantity schema:EducationalAudience schema:PriceSpecification schema:HowToTip schema:PerformanceRole schema:ParcelService schema:GovernmentPermit schema:GeoShape schema:UnitPriceSpecification schema:GamePlayMode schema:Audience schema:DataFeedItem schema:Invoice schema:Brand schema:ComputerLanguage schema:InvestmentOrDeposit schema:PaymentCard schema:ContactPointOption schema:Mass schema:DayOfWeek schema:Demand schema:ActionAccessSpecification schema:HowToSection schema:AMRadioChannel schema:FoodEstablishmentReservation schema:PropertyValue schema:HowToTool schema:GameServer schema:Permit schema:PaymentMethod schema:PeopleAudience schema:DepositAccount schema:BookFormatType schema:CompoundPriceSpecification schema:LoanOrCredit schema:DigitalDocumentPermissionType schema:OrderStatus schema:LodgingReservation schema:BroadcastChannel schema:TaxiReservation schema:MediaSubscription schema:RsvpResponseType schema:QuantitativeValueDistribution schema:SpeakableSpecification schema:FlightReservation schema:MapCategoryType schema:PaymentService schema:WarrantyPromise schema:PaymentChargeSpecification schema:ListItem schema:BusReservation schema:Taxi schema:DeliveryChargeSpecification schema:EmployerAggregateRating schema:Role schema:DeliveryMethod schema:EmployeeRole schema:ItemList schema:ItemListOrderType schema:HowToDirection schema:ParentAudience schema:ServiceChannel schema:TrainTrip schema:MusicAlbumReleaseType schema:Service schema:ParcelDelivery schema:BusTrip schema:BoardingPolicyType schema:NutritionInformation schema:OrderItem schema:DriveWheelConfigurationValue schema:PaymentStatusType schema:BusinessEntityType schema:RentalCarReservation schema:GameServerStatus schema:Trip schema:HowToStep schema:RadioChannel schema:MonetaryAmountDistribution schema:OfferCatalog schema:ActionStatusType schema:BreadcrumbList schema:Order schema:CreditCard schema:CreativeWorkSeries schema:JobPosting schema:MusicReleaseFormatType schema:MenuItem schema:MonetaryAmount schema:BusinessAudience schema:Flight schema:OrganizationRole schema:EventStatusType schema:Distance schema:CurrencyConversionService schema:MusicAlbumProductionType schema:PropertyValueSpecification schema:EndorsementRating schema:ReservationStatusType schema:TVSeries schema:StructuredValue schema:Seat schema:TelevisionChannel schema:OpeningHoursSpecification schema:ItemAvailability schema:TrainReservation schema:BedDetails schema:EngineSpecification schema:Reservation schema:ContactPoint schema:TaxiService schema:GenderType schema:EventReservation schema:GovernmentService schema:Specialty schema:QuantitativeValue schema:PostalAddress schema:Language schema:LockerDelivery schema:AggregateOffer schema:BookSeries schema:Duration schema:InteractionCounter schema:HowToSupply schema:Intangible];
 }
+
+
+<#Integer> (@<#Text> AND /^([1-9][0-9]*|0)$/) OR xsd:integer
 
 
 <#MediaObject> @<#CreativeWork> AND EXTRA a {
@@ -191,7 +193,68 @@ BASE <http://schema.org/shex>
 
 
 
-<#Number> LITERAL OR xsd:decimal OR xsd:integer
+<#Number> LITERAL OR xsd:decimal OR @<#Integer>
+
+
+<#Person> @<#Text> OR @<#URL> OR ( @<#Thing> AND EXTRA a {
+	a [schema:Person];
+	schema:additionalName @<#Text> * ;
+	schema:address ({ a [schema:PostalAddress] } OR @<#Text>) * ;
+	schema:affiliation { a [schema:Organization] } * ;
+	schema:alumniOf ({ a [schema:EducationalOrganization] } OR { a [schema:Organization] }) * ;
+	schema:award @<#Text> * ;
+	schema:awards @<#Text> * ;
+	schema:birthDate @<#Date> * ;
+	schema:birthPlace { a [schema:Place] } * ;
+	schema:brand ({ a [schema:Brand] } OR { a [schema:Organization] }) * ;
+	schema:children @<#Person> * ;
+	schema:colleague (@<#URL> OR @<#Person>) * ;
+	schema:colleagues @<#Person> * ;
+	schema:contactPoint { a [schema:ContactPoint] } * ;
+	schema:contactPoints { a [schema:ContactPoint] } * ;
+	schema:deathDate @<#Date> * ;
+	schema:deathPlace { a [schema:Place] } * ;
+	schema:duns @<#Text> * ;
+	schema:email @<#Text> * ;
+	schema:familyName @<#Text> * ;
+	schema:faxNumber @<#Text> * ;
+	schema:follows @<#Person> * ;
+	schema:funder ({ a [schema:Organization] } OR @<#Person>) * ;
+	schema:givenName @<#Text> * ;
+	schema:globalLocationNumber @<#Text> * ;
+	schema:hasOccupation { a [schema:Occupation] } * ;
+	schema:hasOfferCatalog { a [schema:OfferCatalog] } * ;
+	schema:hasPOS { a [schema:Place] } * ;
+	schema:height ({ a [schema:QuantitativeValue] } OR { a [schema:Distance] }) * ;
+	schema:homeLocation ({ a [schema:ContactPoint] } OR { a [schema:Place] }) * ;
+	schema:honorificPrefix @<#Text> * ;
+	schema:honorificSuffix @<#Text> * ;
+	schema:interactionStatistic { a [schema:InteractionCounter] } * ;
+	schema:isicV4 @<#Text> * ;
+	schema:knows @<#Person> * ;
+	schema:makesOffer { a [schema:Offer] } * ;
+	schema:memberOf ({ a [schema:Organization] } OR { a [schema:ProgramMembership] }) * ;
+	schema:naics @<#Text> * ;
+	schema:nationality { a [schema:Country] } * ;
+	schema:netWorth ({ a [schema:MonetaryAmount] } OR { a [schema:PriceSpecification] }) * ;
+	schema:owns ({ a [schema:OwnershipInfo] } OR { a [schema:Product] }) * ;
+	schema:parent @<#Person> * ;
+	schema:parents @<#Person> * ;
+	schema:performerIn { a [schema:Event] } * ;
+	schema:publishingPrinciples (@<#CreativeWork> OR @<#URL>) * ;
+	schema:relatedTo @<#Person> * ;
+	schema:seeks { a [schema:Demand] } * ;
+	schema:sibling @<#Person> * ;
+	schema:siblings @<#Person> * ;
+	schema:sponsor ({ a [schema:Organization] } OR @<#Person>) * ;
+	schema:spouse @<#Person> * ;
+	schema:taxID @<#Text> * ;
+	schema:telephone @<#Text> * ;
+	schema:vatID @<#Text> * ;
+	schema:weight { a [schema:QuantitativeValue] } * ;
+	schema:workLocation ({ a [schema:ContactPoint] } OR { a [schema:Place] }) * ;
+	schema:worksFor { a [schema:Organization] } * ;
+})
 
 
 <#PropertyValue> @<#StructuredValue> AND EXTRA a {
@@ -203,6 +266,16 @@ BASE <http://schema.org/shex>
 	schema:unitText @<#Text> *;
 	schema:value (@<#Boolean> OR @<#StructuredValue> OR @<#Number> OR @<#Text>) *;
 	schema:valueReference (@<#PropertyValue> OR @<#StructuredValue> OR { a [schema:QualitativeValue] } OR { a [schema:QuantitativeValue] } OR { a [schema:Enumeration] }) *;
+}
+
+
+<#Rating> @<#Intangible> AND EXTRA a {
+	a [schema:EmployerAggregateRating schema:AggregateRating schema:EndorsementRating schema:Rating];
+	schema:author (@<#Person> OR { a [schema:Organization] }) * ;
+	schema:bestRating (@<#Number> OR @<#Text>) * ;
+	schema:ratingValue (@<#Number> OR @<#Text>) * ;
+	schema:reviewAspect @<#Text> * ;
+	schema:worstRating (@<#Text> OR @<#Number>) * ;
 }
 
 
@@ -237,7 +310,7 @@ BASE <http://schema.org/shex>
 	schema:description @<#Text> *;
 	schema:disambiguatingDescription @<#Text> *;
 	schema:identifier (@<#Text> OR @<#PropertyValue> OR @<#URL>) *;
-	schema:image (@<#URL> OR @<#ImageObject>) *;
+	schema:image (@<#URL> OR { a [schema:ImageObject] }) *;
 	schema:mainEntityOfPage (@<#CreativeWork> OR @<#URL>) *;
 	schema:name @<#Text> *;
 	schema:potentialAction @<#Action> *;
@@ -273,7 +346,7 @@ BASE <http://schema.org/shex>
     // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
     // techdoc:description "Alternative names that have been used to refer to this dataset, such as aliases or abbreviations.";
     
-    schema:creator { a [schema:Person] } OR { a [schema:Organization] } +
+    schema:creator @<#Person> OR { a [schema:Organization] } +
     // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
     // techdoc:description "The creator or author of this dataset.";
 
@@ -344,7 +417,7 @@ BASE <http://schema.org/shex>
 }
 
 <#BingRecipeStrict> @<#Recipe> AND {
-    schema:author ({ a [schema:Person] } OR { a [schema:Organization] }) +
+    schema:author (@<#Person> OR { a [schema:Organization] }) +
     // techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
     // techdoc:description "The author of the recipe.";
 
@@ -360,7 +433,7 @@ BASE <http://schema.org/shex>
     // techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
     // techdoc:description "Summary describing the recipe.";
 
-    schema:image @<#URL> OR @<#ImageObject> +
+    schema:image @<#URL> OR { a [schema:ImageObject] } +
     // techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
     // techdoc:description "Picture associated with the recipe. This can be a picture of the dish or the ingredients of the dish.";
 
@@ -399,7 +472,7 @@ BASE <http://schema.org/shex>
     // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#name"
     // techdoc:description "The name of the dish.";
 
-    schema:image @<#URL> OR @<#ImageObject> +
+    schema:image @<#URL> OR { a [schema:ImageObject] } +
     // techdoc:url "https://developers.google.com/search/docs/data-types/recipe"
     // techdoc:description "Image of the completed dish.";
 }
@@ -409,7 +482,7 @@ BASE <http://schema.org/shex>
     // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#aggregateRating"
     // techdoc:description "Annotation for the average review score assigned to the item.";
 
-    schema:author ({ a [schema:Person] } OR { a [schema:Organization] }) +
+    schema:author (@<#Person> OR { a [schema:Organization] }) +
     // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#author"
     // techdoc:description "The name of the person or organization that wrote the recipe.";
 
@@ -474,7 +547,7 @@ BASE <http://schema.org/shex>
     // techdoc:url "https://developers.pinterest.com/docs/rich-pins/recipes/"
     // techdoc:description "The canonical URL for the page.";
 
-    schema:image (@<#URL> OR @<#ImageObject>) {1,6}
+    schema:image (@<#URL> OR { a [schema:ImageObject] }) {1,6}
     // techdoc:url "https://developers.pinterest.com/docs/rich-pins/recipes/"
     // techdoc:description "The URL for a high-resolution image of the recipe. You can add up to 6 images..";
 
@@ -519,7 +592,7 @@ BASE <http://schema.org/shex>
     // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
     // techdoc:description "Cooking time (if missing, cookTime is used). Specified in the ISO 8601 format. For example, PT30M (30 minutes).";
 
-    schema:image @<#URL> OR @<#ImageObject> +
+    schema:image @<#URL> OR { a [schema:ImageObject] } +
     // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
     // techdoc:description " URL of the cooking images (can be several). We recommend you to fill in this field for creating a better snippet.";
 

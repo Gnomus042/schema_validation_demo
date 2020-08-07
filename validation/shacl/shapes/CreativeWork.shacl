@@ -1,6 +1,5 @@
 :CreativeWork a sh:NodeShape;
 	sh:targetClass schema:CreativeWork;
-	sh:node :Thing;
 	sh:property [
 		sh:path schema:about;
 		sh:node :Thing;
@@ -56,16 +55,18 @@
 	sh:property [
 		sh:path schema:audio;
 		sh:or (
-			sh:node :AudioObject
-			sh:node :Clip
-			sh:node :MusicRecording
+			[sh:node :AudioObject]
+			[sh:node :Clip]
+			[sh:node :MusicRecording]
 		);
 	];
 	sh:property [
 		sh:path schema:author;
 		sh:or (
-			sh:node :Person
-			sh:node :Organization
+		    [sh:node :Text]
+		    [sh:node :URL]
+			[sh:node :Person]
+			[sh:node :Organization]
 		);
 	];
 	sh:property [
@@ -83,8 +84,8 @@
 	sh:property [
 		sh:path schema:citation;
 		sh:or (
-			sh:node :CreativeWork
-			sh:node :Text
+			[sh:node :CreativeWork]
+			[sh:node :Text]
 		);
 	];
 	sh:property [
@@ -102,22 +103,22 @@
 	sh:property [
 		sh:path schema:contentRating;
 		sh:or (
-			sh:node :Text
-			sh:node :Rating
+			[sh:node :Text]
+			[sh:node :Rating]
 		);
 	];
 	sh:property [
 		sh:path schema:contributor;
 		sh:or (
-			sh:node :Organization
-			sh:node :Person
+			[sh:node :Organization]
+			[sh:node :Person]
 		);
 	];
 	sh:property [
 		sh:path schema:copyrightHolder;
 		sh:or (
-			sh:node :Person
-			sh:node :Organization
+			[sh:node :Person]
+			[sh:node :Organization]
 		);
 	];
 	sh:property [
@@ -127,29 +128,29 @@
 	sh:property [
 		sh:path schema:creator;
 		sh:or (
-			sh:node :Organization
-			sh:node :Person
+			[sh:node :Organization]
+			[sh:node :Person]
 		);
 	];
 	sh:property [
 		sh:path schema:dateCreated;
 		sh:or (
-			sh:node :Date
-			sh:node :DateTime
+			[sh:node :Date]
+			[sh:node :DateTime]
 		);
 	];
 	sh:property [
 		sh:path schema:dateModified;
 		sh:or (
-			sh:node :DateTime
-			sh:node :Date
+			[sh:node :DateTime]
+			[sh:node :Date]
 		);
 	];
 	sh:property [
 		sh:path schema:datePublished;
 		sh:or (
-			sh:node :Date
-			sh:node :DateTime
+			[sh:node :Date]
+			[sh:node :DateTime]
 		);
 	];
 	sh:property [
@@ -175,8 +176,8 @@
 	sh:property [
 		sh:path schema:encodingFormat;
 		sh:or (
-			sh:node :URL
-			sh:node :Text
+			[sh:node :URL]
+			[sh:node :Text]
 		);
 	];
 	sh:property [
@@ -194,22 +195,22 @@
 	sh:property [
 		sh:path schema:fileFormat;
 		sh:or (
-			sh:node :URL
-			sh:node :Text
+			[sh:node :URL]
+			[sh:node :Text]
 		);
 	];
 	sh:property [
 		sh:path schema:funder;
 		sh:or (
-			sh:node :Organization
-			sh:node :Person
+			[sh:node :Organization]
+			[sh:node :Person]
 		);
 	];
 	sh:property [
 		sh:path schema:genre;
 		sh:or (
-			sh:node :Text
-			sh:node :URL
+			[sh:node :Text]
+			[sh:node :URL]
 		);
 	];
 	sh:property [
@@ -223,8 +224,8 @@
 	sh:property [
 		sh:path schema:inLanguage;
 		sh:or (
-			sh:node :Text
-			sh:node :Language
+			[sh:node :Text]
+			[sh:node :Language]
 		);
 	];
 	sh:property [
@@ -242,17 +243,17 @@
 	sh:property [
 		sh:path schema:isBasedOn;
 		sh:or (
-			sh:node :Product
-			sh:node :CreativeWork
-			sh:node :URL
+			[sh:node :Product]
+			[sh:node :CreativeWork]
+			[sh:node :URL]
 		);
 	];
 	sh:property [
 		sh:path schema:isBasedOnUrl;
 		sh:or (
-			sh:node :Product
-			sh:node :URL
-			sh:node :CreativeWork
+			[sh:node :Product]
+			[sh:node :URL]
+			[sh:node :CreativeWork]
 		);
 	];
 	sh:property [
@@ -262,8 +263,8 @@
 	sh:property [
 		sh:path schema:isPartOf;
 		sh:or (
-			sh:node :URL
-			sh:node :CreativeWork
+			[sh:node :URL]
+			[sh:node :CreativeWork]
 		);
 	];
 	sh:property [
@@ -277,8 +278,8 @@
 	sh:property [
 		sh:path schema:license;
 		sh:or (
-			sh:node :URL
-			sh:node :CreativeWork
+			[sh:node :URL]
+			[sh:node :CreativeWork]
 		);
 	];
 	sh:property [
@@ -292,9 +293,9 @@
 	sh:property [
 		sh:path schema:material;
 		sh:or (
-			sh:node :Product
-			sh:node :URL
-			sh:node :Text
+			[sh:node :Product]
+			[sh:node :URL]
+			[sh:node :Text]
 		);
 	];
 	sh:property [
@@ -304,29 +305,29 @@
 	sh:property [
 		sh:path schema:offers;
 		sh:or (
-			sh:node :Demand
-			sh:node :Offer
+			[sh:node :Demand]
+			[sh:node :Offer]
 		);
 	];
 	sh:property [
 		sh:path schema:position;
 		sh:or (
-			sh:node :Integer
-			sh:node :Text
+			[sh:node :Integer]
+			[sh:node :Text]
 		);
 	];
 	sh:property [
 		sh:path schema:producer;
 		sh:or (
-			sh:node :Person
-			sh:node :Organization
+			[sh:node :Person]
+			[sh:node :Organization]
 		);
 	];
 	sh:property [
 		sh:path schema:provider;
 		sh:or (
-			sh:node :Person
-			sh:node :Organization
+			[sh:node :Person]
+			[sh:node :Organization]
 		);
 	];
 	sh:property [
@@ -336,15 +337,15 @@
 	sh:property [
 		sh:path schema:publisher;
 		sh:or (
-			sh:node :Person
-			sh:node :Organization
+			[sh:node :Person]
+			[sh:node :Organization]
 		);
 	];
 	sh:property [
 		sh:path schema:publishingPrinciples;
 		sh:or (
-			sh:node :CreativeWork
-			sh:node :URL
+			[sh:node :CreativeWork]
+			[sh:node :URL]
 		);
 	];
 	sh:property [
@@ -366,8 +367,8 @@
 	sh:property [
 		sh:path schema:schemaVersion;
 		sh:or (
-			sh:node :Text
-			sh:node :URL
+			[sh:node :Text]
+			[sh:node :URL]
 		);
 	];
 	sh:property [
@@ -385,23 +386,23 @@
 	sh:property [
 		sh:path schema:sponsor;
 		sh:or (
-			sh:node :Organization
-			sh:node :Person
+			[sh:node :Organization]
+			[sh:node :Person]
 		);
 	];
 	sh:property [
 		sh:path schema:temporal;
 		sh:or (
-			sh:node :Text
-			sh:node :DateTime
+			[sh:node :Text]
+			[sh:node :DateTime]
 		);
 	];
 	sh:property [
 		sh:path schema:temporalCoverage;
 		sh:or (
-			sh:node :Text
-			sh:node :URL
-			sh:node :DateTime
+			[sh:node :Text]
+			[sh:node :URL]
+			[sh:node :DateTime]
 		);
 	];
 	sh:property [
@@ -419,8 +420,8 @@
 	sh:property [
 		sh:path schema:translator;
 		sh:or (
-			sh:node :Organization
-			sh:node :Person
+			[sh:node :Organization]
+			[sh:node :Person]
 		);
 	];
 	sh:property [
@@ -430,15 +431,15 @@
 	sh:property [
 		sh:path schema:version;
 		sh:or (
-			sh:node :Text
-			sh:node :Number
+			[sh:node :Text]
+			[sh:node :Number]
 		);
 	];
 	sh:property [
 		sh:path schema:video;
 		sh:or (
-			sh:node :Clip
-			sh:node :VideoObject
+			[sh:node :Clip]
+			[sh:node :VideoObject]
 		);
 	];
 	sh:property [

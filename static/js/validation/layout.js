@@ -132,7 +132,6 @@ function fillDetailsItems(items, detailsField, type) {
             let additionalInfo = "";
             for (const [key, val] of Object.entries(item)) {
                 if (key !== 'property') {
-                    console.log(val);
                     let message = "";
                     if (key === 'url') {
                         message = `<a href='${val}' class='btn btn-light'>Details</a>`

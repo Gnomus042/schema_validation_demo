@@ -1,11 +1,10 @@
 :HowTo a sh:NodeShape;
 	sh:targetClass schema:HowTo;
-	sh:node :CreativeWork;
 	sh:property [
 		sh:path schema:estimatedCost;
 		sh:or (
-			sh:node :MonetaryAmount
-			sh:node :Text
+			[sh:node :MonetaryAmount]
+			[sh:node :Text]
 		);
 	];
 	sh:property [
@@ -19,32 +18,32 @@
 	sh:property [
 		sh:path schema:step;
 		sh:or (
-			sh:node :HowToStep
-			sh:node :Text
-			sh:node :CreativeWork
-			sh:node :HowToSection
+			[sh:node :HowToStep]
+			[sh:node :Text]
+			[sh:node :CreativeWork]
+			[sh:node :HowToSection]
 		);
 	];
 	sh:property [
 		sh:path schema:steps;
 		sh:or (
-			sh:node :CreativeWork
-			sh:node :ItemList
-			sh:node :Text
+			[sh:node :CreativeWork]
+			[sh:node :ItemList]
+			[sh:node :Text]
 		);
 	];
 	sh:property [
 		sh:path schema:supply;
 		sh:or (
-			sh:node :HowToSupply
-			sh:node :Text
+			[sh:node :HowToSupply]
+			[sh:node :Text]
 		);
 	];
 	sh:property [
 		sh:path schema:tool;
 		sh:or (
-			sh:node :HowToTool
-			sh:node :Text
+			[sh:node :HowToTool]
+			[sh:node :Text]
 		);
 	];
 	sh:property [
@@ -54,7 +53,7 @@
 	sh:property [
 		sh:path schema:yield;
 		sh:or (
-			sh:node :QuantitativeValue
-			sh:node :Text
+			[sh:node :QuantitativeValue]
+			[sh:node :Text]
 		);
 	].

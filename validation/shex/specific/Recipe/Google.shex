@@ -13,7 +13,7 @@
     // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#aggregateRating"
     // techdoc:description "Annotation for the average review score assigned to the item.";
 
-    schema:author ({ a [schema:Person] } OR { a [schema:Organization] }) +
+    schema:author (@<#Person> OR { a [schema:Organization] }) +
     // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#author"
     // techdoc:description "The name of the person or organization that wrote the recipe.";
 

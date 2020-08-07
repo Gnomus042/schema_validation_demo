@@ -1,1 +1,1 @@
-<#Number> LITERAL OR xsd:decimal OR xsd:integer
+<#Number> LITERAL OR xsd:decimal OR @<#Integer>

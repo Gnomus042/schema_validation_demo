@@ -1,6 +1,5 @@
 :Number a sh:NodeShape;
-    sh:nodeKind sh:Literal;
     sh:or (
-        sh:datatype xsd:integer
-        sh:datatype xsd:decimal
+        [sh:node :Integer]
+        [sh:datatype xsd:decimal]
     ).

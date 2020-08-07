@@ -1,0 +1,14 @@
+:AggregateRating a sh:NodeShape;
+	sh:targetClass schema:AggregateRating;
+	sh:property [
+		sh:path schema:itemReviewed;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:ratingCount;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:reviewCount;
+		sh:node :Integer;
+	].

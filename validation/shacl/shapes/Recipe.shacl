@@ -1,6 +1,5 @@
 :Recipe a sh:NodeShape;
 	sh:targetClass schema:Recipe;
-	sh:node :HowTo;
 	sh:property [
 		sh:path schema:cookTime;
 		sh:node :Duration;
@@ -32,16 +31,16 @@
 	sh:property [
 		sh:path schema:recipeInstructions;
 		sh:or (
-			sh:node :CreativeWork
-			sh:node :ItemList
-			sh:node :Text
+			[sh:node :CreativeWork]
+			[sh:node :ItemList]
+			[sh:node :Text]
 		);
 	];
 	sh:property [
 		sh:path schema:recipeYield;
 		sh:or (
-			sh:node :QuantitativeValue
-			sh:node :Text
+			[sh:node :QuantitativeValue]
+			[sh:node :Text]
 		);
 	];
 	sh:property [
