@@ -1,9 +1,9 @@
-@prefix: <https://example.org/> .
-@prefix schema: <https://schema.org/> .
-@prefix sh: <https://www.w3.org/ns/shacl#> .
-@prefix xsd: <https://www.w3.org/2001/XMLSchema> .
-@prefix rdf: <https://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <https://www.w3.org/2000/01/rdf-schema#> .
+@prefix: <http://example.org/> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 
 :AggregateRating a sh:NodeShape;
