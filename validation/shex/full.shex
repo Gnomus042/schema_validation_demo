@@ -326,3 +326,285 @@ BASE <http://schema.org/shex>
 
 
 <#URL> ((IRI OR LITERAL) AND CLOSED {}  AND /^(https?|gopher|ftps?):/)
+
+
+
+
+
+<#GoogleDataset> @<#Dataset> AND EXTRA a {
+    schema:description @<#Text> MINLENGTH 50 AND MAXLENGTH 500
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "A short summary describing a dataset.";
+
+    schema:name @<#Text>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "A descriptive name of a dataset.";
+}
+
+<#GoogleDatasetStrict> @<#Dataset> AND EXTRA a {
+    schema:alternateName @<#Text> +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "Alternative names that have been used to refer to this dataset, such as aliases or abbreviations.";
+    
+    schema:creator @<#Person> OR { a [schema:Organization] } +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "The creator or author of this dataset.";
+
+    schema:citation @<#Text> OR @<#CreativeWork>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "Identifies academic articles that are recommended by the data provider be cited in addition to the dataset itself.";
+
+    schema:hasPart @<#URL> OR @<#Dataset> +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "If the dataset is a collection of smaller datasets, use the hasPart property to denote such relationship.";
+
+    schema:isPartOf @<#URL> OR @<#Dataset>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "If the dataset is a collection of smaller datasets, use the hasPart property to denote such relationship.";
+
+    schema:identifier @<#URL> OR @<#Text> OR @<#PropertyValue>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "An identifier, such as a DOI or a Compact Identifier.";
+
+    schema:keywords @<#Text>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "Keywords summarizing the dataset.";
+
+    schema:license @<#URL> OR @<#CreativeWork>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "A license under which the dataset is distributed.";
+
+    schema:measurementTechnique @<#Text> OR @<#URL>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "The technique, technology, or methodology used in a dataset, which can correspond to the variable(s) described in variableMeasured.";
+
+    schema:sameAs @<#URL>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "URL of a reference Web page that unambiguously indicates the dataset's identity, usually in a different repository.";
+
+    schema:spatialCoverage @<#Text> OR { a [schema:Place] }
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "You can provide a single point that describes the spatial aspect of the dataset. ";
+
+    schema:temporalCoverage @<#Text>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "The data in the dataset covers a specific time interval.";
+
+    schema:variableMeasured @<#Text> OR @<#PropertyValue>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "The variable that this dataset measures.";
+
+    schema:version @<#Text> OR @<#Number>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "The version number for the dataset.";
+
+    schema:url @<#URL>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/dataset"
+    // techdoc:description "Location of a page describing the dataset.";
+}
+
+
+
+
+
+
+
+
+<#BingRecipe> @<#Recipe> AND {
+    schema:name @<#Text>
+    // techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+    // techdoc:description "Required. Name of the recipe.";
+}
+
+<#BingRecipeStrict> @<#Recipe> AND {
+    schema:author (@<#Person> OR { a [schema:Organization] }) +
+    // techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+    // techdoc:description "The author of the recipe.";
+
+    schema:datePublished (@<#Date> OR @<#DateTime>)
+    // techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+    // techdoc:description "The date the recipe was published.";
+
+    schema:recipeCategory  @<#Text>
+    // techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+    // techdoc:description "The type of dish. For example, the dish could be an appetizer, main course, or desert.";
+
+    schema:description @<#Text>
+    // techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+    // techdoc:description "Summary describing the recipe.";
+
+    schema:image @<#URL> OR { a [schema:ImageObject] } +
+    // techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+    // techdoc:description "Picture associated with the recipe. This can be a picture of the dish or the ingredients of the dish.";
+
+    schema:review { a [schema:Review] }
+    // techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+    // techdoc:description "Review of the recipe.";
+
+    schema:prepTime @<#Duration>
+    // techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+    // techdoc:description "The amount of time needed to prepare the ingredients of the recipe.";
+
+    schema:totalTime @<#Duration>
+    // techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+    // techdoc:description "The total time it takes to prepare the ingredients and cook the dish.";
+
+    schema:recipeYield @<#Text> +
+    // techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+    // techdoc:description "The quantity of the dish prepared by the recipe (e.g. number of servings).";
+
+	schema:nutrition  { a [schema:NutritionInformation] }
+	// techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+	// techdoc:description "Nutritional information of the dish the recipe is used to prepare.";
+
+	schema:recipeIngredient @<#Text> +
+	// techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+	// techdoc:description "An ingredient used in the recipe.";
+
+    schema:recipeInstructions ( @<#CreativeWork> OR  { a [schema:ItemList] } OR  @<#Text>) +
+    // techdoc:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+    // techdoc:description "The steps specified by the recipe to prepare the dish.";
+}
+
+
+<#GoogleRecipe> @<#Recipe> AND{
+    schema:name @<#Text>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#name"
+    // techdoc:description "The name of the dish.";
+
+    schema:image @<#URL> OR { a [schema:ImageObject] } +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe"
+    // techdoc:description "Image of the completed dish.";
+}
+
+<#GoogleRecipeStrict> @<#Recipe> AND {
+    schema:aggregateRating { a [schema:AggregateRating] }
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#aggregateRating"
+    // techdoc:description "Annotation for the average review score assigned to the item.";
+
+    schema:author (@<#Person> OR { a [schema:Organization] }) +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#author"
+    // techdoc:description "The name of the person or organization that wrote the recipe.";
+
+    schema:cookTime  @<#Duration>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#cookTime"
+    // techdoc:description "The time it takes to actually cook the dish in ISO 8601 format";
+
+    schema:datePublished (@<#Date> OR @<#DateTime>)
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#datePublished"
+    // techdoc:description "The date the recipe was published in ISO 8601 format";
+
+    schema:description @<#Text>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#description"
+    // techdoc:description "A short summary describing the dish.";
+
+    schema:keywords @<#Text>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#keywords"
+    // techdoc:description "Other terms for your recipe such as the season, the holiday, or other descriptors";
+
+    schema:prepTime @<#Duration>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#prepTime"
+    // techdoc:description "The length of time it takes to prepare the dish, in ISO 8601 format";
+
+    schema:recipeCategory  @<#Text>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#recipeCategoty"
+    // techdoc:description "The type of meal or course your recipe is about";
+
+    schema:recipeCuisine  @<#Text>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#recipeCusine"
+    // techdoc:description "The region associated with your recipe";
+
+    schema:recipeIngredient @<#Text> +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#recipeIngredient"
+    // techdoc:description "An ingredient used in the recipe.";
+
+    schema:recipeInstructions ( @<#CreativeWork> OR  { a [schema:ItemList] } OR  @<#Text>) +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#recipeInstructions"
+    // techdoc:description "The steps to make the dish";
+
+    schema:recipeYield @<#Text> +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#recipeYield"
+    // techdoc:description "The quantity produced by the recipe. Specify the number of servings produced from this recipe with just a number";
+
+    schema:totalTime @<#Duration>
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#totalTime"
+    // techdoc:description "The total time it takes to prepare the cook the dish, in ISO 8601 format";
+}
+
+
+<#PinterestRecipe> @<#Recipe> AND {
+    schema:name @<#Text>
+    // techdoc:url "https://developers.pinterest.com/docs/rich-pins/recipes/"
+    // techdoc:description "The name of the recipe. This title may be truncated, depending on length. All formatting and HTML tags will be removed.";
+
+    schema:ingredients  @<#Text> +
+    // techdoc:url "https://developers.pinterest.com/docs/rich-pins/recipes/"
+    // techdoc:description "The ingredients used in the recipe. Annotate each individual ingredient separately.";
+}
+
+<#PinterestRecipeStrict> @<#Recipe> AND {
+    schema:url @<#URL> +
+    // techdoc:url "https://developers.pinterest.com/docs/rich-pins/recipes/"
+    // techdoc:description "The canonical URL for the page.";
+
+    schema:image (@<#URL> OR { a [schema:ImageObject] }) {1,6}
+    // techdoc:url "https://developers.pinterest.com/docs/rich-pins/recipes/"
+    // techdoc:description "The URL for a high-resolution image of the recipe. You can add up to 6 images..";
+
+    schema:totalTime @<#Duration>
+    // techdoc:url "https://developers.pinterest.com/docs/rich-pins/recipes/"
+    // techdoc:description "The total time it takes to cook and prepare the recipe.";
+
+    schema:recipeYield @<#Text> +
+    // techdoc:url "https://developers.pinterest.com/docs/rich-pins/recipes/"
+    // techdoc:description "The quantity or servings made by this recipe";
+
+    schema:aggregateRating { a [schema:AggregateRating] }
+    // techdoc:url "https://developers.pinterest.com/docs/rich-pins/recipes/"
+    // techdoc:description "The overall rating, based on a collection of reviews or ratings, of the item.";
+}
+
+
+<#YandexRecipe> @<#Recipe> AND {
+    schema:name @<#Text>
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "The recipe or dish name.";
+
+    schema:recipeIngredient @<#Text> +
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "Ingredients in the recipe and their volumes or amounts (may be several).";
+}
+
+<#YandexRecipeStrict> @<#Recipe> AND {
+    schema:recipeInstructions ( @<#CreativeWork> OR  { a [schema:ItemList] } OR  @<#Text>) +
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "cooking instructions.";
+
+    schema:recipeCategory  @<#Text>
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "Type of dish: for example, hot main dish, dessert.";
+
+    schema:recipeYield @<#Text> +
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "Number of servings.";
+
+    schema:totalTime @<#Duration>
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "Cooking time (if missing, cookTime is used). Specified in the ISO 8601 format. For example, PT30M (30 minutes).";
+
+    schema:image @<#URL> OR { a [schema:ImageObject] } +
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description " URL of the cooking images (can be several). We recommend you to fill in this field for creating a better snippet.";
+
+    schema:author ({ a [schema:Person] } OR { a [schema:Organization] }) +
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "Author of the recipe.";
+
+    schema:recipeCuisine  @<#Text>
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "National cuisine the recipe belongs to. One recipe can contain only one cuisine—type element.";
+
+    schema:nutrition  { a [schema:NutritionInformation] }
+    // techdoc:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html"
+    // techdoc:description "Energy and nutrition value of the dish, meaning the number of calories and the amount of fat, protein, carbohydrates, vitamins, and so on.";
+}
