@@ -1,3 +1,2 @@
 :URL a sh:NodeShape;
-    sh:node :Text ;
     sh:pattern "^(https?|gopher|ftps?):" .

@@ -44,6 +44,11 @@ def shex_shapes():
     return send_file(f'{config.shex_path}/full.shex')
 
 
+@app.route('/shacl/shapes')
+def shacl_shapes():
+    return send_file(f'{config.shacl_path}/full.shacl')
+
+
 @app.route('/shacl/shapes/<service>')
 def shacl_shapes(service):
     base = open(f'{config.shacl_path}/full.shacl').read()

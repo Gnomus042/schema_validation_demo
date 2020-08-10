@@ -1,5 +1,6 @@
 :CreativeWork a sh:NodeShape;
 	sh:targetClass schema:CreativeWork;
+	sh:class schema:CreativeWork;
 	sh:property [
 		sh:path schema:about;
 		sh:node :Thing;

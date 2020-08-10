@@ -1,5 +1,6 @@
 :HowTo a sh:NodeShape;
 	sh:targetClass schema:HowTo;
+	sh:class schema:HowTo;
 	sh:property [
 		sh:path schema:estimatedCost;
 		sh:or (

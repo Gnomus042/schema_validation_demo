@@ -1,5 +1,6 @@
 :Thing a sh:NodeShape;
 	sh:targetClass schema:Thing;
+	sh:class schema:Thing;
 	sh:property [
 		sh:path schema:additionalType;
 		sh:node :URL;

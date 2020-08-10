@@ -1,0 +1,51 @@
+:NutritionInformation a sh:NodeShape;
+	sh:targetClass schema:NutritionInformation;
+	sh:class schema:NutritionInformation;
+	sh:property [
+		sh:path schema:calories;
+		sh:node :Energy;
+	];
+	sh:property [
+		sh:path schema:carbohydrateContent;
+		sh:node :Mass;
+	];
+	sh:property [
+		sh:path schema:cholesterolContent;
+		sh:node :Mass;
+	];
+	sh:property [
+		sh:path schema:fatContent;
+		sh:node :Mass;
+	];
+	sh:property [
+		sh:path schema:fiberContent;
+		sh:node :Mass;
+	];
+	sh:property [
+		sh:path schema:proteinContent;
+		sh:node :Mass;
+	];
+	sh:property [
+		sh:path schema:saturatedFatContent;
+		sh:node :Mass;
+	];
+	sh:property [
+		sh:path schema:servingSize;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:sodiumContent;
+		sh:node :Mass;
+	];
+	sh:property [
+		sh:path schema:sugarContent;
+		sh:node :Mass;
+	];
+	sh:property [
+		sh:path schema:transFatContent;
+		sh:node :Mass;
+	];
+	sh:property [
+		sh:path schema:unsaturatedFatContent;
+		sh:node :Mass;
+	].

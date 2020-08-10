@@ -1,5 +1,6 @@
 :Recipe a sh:NodeShape;
 	sh:targetClass schema:Recipe;
+	sh:class schema:Recipe;
 	sh:property [
 		sh:path schema:cookTime;
 		sh:node :Duration;
