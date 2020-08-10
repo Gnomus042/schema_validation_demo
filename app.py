@@ -45,7 +45,7 @@ def shex_shapes():
 
 
 @app.route('/shacl/shapes')
-def shacl_shapes():
+def shacl_shapes_full():
     return send_file(f'{config.shacl_path}/full.shacl')
 
 
