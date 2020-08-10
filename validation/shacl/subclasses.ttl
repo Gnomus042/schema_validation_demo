@@ -7,3 +7,6 @@
 schema:Recipe rdfs:subClassOf schema:HowTo .
 schema:Recipe rdfs:subClassOf schema:CreativeWork .
 schema:Recipe rdfs:subClassOf schema:Thing .
+
+schema:Person rdfs:subClassOf schema:Thing .
+schema:HowToStep rdfs:subClassOf schema:CreativeWork .
