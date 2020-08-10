@@ -133,3 +133,9 @@ th.cross {
 #shape-viewer {
     height: 360px;
 }
+
+.shapes.wrapper>.title{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.3em;
+}
