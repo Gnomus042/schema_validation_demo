@@ -97,6 +97,16 @@ th.cross {
     font-weight: bold;
     font-size: 20px;
     border-bottom: 1px solid #F0F0F0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.details-item .head>div {
+    margin: auto 0;
+}
+
+.details-item .info span {
+    font-weight: bold;
 }
 
 .error-item .head {

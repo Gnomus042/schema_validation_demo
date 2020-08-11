@@ -116,36 +116,37 @@ function fillValidationTable(report) {
 
 function fillSpecReport(specReport, reportCell) {
     reportCell.removeClass('d-none');
-    reportCell.find('.errors>span').text(specReport.errors.length);
-    reportCell.find('.warnings>span').text(specReport.warnings.length);
-    fillDetails(specReport, reportCell.find('.details'));
+
+    let errors = specReport.filter(x => x.severity === 'error');
+    let warnings = specReport.filter(x => x.severity === 'warning');
+
+    reportCell.find('.errors>span').text(errors.length);
+    reportCell.find('.warnings>span').text(warnings.length);
+    fillDetails(errors, warnings, reportCell.find('.details'));
 }
 
-function fillDetails(specReport, detailsField) {
+function fillDetails(errors, warnings, detailsField) {
     detailsField.empty();
-    fillDetailsItems(specReport.errors, detailsField, 'error');
-    fillDetailsItems(specReport.warnings, detailsField, 'warning');
+    fillDetailsItems(errors, detailsField, 'error');
+    fillDetailsItems(warnings, detailsField, 'warning');
 }
 
 function fillDetailsItems(items, detailsField, type) {
     items.forEach(item => {
-            let additionalInfo = "";
-            for (const [key, val] of Object.entries(item)) {
-                if (key !== 'property') {
-                    let message = "";
-                    if (key === 'url') {
-                        message = `<a href='${val}' class='btn btn-light'>Details</a>`
-                    } else {
-                        message = val.replace('<', "&lt;").replace('>', "&gt;");
-                    }
-                    additionalInfo += `<div><span class="font-weight-bold">${key}:</span> 
-                           ${message}</div>`
-                }
-            }
+            let property = item.property ? `<div>${item.property.replace('http://schema.org/', 'schema:')}</div>`: "";
+            let url = item.url ? `<a class="btn btn-light" href="${item.url}">Details</a>` : '';
+            let message = item.message ? `<div><span>Message:</span> ${item.message.replace('<', '').replace('>', '')}</div>` : '';
+            let description = item.description ? `<div><span>Description:</span>${item.description}</div>` : '';
             detailsField.append(`
                 <div class="details-item ${type}-item">
-                    <div class="head">${item.property}</div>
-                    <div class="info">${additionalInfo}</div>
+                    <div class="head">
+                        ${property}
+                        ${url}
+                    </div>
+                    <div class="info">
+                        ${description}
+                        ${message}
+                    </div>
                 </div>
             `);
         }
