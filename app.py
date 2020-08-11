@@ -1,4 +1,6 @@
-from flask import Flask, render_template, jsonify, send_file
+import codecs
+
+from flask import Flask, render_template, jsonify, send_file, Response
 import os
 
 import config
@@ -41,7 +43,9 @@ def context():
 
 @app.route('/shex/shapes')
 def shex_shapes():
-    return send_file(f'{config.shex_path}/full.shex')
+    return Response(response=codecs.open(f'{config.shex_path}/full.shex', 'r', 'utf-8').read(),
+                    status=200,
+                    mimetype='text/shex')
 
 
 @app.route('/shacl/shapes')

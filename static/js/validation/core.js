@@ -1,4 +1,5 @@
 let supportedServices, tests;
+let RdfTerm = ShExWebApp.RdfTerm;
 
 // loading context and SHACL shapes
 $.get('/services', data => {

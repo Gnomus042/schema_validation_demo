@@ -1,2 +1,1 @@
-# TODO need to use semantic actions
-<#Date> ((@<#Text> AND /.*/) OR xsd:date)
+<#Date> @<#Text> OR xsd:date

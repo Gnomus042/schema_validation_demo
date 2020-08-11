@@ -4,6 +4,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX techdoc: <http://schema.org/>
+PREFIX js: <http://shex.io/extensions/javascript/>
 BASE <http://schema.org/shex>
 
 
@@ -64,8 +65,8 @@ BASE <http://schema.org/shex>
 	schema:copyrightYear @<#Number> *;
 	schema:creator ({ a [schema:Organization] } OR @<#Person>) *;
 	schema:dateCreated (@<#Date> OR @<#DateTime>) *;
-	schema:dateModified (@<#DateTime> OR @<#Date>) *;
-	schema:datePublished (@<#Date> OR @<#DateTime>) *;
+	schema:dateModified (@<#Date> OR @<#DateTime>) *;
+	schema:datePublished (@<#Date> OR @<#DateTime>) * %js:{ !isNaN(Date.parse(RdfTerm.getLiteralValue(ctx.object))) %} ;
 	schema:discussionUrl @<#URL> *;
 	schema:editor @<#Person> *;
 	schema:educationalAlignment { a [schema:AlignmentObject] } *;
@@ -135,12 +136,12 @@ BASE <http://schema.org/shex>
 
 
 # TODO need to use semantic actions
-<#Date> ((@<#Text> AND /.*/) OR xsd:date)
+<#Date> xsd:date OR @<#Text>
 
 
 
 # TODO need to use semantic actions
-<#DateTime> ((@<#Text> AND /.*/) OR xsd:datetime)
+<#DateTime> xsd:dateTime OR @<#Text>
 
 
 
