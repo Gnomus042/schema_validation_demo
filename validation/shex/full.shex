@@ -135,12 +135,12 @@ BASE <http://schema.org/shex>
 
 
 # TODO need to use semantic actions
-<#Date> ((@<#Text> AND /^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6]))))$/) OR xsd:date)
+<#Date> ((@<#Text> AND /.*/) OR xsd:date)
 
 
 
 # TODO need to use semantic actions
-<#DateTime> ((@<#Text> AND /^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$/) OR xsd:datetime)
+<#DateTime> ((@<#Text> AND /.*/) OR xsd:datetime)
 
 
 
@@ -553,7 +553,7 @@ BASE <http://schema.org/shex>
 }
 
 
-<#PinterestRecipe> @<#Recipe> AND {
+<#PinterestRecipe> @<#Recipe> AND EXTRA a{
     schema:name .
     // techdoc:url "https://developers.pinterest.com/docs/rich-pins/recipes/"
     // techdoc:description "The name of the recipe. This title may be truncated, depending on length. All formatting and HTML tags will be removed.";
@@ -567,7 +567,7 @@ BASE <http://schema.org/shex>
     // techdoc:description "The canonical URL for the page."
     // techdoc:identifier "warning";
 
-    schema:image . {1,6}
+    schema:image . +
     // techdoc:url "https://developers.pinterest.com/docs/rich-pins/recipes/"
     // techdoc:description "The URL for a high-resolution image of the recipe. You can add up to 6 images.."
     // techdoc:identifier "warning";
