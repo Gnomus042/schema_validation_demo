@@ -60,8 +60,12 @@ body, html {
     height: 56px;
     width: 56px;
     padding: 13px;
-    background:rgb(158,158,158);
+    background:#009688;
     border-radius: 50%;
+}
+
+#validate-btn.disabled {
+    background:rgb(158,158,158);
 }
 
 #validate-btn > img {
@@ -70,10 +74,30 @@ body, html {
     flex-flow: row;
 }
 
-.data-items {
-    margin: 0 20px;
+.report {
+    margin: 20px;
     background: white;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+}
+
+.report > div {
+    border-bottom: 1px solid lightgrey;
+}
+
+.report > .title {
+    display: flex;
+    padding: 5px;
+}
+
+
+.report > .title > div {
+    width: 33%;
+    text-align: center;
+    font-size: 20px;
+}
+
+.report > .errors {
+    border-bottom: none;
 }
 
 .data-item {
@@ -98,4 +122,44 @@ body, html {
 .data-item > .info > .object {
     width: 60%;
     word-break: break-all;
+}
+
+.failure {
+    border-bottom: lightgrey 0.3px solid;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.error {
+    color: #F44336;
+}
+
+.warning{
+    color: #EF6C00;
+}
+
+.failure > .message {
+    width: 44%;
+}
+
+.failure > .property {
+    font-weight: bold;
+    margin: auto 10px;
+    width: 30%;
+    display: flex;
+}
+
+.failure > .property > div {
+    margin: auto 0;
+}
+
+.failure > .services {
+    width: 100px;
+}
+
+.service-icon {
+    height: 24px;
+    width: 24px;
+    margin: auto 0.5px;
 }
