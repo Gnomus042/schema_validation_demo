@@ -1,0 +1,3 @@
+<#Taxi> @<#Service> AND EXTRA a { 
+	a [schema:Taxi];
+}

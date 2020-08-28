@@ -1,0 +1,3 @@
+:Cemetery a sh:NodeShape;
+	sh:targetClass schema:Cemetery;
+	sh:nodeKind sh:BlankNodeOrIRI.

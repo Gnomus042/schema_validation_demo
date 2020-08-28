@@ -1,0 +1,3 @@
+:CheckInAction a sh:NodeShape;
+	sh:targetClass schema:CheckInAction;
+	sh:nodeKind sh:BlankNodeOrIRI.

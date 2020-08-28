@@ -1,0 +1,3 @@
+<#Festival> @<#Event> AND EXTRA a { 
+	a [schema:Festival];
+}

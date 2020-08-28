@@ -1,0 +1,5 @@
+<#HotelRoom> @<#Room> AND EXTRA a { 
+	a [schema:HotelRoom];
+	schema:bed (@<#BedDetails> OR @<#Text> OR @<#BedType>) * ;
+	schema:occupancy @<#QuantitativeValue> * ;
+}

@@ -1,0 +1,4 @@
+<#EducationalAudience> @<#Audience> AND EXTRA a { 
+	a [schema:EducationalAudience];
+	schema:educationalRole @<#Text> * ;
+}

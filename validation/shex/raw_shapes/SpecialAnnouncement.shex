@@ -1,0 +1,5 @@
+<#SpecialAnnouncement>  EXTRA a { 
+	a [schema:SpecialAnnouncement];
+	schema:category (@<#Thing> OR @<#URL> OR @<#PhysicalActivityCategory> OR @<#Text>) * ;
+	schema:datePosted (@<#DateTime> OR @<#Date>) * ;
+}

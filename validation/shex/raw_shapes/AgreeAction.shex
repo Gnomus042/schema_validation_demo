@@ -1,0 +1,3 @@
+<#AgreeAction> @<#ReactAction> AND EXTRA a { 
+	a [schema:AgreeAction];
+}

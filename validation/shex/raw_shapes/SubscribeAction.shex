@@ -1,0 +1,3 @@
+<#SubscribeAction> @<#InteractAction> AND EXTRA a { 
+	a [schema:SubscribeAction];
+}

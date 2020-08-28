@@ -1,0 +1,9 @@
+<#PostalAddress> @<#ContactPoint> AND EXTRA a { 
+	a [schema:PostalAddress];
+	schema:addressCountry (@<#Country> OR @<#Text>) * ;
+	schema:addressLocality @<#Text> * ;
+	schema:addressRegion @<#Text> * ;
+	schema:postOfficeBoxNumber @<#Text> * ;
+	schema:postalCode @<#Text> * ;
+	schema:streetAddress @<#Text> * ;
+}

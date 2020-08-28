@@ -1,0 +1,3 @@
+:ReservationStatusType a sh:NodeShape;
+	sh:targetClass schema:ReservationStatusType;
+	sh:nodeKind sh:BlankNodeOrIRI.

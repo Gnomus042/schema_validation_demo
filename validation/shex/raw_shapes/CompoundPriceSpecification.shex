@@ -1,0 +1,4 @@
+<#CompoundPriceSpecification> @<#PriceSpecification> AND EXTRA a { 
+	a [schema:CompoundPriceSpecification];
+	schema:priceComponent @<#UnitPriceSpecification> * ;
+}

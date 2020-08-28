@@ -1,0 +1,3 @@
+<#Conversation> @<#CreativeWork> AND EXTRA a { 
+	a [schema:Conversation];
+}

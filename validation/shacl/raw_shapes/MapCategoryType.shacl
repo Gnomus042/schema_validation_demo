@@ -1,0 +1,3 @@
+:MapCategoryType a sh:NodeShape;
+	sh:targetClass schema:MapCategoryType;
+	sh:nodeKind sh:BlankNodeOrIRI.

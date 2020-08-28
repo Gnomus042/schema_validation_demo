@@ -1,0 +1,3 @@
+<#SiteNavigationElement> @<#WebPageElement> AND EXTRA a { 
+	a [schema:SiteNavigationElement];
+}

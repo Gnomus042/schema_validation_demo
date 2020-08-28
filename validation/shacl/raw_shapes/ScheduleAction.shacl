@@ -1,0 +1,3 @@
+:ScheduleAction a sh:NodeShape;
+	sh:targetClass schema:ScheduleAction;
+	sh:nodeKind sh:BlankNodeOrIRI.

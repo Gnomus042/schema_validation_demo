@@ -1,0 +1,3 @@
+:SubwayStation a sh:NodeShape;
+	sh:targetClass schema:SubwayStation;
+	sh:nodeKind sh:BlankNodeOrIRI.

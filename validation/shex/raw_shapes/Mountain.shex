@@ -1,0 +1,3 @@
+<#Mountain> @<#Landform> AND EXTRA a { 
+	a [schema:Mountain];
+}

@@ -1,0 +1,4 @@
+<#CommentAction> @<#CommunicateAction> AND EXTRA a { 
+	a [schema:CommentAction];
+	schema:resultComment @<#Comment> * ;
+}

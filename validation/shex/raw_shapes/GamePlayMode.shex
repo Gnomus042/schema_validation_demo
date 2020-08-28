@@ -1,0 +1,3 @@
+<#GamePlayMode> @<#Enumeration> AND EXTRA a { 
+	a [schema:GamePlayMode];
+}

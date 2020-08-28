@@ -1,0 +1,5 @@
+<#DigitalDocumentPermission> @<#Intangible> AND EXTRA a { 
+	a [schema:DigitalDocumentPermission];
+	schema:grantee (@<#ContactPoint> OR @<#Audience> OR @<#Person> OR @<#Organization>) * ;
+	schema:permissionType @<#DigitalDocumentPermissionType> * ;
+}

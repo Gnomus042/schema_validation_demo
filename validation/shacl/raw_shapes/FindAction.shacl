@@ -1,0 +1,3 @@
+:FindAction a sh:NodeShape;
+	sh:targetClass schema:FindAction;
+	sh:nodeKind sh:BlankNodeOrIRI.

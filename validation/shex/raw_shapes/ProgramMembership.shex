@@ -1,0 +1,8 @@
+<#ProgramMembership> @<#Intangible> AND EXTRA a { 
+	a [schema:ProgramMembership];
+	schema:hostingOrganization @<#Organization> * ;
+	schema:member (@<#Organization> OR @<#Person>) * ;
+	schema:members (@<#Person> OR @<#Organization>) * ;
+	schema:membershipNumber @<#Text> * ;
+	schema:programName @<#Text> * ;
+}

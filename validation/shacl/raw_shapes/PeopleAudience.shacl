@@ -1,0 +1,27 @@
+:PeopleAudience a sh:NodeShape;
+	sh:targetClass schema:PeopleAudience;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:requiredGender;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:requiredMaxAge;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:requiredMinAge;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:suggestedGender;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:suggestedMaxAge;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:suggestedMinAge;
+		sh:node :Number;
+	].

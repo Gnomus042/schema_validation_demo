@@ -1,0 +1,3 @@
+:ResumeAction a sh:NodeShape;
+	sh:targetClass schema:ResumeAction;
+	sh:nodeKind sh:BlankNodeOrIRI.

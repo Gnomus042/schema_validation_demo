@@ -1,0 +1,3 @@
+:BookStore a sh:NodeShape;
+	sh:targetClass schema:BookStore;
+	sh:nodeKind sh:BlankNodeOrIRI.

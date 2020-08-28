@@ -1,0 +1,3 @@
+:MovieClip a sh:NodeShape;
+	sh:targetClass schema:MovieClip;
+	sh:nodeKind sh:BlankNodeOrIRI.

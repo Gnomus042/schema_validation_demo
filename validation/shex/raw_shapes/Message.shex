@@ -1,0 +1,12 @@
+<#Message> @<#CreativeWork> AND EXTRA a { 
+	a [schema:EmailMessage schema:Message];
+	schema:bccRecipient (@<#ContactPoint> OR @<#Organization> OR @<#Person>) * ;
+	schema:ccRecipient (@<#ContactPoint> OR @<#Person> OR @<#Organization>) * ;
+	schema:dateRead (@<#Date> OR @<#DateTime>) * ;
+	schema:dateReceived @<#DateTime> * ;
+	schema:dateSent @<#DateTime> * ;
+	schema:messageAttachment @<#CreativeWork> * ;
+	schema:recipient (@<#Organization> OR @<#Audience> OR @<#ContactPoint> OR @<#Person>) * ;
+	schema:sender (@<#Organization> OR @<#Audience> OR @<#Person>) * ;
+	schema:toRecipient (@<#ContactPoint> OR @<#Organization> OR @<#Person> OR @<#Audience>) * ;
+}

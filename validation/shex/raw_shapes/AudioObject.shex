@@ -1,0 +1,5 @@
+<#AudioObject> @<#MediaObject> AND EXTRA a { 
+	a [schema:AudioObject];
+	schema:caption (@<#Text> OR @<#MediaObject>) * ;
+	schema:transcript @<#Text> * ;
+}

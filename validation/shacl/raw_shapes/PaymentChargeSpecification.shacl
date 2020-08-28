@@ -1,0 +1,11 @@
+:PaymentChargeSpecification a sh:NodeShape;
+	sh:targetClass schema:PaymentChargeSpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:appliesToDeliveryMethod;
+		sh:node :DeliveryMethod;
+	];
+	sh:property [
+		sh:path schema:appliesToPaymentMethod;
+		sh:node :PaymentMethod;
+	].

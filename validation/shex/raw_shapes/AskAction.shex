@@ -1,0 +1,4 @@
+<#AskAction> @<#CommunicateAction> AND EXTRA a { 
+	a [schema:AskAction];
+	schema:question @<#Question> * ;
+}

@@ -1,0 +1,3 @@
+<#Zoo> @<#CivicStructure> AND EXTRA a { 
+	a [schema:Zoo];
+}

@@ -1,0 +1,4 @@
+<#ClaimReview> @<#Review> AND EXTRA a { 
+	a [schema:ClaimReview];
+	schema:claimReviewed @<#Text> * ;
+}

@@ -1,0 +1,5 @@
+<#SpeakableSpecification> @<#Intangible> AND EXTRA a { 
+	a [schema:SpeakableSpecification];
+	schema:cssSelector @<#CssSelectorType> * ;
+	schema:xpath @<#XPathType> * ;
+}

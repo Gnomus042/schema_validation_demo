@@ -1,0 +1,27 @@
+:OrderItem a sh:NodeShape;
+	sh:targetClass schema:OrderItem;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:orderDelivery;
+		sh:node :ParcelDelivery;
+	];
+	sh:property [
+		sh:path schema:orderItemNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:orderItemStatus;
+		sh:node :OrderStatus;
+	];
+	sh:property [
+		sh:path schema:orderQuantity;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:orderedItem;
+		sh:or (
+			[sh:node :OrderItem]
+			[sh:node :Product]
+			[sh:node :Service]
+		);
+	].

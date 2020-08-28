@@ -1,5 +1,6 @@
 :Person a sh:NodeShape;
 	sh:targetClass schema:Person;
+	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:or(
 	    [sh:node :Text]
 	    [sh:node :URL]

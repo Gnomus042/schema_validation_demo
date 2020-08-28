@@ -1,0 +1,38 @@
+<#Product> @<#Thing> AND EXTRA a { 
+	a [schema:IndividualProduct schema:ProductModel schema:Car schema:SomeProducts schema:Vehicle schema:Product];
+	schema:additionalProperty @<#PropertyValue> * ;
+	schema:aggregateRating @<#AggregateRating> * ;
+	schema:audience @<#Audience> * ;
+	schema:award @<#Text> * ;
+	schema:awards @<#Text> * ;
+	schema:brand (@<#Brand> OR @<#Organization>) * ;
+	schema:category (@<#Thing> OR @<#URL> OR @<#PhysicalActivityCategory> OR @<#Text>) * ;
+	schema:color @<#Text> * ;
+	schema:depth (@<#Distance> OR @<#QuantitativeValue>) * ;
+	schema:gtin12 @<#Text> * ;
+	schema:gtin13 @<#Text> * ;
+	schema:gtin14 @<#Text> * ;
+	schema:gtin8 @<#Text> * ;
+	schema:height (@<#QuantitativeValue> OR @<#Distance>) * ;
+	schema:isAccessoryOrSparePartFor @<#Product> * ;
+	schema:isConsumableFor @<#Product> * ;
+	schema:isRelatedTo (@<#Product> OR @<#Service>) * ;
+	schema:isSimilarTo (@<#Service> OR @<#Product>) * ;
+	schema:itemCondition @<#OfferItemCondition> * ;
+	schema:logo (@<#ImageObject> OR @<#URL>) * ;
+	schema:manufacturer @<#Organization> * ;
+	schema:material (@<#Product> OR @<#URL> OR @<#Text>) * ;
+	schema:model (@<#ProductModel> OR @<#Text>) * ;
+	schema:mpn @<#Text> * ;
+	schema:offers (@<#Demand> OR @<#Offer>) * ;
+	schema:productID @<#Text> * ;
+	schema:productionDate @<#Date> * ;
+	schema:purchaseDate @<#Date> * ;
+	schema:releaseDate @<#Date> * ;
+	schema:review @<#Review> * ;
+	schema:reviews @<#Review> * ;
+	schema:sku @<#Text> * ;
+	schema:slogan @<#Text> * ;
+	schema:weight @<#QuantitativeValue> * ;
+	schema:width (@<#QuantitativeValue> OR @<#Distance>) * ;
+}

@@ -1,0 +1,3 @@
+<#RsvpResponseType> @<#Enumeration> AND EXTRA a { 
+	a [schema:RsvpResponseType];
+}

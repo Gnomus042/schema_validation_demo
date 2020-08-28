@@ -1,0 +1,3 @@
+<#DownloadAction> @<#TransferAction> AND EXTRA a { 
+	a [schema:DownloadAction];
+}

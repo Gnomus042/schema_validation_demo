@@ -1,0 +1,3 @@
+:WPHeader a sh:NodeShape;
+	sh:targetClass schema:WPHeader;
+	sh:nodeKind sh:BlankNodeOrIRI.

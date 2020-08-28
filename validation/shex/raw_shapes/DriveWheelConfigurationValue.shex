@@ -1,0 +1,3 @@
+<#DriveWheelConfigurationValue> @<#QualitativeValue> AND EXTRA a { 
+	a [schema:DriveWheelConfigurationValue];
+}

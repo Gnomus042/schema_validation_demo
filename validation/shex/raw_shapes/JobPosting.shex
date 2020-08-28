@@ -1,0 +1,23 @@
+<#JobPosting> @<#Intangible> AND EXTRA a { 
+	a [schema:JobPosting];
+	schema:baseSalary (@<#PriceSpecification> OR @<#MonetaryAmount> OR @<#Number>) * ;
+	schema:benefits @<#Text> * ;
+	schema:datePosted (@<#DateTime> OR @<#Date>) * ;
+	schema:employmentType @<#Text> * ;
+	schema:estimatedSalary (@<#Number> OR @<#MonetaryAmountDistribution> OR @<#MonetaryAmount>) * ;
+	schema:experienceRequirements @<#Text> * ;
+	schema:hiringOrganization @<#Organization> * ;
+	schema:incentiveCompensation @<#Text> * ;
+	schema:incentives @<#Text> * ;
+	schema:industry (@<#Text> OR @<#DefinedTerm>) * ;
+	schema:jobBenefits @<#Text> * ;
+	schema:jobLocation @<#Place> * ;
+	schema:relevantOccupation @<#Occupation> * ;
+	schema:responsibilities @<#Text> * ;
+	schema:salaryCurrency @<#Text> * ;
+	schema:skills (@<#Text> OR @<#DefinedTerm>) * ;
+	schema:specialCommitments @<#Text> * ;
+	schema:title @<#Text> * ;
+	schema:validThrough (@<#Date> OR @<#DateTime>) * ;
+	schema:workHours @<#Text> * ;
+}

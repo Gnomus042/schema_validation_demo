@@ -1,0 +1,3 @@
+<#DeleteAction> @<#UpdateAction> AND EXTRA a { 
+	a [schema:DeleteAction];
+}

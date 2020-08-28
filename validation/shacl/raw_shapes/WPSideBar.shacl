@@ -1,0 +1,3 @@
+:WPSideBar a sh:NodeShape;
+	sh:targetClass schema:WPSideBar;
+	sh:nodeKind sh:BlankNodeOrIRI.

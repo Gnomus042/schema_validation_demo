@@ -1,0 +1,3 @@
+<#ReservationStatusType> @<#Enumeration> AND EXTRA a { 
+	a [schema:ReservationStatusType];
+}

@@ -1,0 +1,8 @@
+<#UserComments> @<#UserInteraction> AND EXTRA a { 
+	a [schema:UserComments];
+	schema:commentText @<#Text> * ;
+	schema:commentTime (@<#DateTime> OR @<#Date>) * ;
+	schema:creator (@<#Organization> OR @<#Person>) * ;
+	schema:discusses @<#CreativeWork> * ;
+	schema:replyToUrl @<#URL> * ;
+}

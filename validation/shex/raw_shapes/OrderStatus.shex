@@ -1,0 +1,3 @@
+<#OrderStatus> @<#Enumeration> AND EXTRA a { 
+	a [schema:OrderStatus];
+}

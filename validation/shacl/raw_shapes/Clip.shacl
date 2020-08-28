@@ -1,0 +1,45 @@
+:Clip a sh:NodeShape;
+	sh:targetClass schema:Clip;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:actor;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:actors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:clipNumber;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Integer]
+		);
+	];
+	sh:property [
+		sh:path schema:director;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:directors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:musicBy;
+		sh:or (
+			[sh:node :Person]
+			[sh:node :MusicGroup]
+		);
+	];
+	sh:property [
+		sh:path schema:partOfEpisode;
+		sh:node :Episode;
+	];
+	sh:property [
+		sh:path schema:partOfSeason;
+		sh:node :CreativeWorkSeason;
+	];
+	sh:property [
+		sh:path schema:partOfSeries;
+		sh:node :CreativeWorkSeries;
+	].

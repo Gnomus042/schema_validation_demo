@@ -1,0 +1,9 @@
+<#EducationalOccupationalProgram>  EXTRA a { 
+	a [schema:EducationalOccupationalProgram];
+	schema:dayOfWeek @<#DayOfWeek> * ;
+	schema:educationalCredentialAwarded (@<#EducationalOccupationalCredential> OR @<#URL> OR @<#Text>) * ;
+	schema:endDate (@<#Date> OR @<#DateTime>) * ;
+	schema:offers (@<#Demand> OR @<#Offer>) * ;
+	schema:provider (@<#Person> OR @<#Organization>) * ;
+	schema:startDate (@<#Date> OR @<#DateTime>) * ;
+}

@@ -1,0 +1,3 @@
+<#MovingCompany> @<#HomeAndConstructionBusiness> AND EXTRA a { 
+	a [schema:MovingCompany];
+}

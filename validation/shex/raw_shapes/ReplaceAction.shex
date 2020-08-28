@@ -1,0 +1,5 @@
+<#ReplaceAction> @<#UpdateAction> AND EXTRA a { 
+	a [schema:ReplaceAction];
+	schema:replacee @<#Thing> * ;
+	schema:replacer @<#Thing> * ;
+}

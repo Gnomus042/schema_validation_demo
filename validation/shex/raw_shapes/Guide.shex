@@ -1,0 +1,4 @@
+<#Guide>  EXTRA a { 
+	a [schema:Guide];
+	schema:reviewAspect @<#Text> * ;
+}

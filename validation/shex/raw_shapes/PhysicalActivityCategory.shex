@@ -1,0 +1,3 @@
+<#PhysicalActivityCategory>  EXTRA a { 
+	a [schema:PhysicalActivityCategory];
+}

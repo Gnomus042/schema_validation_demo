@@ -1,0 +1,14 @@
+<#PropertyValueSpecification> @<#Intangible> AND EXTRA a { 
+	a [schema:PropertyValueSpecification];
+	schema:defaultValue (@<#Thing> OR @<#Text>) * ;
+	schema:maxValue @<#Number> * ;
+	schema:minValue @<#Number> * ;
+	schema:multipleValues @<#Boolean> * ;
+	schema:readonlyValue @<#Boolean> * ;
+	schema:stepValue @<#Number> * ;
+	schema:valueMaxLength @<#Number> * ;
+	schema:valueMinLength @<#Number> * ;
+	schema:valueName @<#Text> * ;
+	schema:valuePattern @<#Text> * ;
+	schema:valueRequired @<#Boolean> * ;
+}

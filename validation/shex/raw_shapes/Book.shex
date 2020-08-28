@@ -1,0 +1,8 @@
+<#Book> @<#CreativeWork> AND EXTRA a { 
+	a [schema:Book];
+	schema:bookEdition @<#Text> * ;
+	schema:bookFormat @<#BookFormatType> * ;
+	schema:illustrator @<#Person> * ;
+	schema:isbn @<#Text> * ;
+	schema:numberOfPages @<#Integer> * ;
+}

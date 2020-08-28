@@ -1,0 +1,3 @@
+<#CollectionPage> @<#WebPage> AND EXTRA a { 
+	a [schema:MediaGallery schema:ImageGallery schema:VideoGallery schema:CollectionPage];
+}

@@ -1,0 +1,8 @@
+<#FoodEstablishment> @<#LocalBusiness> AND EXTRA a { 
+	a [schema:Distillery schema:Bakery schema:Winery schema:IceCreamShop schema:Brewery schema:FastFoodRestaurant schema:BarOrPub schema:CafeOrCoffeeShop schema:Restaurant schema:FoodEstablishment];
+	schema:acceptsReservations (@<#Text> OR @<#Boolean> OR @<#URL>) * ;
+	schema:hasMenu (@<#Text> OR @<#URL> OR @<#Menu>) * ;
+	schema:menu (@<#Menu> OR @<#Text> OR @<#URL>) * ;
+	schema:servesCuisine @<#Text> * ;
+	schema:starRating @<#Rating> * ;
+}

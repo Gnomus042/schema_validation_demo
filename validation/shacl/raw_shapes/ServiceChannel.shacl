@@ -1,0 +1,38 @@
+:ServiceChannel a sh:NodeShape;
+	sh:targetClass schema:ServiceChannel;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:availableLanguage;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Language]
+		);
+	];
+	sh:property [
+		sh:path schema:processingTime;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:providesService;
+		sh:node :Service;
+	];
+	sh:property [
+		sh:path schema:serviceLocation;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:servicePhone;
+		sh:node :ContactPoint;
+	];
+	sh:property [
+		sh:path schema:servicePostalAddress;
+		sh:node :PostalAddress;
+	];
+	sh:property [
+		sh:path schema:serviceSmsNumber;
+		sh:node :ContactPoint;
+	];
+	sh:property [
+		sh:path schema:serviceUrl;
+		sh:node :URL;
+	].

@@ -1,0 +1,4 @@
+<#RealEstateListing>  EXTRA a { 
+	a [schema:RealEstateListing];
+	schema:datePosted (@<#DateTime> OR @<#Date>) * ;
+}

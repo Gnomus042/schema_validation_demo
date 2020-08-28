@@ -1,0 +1,3 @@
+:QuoteAction a sh:NodeShape;
+	sh:targetClass schema:QuoteAction;
+	sh:nodeKind sh:BlankNodeOrIRI.

@@ -1,0 +1,26 @@
+<#Service> @<#Intangible> AND EXTRA a { 
+	a [schema:Taxi schema:CurrencyConversionService schema:FoodService schema:PaymentService schema:LoanOrCredit schema:DepositAccount schema:FinancialProduct schema:PaymentCard schema:BankAccount schema:CableOrSatelliteService schema:TaxiService schema:InvestmentOrDeposit schema:BroadcastService schema:GovernmentService schema:CreditCard schema:Service];
+	schema:aggregateRating @<#AggregateRating> * ;
+	schema:areaServed (@<#AdministrativeArea> OR @<#Text> OR @<#Place> OR @<#GeoShape>) * ;
+	schema:audience @<#Audience> * ;
+	schema:availableChannel @<#ServiceChannel> * ;
+	schema:award @<#Text> * ;
+	schema:brand (@<#Brand> OR @<#Organization>) * ;
+	schema:broker (@<#Organization> OR @<#Person>) * ;
+	schema:category (@<#Thing> OR @<#URL> OR @<#PhysicalActivityCategory> OR @<#Text>) * ;
+	schema:hasOfferCatalog @<#OfferCatalog> * ;
+	schema:hoursAvailable @<#OpeningHoursSpecification> * ;
+	schema:isRelatedTo (@<#Product> OR @<#Service>) * ;
+	schema:isSimilarTo (@<#Service> OR @<#Product>) * ;
+	schema:logo (@<#ImageObject> OR @<#URL>) * ;
+	schema:offers (@<#Demand> OR @<#Offer>) * ;
+	schema:produces @<#Thing> * ;
+	schema:provider (@<#Person> OR @<#Organization>) * ;
+	schema:providerMobility @<#Text> * ;
+	schema:review @<#Review> * ;
+	schema:serviceArea (@<#Place> OR @<#GeoShape> OR @<#AdministrativeArea>) * ;
+	schema:serviceAudience @<#Audience> * ;
+	schema:serviceOutput @<#Thing> * ;
+	schema:serviceType (@<#GovernmentBenefitsType> OR @<#Text>) * ;
+	schema:slogan @<#Text> * ;
+}

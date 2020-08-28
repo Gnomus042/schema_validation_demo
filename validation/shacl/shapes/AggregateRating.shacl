@@ -1,6 +1,6 @@
 :AggregateRating a sh:NodeShape;
 	sh:targetClass schema:AggregateRating;
-	sh:class schema:AggregateRating;
+	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:itemReviewed;
 		sh:node :Thing;

@@ -1,0 +1,3 @@
+<#RadioStation> @<#LocalBusiness> AND EXTRA a { 
+	a [schema:RadioStation];
+}

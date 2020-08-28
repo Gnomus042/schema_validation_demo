@@ -1,0 +1,3 @@
+<#Resort> @<#LodgingBusiness> AND EXTRA a { 
+	a [schema:Resort];
+}

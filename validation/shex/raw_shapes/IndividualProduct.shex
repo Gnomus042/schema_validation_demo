@@ -1,0 +1,4 @@
+<#IndividualProduct> @<#Product> AND EXTRA a { 
+	a [schema:IndividualProduct];
+	schema:serialNumber @<#Text> * ;
+}

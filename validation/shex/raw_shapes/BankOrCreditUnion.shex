@@ -1,0 +1,3 @@
+<#BankOrCreditUnion> @<#FinancialService> AND EXTRA a { 
+	a [schema:BankOrCreditUnion];
+}

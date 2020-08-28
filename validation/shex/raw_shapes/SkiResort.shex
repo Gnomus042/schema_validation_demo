@@ -1,0 +1,3 @@
+<#SkiResort> @<#SportsActivityLocation> AND EXTRA a { 
+	a [schema:SkiResort];
+}

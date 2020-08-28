@@ -1,0 +1,12 @@
+<#ExerciseAction> @<#PlayAction> AND EXTRA a { 
+	a [schema:ExerciseAction];
+	schema:course @<#Place> * ;
+	schema:distance @<#Distance> * ;
+	schema:exerciseCourse @<#Place> * ;
+	schema:fromLocation @<#Place> * ;
+	schema:opponent @<#Person> * ;
+	schema:sportsActivityLocation @<#SportsActivityLocation> * ;
+	schema:sportsEvent @<#SportsEvent> * ;
+	schema:sportsTeam @<#SportsTeam> * ;
+	schema:toLocation @<#Place> * ;
+}

@@ -1,0 +1,3 @@
+:LegalService a sh:NodeShape;
+	sh:targetClass schema:LegalService;
+	sh:nodeKind sh:BlankNodeOrIRI.

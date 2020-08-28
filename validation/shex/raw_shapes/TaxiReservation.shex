@@ -1,0 +1,6 @@
+<#TaxiReservation> @<#Reservation> AND EXTRA a { 
+	a [schema:TaxiReservation];
+	schema:partySize (@<#QuantitativeValue> OR @<#Integer>) * ;
+	schema:pickupLocation @<#Place> * ;
+	schema:pickupTime @<#DateTime> * ;
+}

@@ -1,0 +1,3 @@
+:SkiResort a sh:NodeShape;
+	sh:targetClass schema:SkiResort;
+	sh:nodeKind sh:BlankNodeOrIRI.

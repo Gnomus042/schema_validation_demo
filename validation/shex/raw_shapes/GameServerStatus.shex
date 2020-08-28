@@ -1,0 +1,3 @@
+<#GameServerStatus> @<#Enumeration> AND EXTRA a { 
+	a [schema:GameServerStatus];
+}

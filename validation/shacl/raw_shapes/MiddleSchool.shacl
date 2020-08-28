@@ -1,0 +1,3 @@
+:MiddleSchool a sh:NodeShape;
+	sh:targetClass schema:MiddleSchool;
+	sh:nodeKind sh:BlankNodeOrIRI.

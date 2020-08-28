@@ -1,0 +1,26 @@
+:UnitPriceSpecification a sh:NodeShape;
+	sh:targetClass schema:UnitPriceSpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:billingIncrement;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:priceType;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:referenceQuantity;
+		sh:node :QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:unitCode;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:unitText;
+		sh:node :Text;
+	].

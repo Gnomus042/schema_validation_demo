@@ -1,0 +1,6 @@
+<#DeliveryChargeSpecification> @<#PriceSpecification> AND EXTRA a { 
+	a [schema:DeliveryChargeSpecification];
+	schema:appliesToDeliveryMethod @<#DeliveryMethod> * ;
+	schema:areaServed (@<#AdministrativeArea> OR @<#Text> OR @<#Place> OR @<#GeoShape>) * ;
+	schema:eligibleRegion (@<#Text> OR @<#Place> OR @<#GeoShape>) * ;
+}

@@ -1,0 +1,7 @@
+<#Trip> @<#Intangible> AND EXTRA a { 
+	a [schema:BusTrip schema:TrainTrip schema:Flight schema:Trip];
+	schema:arrivalTime (@<#Time> OR @<#DateTime>) * ;
+	schema:departureTime (@<#Time> OR @<#DateTime>) * ;
+	schema:offers (@<#Demand> OR @<#Offer>) * ;
+	schema:provider (@<#Person> OR @<#Organization>) * ;
+}

@@ -1,0 +1,3 @@
+<#GatedResidenceCommunity> @<#Residence> AND EXTRA a { 
+	a [schema:GatedResidenceCommunity];
+}

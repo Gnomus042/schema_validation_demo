@@ -1,0 +1,4 @@
+<#MedicalStudy>  EXTRA a { 
+	a [schema:MedicalStudy];
+	schema:sponsor (@<#Organization> OR @<#Person>) * ;
+}

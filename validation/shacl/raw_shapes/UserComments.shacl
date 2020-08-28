@@ -1,0 +1,29 @@
+:UserComments a sh:NodeShape;
+	sh:targetClass schema:UserComments;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:commentText;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:commentTime;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Date]
+		);
+	];
+	sh:property [
+		sh:path schema:creator;
+		sh:or (
+			[sh:node :Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:discusses;
+		sh:node :CreativeWork;
+	];
+	sh:property [
+		sh:path schema:replyToUrl;
+		sh:node :URL;
+	].

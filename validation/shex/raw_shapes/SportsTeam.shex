@@ -1,0 +1,5 @@
+<#SportsTeam> @<#SportsOrganization> AND EXTRA a { 
+	a [schema:SportsTeam];
+	schema:athlete @<#Person> * ;
+	schema:coach @<#Person> * ;
+}

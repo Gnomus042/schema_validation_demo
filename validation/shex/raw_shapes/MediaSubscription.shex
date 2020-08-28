@@ -1,0 +1,5 @@
+<#MediaSubscription> @<#Intangible> AND EXTRA a { 
+	a [schema:MediaSubscription];
+	schema:authenticator @<#Organization> * ;
+	schema:expectsAcceptanceOf @<#Offer> * ;
+}

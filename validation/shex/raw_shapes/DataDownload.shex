@@ -1,0 +1,3 @@
+<#DataDownload> @<#MediaObject> AND EXTRA a { 
+	a [schema:DataDownload];
+}

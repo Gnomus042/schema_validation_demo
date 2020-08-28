@@ -1,0 +1,4 @@
+<#DataCatalog> @<#CreativeWork> AND EXTRA a { 
+	a [schema:DataCatalog];
+	schema:dataset @<#Dataset> * ;
+}

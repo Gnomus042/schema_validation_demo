@@ -1,0 +1,30 @@
+:MusicRelease a sh:NodeShape;
+	sh:targetClass schema:MusicRelease;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:catalogNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:creditedTo;
+		sh:or (
+			[sh:node :Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:duration;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:musicReleaseFormat;
+		sh:node :MusicReleaseFormatType;
+	];
+	sh:property [
+		sh:path schema:recordLabel;
+		sh:node :Organization;
+	];
+	sh:property [
+		sh:path schema:releaseOf;
+		sh:node :MusicAlbum;
+	].

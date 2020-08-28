@@ -1,0 +1,4 @@
+<#HealthInsurancePlan>  EXTRA a { 
+	a [schema:HealthInsurancePlan];
+	schema:contactPoint @<#ContactPoint> * ;
+}

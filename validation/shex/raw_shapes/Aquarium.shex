@@ -1,0 +1,3 @@
+<#Aquarium> @<#CivicStructure> AND EXTRA a { 
+	a [schema:Aquarium];
+}

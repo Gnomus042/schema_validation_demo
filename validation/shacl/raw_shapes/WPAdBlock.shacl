@@ -1,0 +1,3 @@
+:WPAdBlock a sh:NodeShape;
+	sh:targetClass schema:WPAdBlock;
+	sh:nodeKind sh:BlankNodeOrIRI.

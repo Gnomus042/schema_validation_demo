@@ -1,0 +1,3 @@
+<#Distillery> @<#FoodEstablishment> AND EXTRA a { 
+	a [schema:Distillery];
+}

@@ -1,0 +1,3 @@
+:BusinessEntityType a sh:NodeShape;
+	sh:targetClass schema:BusinessEntityType;
+	sh:nodeKind sh:BlankNodeOrIRI.

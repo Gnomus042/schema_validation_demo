@@ -1,0 +1,3 @@
+<#SteeringPositionValue> @<#QualitativeValue> AND EXTRA a { 
+	a [schema:SteeringPositionValue];
+}

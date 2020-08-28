@@ -1,0 +1,3 @@
+<#DefenceEstablishment> @<#GovernmentBuilding> AND EXTRA a { 
+	a [schema:DefenceEstablishment];
+}

@@ -1,0 +1,3 @@
+:CityHall a sh:NodeShape;
+	sh:targetClass schema:CityHall;
+	sh:nodeKind sh:BlankNodeOrIRI.

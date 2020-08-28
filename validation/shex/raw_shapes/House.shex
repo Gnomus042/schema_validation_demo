@@ -1,0 +1,4 @@
+<#House> @<#Accommodation> AND EXTRA a { 
+	a [schema:SingleFamilyResidence schema:House];
+	schema:numberOfRooms (@<#QuantitativeValue> OR @<#Number>) * ;
+}

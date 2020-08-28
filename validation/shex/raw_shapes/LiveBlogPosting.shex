@@ -1,0 +1,6 @@
+<#LiveBlogPosting> @<#BlogPosting> AND EXTRA a { 
+	a [schema:LiveBlogPosting];
+	schema:coverageEndTime @<#DateTime> * ;
+	schema:coverageStartTime @<#DateTime> * ;
+	schema:liveBlogUpdate @<#BlogPosting> * ;
+}

@@ -1,0 +1,6 @@
+<#BusinessAudience> @<#Audience> AND EXTRA a { 
+	a [schema:BusinessAudience];
+	schema:numberOfEmployees @<#QuantitativeValue> * ;
+	schema:yearlyRevenue @<#QuantitativeValue> * ;
+	schema:yearsInOperation @<#QuantitativeValue> * ;
+}

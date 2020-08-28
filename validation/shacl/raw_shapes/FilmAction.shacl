@@ -1,0 +1,3 @@
+:FilmAction a sh:NodeShape;
+	sh:targetClass schema:FilmAction;
+	sh:nodeKind sh:BlankNodeOrIRI.

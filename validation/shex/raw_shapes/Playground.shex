@@ -1,0 +1,3 @@
+<#Playground> @<#CivicStructure> AND EXTRA a { 
+	a [schema:Playground];
+}

@@ -1,0 +1,3 @@
+:PaymentMethod a sh:NodeShape;
+	sh:targetClass schema:PaymentMethod;
+	sh:nodeKind sh:BlankNodeOrIRI.

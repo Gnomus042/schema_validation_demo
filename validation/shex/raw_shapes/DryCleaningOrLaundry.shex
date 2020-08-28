@@ -1,0 +1,3 @@
+<#DryCleaningOrLaundry> @<#LocalBusiness> AND EXTRA a { 
+	a [schema:DryCleaningOrLaundry];
+}

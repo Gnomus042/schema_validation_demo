@@ -1,0 +1,3 @@
+:ComedyEvent a sh:NodeShape;
+	sh:targetClass schema:ComedyEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.

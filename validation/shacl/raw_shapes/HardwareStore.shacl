@@ -1,0 +1,3 @@
+:HardwareStore a sh:NodeShape;
+	sh:targetClass schema:HardwareStore;
+	sh:nodeKind sh:BlankNodeOrIRI.

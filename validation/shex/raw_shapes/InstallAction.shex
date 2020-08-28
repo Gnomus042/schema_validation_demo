@@ -1,0 +1,3 @@
+<#InstallAction> @<#ConsumeAction> AND EXTRA a { 
+	a [schema:InstallAction];
+}

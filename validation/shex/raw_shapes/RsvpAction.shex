@@ -1,0 +1,6 @@
+<#RsvpAction> @<#InformAction> AND EXTRA a { 
+	a [schema:RsvpAction];
+	schema:additionalNumberOfGuests @<#Number> * ;
+	schema:comment @<#Comment> * ;
+	schema:rsvpResponse @<#RsvpResponseType> * ;
+}

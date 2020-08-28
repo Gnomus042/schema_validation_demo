@@ -1,0 +1,3 @@
+:NailSalon a sh:NodeShape;
+	sh:targetClass schema:NailSalon;
+	sh:nodeKind sh:BlankNodeOrIRI.

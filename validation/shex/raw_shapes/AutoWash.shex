@@ -1,0 +1,3 @@
+<#AutoWash> @<#AutomotiveBusiness> AND EXTRA a { 
+	a [schema:AutoWash];
+}

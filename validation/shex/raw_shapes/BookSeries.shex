@@ -1,0 +1,3 @@
+<#BookSeries> @<#CreativeWorkSeries> AND EXTRA a { 
+	a [schema:BookSeries];
+}

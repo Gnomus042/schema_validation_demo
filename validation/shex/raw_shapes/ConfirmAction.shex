@@ -1,0 +1,3 @@
+<#ConfirmAction> @<#InformAction> AND EXTRA a { 
+	a [schema:ConfirmAction];
+}

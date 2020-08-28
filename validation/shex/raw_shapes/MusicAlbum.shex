@@ -1,0 +1,7 @@
+<#MusicAlbum> @<#MusicPlaylist> AND EXTRA a { 
+	a [schema:MusicAlbum];
+	schema:albumProductionType @<#MusicAlbumProductionType> * ;
+	schema:albumRelease @<#MusicRelease> * ;
+	schema:albumReleaseType @<#MusicAlbumReleaseType> * ;
+	schema:byArtist (@<#MusicGroup> OR @<#Person>) * ;
+}

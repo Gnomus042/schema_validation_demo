@@ -1,0 +1,5 @@
+<#TransferAction> @<#Action> AND EXTRA a { 
+	a [schema:ReceiveAction schema:GiveAction schema:BorrowAction schema:LendAction schema:DownloadAction schema:ReturnAction schema:TakeAction schema:SendAction schema:TransferAction];
+	schema:fromLocation @<#Place> * ;
+	schema:toLocation @<#Place> * ;
+}

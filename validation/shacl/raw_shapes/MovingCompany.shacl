@@ -1,0 +1,3 @@
+:MovingCompany a sh:NodeShape;
+	sh:targetClass schema:MovingCompany;
+	sh:nodeKind sh:BlankNodeOrIRI.

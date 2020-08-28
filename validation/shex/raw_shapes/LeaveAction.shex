@@ -1,0 +1,4 @@
+<#LeaveAction> @<#InteractAction> AND EXTRA a { 
+	a [schema:LeaveAction];
+	schema:event @<#Event> * ;
+}

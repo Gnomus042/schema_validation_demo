@@ -1,0 +1,3 @@
+<#DiscoverAction> @<#FindAction> AND EXTRA a { 
+	a [schema:DiscoverAction];
+}

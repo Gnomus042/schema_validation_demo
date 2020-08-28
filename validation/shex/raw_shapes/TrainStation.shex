@@ -1,0 +1,3 @@
+<#TrainStation> @<#CivicStructure> AND EXTRA a { 
+	a [schema:TrainStation];
+}

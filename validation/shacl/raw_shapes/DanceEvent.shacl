@@ -1,0 +1,3 @@
+:DanceEvent a sh:NodeShape;
+	sh:targetClass schema:DanceEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.

@@ -1,0 +1,3 @@
+<#ViewAction> @<#ConsumeAction> AND EXTRA a { 
+	a [schema:ViewAction];
+}

@@ -1,0 +1,3 @@
+:PresentationDigitalDocument a sh:NodeShape;
+	sh:targetClass schema:PresentationDigitalDocument;
+	sh:nodeKind sh:BlankNodeOrIRI.

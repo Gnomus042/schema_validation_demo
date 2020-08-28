@@ -1,0 +1,4 @@
+<#TouristTrip>  EXTRA a { 
+	a [schema:TouristTrip];
+	schema:touristType (@<#Text> OR @<#Audience>) * ;
+}

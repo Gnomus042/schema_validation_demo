@@ -1,0 +1,6 @@
+<#GameServer> @<#Intangible> AND EXTRA a { 
+	a [schema:GameServer];
+	schema:game @<#VideoGame> * ;
+	schema:playersOnline @<#Integer> * ;
+	schema:serverStatus @<#GameServerStatus> * ;
+}

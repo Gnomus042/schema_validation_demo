@@ -1,0 +1,3 @@
+:ElectronicsStore a sh:NodeShape;
+	sh:targetClass schema:ElectronicsStore;
+	sh:nodeKind sh:BlankNodeOrIRI.

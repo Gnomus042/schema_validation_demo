@@ -1,0 +1,3 @@
+<#DrinkAction> @<#ConsumeAction> AND EXTRA a { 
+	a [schema:DrinkAction];
+}

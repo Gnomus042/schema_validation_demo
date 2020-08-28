@@ -1,0 +1,3 @@
+:ActivateAction a sh:NodeShape;
+	sh:targetClass schema:ActivateAction;
+	sh:nodeKind sh:BlankNodeOrIRI.

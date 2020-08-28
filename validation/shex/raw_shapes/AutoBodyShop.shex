@@ -1,0 +1,3 @@
+<#AutoBodyShop> @<#AutomotiveBusiness> AND EXTRA a { 
+	a [schema:AutoBodyShop];
+}

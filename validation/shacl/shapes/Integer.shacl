@@ -1,8 +1,6 @@
 :Integer a sh:NodeShape;
+    sh:nodeKind sh:Literal;
     sh:or (
-        [
-            sh:node :Text;
-            sh:pattern "^([1-9][0-9]*|0)$"
-        ]
+        [sh:pattern "^[ ]*([1-9][0-9]*|0)[ ]*$"]
         [ sh:datatype xsd:integer ]
     ).

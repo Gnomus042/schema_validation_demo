@@ -1,0 +1,3 @@
+<#BookFormatType> @<#Enumeration> AND EXTRA a { 
+	a [schema:BookFormatType];
+}

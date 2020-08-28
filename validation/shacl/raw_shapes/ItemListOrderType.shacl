@@ -1,0 +1,3 @@
+:ItemListOrderType a sh:NodeShape;
+	sh:targetClass schema:ItemListOrderType;
+	sh:nodeKind sh:BlankNodeOrIRI.

@@ -1,0 +1,5 @@
+<#GeoCircle> @<#GeoShape> AND EXTRA a { 
+	a [schema:GeoCircle];
+	schema:geoMidpoint @<#GeoCoordinates> * ;
+	schema:geoRadius (@<#Text> OR @<#Number> OR @<#Distance>) * ;
+}

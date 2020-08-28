@@ -1,0 +1,4 @@
+<#AuthorizeAction> @<#AllocateAction> AND EXTRA a { 
+	a [schema:AuthorizeAction];
+	schema:recipient (@<#Organization> OR @<#Audience> OR @<#ContactPoint> OR @<#Person>) * ;
+}

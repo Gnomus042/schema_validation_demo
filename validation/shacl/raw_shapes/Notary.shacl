@@ -1,0 +1,3 @@
+:Notary a sh:NodeShape;
+	sh:targetClass schema:Notary;
+	sh:nodeKind sh:BlankNodeOrIRI.

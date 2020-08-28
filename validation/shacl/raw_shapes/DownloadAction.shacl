@@ -1,0 +1,3 @@
+:DownloadAction a sh:NodeShape;
+	sh:targetClass schema:DownloadAction;
+	sh:nodeKind sh:BlankNodeOrIRI.

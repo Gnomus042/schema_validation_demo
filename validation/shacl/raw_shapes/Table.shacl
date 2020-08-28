@@ -1,0 +1,3 @@
+:Table a sh:NodeShape;
+	sh:targetClass schema:Table;
+	sh:nodeKind sh:BlankNodeOrIRI.

@@ -8,7 +8,7 @@
 
 :AggregateRating a sh:NodeShape;
 	sh:targetClass schema:AggregateRating;
-	sh:class schema:AggregateRating;
+	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:itemReviewed;
 		sh:node :Thing;
@@ -80,7 +80,7 @@
 	];
 	sh:property [
 		sh:path schema:associatedMedia;
-		sh:node :MediaObject;
+		sh:class schema:MediaObject;
 	];
 	sh:property [
 		sh:path schema:audience;
@@ -205,7 +205,7 @@
 	];
 	sh:property [
 		sh:path schema:encoding;
-		sh:node :MediaObject;
+		sh:class schema:MediaObject;
 	];
 	sh:property [
 		sh:path schema:encodingFormat;
@@ -216,7 +216,7 @@
 	];
 	sh:property [
 		sh:path schema:encodings;
-		sh:node :MediaObject;
+		sh:class schema:MediaObject;
 	];
 	sh:property [
 		sh:path schema:exampleOfWork;
@@ -483,24 +483,48 @@
 
 
 
+:CssSelectorType a sh:NodeShape;
+	sh:targetClass schema:CssSelectorType;
+	sh:or (
+        [sh:node :Text]
+        [
+            sh:targetClass schema:CssSelectorType;
+            sh:nodeKind sh:BlankNodeOrIRI
+        ]
+    ).
+
+
 :Date a sh:NodeShape;
-    sh:node :Text;
-    sh:pattern "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6]))))$".
+    sh:or(
+        [
+            sh:nodeKind sh:Literal;
+            sh:pattern ".*"
+        ]
+        [sh:datatype xsd:date]
+    ).
+
+
 
 
 :DateTime a sh:NodeShape;
-    sh:node :Text;
-    sh:pattern "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$".
+    sh:or(
+        [
+            sh:nodeKind sh:Literal;
+            sh:pattern ".*"
+        ]
+        [sh:datatype xsd:dateTime]
+    ).
+
 
 
 :Duration a sh:NodeShape;
-    sh:node :Text;
+    sh:nodeKind sh:Literal;
     sh:pattern "^(-?)P(?=[0-9]|T[0-9])(?:([0-9]+)Y)?(?:([0-9]+)M)?(?:([0-9]+)([DW]))?(?:T(?:([0-9]+)H)?(?:([0-9]+)M)?(?:([0-9]+(?:\\.[0-9]+)?)S)?)?$".
 
 
 :HowTo a sh:NodeShape;
 	sh:targetClass schema:HowTo;
-	sh:class schema:HowTo;
+	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:estimatedCost;
 		sh:or (
@@ -560,15 +584,42 @@
 	].
 
 
+:ImageObject a sh:NodeShape;
+	sh:targetClass schema:ImageObject;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:caption;
+		sh:or (
+			[sh:node :Text]
+			[sh:class schema:MediaObject]
+		);
+	];
+	sh:property [
+		sh:path schema:exifData;
+		sh:or (
+			[sh:node :Text]
+			[sh:class schema:PropertyValue]
+		);
+	];
+	sh:property [
+		sh:path schema:representativeOfPage;
+		sh:node :Boolean;
+	];
+	sh:property [
+		sh:path schema:thumbnail;
+		sh:or (
+		    [sh:node :ImageObject]
+		    [sh:node :URL]
+		)
+	].
+
+
 :Integer a sh:NodeShape;
+    sh:nodeKind sh:Literal;
     sh:or (
-        [
-            sh:node :Text;
-            sh:pattern "^([1-9][0-9]*|0)$"
-        ]
+        [sh:pattern "^[ ]*([1-9][0-9]*|0)[ ]*$"]
         [ sh:datatype xsd:integer ]
     ).
-
 
 
 :Number a sh:NodeShape;
@@ -580,7 +631,7 @@
 
 :NutritionInformation a sh:NodeShape;
 	sh:targetClass schema:NutritionInformation;
-	sh:class schema:NutritionInformation;
+	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:calories;
 		sh:node :Energy;
@@ -633,6 +684,7 @@
 
 :Person a sh:NodeShape;
 	sh:targetClass schema:Person;
+	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:or(
 	    [sh:node :Text]
 	    [sh:node :URL]
@@ -908,7 +960,7 @@
 
 :Recipe a sh:NodeShape;
 	sh:targetClass schema:Recipe;
-	sh:class schema:Recipe;
+	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:cookTime;
 		sh:node :Duration;
@@ -967,7 +1019,7 @@
 
 :Thing a sh:NodeShape;
 	sh:targetClass schema:Thing;
-	sh:class schema:Thing;
+	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:additionalType;
 		sh:node :URL;
@@ -996,7 +1048,7 @@
 		sh:path schema:image;
 		sh:or (
 			[sh:node :URL]
-			[sh:class schema:ImageObject]
+			[sh:node :ImageObject]
 		);
 	];
 	sh:property [
@@ -1033,4 +1085,9552 @@
 
 
 :URL a sh:NodeShape;
-    sh:pattern "^(https?|gopher|ftps?):" .
+    sh:or (
+        [sh:nodeKind sh:IRI]
+        [sh:pattern "^(https?|gopher|ftps?):"]
+    ).
+
+
+:AboutPage a sh:NodeShape;
+	sh:targetClass schema:AboutPage;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AcceptAction a sh:NodeShape;
+	sh:targetClass schema:AcceptAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Accommodation a sh:NodeShape;
+	sh:targetClass schema:Accommodation;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:amenityFeature;
+		sh:node :LocationFeatureSpecification;
+	];
+	sh:property [
+		sh:path schema:floorSize;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:numberOfRooms;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:permittedUsage;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:petsAllowed;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Boolean]
+		);
+	].
+
+
+:AccountingService a sh:NodeShape;
+	sh:targetClass schema:AccountingService;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AchieveAction a sh:NodeShape;
+	sh:targetClass schema:AchieveAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Action a sh:NodeShape;
+	sh:targetClass schema:Action;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:actionStatus;
+		sh:node :ActionStatusType;
+	];
+	sh:property [
+		sh:path schema:agent;
+		sh:or (
+			[sh:node :Person]
+			[sh:class schema:Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:endTime;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Time]
+		);
+	];
+	sh:property [
+		sh:path schema:error;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:instrument;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:location;
+		sh:or (
+			[sh:node :VirtualLocation]
+			[sh:node :Place]
+			[sh:node :Text]
+			[sh:node :PostalAddress]
+		);
+	];
+	sh:property [
+		sh:path schema:object;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:participant;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:result;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:startTime;
+		sh:or (
+			[sh:node :Time]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:target;
+		sh:node :EntryPoint;
+	].
+
+
+:ActionAccessSpecification a sh:NodeShape;
+	sh:targetClass schema:ActionAccessSpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:availabilityEnds;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Time]
+			[sh:node :Date]
+		);
+	];
+	sh:property [
+		sh:path schema:availabilityStarts;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :Time]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:category;
+		sh:or (
+			[sh:node :Thing]
+			[sh:node :URL]
+			[sh:node :PhysicalActivityCategory]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:eligibleRegion;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Place]
+			[sh:node :GeoShape]
+		);
+	];
+	sh:property [
+		sh:path schema:expectsAcceptanceOf;
+		sh:class schema:Offer;
+	];
+	sh:property [
+		sh:path schema:requiresSubscription;
+		sh:or (
+			[sh:node :MediaSubscription]
+			[sh:node :Boolean]
+		);
+	].
+
+
+:ActionStatusType a sh:NodeShape;
+	sh:targetClass schema:ActionStatusType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ActivateAction a sh:NodeShape;
+	sh:targetClass schema:ActivateAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AddAction a sh:NodeShape;
+	sh:targetClass schema:AddAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AdministrativeArea a sh:NodeShape;
+	sh:targetClass schema:AdministrativeArea;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AdultEntertainment a sh:NodeShape;
+	sh:targetClass schema:AdultEntertainment;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AggregateOffer a sh:NodeShape;
+	sh:targetClass schema:AggregateOffer;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:highPrice;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:lowPrice;
+		sh:or (
+			[sh:node :Number]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:offerCount;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:offers;
+		sh:or (
+			[sh:class schema:Demand]
+			[sh:class schema:Offer]
+		);
+	].
+
+
+:AgreeAction a sh:NodeShape;
+	sh:targetClass schema:AgreeAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Airline a sh:NodeShape;
+	sh:targetClass schema:Airline;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:boardingPolicy;
+		sh:node :BoardingPolicyType;
+	];
+	sh:property [
+		sh:path schema:iataCode;
+		sh:node :Text;
+	].
+
+
+:Airport a sh:NodeShape;
+	sh:targetClass schema:Airport;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:iataCode;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:icaoCode;
+		sh:node :Text;
+	].
+
+
+:AlignmentObject a sh:NodeShape;
+	sh:targetClass schema:AlignmentObject;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:alignmentType;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:educationalFramework;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:targetDescription;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:targetName;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:targetUrl;
+		sh:node :URL;
+	].
+
+
+:AllocateAction a sh:NodeShape;
+	sh:targetClass schema:AllocateAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AMRadioChannel a sh:NodeShape;
+	sh:targetClass schema:AMRadioChannel;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AmusementPark a sh:NodeShape;
+	sh:targetClass schema:AmusementPark;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AnimalShelter a sh:NodeShape;
+	sh:targetClass schema:AnimalShelter;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Answer a sh:NodeShape;
+	sh:targetClass schema:Answer;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Apartment a sh:NodeShape;
+	sh:targetClass schema:Apartment;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:numberOfRooms;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:occupancy;
+		sh:class schema:QuantitativeValue;
+	].
+
+
+:ApartmentComplex a sh:NodeShape;
+	sh:targetClass schema:ApartmentComplex;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:petsAllowed;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Boolean]
+		);
+	].
+
+
+:APIReference a sh:NodeShape;
+	sh:targetClass schema:APIReference;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:assembly;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:assemblyVersion;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:executableLibraryName;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:programmingModel;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:targetPlatform;
+		sh:node :Text;
+	].
+
+
+:AppendAction a sh:NodeShape;
+	sh:targetClass schema:AppendAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ApplyAction a sh:NodeShape;
+	sh:targetClass schema:ApplyAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Aquarium a sh:NodeShape;
+	sh:targetClass schema:Aquarium;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ArriveAction a sh:NodeShape;
+	sh:targetClass schema:ArriveAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ArtGallery a sh:NodeShape;
+	sh:targetClass schema:ArtGallery;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Article a sh:NodeShape;
+	sh:targetClass schema:Article;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:articleBody;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:articleSection;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:pageEnd;
+		sh:or (
+			[sh:node :Integer]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:pageStart;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Integer]
+		);
+	];
+	sh:property [
+		sh:path schema:pagination;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:speakable;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :SpeakableSpecification]
+		);
+	];
+	sh:property [
+		sh:path schema:wordCount;
+		sh:node :Integer;
+	].
+
+
+:AskAction a sh:NodeShape;
+	sh:targetClass schema:AskAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:question;
+		sh:node :Question;
+	].
+
+
+:AssessAction a sh:NodeShape;
+	sh:targetClass schema:AssessAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AssignAction a sh:NodeShape;
+	sh:targetClass schema:AssignAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Attorney a sh:NodeShape;
+	sh:targetClass schema:Attorney;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Audience a sh:NodeShape;
+	sh:targetClass schema:Audience;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:audienceType;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:geographicArea;
+		sh:node :AdministrativeArea;
+	].
+
+
+:Audiobook a sh:NodeShape;
+	sh:targetClass schema:Audiobook;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:duration;
+		sh:node :Duration;
+	].
+
+
+:AudioObject a sh:NodeShape;
+	sh:targetClass schema:AudioObject;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:caption;
+		sh:or (
+			[sh:node :Text]
+			[sh:class schema:MediaObject]
+		);
+	];
+	sh:property [
+		sh:path schema:transcript;
+		sh:node :Text;
+	].
+
+
+:AuthorizeAction a sh:NodeShape;
+	sh:targetClass schema:AuthorizeAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:recipient;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Audience]
+			[sh:node :ContactPoint]
+			[sh:node :Person]
+		);
+	].
+
+
+:AutoBodyShop a sh:NodeShape;
+	sh:targetClass schema:AutoBodyShop;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AutoDealer a sh:NodeShape;
+	sh:targetClass schema:AutoDealer;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AutomatedTeller a sh:NodeShape;
+	sh:targetClass schema:AutomatedTeller;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AutomotiveBusiness a sh:NodeShape;
+	sh:targetClass schema:AutomotiveBusiness;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AutoPartsStore a sh:NodeShape;
+	sh:targetClass schema:AutoPartsStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AutoRental a sh:NodeShape;
+	sh:targetClass schema:AutoRental;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AutoRepair a sh:NodeShape;
+	sh:targetClass schema:AutoRepair;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:AutoWash a sh:NodeShape;
+	sh:targetClass schema:AutoWash;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Bakery a sh:NodeShape;
+	sh:targetClass schema:Bakery;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BankAccount a sh:NodeShape;
+	sh:targetClass schema:BankAccount;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BankOrCreditUnion a sh:NodeShape;
+	sh:targetClass schema:BankOrCreditUnion;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Barcode a sh:NodeShape;
+	sh:targetClass schema:Barcode;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BarOrPub a sh:NodeShape;
+	sh:targetClass schema:BarOrPub;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Beach a sh:NodeShape;
+	sh:targetClass schema:Beach;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BeautySalon a sh:NodeShape;
+	sh:targetClass schema:BeautySalon;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BedAndBreakfast a sh:NodeShape;
+	sh:targetClass schema:BedAndBreakfast;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BedDetails a sh:NodeShape;
+	sh:targetClass schema:BedDetails;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:numberOfBeds;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:typeOfBed;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :BedType]
+		);
+	].
+
+
+:BedType a sh:NodeShape;
+	sh:targetClass schema:BedType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BefriendAction a sh:NodeShape;
+	sh:targetClass schema:BefriendAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BikeStore a sh:NodeShape;
+	sh:targetClass schema:BikeStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Blog a sh:NodeShape;
+	sh:targetClass schema:Blog;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:blogPost;
+		sh:node :BlogPosting;
+	];
+	sh:property [
+		sh:path schema:blogPosts;
+		sh:node :BlogPosting;
+	];
+	sh:property [
+		sh:path schema:issn;
+		sh:node :Text;
+	].
+
+
+:BlogPosting a sh:NodeShape;
+	sh:targetClass schema:BlogPosting;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BoardingPolicyType a sh:NodeShape;
+	sh:targetClass schema:BoardingPolicyType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BodyOfWater a sh:NodeShape;
+	sh:targetClass schema:BodyOfWater;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Book a sh:NodeShape;
+	sh:targetClass schema:Book;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:bookEdition;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:bookFormat;
+		sh:node :BookFormatType;
+	];
+	sh:property [
+		sh:path schema:illustrator;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:isbn;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:numberOfPages;
+		sh:node :Integer;
+	].
+
+
+:BookFormatType a sh:NodeShape;
+	sh:targetClass schema:BookFormatType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BookmarkAction a sh:NodeShape;
+	sh:targetClass schema:BookmarkAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BookSeries a sh:NodeShape;
+	sh:targetClass schema:BookSeries;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BookStore a sh:NodeShape;
+	sh:targetClass schema:BookStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BorrowAction a sh:NodeShape;
+	sh:targetClass schema:BorrowAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:lender;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	].
+
+
+:BowlingAlley a sh:NodeShape;
+	sh:targetClass schema:BowlingAlley;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Brand a sh:NodeShape;
+	sh:targetClass schema:Brand;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:aggregateRating;
+		sh:node :AggregateRating;
+	];
+	sh:property [
+		sh:path schema:logo;
+		sh:or (
+			[sh:node :ImageObject]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:review;
+		sh:node :Review;
+	];
+	sh:property [
+		sh:path schema:slogan;
+		sh:node :Text;
+	].
+
+
+:BreadcrumbList a sh:NodeShape;
+	sh:targetClass schema:BreadcrumbList;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Brewery a sh:NodeShape;
+	sh:targetClass schema:Brewery;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Bridge a sh:NodeShape;
+	sh:targetClass schema:Bridge;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BroadcastChannel a sh:NodeShape;
+	sh:targetClass schema:BroadcastChannel;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:broadcastChannelId;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:broadcastFrequency;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :BroadcastFrequencySpecification]
+		);
+	];
+	sh:property [
+		sh:path schema:broadcastServiceTier;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:genre;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:inBroadcastLineup;
+		sh:node :CableOrSatelliteService;
+	];
+	sh:property [
+		sh:path schema:providesBroadcastService;
+		sh:node :BroadcastService;
+	].
+
+
+:BroadcastEvent a sh:NodeShape;
+	sh:targetClass schema:BroadcastEvent;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:broadcastOfEvent;
+		sh:class schema:Event;
+	];
+	sh:property [
+		sh:path schema:isLiveBroadcast;
+		sh:node :Boolean;
+	];
+	sh:property [
+		sh:path schema:videoFormat;
+		sh:node :Text;
+	].
+
+
+:BroadcastFrequencySpecification a sh:NodeShape;
+	sh:targetClass schema:BroadcastFrequencySpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:broadcastFrequencyValue;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Number]
+		);
+	].
+
+
+:BroadcastService a sh:NodeShape;
+	sh:targetClass schema:BroadcastService;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:area;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:broadcastAffiliateOf;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:broadcastDisplayName;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:broadcastFrequency;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :BroadcastFrequencySpecification]
+		);
+	];
+	sh:property [
+		sh:path schema:broadcastTimezone;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:broadcaster;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:hasBroadcastChannel;
+		sh:node :BroadcastChannel;
+	];
+	sh:property [
+		sh:path schema:inLanguage;
+		sh:or (
+			[sh:node :Text]
+			[sh:class schema:Language]
+		);
+	];
+	sh:property [
+		sh:path schema:parentService;
+		sh:node :BroadcastService;
+	];
+	sh:property [
+		sh:path schema:videoFormat;
+		sh:node :Text;
+	].
+
+
+:BuddhistTemple a sh:NodeShape;
+	sh:targetClass schema:BuddhistTemple;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BusinessAudience a sh:NodeShape;
+	sh:targetClass schema:BusinessAudience;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:numberOfEmployees;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:yearlyRevenue;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:yearsInOperation;
+		sh:class schema:QuantitativeValue;
+	].
+
+
+:BusinessEntityType a sh:NodeShape;
+	sh:targetClass schema:BusinessEntityType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BusinessEvent a sh:NodeShape;
+	sh:targetClass schema:BusinessEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BusinessFunction a sh:NodeShape;
+	sh:targetClass schema:BusinessFunction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BusReservation a sh:NodeShape;
+	sh:targetClass schema:BusReservation;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BusStation a sh:NodeShape;
+	sh:targetClass schema:BusStation;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BusStop a sh:NodeShape;
+	sh:targetClass schema:BusStop;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:BusTrip a sh:NodeShape;
+	sh:targetClass schema:BusTrip;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:arrivalBusStop;
+		sh:or (
+			[sh:node :BusStop]
+			[sh:node :BusStation]
+		);
+	];
+	sh:property [
+		sh:path schema:busName;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:busNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:departureBusStop;
+		sh:or (
+			[sh:node :BusStation]
+			[sh:node :BusStop]
+		);
+	].
+
+
+:BuyAction a sh:NodeShape;
+	sh:targetClass schema:BuyAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:seller;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:vendor;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:warrantyPromise;
+		sh:node :WarrantyPromise;
+	].
+
+
+:CableOrSatelliteService a sh:NodeShape;
+	sh:targetClass schema:CableOrSatelliteService;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:CafeOrCoffeeShop a sh:NodeShape;
+	sh:targetClass schema:CafeOrCoffeeShop;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Campground a sh:NodeShape;
+	sh:targetClass schema:Campground;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:CampingPitch a sh:NodeShape;
+	sh:targetClass schema:CampingPitch;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Canal a sh:NodeShape;
+	sh:targetClass schema:Canal;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:CancelAction a sh:NodeShape;
+	sh:targetClass schema:CancelAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Car a sh:NodeShape;
+	sh:targetClass schema:Car;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Casino a sh:NodeShape;
+	sh:targetClass schema:Casino;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:CatholicChurch a sh:NodeShape;
+	sh:targetClass schema:CatholicChurch;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:CDCPMDRecord a sh:NodeShape;
+	sh:targetClass schema:CDCPMDRecord;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:datePosted;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Date]
+		);
+	].
+
+
+:Cemetery a sh:NodeShape;
+	sh:targetClass schema:Cemetery;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Chapter a sh:NodeShape;
+	sh:targetClass schema:Chapter;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:pageEnd;
+		sh:or (
+			[sh:node :Integer]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:pageStart;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Integer]
+		);
+	];
+	sh:property [
+		sh:path schema:pagination;
+		sh:node :Text;
+	].
+
+
+:CheckAction a sh:NodeShape;
+	sh:targetClass schema:CheckAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:CheckInAction a sh:NodeShape;
+	sh:targetClass schema:CheckInAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:CheckOutAction a sh:NodeShape;
+	sh:targetClass schema:CheckOutAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:CheckoutPage a sh:NodeShape;
+	sh:targetClass schema:CheckoutPage;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ChildCare a sh:NodeShape;
+	sh:targetClass schema:ChildCare;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ChildrensEvent a sh:NodeShape;
+	sh:targetClass schema:ChildrensEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ChooseAction a sh:NodeShape;
+	sh:targetClass schema:ChooseAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:actionOption;
+		sh:or (
+			[sh:node :Thing]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:option;
+		sh:or (
+			[sh:node :Thing]
+			[sh:node :Text]
+		);
+	].
+
+
+:Church a sh:NodeShape;
+	sh:targetClass schema:Church;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:City a sh:NodeShape;
+	sh:targetClass schema:City;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:CityHall a sh:NodeShape;
+	sh:targetClass schema:CityHall;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:CivicStructure a sh:NodeShape;
+	sh:targetClass schema:CivicStructure;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:openingHours;
+		sh:node :Text;
+	].
+
+
+:ClaimReview a sh:NodeShape;
+	sh:targetClass schema:ClaimReview;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:claimReviewed;
+		sh:node :Text;
+	].
+
+
+:Clip a sh:NodeShape;
+	sh:targetClass schema:Clip;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:actor;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:actors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:clipNumber;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Integer]
+		);
+	];
+	sh:property [
+		sh:path schema:director;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:directors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:musicBy;
+		sh:or (
+			[sh:node :Person]
+			[sh:node :MusicGroup]
+		);
+	];
+	sh:property [
+		sh:path schema:partOfEpisode;
+		sh:node :Episode;
+	];
+	sh:property [
+		sh:path schema:partOfSeason;
+		sh:node :CreativeWorkSeason;
+	];
+	sh:property [
+		sh:path schema:partOfSeries;
+		sh:node :CreativeWorkSeries;
+	].
+
+
+:ClothingStore a sh:NodeShape;
+	sh:targetClass schema:ClothingStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Code a sh:NodeShape;
+	sh:targetClass schema:Code;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:CollectionPage a sh:NodeShape;
+	sh:targetClass schema:CollectionPage;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:CollegeOrUniversity a sh:NodeShape;
+	sh:targetClass schema:CollegeOrUniversity;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ComedyClub a sh:NodeShape;
+	sh:targetClass schema:ComedyClub;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ComedyEvent a sh:NodeShape;
+	sh:targetClass schema:ComedyEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Comment a sh:NodeShape;
+	sh:targetClass schema:Comment;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:downvoteCount;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:parentItem;
+		sh:node :Question;
+	];
+	sh:property [
+		sh:path schema:upvoteCount;
+		sh:node :Integer;
+	].
+
+
+:CommentAction a sh:NodeShape;
+	sh:targetClass schema:CommentAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:resultComment;
+		sh:node :Comment;
+	].
+
+
+:CommunicateAction a sh:NodeShape;
+	sh:targetClass schema:CommunicateAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:about;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:inLanguage;
+		sh:or (
+			[sh:node :Text]
+			[sh:class schema:Language]
+		);
+	];
+	sh:property [
+		sh:path schema:language;
+		sh:class schema:Language;
+	];
+	sh:property [
+		sh:path schema:recipient;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Audience]
+			[sh:node :ContactPoint]
+			[sh:node :Person]
+		);
+	].
+
+
+:CompoundPriceSpecification a sh:NodeShape;
+	sh:targetClass schema:CompoundPriceSpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:priceComponent;
+		sh:node :UnitPriceSpecification;
+	].
+
+
+:ComputerLanguage a sh:NodeShape;
+	sh:targetClass schema:ComputerLanguage;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ComputerStore a sh:NodeShape;
+	sh:targetClass schema:ComputerStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ConfirmAction a sh:NodeShape;
+	sh:targetClass schema:ConfirmAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ConsumeAction a sh:NodeShape;
+	sh:targetClass schema:ConsumeAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:actionAccessibilityRequirement;
+		sh:node :ActionAccessSpecification;
+	];
+	sh:property [
+		sh:path schema:expectsAcceptanceOf;
+		sh:class schema:Offer;
+	].
+
+
+:ContactPage a sh:NodeShape;
+	sh:targetClass schema:ContactPage;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ContactPoint a sh:NodeShape;
+	sh:targetClass schema:ContactPoint;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:areaServed;
+		sh:or (
+			[sh:node :AdministrativeArea]
+			[sh:node :Text]
+			[sh:node :Place]
+			[sh:node :GeoShape]
+		);
+	];
+	sh:property [
+		sh:path schema:availableLanguage;
+		sh:or (
+			[sh:node :Text]
+			[sh:class schema:Language]
+		);
+	];
+	sh:property [
+		sh:path schema:contactOption;
+		sh:node :ContactPointOption;
+	];
+	sh:property [
+		sh:path schema:contactType;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:email;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:faxNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:hoursAvailable;
+		sh:node :OpeningHoursSpecification;
+	];
+	sh:property [
+		sh:path schema:productSupported;
+		sh:or (
+			[sh:class schema:Product]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:serviceArea;
+		sh:or (
+			[sh:node :Place]
+			[sh:node :GeoShape]
+			[sh:node :AdministrativeArea]
+		);
+	];
+	sh:property [
+		sh:path schema:telephone;
+		sh:node :Text;
+	].
+
+
+:ContactPointOption a sh:NodeShape;
+	sh:targetClass schema:ContactPointOption;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Continent a sh:NodeShape;
+	sh:targetClass schema:Continent;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ControlAction a sh:NodeShape;
+	sh:targetClass schema:ControlAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ConvenienceStore a sh:NodeShape;
+	sh:targetClass schema:ConvenienceStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Conversation a sh:NodeShape;
+	sh:targetClass schema:Conversation;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:CookAction a sh:NodeShape;
+	sh:targetClass schema:CookAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:foodEstablishment;
+		sh:or (
+			[sh:node :FoodEstablishment]
+			[sh:node :Place]
+		);
+	];
+	sh:property [
+		sh:path schema:foodEvent;
+		sh:node :FoodEvent;
+	];
+	sh:property [
+		sh:path schema:recipe;
+		sh:node :Recipe;
+	].
+
+
+:Corporation a sh:NodeShape;
+	sh:targetClass schema:Corporation;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:tickerSymbol;
+		sh:node :Text;
+	].
+
+
+:Country a sh:NodeShape;
+	sh:targetClass schema:Country;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Course a sh:NodeShape;
+	sh:targetClass schema:Course;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:courseCode;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:coursePrerequisites;
+		sh:or (
+			[sh:node :Course]
+			[sh:node :AlignmentObject]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:educationalCredentialAwarded;
+		sh:or (
+			[sh:node :EducationalOccupationalCredential]
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:hasCourseInstance;
+		sh:node :CourseInstance;
+	].
+
+
+:CourseInstance a sh:NodeShape;
+	sh:targetClass schema:CourseInstance;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:courseMode;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:instructor;
+		sh:node :Person;
+	].
+
+
+:Courthouse a sh:NodeShape;
+	sh:targetClass schema:Courthouse;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:CreateAction a sh:NodeShape;
+	sh:targetClass schema:CreateAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:CreativeWorkSeason a sh:NodeShape;
+	sh:targetClass schema:CreativeWorkSeason;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:actor;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:director;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:endDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:episode;
+		sh:node :Episode;
+	];
+	sh:property [
+		sh:path schema:episodes;
+		sh:node :Episode;
+	];
+	sh:property [
+		sh:path schema:numberOfEpisodes;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:partOfSeries;
+		sh:node :CreativeWorkSeries;
+	];
+	sh:property [
+		sh:path schema:productionCompany;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:seasonNumber;
+		sh:or (
+			[sh:node :Integer]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:startDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:trailer;
+		sh:class schema:VideoObject;
+	].
+
+
+:CreativeWorkSeries a sh:NodeShape;
+	sh:targetClass schema:CreativeWorkSeries;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:endDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:issn;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:startDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	].
+
+
+:CreditCard a sh:NodeShape;
+	sh:targetClass schema:CreditCard;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Crematorium a sh:NodeShape;
+	sh:targetClass schema:Crematorium;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:CurrencyConversionService a sh:NodeShape;
+	sh:targetClass schema:CurrencyConversionService;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DanceEvent a sh:NodeShape;
+	sh:targetClass schema:DanceEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DanceGroup a sh:NodeShape;
+	sh:targetClass schema:DanceGroup;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DataCatalog a sh:NodeShape;
+	sh:targetClass schema:DataCatalog;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:dataset;
+		sh:node :Dataset;
+	].
+
+
+:DataDownload a sh:NodeShape;
+	sh:targetClass schema:DataDownload;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DataFeed a sh:NodeShape;
+	sh:targetClass schema:DataFeed;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:dataFeedElement;
+		sh:or (
+			[sh:node :DataFeedItem]
+			[sh:node :Thing]
+			[sh:node :Text]
+		);
+	].
+
+
+:DataFeedItem a sh:NodeShape;
+	sh:targetClass schema:DataFeedItem;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:dateCreated;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:dateDeleted;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:dateModified;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Date]
+		);
+	];
+	sh:property [
+		sh:path schema:item;
+		sh:node :Thing;
+	].
+
+
+:Dataset a sh:NodeShape;
+	sh:targetClass schema:Dataset;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:catalog;
+		sh:node :DataCatalog;
+	];
+	sh:property [
+		sh:path schema:datasetTimeInterval;
+		sh:node :DateTime;
+	];
+	sh:property [
+		sh:path schema:distribution;
+		sh:node :DataDownload;
+	];
+	sh:property [
+		sh:path schema:includedDataCatalog;
+		sh:node :DataCatalog;
+	];
+	sh:property [
+		sh:path schema:includedInDataCatalog;
+		sh:node :DataCatalog;
+	];
+	sh:property [
+		sh:path schema:issn;
+		sh:node :Text;
+	].
+
+
+:DataType a sh:NodeShape;
+	sh:targetClass schema:DataType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DatedMoneySpecification a sh:NodeShape;
+	sh:targetClass schema:DatedMoneySpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:amount;
+		sh:or (
+			[sh:class schema:MonetaryAmount]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:currency;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:endDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:startDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	].
+
+
+:DayOfWeek a sh:NodeShape;
+	sh:targetClass schema:DayOfWeek;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DaySpa a sh:NodeShape;
+	sh:targetClass schema:DaySpa;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DeactivateAction a sh:NodeShape;
+	sh:targetClass schema:DeactivateAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DefenceEstablishment a sh:NodeShape;
+	sh:targetClass schema:DefenceEstablishment;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DefinedRegion a sh:NodeShape;
+	sh:targetClass schema:DefinedRegion;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:addressCountry;
+		sh:or (
+			[sh:node :Country]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:addressRegion;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:postalCode;
+		sh:node :Text;
+	].
+
+
+:DefinedTerm a sh:NodeShape;
+	sh:targetClass schema:DefinedTerm;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DeleteAction a sh:NodeShape;
+	sh:targetClass schema:DeleteAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DeliveryChargeSpecification a sh:NodeShape;
+	sh:targetClass schema:DeliveryChargeSpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:appliesToDeliveryMethod;
+		sh:node :DeliveryMethod;
+	];
+	sh:property [
+		sh:path schema:areaServed;
+		sh:or (
+			[sh:node :AdministrativeArea]
+			[sh:node :Text]
+			[sh:node :Place]
+			[sh:node :GeoShape]
+		);
+	];
+	sh:property [
+		sh:path schema:eligibleRegion;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Place]
+			[sh:node :GeoShape]
+		);
+	].
+
+
+:DeliveryEvent a sh:NodeShape;
+	sh:targetClass schema:DeliveryEvent;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:accessCode;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:availableFrom;
+		sh:node :DateTime;
+	];
+	sh:property [
+		sh:path schema:availableThrough;
+		sh:node :DateTime;
+	];
+	sh:property [
+		sh:path schema:hasDeliveryMethod;
+		sh:node :DeliveryMethod;
+	].
+
+
+:DeliveryMethod a sh:NodeShape;
+	sh:targetClass schema:DeliveryMethod;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Demand a sh:NodeShape;
+	sh:targetClass schema:Demand;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:acceptedPaymentMethod;
+		sh:or (
+			[sh:node :LoanOrCredit]
+			[sh:node :PaymentMethod]
+		);
+	];
+	sh:property [
+		sh:path schema:advanceBookingRequirement;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:areaServed;
+		sh:or (
+			[sh:node :AdministrativeArea]
+			[sh:node :Text]
+			[sh:node :Place]
+			[sh:node :GeoShape]
+		);
+	];
+	sh:property [
+		sh:path schema:availability;
+		sh:node :ItemAvailability;
+	];
+	sh:property [
+		sh:path schema:availabilityEnds;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Time]
+			[sh:node :Date]
+		);
+	];
+	sh:property [
+		sh:path schema:availabilityStarts;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :Time]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:availableAtOrFrom;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:availableDeliveryMethod;
+		sh:node :DeliveryMethod;
+	];
+	sh:property [
+		sh:path schema:businessFunction;
+		sh:node :BusinessFunction;
+	];
+	sh:property [
+		sh:path schema:deliveryLeadTime;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:eligibleCustomerType;
+		sh:node :BusinessEntityType;
+	];
+	sh:property [
+		sh:path schema:eligibleDuration;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:eligibleQuantity;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:eligibleRegion;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Place]
+			[sh:node :GeoShape]
+		);
+	];
+	sh:property [
+		sh:path schema:eligibleTransactionVolume;
+		sh:node :PriceSpecification;
+	];
+	sh:property [
+		sh:path schema:gtin12;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:gtin13;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:gtin14;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:gtin8;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:includesObject;
+		sh:node :TypeAndQuantityNode;
+	];
+	sh:property [
+		sh:path schema:inventoryLevel;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:itemCondition;
+		sh:class schema:OfferItemCondition;
+	];
+	sh:property [
+		sh:path schema:itemOffered;
+		sh:or (
+			[sh:node :AggregateOffer]
+			[sh:class schema:Product]
+			[sh:node :CreativeWork]
+			[sh:node :Service]
+			[sh:node :MenuItem]
+			[sh:node :Trip]
+			[sh:class schema:Event]
+		);
+	];
+	sh:property [
+		sh:path schema:mpn;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:priceSpecification;
+		sh:node :PriceSpecification;
+	];
+	sh:property [
+		sh:path schema:seller;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:serialNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:sku;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:validFrom;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:validThrough;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:warranty;
+		sh:node :WarrantyPromise;
+	].
+
+
+:Dentist a sh:NodeShape;
+	sh:targetClass schema:Dentist;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DepartAction a sh:NodeShape;
+	sh:targetClass schema:DepartAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DepartmentStore a sh:NodeShape;
+	sh:targetClass schema:DepartmentStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DepositAccount a sh:NodeShape;
+	sh:targetClass schema:DepositAccount;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DietarySupplement a sh:NodeShape;
+	sh:targetClass schema:DietarySupplement;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:manufacturer;
+		sh:class schema:Organization;
+	].
+
+
+:DigitalDocument a sh:NodeShape;
+	sh:targetClass schema:DigitalDocument;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:hasDigitalDocumentPermission;
+		sh:node :DigitalDocumentPermission;
+	].
+
+
+:DigitalDocumentPermission a sh:NodeShape;
+	sh:targetClass schema:DigitalDocumentPermission;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:grantee;
+		sh:or (
+			[sh:node :ContactPoint]
+			[sh:node :Audience]
+			[sh:node :Person]
+			[sh:class schema:Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:permissionType;
+		sh:node :DigitalDocumentPermissionType;
+	].
+
+
+:DigitalDocumentPermissionType a sh:NodeShape;
+	sh:targetClass schema:DigitalDocumentPermissionType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DisagreeAction a sh:NodeShape;
+	sh:targetClass schema:DisagreeAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DiscoverAction a sh:NodeShape;
+	sh:targetClass schema:DiscoverAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DiscussionForumPosting a sh:NodeShape;
+	sh:targetClass schema:DiscussionForumPosting;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DislikeAction a sh:NodeShape;
+	sh:targetClass schema:DislikeAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Distance a sh:NodeShape;
+    sh:or (
+        [
+            sh:targetClass schema:Distance;
+            sh:nodeKind sh:BlankNodeOrIRI
+        ]
+        [
+            sh:node :Text;
+            sh:pattern "^[ ]*([1-9][0-9]*|0)[ ]*[a-zA-Z]*[ ]*$"
+        ]
+    ).
+
+
+
+
+:Distillery a sh:NodeShape;
+	sh:targetClass schema:Distillery;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DonateAction a sh:NodeShape;
+	sh:targetClass schema:DonateAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:recipient;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Audience]
+			[sh:node :ContactPoint]
+			[sh:node :Person]
+		);
+	].
+
+
+:DownloadAction a sh:NodeShape;
+	sh:targetClass schema:DownloadAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DrawAction a sh:NodeShape;
+	sh:targetClass schema:DrawAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DrinkAction a sh:NodeShape;
+	sh:targetClass schema:DrinkAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:DriveWheelConfigurationValue a sh:NodeShape;
+	sh:targetClass schema:DriveWheelConfigurationValue;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Drug a sh:NodeShape;
+	sh:targetClass schema:Drug;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:manufacturer;
+		sh:class schema:Organization;
+	].
+
+
+:DryCleaningOrLaundry a sh:NodeShape;
+	sh:targetClass schema:DryCleaningOrLaundry;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:EatAction a sh:NodeShape;
+	sh:targetClass schema:EatAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:EducationalAudience a sh:NodeShape;
+	sh:targetClass schema:EducationalAudience;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:educationalRole;
+		sh:node :Text;
+	].
+
+
+:EducationalOccupationalCredential a sh:NodeShape;
+	sh:targetClass schema:EducationalOccupationalCredential;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:validFor;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:validIn;
+		sh:node :AdministrativeArea;
+	].
+
+
+:EducationalOccupationalProgram a sh:NodeShape;
+	sh:targetClass schema:EducationalOccupationalProgram;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:dayOfWeek;
+		sh:node :DayOfWeek;
+	];
+	sh:property [
+		sh:path schema:educationalCredentialAwarded;
+		sh:or (
+			[sh:node :EducationalOccupationalCredential]
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:endDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:offers;
+		sh:or (
+			[sh:class schema:Demand]
+			[sh:class schema:Offer]
+		);
+	];
+	sh:property [
+		sh:path schema:provider;
+		sh:or (
+			[sh:node :Person]
+			[sh:class schema:Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:startDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	].
+
+
+:EducationalOrganization a sh:NodeShape;
+	sh:targetClass schema:EducationalOrganization;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:alumni;
+		sh:node :Person;
+	].
+
+
+:EducationEvent a sh:NodeShape;
+	sh:targetClass schema:EducationEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Electrician a sh:NodeShape;
+	sh:targetClass schema:Electrician;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ElectronicsStore a sh:NodeShape;
+	sh:targetClass schema:ElectronicsStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ElementarySchool a sh:NodeShape;
+	sh:targetClass schema:ElementarySchool;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:EmailMessage a sh:NodeShape;
+	sh:targetClass schema:EmailMessage;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Embassy a sh:NodeShape;
+	sh:targetClass schema:Embassy;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:EmergencyService a sh:NodeShape;
+	sh:targetClass schema:EmergencyService;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:EmployeeRole a sh:NodeShape;
+	sh:targetClass schema:EmployeeRole;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:baseSalary;
+		sh:or (
+			[sh:node :PriceSpecification]
+			[sh:class schema:MonetaryAmount]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:salaryCurrency;
+		sh:node :Text;
+	].
+
+
+:EmployerAggregateRating a sh:NodeShape;
+	sh:targetClass schema:EmployerAggregateRating;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:EmploymentAgency a sh:NodeShape;
+	sh:targetClass schema:EmploymentAgency;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:EndorseAction a sh:NodeShape;
+	sh:targetClass schema:EndorseAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:endorsee;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	].
+
+
+:EndorsementRating a sh:NodeShape;
+	sh:targetClass schema:EndorsementRating;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Energy a sh:NodeShape;
+	sh:targetClass schema:Energy;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:EngineSpecification a sh:NodeShape;
+	sh:targetClass schema:EngineSpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:fuelType;
+		sh:or (
+			[sh:node :QualitativeValue]
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	].
+
+
+:EntertainmentBusiness a sh:NodeShape;
+	sh:targetClass schema:EntertainmentBusiness;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:EntryPoint a sh:NodeShape;
+	sh:targetClass schema:EntryPoint;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:actionApplication;
+		sh:node :SoftwareApplication;
+	];
+	sh:property [
+		sh:path schema:actionPlatform;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:application;
+		sh:node :SoftwareApplication;
+	];
+	sh:property [
+		sh:path schema:contentType;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:encodingType;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:httpMethod;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:urlTemplate;
+		sh:node :Text;
+	].
+
+
+:Enumeration a sh:NodeShape;
+	sh:targetClass schema:Enumeration;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Episode a sh:NodeShape;
+	sh:targetClass schema:Episode;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:actor;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:actors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:director;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:directors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:episodeNumber;
+		sh:or (
+			[sh:node :Integer]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:musicBy;
+		sh:or (
+			[sh:node :Person]
+			[sh:node :MusicGroup]
+		);
+	];
+	sh:property [
+		sh:path schema:partOfSeason;
+		sh:node :CreativeWorkSeason;
+	];
+	sh:property [
+		sh:path schema:partOfSeries;
+		sh:node :CreativeWorkSeries;
+	];
+	sh:property [
+		sh:path schema:productionCompany;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:trailer;
+		sh:class schema:VideoObject;
+	].
+
+
+:Event a sh:NodeShape;
+	sh:targetClass schema:Event;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:about;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:actor;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:aggregateRating;
+		sh:node :AggregateRating;
+	];
+	sh:property [
+		sh:path schema:attendee;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:attendees;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:audience;
+		sh:node :Audience;
+	];
+	sh:property [
+		sh:path schema:composer;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:contributor;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:director;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:doorTime;
+		sh:or (
+			[sh:node :Time]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:duration;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:endDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:eventStatus;
+		sh:class schema:EventStatusType;
+	];
+	sh:property [
+		sh:path schema:funder;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:inLanguage;
+		sh:or (
+			[sh:node :Text]
+			[sh:class schema:Language]
+		);
+	];
+	sh:property [
+		sh:path schema:isAccessibleForFree;
+		sh:node :Boolean;
+	];
+	sh:property [
+		sh:path schema:location;
+		sh:or (
+			[sh:node :VirtualLocation]
+			[sh:node :Place]
+			[sh:node :Text]
+			[sh:node :PostalAddress]
+		);
+	];
+	sh:property [
+		sh:path schema:maximumAttendeeCapacity;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:offers;
+		sh:or (
+			[sh:class schema:Demand]
+			[sh:class schema:Offer]
+		);
+	];
+	sh:property [
+		sh:path schema:organizer;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:performer;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:performers;
+		sh:or (
+			[sh:node :Person]
+			[sh:class schema:Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:previousStartDate;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:recordedIn;
+		sh:node :CreativeWork;
+	];
+	sh:property [
+		sh:path schema:remainingAttendeeCapacity;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:review;
+		sh:node :Review;
+	];
+	sh:property [
+		sh:path schema:sponsor;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:startDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:subEvent;
+		sh:class schema:Event;
+	];
+	sh:property [
+		sh:path schema:subEvents;
+		sh:class schema:Event;
+	];
+	sh:property [
+		sh:path schema:superEvent;
+		sh:class schema:Event;
+	];
+	sh:property [
+		sh:path schema:translator;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:typicalAgeRange;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:workFeatured;
+		sh:node :CreativeWork;
+	];
+	sh:property [
+		sh:path schema:workPerformed;
+		sh:node :CreativeWork;
+	].
+
+
+:EventReservation a sh:NodeShape;
+	sh:targetClass schema:EventReservation;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:EventStatusType a sh:NodeShape;
+	sh:targetClass schema:EventStatusType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:EventVenue a sh:NodeShape;
+	sh:targetClass schema:EventVenue;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ExchangeRateSpecification a sh:NodeShape;
+	sh:targetClass schema:ExchangeRateSpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:currency;
+		sh:node :Text;
+	].
+
+
+:ExerciseAction a sh:NodeShape;
+	sh:targetClass schema:ExerciseAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:course;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:distance;
+		sh:node :Distance;
+	];
+	sh:property [
+		sh:path schema:exerciseCourse;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:fromLocation;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:opponent;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:sportsActivityLocation;
+		sh:node :SportsActivityLocation;
+	];
+	sh:property [
+		sh:path schema:sportsEvent;
+		sh:node :SportsEvent;
+	];
+	sh:property [
+		sh:path schema:sportsTeam;
+		sh:node :SportsTeam;
+	];
+	sh:property [
+		sh:path schema:toLocation;
+		sh:node :Place;
+	].
+
+
+:ExerciseGym a sh:NodeShape;
+	sh:targetClass schema:ExerciseGym;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ExhibitionEvent a sh:NodeShape;
+	sh:targetClass schema:ExhibitionEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:FAQPage a sh:NodeShape;
+	sh:targetClass schema:FAQPage;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:FastFoodRestaurant a sh:NodeShape;
+	sh:targetClass schema:FastFoodRestaurant;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Festival a sh:NodeShape;
+	sh:targetClass schema:Festival;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:FilmAction a sh:NodeShape;
+	sh:targetClass schema:FilmAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:FinancialProduct a sh:NodeShape;
+	sh:targetClass schema:FinancialProduct;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:annualPercentageRate;
+		sh:or (
+			[sh:node :Number]
+			[sh:class schema:QuantitativeValue]
+		);
+	];
+	sh:property [
+		sh:path schema:feesAndCommissionsSpecification;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:interestRate;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Number]
+		);
+	].
+
+
+:FinancialService a sh:NodeShape;
+	sh:targetClass schema:FinancialService;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:feesAndCommissionsSpecification;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	].
+
+
+:FindAction a sh:NodeShape;
+	sh:targetClass schema:FindAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:FireStation a sh:NodeShape;
+	sh:targetClass schema:FireStation;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Flight a sh:NodeShape;
+	sh:targetClass schema:Flight;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:aircraft;
+		sh:or (
+			[sh:node :Vehicle]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:arrivalAirport;
+		sh:node :Airport;
+	];
+	sh:property [
+		sh:path schema:arrivalGate;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:arrivalTerminal;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:boardingPolicy;
+		sh:node :BoardingPolicyType;
+	];
+	sh:property [
+		sh:path schema:carrier;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:departureAirport;
+		sh:node :Airport;
+	];
+	sh:property [
+		sh:path schema:departureGate;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:departureTerminal;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:estimatedFlightDuration;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Duration]
+		);
+	];
+	sh:property [
+		sh:path schema:flightDistance;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Distance]
+		);
+	];
+	sh:property [
+		sh:path schema:flightNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:mealService;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:seller;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:webCheckinTime;
+		sh:node :DateTime;
+	].
+
+
+:FlightReservation a sh:NodeShape;
+	sh:targetClass schema:FlightReservation;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:boardingGroup;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:passengerPriorityStatus;
+		sh:or (
+			[sh:node :QualitativeValue]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:passengerSequenceNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:securityScreening;
+		sh:node :Text;
+	].
+
+
+:Float a sh:NodeShape;
+	sh:targetClass schema:Float;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:FloorPlan a sh:NodeShape;
+	sh:targetClass schema:FloorPlan;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:amenityFeature;
+		sh:node :LocationFeatureSpecification;
+	];
+	sh:property [
+		sh:path schema:floorSize;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:numberOfRooms;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:petsAllowed;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Boolean]
+		);
+	].
+
+
+:Florist a sh:NodeShape;
+	sh:targetClass schema:Florist;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:FMRadioChannel a sh:NodeShape;
+	sh:targetClass schema:FMRadioChannel;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:FollowAction a sh:NodeShape;
+	sh:targetClass schema:FollowAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:followee;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	].
+
+
+:FoodEstablishment a sh:NodeShape;
+	sh:targetClass schema:FoodEstablishment;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:acceptsReservations;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Boolean]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:hasMenu;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+			[sh:node :Menu]
+		);
+	];
+	sh:property [
+		sh:path schema:menu;
+		sh:or (
+			[sh:node :Menu]
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:servesCuisine;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:starRating;
+		sh:class schema:Rating;
+	].
+
+
+:FoodEstablishmentReservation a sh:NodeShape;
+	sh:targetClass schema:FoodEstablishmentReservation;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:endTime;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Time]
+		);
+	];
+	sh:property [
+		sh:path schema:partySize;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Integer]
+		);
+	];
+	sh:property [
+		sh:path schema:startTime;
+		sh:or (
+			[sh:node :Time]
+			[sh:node :DateTime]
+		);
+	].
+
+
+:FoodEvent a sh:NodeShape;
+	sh:targetClass schema:FoodEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:FoodService a sh:NodeShape;
+	sh:targetClass schema:FoodService;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:FurnitureStore a sh:NodeShape;
+	sh:targetClass schema:FurnitureStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Game a sh:NodeShape;
+	sh:targetClass schema:Game;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:characterAttribute;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:gameItem;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:gameLocation;
+		sh:or (
+			[sh:node :PostalAddress]
+			[sh:node :Place]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:numberOfPlayers;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:quest;
+		sh:node :Thing;
+	].
+
+
+:GamePlayMode a sh:NodeShape;
+	sh:targetClass schema:GamePlayMode;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:GameServer a sh:NodeShape;
+	sh:targetClass schema:GameServer;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:game;
+		sh:node :VideoGame;
+	];
+	sh:property [
+		sh:path schema:playersOnline;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:serverStatus;
+		sh:node :GameServerStatus;
+	].
+
+
+:GameServerStatus a sh:NodeShape;
+	sh:targetClass schema:GameServerStatus;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:GardenStore a sh:NodeShape;
+	sh:targetClass schema:GardenStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:GasStation a sh:NodeShape;
+	sh:targetClass schema:GasStation;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:GatedResidenceCommunity a sh:NodeShape;
+	sh:targetClass schema:GatedResidenceCommunity;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:GenderType a sh:NodeShape;
+	sh:targetClass schema:GenderType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:GeneralContractor a sh:NodeShape;
+	sh:targetClass schema:GeneralContractor;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:GeoCircle a sh:NodeShape;
+	sh:targetClass schema:GeoCircle;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:geoMidpoint;
+		sh:node :GeoCoordinates;
+	];
+	sh:property [
+		sh:path schema:geoRadius;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Number]
+			[sh:node :Distance]
+		);
+	].
+
+
+:GeoCoordinates a sh:NodeShape;
+	sh:targetClass schema:GeoCoordinates;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:address;
+		sh:or (
+			[sh:node :PostalAddress]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:addressCountry;
+		sh:or (
+			[sh:node :Country]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:elevation;
+		sh:or (
+			[sh:node :Number]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:latitude;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:longitude;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:postalCode;
+		sh:node :Text;
+	].
+
+
+:GeoShape a sh:NodeShape;
+	sh:targetClass schema:GeoShape;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:address;
+		sh:or (
+			[sh:node :PostalAddress]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:addressCountry;
+		sh:or (
+			[sh:node :Country]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:box;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:circle;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:elevation;
+		sh:or (
+			[sh:node :Number]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:line;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:polygon;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:postalCode;
+		sh:node :Text;
+	].
+
+
+:GeospatialGeometry a sh:NodeShape;
+	sh:targetClass schema:GeospatialGeometry;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:geoContains;
+		sh:or (
+			[sh:node :GeospatialGeometry]
+			[sh:node :Place]
+		);
+	];
+	sh:property [
+		sh:path schema:geoCoveredBy;
+		sh:or (
+			[sh:node :Place]
+			[sh:node :GeospatialGeometry]
+		);
+	];
+	sh:property [
+		sh:path schema:geoCovers;
+		sh:or (
+			[sh:node :GeospatialGeometry]
+			[sh:node :Place]
+		);
+	];
+	sh:property [
+		sh:path schema:geoCrosses;
+		sh:or (
+			[sh:node :GeospatialGeometry]
+			[sh:node :Place]
+		);
+	];
+	sh:property [
+		sh:path schema:geoDisjoint;
+		sh:or (
+			[sh:node :Place]
+			[sh:node :GeospatialGeometry]
+		);
+	];
+	sh:property [
+		sh:path schema:geoEquals;
+		sh:or (
+			[sh:node :Place]
+			[sh:node :GeospatialGeometry]
+		);
+	];
+	sh:property [
+		sh:path schema:geoIntersects;
+		sh:or (
+			[sh:node :GeospatialGeometry]
+			[sh:node :Place]
+		);
+	];
+	sh:property [
+		sh:path schema:geoOverlaps;
+		sh:or (
+			[sh:node :GeospatialGeometry]
+			[sh:node :Place]
+		);
+	];
+	sh:property [
+		sh:path schema:geoTouches;
+		sh:or (
+			[sh:node :GeospatialGeometry]
+			[sh:node :Place]
+		);
+	];
+	sh:property [
+		sh:path schema:geoWithin;
+		sh:or (
+			[sh:node :Place]
+			[sh:node :GeospatialGeometry]
+		);
+	].
+
+
+:GiveAction a sh:NodeShape;
+	sh:targetClass schema:GiveAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:recipient;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Audience]
+			[sh:node :ContactPoint]
+			[sh:node :Person]
+		);
+	].
+
+
+:GolfCourse a sh:NodeShape;
+	sh:targetClass schema:GolfCourse;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:GovernmentBenefitsType a sh:NodeShape;
+	sh:targetClass schema:GovernmentBenefitsType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:GovernmentBuilding a sh:NodeShape;
+	sh:targetClass schema:GovernmentBuilding;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:GovernmentOffice a sh:NodeShape;
+	sh:targetClass schema:GovernmentOffice;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:GovernmentOrganization a sh:NodeShape;
+	sh:targetClass schema:GovernmentOrganization;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:GovernmentPermit a sh:NodeShape;
+	sh:targetClass schema:GovernmentPermit;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:GovernmentService a sh:NodeShape;
+	sh:targetClass schema:GovernmentService;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:serviceOperator;
+		sh:class schema:Organization;
+	].
+
+
+:Grant a sh:NodeShape;
+	sh:targetClass schema:Grant;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:sponsor;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	].
+
+
+:GroceryStore a sh:NodeShape;
+	sh:targetClass schema:GroceryStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Guide a sh:NodeShape;
+	sh:targetClass schema:Guide;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:reviewAspect;
+		sh:node :Text;
+	].
+
+
+:HairSalon a sh:NodeShape;
+	sh:targetClass schema:HairSalon;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:HardwareStore a sh:NodeShape;
+	sh:targetClass schema:HardwareStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:HealthAndBeautyBusiness a sh:NodeShape;
+	sh:targetClass schema:HealthAndBeautyBusiness;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:HealthClub a sh:NodeShape;
+	sh:targetClass schema:HealthClub;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:HealthInsurancePlan a sh:NodeShape;
+	sh:targetClass schema:HealthInsurancePlan;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:contactPoint;
+		sh:node :ContactPoint;
+	].
+
+
+:HighSchool a sh:NodeShape;
+	sh:targetClass schema:HighSchool;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:HinduTemple a sh:NodeShape;
+	sh:targetClass schema:HinduTemple;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:HobbyShop a sh:NodeShape;
+	sh:targetClass schema:HobbyShop;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:HomeAndConstructionBusiness a sh:NodeShape;
+	sh:targetClass schema:HomeAndConstructionBusiness;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:HomeGoodsStore a sh:NodeShape;
+	sh:targetClass schema:HomeGoodsStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Hospital a sh:NodeShape;
+	sh:targetClass schema:Hospital;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Hostel a sh:NodeShape;
+	sh:targetClass schema:Hostel;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Hotel a sh:NodeShape;
+	sh:targetClass schema:Hotel;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:HotelRoom a sh:NodeShape;
+	sh:targetClass schema:HotelRoom;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:bed;
+		sh:or (
+			[sh:node :BedDetails]
+			[sh:node :Text]
+			[sh:node :BedType]
+		);
+	];
+	sh:property [
+		sh:path schema:occupancy;
+		sh:class schema:QuantitativeValue;
+	].
+
+
+:House a sh:NodeShape;
+	sh:targetClass schema:House;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:numberOfRooms;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Number]
+		);
+	].
+
+
+:HousePainter a sh:NodeShape;
+	sh:targetClass schema:HousePainter;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:HowToDirection a sh:NodeShape;
+	sh:targetClass schema:HowToDirection;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:afterMedia;
+		sh:or (
+			[sh:class schema:MediaObject]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:beforeMedia;
+		sh:or (
+			[sh:node :URL]
+			[sh:class schema:MediaObject]
+		);
+	];
+	sh:property [
+		sh:path schema:duringMedia;
+		sh:or (
+			[sh:node :URL]
+			[sh:class schema:MediaObject]
+		);
+	];
+	sh:property [
+		sh:path schema:performTime;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:prepTime;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:supply;
+		sh:or (
+			[sh:class schema:HowToSupply]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:tool;
+		sh:or (
+			[sh:class schema:HowToTool]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:totalTime;
+		sh:node :Duration;
+	].
+
+
+:HowToItem a sh:NodeShape;
+	sh:targetClass schema:HowToItem;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:requiredQuantity;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Number]
+			[sh:node :Text]
+		);
+	].
+
+
+:HowToSection a sh:NodeShape;
+	sh:targetClass schema:HowToSection;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:steps;
+		sh:or (
+			[sh:node :CreativeWork]
+			[sh:class schema:ItemList]
+			[sh:node :Text]
+		);
+	].
+
+
+:HowToStep a sh:NodeShape;
+	sh:targetClass schema:HowToStep;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:HowToSupply a sh:NodeShape;
+	sh:targetClass schema:HowToSupply;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:estimatedCost;
+		sh:or (
+			[sh:class schema:MonetaryAmount]
+			[sh:node :Text]
+		);
+	].
+
+
+:HowToTip a sh:NodeShape;
+	sh:targetClass schema:HowToTip;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:HowToTool a sh:NodeShape;
+	sh:targetClass schema:HowToTool;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:HVACBusiness a sh:NodeShape;
+	sh:targetClass schema:HVACBusiness;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:IceCreamShop a sh:NodeShape;
+	sh:targetClass schema:IceCreamShop;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:IgnoreAction a sh:NodeShape;
+	sh:targetClass schema:IgnoreAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ImageGallery a sh:NodeShape;
+	sh:targetClass schema:ImageGallery;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:IndividualProduct a sh:NodeShape;
+	sh:targetClass schema:IndividualProduct;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:serialNumber;
+		sh:node :Text;
+	].
+
+
+:InformAction a sh:NodeShape;
+	sh:targetClass schema:InformAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:event;
+		sh:class schema:Event;
+	].
+
+
+:InsertAction a sh:NodeShape;
+	sh:targetClass schema:InsertAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:toLocation;
+		sh:node :Place;
+	].
+
+
+:InstallAction a sh:NodeShape;
+	sh:targetClass schema:InstallAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:InsuranceAgency a sh:NodeShape;
+	sh:targetClass schema:InsuranceAgency;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Intangible a sh:NodeShape;
+	sh:targetClass schema:Intangible;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:InteractAction a sh:NodeShape;
+	sh:targetClass schema:InteractAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:InteractionCounter a sh:NodeShape;
+	sh:targetClass schema:InteractionCounter;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:interactionService;
+		sh:or (
+			[sh:node :WebSite]
+			[sh:node :SoftwareApplication]
+		);
+	];
+	sh:property [
+		sh:path schema:interactionType;
+		sh:node :Action;
+	];
+	sh:property [
+		sh:path schema:userInteractionCount;
+		sh:node :Integer;
+	].
+
+
+:InternetCafe a sh:NodeShape;
+	sh:targetClass schema:InternetCafe;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:InvestmentOrDeposit a sh:NodeShape;
+	sh:targetClass schema:InvestmentOrDeposit;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:amount;
+		sh:or (
+			[sh:class schema:MonetaryAmount]
+			[sh:node :Number]
+		);
+	].
+
+
+:InviteAction a sh:NodeShape;
+	sh:targetClass schema:InviteAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:event;
+		sh:class schema:Event;
+	].
+
+
+:Invoice a sh:NodeShape;
+	sh:targetClass schema:Invoice;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:accountId;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:billingPeriod;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:broker;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:category;
+		sh:or (
+			[sh:node :Thing]
+			[sh:node :URL]
+			[sh:node :PhysicalActivityCategory]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:confirmationNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:customer;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:minimumPaymentDue;
+		sh:or (
+			[sh:node :PriceSpecification]
+			[sh:class schema:MonetaryAmount]
+		);
+	];
+	sh:property [
+		sh:path schema:paymentDue;
+		sh:node :DateTime;
+	];
+	sh:property [
+		sh:path schema:paymentDueDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:paymentMethod;
+		sh:node :PaymentMethod;
+	];
+	sh:property [
+		sh:path schema:paymentMethodId;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:paymentStatus;
+		sh:or (
+			[sh:node :PaymentStatusType]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:provider;
+		sh:or (
+			[sh:node :Person]
+			[sh:class schema:Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:referencesOrder;
+		sh:node :Order;
+	];
+	sh:property [
+		sh:path schema:scheduledPaymentDate;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:totalPaymentDue;
+		sh:or (
+			[sh:node :PriceSpecification]
+			[sh:class schema:MonetaryAmount]
+		);
+	].
+
+
+:ItemAvailability a sh:NodeShape;
+	sh:targetClass schema:ItemAvailability;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ItemList a sh:NodeShape;
+	sh:targetClass schema:ItemList;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:itemListElement;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :ListItem]
+			[sh:node :Thing]
+		);
+	];
+	sh:property [
+		sh:path schema:itemListOrder;
+		sh:or (
+			[sh:node :Text]
+			[sh:class schema:ItemListOrderType]
+		);
+	];
+	sh:property [
+		sh:path schema:numberOfItems;
+		sh:node :Integer;
+	].
+
+
+:ItemListOrderType a sh:NodeShape;
+	sh:targetClass schema:ItemListOrderType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ItemPage a sh:NodeShape;
+	sh:targetClass schema:ItemPage;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:JewelryStore a sh:NodeShape;
+	sh:targetClass schema:JewelryStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:JobPosting a sh:NodeShape;
+	sh:targetClass schema:JobPosting;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:baseSalary;
+		sh:or (
+			[sh:node :PriceSpecification]
+			[sh:class schema:MonetaryAmount]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:benefits;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:datePosted;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Date]
+		);
+	];
+	sh:property [
+		sh:path schema:employmentType;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:estimatedSalary;
+		sh:or (
+			[sh:node :Number]
+			[sh:class schema:MonetaryAmountDistribution]
+			[sh:class schema:MonetaryAmount]
+		);
+	];
+	sh:property [
+		sh:path schema:experienceRequirements;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:hiringOrganization;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:incentiveCompensation;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:incentives;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:industry;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :DefinedTerm]
+		);
+	];
+	sh:property [
+		sh:path schema:jobBenefits;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:jobLocation;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:relevantOccupation;
+		sh:node :Occupation;
+	];
+	sh:property [
+		sh:path schema:responsibilities;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:salaryCurrency;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:skills;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :DefinedTerm]
+		);
+	];
+	sh:property [
+		sh:path schema:specialCommitments;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:title;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:validThrough;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:workHours;
+		sh:node :Text;
+	].
+
+
+:JoinAction a sh:NodeShape;
+	sh:targetClass schema:JoinAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:event;
+		sh:class schema:Event;
+	].
+
+
+:LakeBodyOfWater a sh:NodeShape;
+	sh:targetClass schema:LakeBodyOfWater;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Landform a sh:NodeShape;
+	sh:targetClass schema:Landform;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:LandmarksOrHistoricalBuildings a sh:NodeShape;
+	sh:targetClass schema:LandmarksOrHistoricalBuildings;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Language a sh:NodeShape;
+	sh:targetClass schema:Language;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:LeaveAction a sh:NodeShape;
+	sh:targetClass schema:LeaveAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:event;
+		sh:class schema:Event;
+	].
+
+
+:LegalService a sh:NodeShape;
+	sh:targetClass schema:LegalService;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:LegislativeBuilding a sh:NodeShape;
+	sh:targetClass schema:LegislativeBuilding;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:LendAction a sh:NodeShape;
+	sh:targetClass schema:LendAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:borrower;
+		sh:node :Person;
+	].
+
+
+:Library a sh:NodeShape;
+	sh:targetClass schema:Library;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:LikeAction a sh:NodeShape;
+	sh:targetClass schema:LikeAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:LinkRole a sh:NodeShape;
+	sh:targetClass schema:LinkRole;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:inLanguage;
+		sh:or (
+			[sh:node :Text]
+			[sh:class schema:Language]
+		);
+	].
+
+
+:LiquorStore a sh:NodeShape;
+	sh:targetClass schema:LiquorStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ListenAction a sh:NodeShape;
+	sh:targetClass schema:ListenAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ListItem a sh:NodeShape;
+	sh:targetClass schema:ListItem;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:item;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:nextItem;
+		sh:node :ListItem;
+	];
+	sh:property [
+		sh:path schema:position;
+		sh:or (
+			[sh:node :Integer]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:previousItem;
+		sh:node :ListItem;
+	].
+
+
+:LiteraryEvent a sh:NodeShape;
+	sh:targetClass schema:LiteraryEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:LiveBlogPosting a sh:NodeShape;
+	sh:targetClass schema:LiveBlogPosting;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:coverageEndTime;
+		sh:node :DateTime;
+	];
+	sh:property [
+		sh:path schema:coverageStartTime;
+		sh:node :DateTime;
+	];
+	sh:property [
+		sh:path schema:liveBlogUpdate;
+		sh:node :BlogPosting;
+	].
+
+
+:LoanOrCredit a sh:NodeShape;
+	sh:targetClass schema:LoanOrCredit;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:amount;
+		sh:or (
+			[sh:class schema:MonetaryAmount]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:currency;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:loanTerm;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:requiredCollateral;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Thing]
+		);
+	].
+
+
+:LocalBusiness a sh:NodeShape;
+	sh:targetClass schema:LocalBusiness;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:branchOf;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:currenciesAccepted;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:openingHours;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:paymentAccepted;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:priceRange;
+		sh:node :Text;
+	].
+
+
+:LocationFeatureSpecification a sh:NodeShape;
+	sh:targetClass schema:LocationFeatureSpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:hoursAvailable;
+		sh:node :OpeningHoursSpecification;
+	];
+	sh:property [
+		sh:path schema:validFrom;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:validThrough;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	].
+
+
+:LockerDelivery a sh:NodeShape;
+	sh:targetClass schema:LockerDelivery;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Locksmith a sh:NodeShape;
+	sh:targetClass schema:Locksmith;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:LodgingBusiness a sh:NodeShape;
+	sh:targetClass schema:LodgingBusiness;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:amenityFeature;
+		sh:node :LocationFeatureSpecification;
+	];
+	sh:property [
+		sh:path schema:audience;
+		sh:node :Audience;
+	];
+	sh:property [
+		sh:path schema:availableLanguage;
+		sh:or (
+			[sh:node :Text]
+			[sh:class schema:Language]
+		);
+	];
+	sh:property [
+		sh:path schema:checkinTime;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Time]
+		);
+	];
+	sh:property [
+		sh:path schema:checkoutTime;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Time]
+		);
+	];
+	sh:property [
+		sh:path schema:numberOfRooms;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:petsAllowed;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Boolean]
+		);
+	];
+	sh:property [
+		sh:path schema:starRating;
+		sh:class schema:Rating;
+	].
+
+
+:LodgingReservation a sh:NodeShape;
+	sh:targetClass schema:LodgingReservation;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:checkinTime;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Time]
+		);
+	];
+	sh:property [
+		sh:path schema:checkoutTime;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Time]
+		);
+	];
+	sh:property [
+		sh:path schema:lodgingUnitDescription;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:lodgingUnitType;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :QualitativeValue]
+		);
+	];
+	sh:property [
+		sh:path schema:numAdults;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Integer]
+		);
+	];
+	sh:property [
+		sh:path schema:numChildren;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Integer]
+		);
+	].
+
+
+:LoseAction a sh:NodeShape;
+	sh:targetClass schema:LoseAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:winner;
+		sh:node :Person;
+	].
+
+
+:Map a sh:NodeShape;
+	sh:targetClass schema:Map;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:mapType;
+		sh:node :MapCategoryType;
+	].
+
+
+:MapCategoryType a sh:NodeShape;
+	sh:targetClass schema:MapCategoryType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MarryAction a sh:NodeShape;
+	sh:targetClass schema:MarryAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Mass a sh:NodeShape;
+	sh:targetClass schema:Mass;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MediaGallery a sh:NodeShape;
+	sh:targetClass schema:MediaGallery;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MediaObject a sh:NodeShape;
+	sh:targetClass schema:MediaObject;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:associatedArticle;
+		sh:node :NewsArticle;
+	];
+	sh:property [
+		sh:path schema:bitrate;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:contentSize;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:contentUrl;
+		sh:node :URL;
+	];
+	sh:property [
+		sh:path schema:duration;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:embedUrl;
+		sh:node :URL;
+	];
+	sh:property [
+		sh:path schema:encodesCreativeWork;
+		sh:node :CreativeWork;
+	];
+	sh:property [
+		sh:path schema:encodingFormat;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:endTime;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Time]
+		);
+	];
+	sh:property [
+		sh:path schema:height;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Distance]
+		);
+	];
+	sh:property [
+		sh:path schema:playerType;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:productionCompany;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:regionsAllowed;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:requiresSubscription;
+		sh:or (
+			[sh:node :MediaSubscription]
+			[sh:node :Boolean]
+		);
+	];
+	sh:property [
+		sh:path schema:startTime;
+		sh:or (
+			[sh:node :Time]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:uploadDate;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:width;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Distance]
+		);
+	].
+
+
+:MediaSubscription a sh:NodeShape;
+	sh:targetClass schema:MediaSubscription;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:authenticator;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:expectsAcceptanceOf;
+		sh:class schema:Offer;
+	].
+
+
+:MedicalBusiness a sh:NodeShape;
+	sh:targetClass schema:MedicalBusiness;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MedicalOrganization a sh:NodeShape;
+	sh:targetClass schema:MedicalOrganization;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MedicalStudy a sh:NodeShape;
+	sh:targetClass schema:MedicalStudy;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:sponsor;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	].
+
+
+:MeetingRoom a sh:NodeShape;
+	sh:targetClass schema:MeetingRoom;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MensClothingStore a sh:NodeShape;
+	sh:targetClass schema:MensClothingStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Menu a sh:NodeShape;
+	sh:targetClass schema:Menu;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:hasMenuItem;
+		sh:node :MenuItem;
+	];
+	sh:property [
+		sh:path schema:hasMenuSection;
+		sh:node :MenuSection;
+	].
+
+
+:MenuItem a sh:NodeShape;
+	sh:targetClass schema:MenuItem;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:menuAddOn;
+		sh:or (
+			[sh:node :MenuItem]
+			[sh:node :MenuSection]
+		);
+	];
+	sh:property [
+		sh:path schema:nutrition;
+		sh:node :NutritionInformation;
+	];
+	sh:property [
+		sh:path schema:offers;
+		sh:or (
+			[sh:class schema:Demand]
+			[sh:class schema:Offer]
+		);
+	];
+	sh:property [
+		sh:path schema:suitableForDiet;
+		sh:node :RestrictedDiet;
+	].
+
+
+:MenuSection a sh:NodeShape;
+	sh:targetClass schema:MenuSection;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:hasMenuItem;
+		sh:node :MenuItem;
+	];
+	sh:property [
+		sh:path schema:hasMenuSection;
+		sh:node :MenuSection;
+	].
+
+
+:Message a sh:NodeShape;
+	sh:targetClass schema:Message;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:bccRecipient;
+		sh:or (
+			[sh:node :ContactPoint]
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:ccRecipient;
+		sh:or (
+			[sh:node :ContactPoint]
+			[sh:node :Person]
+			[sh:class schema:Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:dateRead;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:dateReceived;
+		sh:node :DateTime;
+	];
+	sh:property [
+		sh:path schema:dateSent;
+		sh:node :DateTime;
+	];
+	sh:property [
+		sh:path schema:messageAttachment;
+		sh:node :CreativeWork;
+	];
+	sh:property [
+		sh:path schema:recipient;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Audience]
+			[sh:node :ContactPoint]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:sender;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Audience]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:toRecipient;
+		sh:or (
+			[sh:node :ContactPoint]
+			[sh:class schema:Organization]
+			[sh:node :Person]
+			[sh:node :Audience]
+		);
+	].
+
+
+:MiddleSchool a sh:NodeShape;
+	sh:targetClass schema:MiddleSchool;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MobileApplication a sh:NodeShape;
+	sh:targetClass schema:MobileApplication;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:carrierRequirements;
+		sh:node :Text;
+	].
+
+
+:MobilePhoneStore a sh:NodeShape;
+	sh:targetClass schema:MobilePhoneStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MonetaryAmount a sh:NodeShape;
+	sh:targetClass schema:MonetaryAmount;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:currency;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:maxValue;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:minValue;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:validFrom;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:validThrough;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:value;
+		sh:or (
+			[sh:node :Boolean]
+			[sh:node :StructuredValue]
+			[sh:node :Number]
+			[sh:node :Text]
+		);
+	].
+
+
+:MonetaryAmountDistribution a sh:NodeShape;
+	sh:targetClass schema:MonetaryAmountDistribution;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:currency;
+		sh:node :Text;
+	].
+
+
+:MonetaryGrant a sh:NodeShape;
+	sh:targetClass schema:MonetaryGrant;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:amount;
+		sh:or (
+			[sh:class schema:MonetaryAmount]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:funder;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	].
+
+
+:MoneyTransfer a sh:NodeShape;
+	sh:targetClass schema:MoneyTransfer;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:amount;
+		sh:or (
+			[sh:class schema:MonetaryAmount]
+			[sh:node :Number]
+		);
+	].
+
+
+:Mosque a sh:NodeShape;
+	sh:targetClass schema:Mosque;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Motel a sh:NodeShape;
+	sh:targetClass schema:Motel;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MotorcycleDealer a sh:NodeShape;
+	sh:targetClass schema:MotorcycleDealer;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MotorcycleRepair a sh:NodeShape;
+	sh:targetClass schema:MotorcycleRepair;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Mountain a sh:NodeShape;
+	sh:targetClass schema:Mountain;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MoveAction a sh:NodeShape;
+	sh:targetClass schema:MoveAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:fromLocation;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:toLocation;
+		sh:node :Place;
+	].
+
+
+:Movie a sh:NodeShape;
+	sh:targetClass schema:Movie;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:actor;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:actors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:countryOfOrigin;
+		sh:node :Country;
+	];
+	sh:property [
+		sh:path schema:director;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:directors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:duration;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:musicBy;
+		sh:or (
+			[sh:node :Person]
+			[sh:node :MusicGroup]
+		);
+	];
+	sh:property [
+		sh:path schema:productionCompany;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:trailer;
+		sh:class schema:VideoObject;
+	].
+
+
+:MovieClip a sh:NodeShape;
+	sh:targetClass schema:MovieClip;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MovieRentalStore a sh:NodeShape;
+	sh:targetClass schema:MovieRentalStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MovieSeries a sh:NodeShape;
+	sh:targetClass schema:MovieSeries;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:actor;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:actors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:director;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:directors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:musicBy;
+		sh:or (
+			[sh:node :Person]
+			[sh:node :MusicGroup]
+		);
+	];
+	sh:property [
+		sh:path schema:productionCompany;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:trailer;
+		sh:class schema:VideoObject;
+	].
+
+
+:MovieTheater a sh:NodeShape;
+	sh:targetClass schema:MovieTheater;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:screenCount;
+		sh:node :Number;
+	].
+
+
+:MovingCompany a sh:NodeShape;
+	sh:targetClass schema:MovingCompany;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Museum a sh:NodeShape;
+	sh:targetClass schema:Museum;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MusicAlbum a sh:NodeShape;
+	sh:targetClass schema:MusicAlbum;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:albumProductionType;
+		sh:node :MusicAlbumProductionType;
+	];
+	sh:property [
+		sh:path schema:albumRelease;
+		sh:node :MusicRelease;
+	];
+	sh:property [
+		sh:path schema:albumReleaseType;
+		sh:node :MusicAlbumReleaseType;
+	];
+	sh:property [
+		sh:path schema:byArtist;
+		sh:or (
+			[sh:node :MusicGroup]
+			[sh:node :Person]
+		);
+	].
+
+
+:MusicAlbumProductionType a sh:NodeShape;
+	sh:targetClass schema:MusicAlbumProductionType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MusicAlbumReleaseType a sh:NodeShape;
+	sh:targetClass schema:MusicAlbumReleaseType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MusicComposition a sh:NodeShape;
+	sh:targetClass schema:MusicComposition;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:composer;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:firstPerformance;
+		sh:class schema:Event;
+	];
+	sh:property [
+		sh:path schema:includedComposition;
+		sh:node :MusicComposition;
+	];
+	sh:property [
+		sh:path schema:iswcCode;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:lyricist;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:lyrics;
+		sh:node :CreativeWork;
+	];
+	sh:property [
+		sh:path schema:musicArrangement;
+		sh:node :MusicComposition;
+	];
+	sh:property [
+		sh:path schema:musicCompositionForm;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:musicalKey;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:recordedAs;
+		sh:class schema:MusicRecording;
+	].
+
+
+:MusicEvent a sh:NodeShape;
+	sh:targetClass schema:MusicEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MusicGroup a sh:NodeShape;
+	sh:targetClass schema:MusicGroup;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:album;
+		sh:node :MusicAlbum;
+	];
+	sh:property [
+		sh:path schema:albums;
+		sh:node :MusicAlbum;
+	];
+	sh:property [
+		sh:path schema:genre;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:musicGroupMember;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:track;
+		sh:or (
+			[sh:class schema:MusicRecording]
+			[sh:class schema:ItemList]
+		);
+	];
+	sh:property [
+		sh:path schema:tracks;
+		sh:class schema:MusicRecording;
+	].
+
+
+:MusicPlaylist a sh:NodeShape;
+	sh:targetClass schema:MusicPlaylist;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:numTracks;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:track;
+		sh:or (
+			[sh:class schema:MusicRecording]
+			[sh:class schema:ItemList]
+		);
+	];
+	sh:property [
+		sh:path schema:tracks;
+		sh:class schema:MusicRecording;
+	].
+
+
+:MusicRecording a sh:NodeShape;
+	sh:targetClass schema:MusicRecording;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:byArtist;
+		sh:or (
+			[sh:node :MusicGroup]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:duration;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:inAlbum;
+		sh:node :MusicAlbum;
+	];
+	sh:property [
+		sh:path schema:inPlaylist;
+		sh:node :MusicPlaylist;
+	];
+	sh:property [
+		sh:path schema:isrcCode;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:recordingOf;
+		sh:node :MusicComposition;
+	].
+
+
+:MusicRelease a sh:NodeShape;
+	sh:targetClass schema:MusicRelease;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:catalogNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:creditedTo;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:duration;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:musicReleaseFormat;
+		sh:node :MusicReleaseFormatType;
+	];
+	sh:property [
+		sh:path schema:recordLabel;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:releaseOf;
+		sh:node :MusicAlbum;
+	].
+
+
+:MusicReleaseFormatType a sh:NodeShape;
+	sh:targetClass schema:MusicReleaseFormatType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MusicStore a sh:NodeShape;
+	sh:targetClass schema:MusicStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MusicVenue a sh:NodeShape;
+	sh:targetClass schema:MusicVenue;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:MusicVideoObject a sh:NodeShape;
+	sh:targetClass schema:MusicVideoObject;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:NailSalon a sh:NodeShape;
+	sh:targetClass schema:NailSalon;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:NewsArticle a sh:NodeShape;
+	sh:targetClass schema:NewsArticle;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:dateline;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:printColumn;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:printEdition;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:printPage;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:printSection;
+		sh:node :Text;
+	].
+
+
+:NGO a sh:NodeShape;
+	sh:targetClass schema:NGO;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:NightClub a sh:NodeShape;
+	sh:targetClass schema:NightClub;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Notary a sh:NodeShape;
+	sh:targetClass schema:Notary;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:NoteDigitalDocument a sh:NodeShape;
+	sh:targetClass schema:NoteDigitalDocument;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Occupation a sh:NodeShape;
+	sh:targetClass schema:Occupation;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:estimatedSalary;
+		sh:or (
+			[sh:node :Number]
+			[sh:class schema:MonetaryAmountDistribution]
+			[sh:class schema:MonetaryAmount]
+		);
+	];
+	sh:property [
+		sh:path schema:experienceRequirements;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:occupationLocation;
+		sh:node :AdministrativeArea;
+	];
+	sh:property [
+		sh:path schema:responsibilities;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:skills;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :DefinedTerm]
+		);
+	].
+
+
+:OceanBodyOfWater a sh:NodeShape;
+	sh:targetClass schema:OceanBodyOfWater;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Offer a sh:NodeShape;
+	sh:targetClass schema:Offer;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:acceptedPaymentMethod;
+		sh:or (
+			[sh:node :LoanOrCredit]
+			[sh:node :PaymentMethod]
+		);
+	];
+	sh:property [
+		sh:path schema:addOn;
+		sh:class schema:Offer;
+	];
+	sh:property [
+		sh:path schema:advanceBookingRequirement;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:aggregateRating;
+		sh:node :AggregateRating;
+	];
+	sh:property [
+		sh:path schema:areaServed;
+		sh:or (
+			[sh:node :AdministrativeArea]
+			[sh:node :Text]
+			[sh:node :Place]
+			[sh:node :GeoShape]
+		);
+	];
+	sh:property [
+		sh:path schema:availability;
+		sh:node :ItemAvailability;
+	];
+	sh:property [
+		sh:path schema:availabilityEnds;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Time]
+			[sh:node :Date]
+		);
+	];
+	sh:property [
+		sh:path schema:availabilityStarts;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :Time]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:availableAtOrFrom;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:availableDeliveryMethod;
+		sh:node :DeliveryMethod;
+	];
+	sh:property [
+		sh:path schema:businessFunction;
+		sh:node :BusinessFunction;
+	];
+	sh:property [
+		sh:path schema:category;
+		sh:or (
+			[sh:node :Thing]
+			[sh:node :URL]
+			[sh:node :PhysicalActivityCategory]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:deliveryLeadTime;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:eligibleCustomerType;
+		sh:node :BusinessEntityType;
+	];
+	sh:property [
+		sh:path schema:eligibleDuration;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:eligibleQuantity;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:eligibleRegion;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Place]
+			[sh:node :GeoShape]
+		);
+	];
+	sh:property [
+		sh:path schema:eligibleTransactionVolume;
+		sh:node :PriceSpecification;
+	];
+	sh:property [
+		sh:path schema:gtin12;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:gtin13;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:gtin14;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:gtin8;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:includesObject;
+		sh:node :TypeAndQuantityNode;
+	];
+	sh:property [
+		sh:path schema:inventoryLevel;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:itemCondition;
+		sh:class schema:OfferItemCondition;
+	];
+	sh:property [
+		sh:path schema:itemOffered;
+		sh:or (
+			[sh:node :AggregateOffer]
+			[sh:class schema:Product]
+			[sh:node :CreativeWork]
+			[sh:node :Service]
+			[sh:node :MenuItem]
+			[sh:node :Trip]
+			[sh:class schema:Event]
+		);
+	];
+	sh:property [
+		sh:path schema:mpn;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:offeredBy;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:price;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:priceCurrency;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:priceSpecification;
+		sh:node :PriceSpecification;
+	];
+	sh:property [
+		sh:path schema:priceValidUntil;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:review;
+		sh:node :Review;
+	];
+	sh:property [
+		sh:path schema:reviews;
+		sh:node :Review;
+	];
+	sh:property [
+		sh:path schema:seller;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:serialNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:sku;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:validFrom;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:validThrough;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:warranty;
+		sh:node :WarrantyPromise;
+	].
+
+
+:OfferCatalog a sh:NodeShape;
+	sh:targetClass schema:OfferCatalog;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:OfferItemCondition a sh:NodeShape;
+	sh:targetClass schema:OfferItemCondition;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:OfficeEquipmentStore a sh:NodeShape;
+	sh:targetClass schema:OfficeEquipmentStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:OnDemandEvent a sh:NodeShape;
+	sh:targetClass schema:OnDemandEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:OpeningHoursSpecification a sh:NodeShape;
+	sh:targetClass schema:OpeningHoursSpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:closes;
+		sh:node :Time;
+	];
+	sh:property [
+		sh:path schema:dayOfWeek;
+		sh:node :DayOfWeek;
+	];
+	sh:property [
+		sh:path schema:opens;
+		sh:node :Time;
+	];
+	sh:property [
+		sh:path schema:validFrom;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:validThrough;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	].
+
+
+:Order a sh:NodeShape;
+	sh:targetClass schema:Order;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:acceptedOffer;
+		sh:class schema:Offer;
+	];
+	sh:property [
+		sh:path schema:billingAddress;
+		sh:node :PostalAddress;
+	];
+	sh:property [
+		sh:path schema:broker;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:confirmationNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:customer;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:discount;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:discountCode;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:discountCurrency;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:isGift;
+		sh:node :Boolean;
+	];
+	sh:property [
+		sh:path schema:merchant;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:orderDate;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Date]
+		);
+	];
+	sh:property [
+		sh:path schema:orderDelivery;
+		sh:node :ParcelDelivery;
+	];
+	sh:property [
+		sh:path schema:orderNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:orderStatus;
+		sh:node :OrderStatus;
+	];
+	sh:property [
+		sh:path schema:orderedItem;
+		sh:or (
+			[sh:node :OrderItem]
+			[sh:class schema:Product]
+			[sh:node :Service]
+		);
+	];
+	sh:property [
+		sh:path schema:partOfInvoice;
+		sh:node :Invoice;
+	];
+	sh:property [
+		sh:path schema:paymentDue;
+		sh:node :DateTime;
+	];
+	sh:property [
+		sh:path schema:paymentDueDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:paymentMethod;
+		sh:node :PaymentMethod;
+	];
+	sh:property [
+		sh:path schema:paymentMethodId;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:paymentUrl;
+		sh:node :URL;
+	];
+	sh:property [
+		sh:path schema:seller;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	].
+
+
+:OrderAction a sh:NodeShape;
+	sh:targetClass schema:OrderAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:deliveryMethod;
+		sh:node :DeliveryMethod;
+	].
+
+
+:OrderItem a sh:NodeShape;
+	sh:targetClass schema:OrderItem;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:orderDelivery;
+		sh:node :ParcelDelivery;
+	];
+	sh:property [
+		sh:path schema:orderItemNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:orderItemStatus;
+		sh:node :OrderStatus;
+	];
+	sh:property [
+		sh:path schema:orderQuantity;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:orderedItem;
+		sh:or (
+			[sh:node :OrderItem]
+			[sh:class schema:Product]
+			[sh:node :Service]
+		);
+	].
+
+
+:OrderStatus a sh:NodeShape;
+	sh:targetClass schema:OrderStatus;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Organization a sh:NodeShape;
+	sh:targetClass schema:Organization;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:address;
+		sh:or (
+			[sh:node :PostalAddress]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:aggregateRating;
+		sh:node :AggregateRating;
+	];
+	sh:property [
+		sh:path schema:alumni;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:areaServed;
+		sh:or (
+			[sh:node :AdministrativeArea]
+			[sh:node :Text]
+			[sh:node :Place]
+			[sh:node :GeoShape]
+		);
+	];
+	sh:property [
+		sh:path schema:award;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:awards;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:brand;
+		sh:or (
+			[sh:node :Brand]
+			[sh:class schema:Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:contactPoint;
+		sh:node :ContactPoint;
+	];
+	sh:property [
+		sh:path schema:contactPoints;
+		sh:node :ContactPoint;
+	];
+	sh:property [
+		sh:path schema:department;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:dissolutionDate;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:duns;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:email;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:employee;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:employees;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:event;
+		sh:class schema:Event;
+	];
+	sh:property [
+		sh:path schema:events;
+		sh:class schema:Event;
+	];
+	sh:property [
+		sh:path schema:faxNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:founder;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:founders;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:foundingDate;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:foundingLocation;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:funder;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:globalLocationNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:hasOfferCatalog;
+		sh:class schema:OfferCatalog;
+	];
+	sh:property [
+		sh:path schema:hasPOS;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:interactionStatistic;
+		sh:node :InteractionCounter;
+	];
+	sh:property [
+		sh:path schema:isicV4;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:legalName;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:leiCode;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:location;
+		sh:or (
+			[sh:node :VirtualLocation]
+			[sh:node :Place]
+			[sh:node :Text]
+			[sh:node :PostalAddress]
+		);
+	];
+	sh:property [
+		sh:path schema:logo;
+		sh:or (
+			[sh:node :ImageObject]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:makesOffer;
+		sh:class schema:Offer;
+	];
+	sh:property [
+		sh:path schema:member;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:memberOf;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :ProgramMembership]
+		);
+	];
+	sh:property [
+		sh:path schema:members;
+		sh:or (
+			[sh:node :Person]
+			[sh:class schema:Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:naics;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:numberOfEmployees;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:owns;
+		sh:or (
+			[sh:node :OwnershipInfo]
+			[sh:class schema:Product]
+		);
+	];
+	sh:property [
+		sh:path schema:parentOrganization;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:publishingPrinciples;
+		sh:or (
+			[sh:node :CreativeWork]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:review;
+		sh:node :Review;
+	];
+	sh:property [
+		sh:path schema:reviews;
+		sh:node :Review;
+	];
+	sh:property [
+		sh:path schema:seeks;
+		sh:class schema:Demand;
+	];
+	sh:property [
+		sh:path schema:serviceArea;
+		sh:or (
+			[sh:node :Place]
+			[sh:node :GeoShape]
+			[sh:node :AdministrativeArea]
+		);
+	];
+	sh:property [
+		sh:path schema:slogan;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:sponsor;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:subOrganization;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:taxID;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:telephone;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:vatID;
+		sh:node :Text;
+	].
+
+
+:OrganizationRole a sh:NodeShape;
+	sh:targetClass schema:OrganizationRole;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:numberedPosition;
+		sh:node :Number;
+	].
+
+
+:OrganizeAction a sh:NodeShape;
+	sh:targetClass schema:OrganizeAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:OutletStore a sh:NodeShape;
+	sh:targetClass schema:OutletStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:OwnershipInfo a sh:NodeShape;
+	sh:targetClass schema:OwnershipInfo;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:acquiredFrom;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:ownedFrom;
+		sh:node :DateTime;
+	];
+	sh:property [
+		sh:path schema:ownedThrough;
+		sh:node :DateTime;
+	];
+	sh:property [
+		sh:path schema:typeOfGood;
+		sh:or (
+			[sh:node :Service]
+			[sh:class schema:Product]
+		);
+	].
+
+
+:PaintAction a sh:NodeShape;
+	sh:targetClass schema:PaintAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Painting a sh:NodeShape;
+	sh:targetClass schema:Painting;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ParcelDelivery a sh:NodeShape;
+	sh:targetClass schema:ParcelDelivery;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:carrier;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:deliveryAddress;
+		sh:node :PostalAddress;
+	];
+	sh:property [
+		sh:path schema:deliveryStatus;
+		sh:node :DeliveryEvent;
+	];
+	sh:property [
+		sh:path schema:expectedArrivalFrom;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Date]
+		);
+	];
+	sh:property [
+		sh:path schema:expectedArrivalUntil;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Date]
+		);
+	];
+	sh:property [
+		sh:path schema:hasDeliveryMethod;
+		sh:node :DeliveryMethod;
+	];
+	sh:property [
+		sh:path schema:itemShipped;
+		sh:class schema:Product;
+	];
+	sh:property [
+		sh:path schema:originAddress;
+		sh:node :PostalAddress;
+	];
+	sh:property [
+		sh:path schema:partOfOrder;
+		sh:node :Order;
+	];
+	sh:property [
+		sh:path schema:provider;
+		sh:or (
+			[sh:node :Person]
+			[sh:class schema:Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:trackingNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:trackingUrl;
+		sh:node :URL;
+	].
+
+
+:ParcelService a sh:NodeShape;
+	sh:targetClass schema:ParcelService;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ParentAudience a sh:NodeShape;
+	sh:targetClass schema:ParentAudience;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:childMaxAge;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:childMinAge;
+		sh:node :Number;
+	].
+
+
+:Park a sh:NodeShape;
+	sh:targetClass schema:Park;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ParkingFacility a sh:NodeShape;
+	sh:targetClass schema:ParkingFacility;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:PawnShop a sh:NodeShape;
+	sh:targetClass schema:PawnShop;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:PayAction a sh:NodeShape;
+	sh:targetClass schema:PayAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:recipient;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Audience]
+			[sh:node :ContactPoint]
+			[sh:node :Person]
+		);
+	].
+
+
+:PaymentCard a sh:NodeShape;
+	sh:targetClass schema:PaymentCard;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:PaymentChargeSpecification a sh:NodeShape;
+	sh:targetClass schema:PaymentChargeSpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:appliesToDeliveryMethod;
+		sh:node :DeliveryMethod;
+	];
+	sh:property [
+		sh:path schema:appliesToPaymentMethod;
+		sh:node :PaymentMethod;
+	].
+
+
+:PaymentMethod a sh:NodeShape;
+	sh:targetClass schema:PaymentMethod;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:PaymentService a sh:NodeShape;
+	sh:targetClass schema:PaymentService;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:PaymentStatusType a sh:NodeShape;
+	sh:targetClass schema:PaymentStatusType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:PeopleAudience a sh:NodeShape;
+	sh:targetClass schema:PeopleAudience;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:requiredGender;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:requiredMaxAge;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:requiredMinAge;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:suggestedGender;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:suggestedMaxAge;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:suggestedMinAge;
+		sh:node :Number;
+	].
+
+
+:PerformAction a sh:NodeShape;
+	sh:targetClass schema:PerformAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:entertainmentBusiness;
+		sh:node :EntertainmentBusiness;
+	].
+
+
+:PerformanceRole a sh:NodeShape;
+	sh:targetClass schema:PerformanceRole;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:characterName;
+		sh:node :Text;
+	].
+
+
+:PerformingArtsTheater a sh:NodeShape;
+	sh:targetClass schema:PerformingArtsTheater;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:PerformingGroup a sh:NodeShape;
+	sh:targetClass schema:PerformingGroup;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Periodical a sh:NodeShape;
+	sh:targetClass schema:Periodical;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Permit a sh:NodeShape;
+	sh:targetClass schema:Permit;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:issuedBy;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:issuedThrough;
+		sh:node :Service;
+	];
+	sh:property [
+		sh:path schema:permitAudience;
+		sh:node :Audience;
+	];
+	sh:property [
+		sh:path schema:validFor;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:validFrom;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:validIn;
+		sh:node :AdministrativeArea;
+	];
+	sh:property [
+		sh:path schema:validUntil;
+		sh:node :Date;
+	].
+
+
+:PetStore a sh:NodeShape;
+	sh:targetClass schema:PetStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Pharmacy a sh:NodeShape;
+	sh:targetClass schema:Pharmacy;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Photograph a sh:NodeShape;
+	sh:targetClass schema:Photograph;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:PhotographAction a sh:NodeShape;
+	sh:targetClass schema:PhotographAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:PhysicalActivity a sh:NodeShape;
+	sh:targetClass schema:PhysicalActivity;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:category;
+		sh:or (
+			[sh:node :Thing]
+			[sh:node :URL]
+			[sh:node :PhysicalActivityCategory]
+			[sh:node :Text]
+		);
+	].
+
+
+:PhysicalActivityCategory a sh:NodeShape;
+	sh:targetClass schema:PhysicalActivityCategory;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Physician a sh:NodeShape;
+	sh:targetClass schema:Physician;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Place a sh:NodeShape;
+	sh:targetClass schema:Place;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:additionalProperty;
+		sh:class schema:PropertyValue;
+	];
+	sh:property [
+		sh:path schema:address;
+		sh:or (
+			[sh:node :PostalAddress]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:aggregateRating;
+		sh:node :AggregateRating;
+	];
+	sh:property [
+		sh:path schema:amenityFeature;
+		sh:node :LocationFeatureSpecification;
+	];
+	sh:property [
+		sh:path schema:branchCode;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:containedIn;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:containedInPlace;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:containsPlace;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:event;
+		sh:class schema:Event;
+	];
+	sh:property [
+		sh:path schema:events;
+		sh:class schema:Event;
+	];
+	sh:property [
+		sh:path schema:faxNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:geo;
+		sh:or (
+			[sh:node :GeoShape]
+			[sh:node :GeoCoordinates]
+		);
+	];
+	sh:property [
+		sh:path schema:geoContains;
+		sh:or (
+			[sh:node :GeospatialGeometry]
+			[sh:node :Place]
+		);
+	];
+	sh:property [
+		sh:path schema:geoCoveredBy;
+		sh:or (
+			[sh:node :Place]
+			[sh:node :GeospatialGeometry]
+		);
+	];
+	sh:property [
+		sh:path schema:geoCovers;
+		sh:or (
+			[sh:node :GeospatialGeometry]
+			[sh:node :Place]
+		);
+	];
+	sh:property [
+		sh:path schema:geoCrosses;
+		sh:or (
+			[sh:node :GeospatialGeometry]
+			[sh:node :Place]
+		);
+	];
+	sh:property [
+		sh:path schema:geoDisjoint;
+		sh:or (
+			[sh:node :Place]
+			[sh:node :GeospatialGeometry]
+		);
+	];
+	sh:property [
+		sh:path schema:geoEquals;
+		sh:or (
+			[sh:node :Place]
+			[sh:node :GeospatialGeometry]
+		);
+	];
+	sh:property [
+		sh:path schema:geoIntersects;
+		sh:or (
+			[sh:node :GeospatialGeometry]
+			[sh:node :Place]
+		);
+	];
+	sh:property [
+		sh:path schema:geoOverlaps;
+		sh:or (
+			[sh:node :GeospatialGeometry]
+			[sh:node :Place]
+		);
+	];
+	sh:property [
+		sh:path schema:geoTouches;
+		sh:or (
+			[sh:node :GeospatialGeometry]
+			[sh:node :Place]
+		);
+	];
+	sh:property [
+		sh:path schema:geoWithin;
+		sh:or (
+			[sh:node :Place]
+			[sh:node :GeospatialGeometry]
+		);
+	];
+	sh:property [
+		sh:path schema:globalLocationNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:hasMap;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Map]
+		);
+	];
+	sh:property [
+		sh:path schema:isAccessibleForFree;
+		sh:node :Boolean;
+	];
+	sh:property [
+		sh:path schema:isicV4;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:latitude;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:logo;
+		sh:or (
+			[sh:node :ImageObject]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:longitude;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:map;
+		sh:node :URL;
+	];
+	sh:property [
+		sh:path schema:maps;
+		sh:node :URL;
+	];
+	sh:property [
+		sh:path schema:maximumAttendeeCapacity;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:openingHoursSpecification;
+		sh:node :OpeningHoursSpecification;
+	];
+	sh:property [
+		sh:path schema:photo;
+		sh:or (
+			[sh:node :ImageObject]
+			[sh:node :Photograph]
+		);
+	];
+	sh:property [
+		sh:path schema:photos;
+		sh:or (
+			[sh:node :ImageObject]
+			[sh:node :Photograph]
+		);
+	];
+	sh:property [
+		sh:path schema:publicAccess;
+		sh:node :Boolean;
+	];
+	sh:property [
+		sh:path schema:review;
+		sh:node :Review;
+	];
+	sh:property [
+		sh:path schema:reviews;
+		sh:node :Review;
+	];
+	sh:property [
+		sh:path schema:slogan;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:smokingAllowed;
+		sh:node :Boolean;
+	];
+	sh:property [
+		sh:path schema:specialOpeningHoursSpecification;
+		sh:node :OpeningHoursSpecification;
+	];
+	sh:property [
+		sh:path schema:telephone;
+		sh:node :Text;
+	].
+
+
+:PlaceOfWorship a sh:NodeShape;
+	sh:targetClass schema:PlaceOfWorship;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:PlanAction a sh:NodeShape;
+	sh:targetClass schema:PlanAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:scheduledTime;
+		sh:node :DateTime;
+	].
+
+
+:PlayAction a sh:NodeShape;
+	sh:targetClass schema:PlayAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:audience;
+		sh:node :Audience;
+	];
+	sh:property [
+		sh:path schema:event;
+		sh:class schema:Event;
+	].
+
+
+:Playground a sh:NodeShape;
+	sh:targetClass schema:Playground;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Plumber a sh:NodeShape;
+	sh:targetClass schema:Plumber;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:PoliceStation a sh:NodeShape;
+	sh:targetClass schema:PoliceStation;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Pond a sh:NodeShape;
+	sh:targetClass schema:Pond;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:PostalAddress a sh:NodeShape;
+	sh:targetClass schema:PostalAddress;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:addressCountry;
+		sh:or (
+			[sh:node :Country]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:addressLocality;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:addressRegion;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:postOfficeBoxNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:postalCode;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:streetAddress;
+		sh:node :Text;
+	].
+
+
+:PostOffice a sh:NodeShape;
+	sh:targetClass schema:PostOffice;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:PreOrderAction a sh:NodeShape;
+	sh:targetClass schema:PreOrderAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:PrependAction a sh:NodeShape;
+	sh:targetClass schema:PrependAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Preschool a sh:NodeShape;
+	sh:targetClass schema:Preschool;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:PresentationDigitalDocument a sh:NodeShape;
+	sh:targetClass schema:PresentationDigitalDocument;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:PriceSpecification a sh:NodeShape;
+	sh:targetClass schema:PriceSpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:eligibleQuantity;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:eligibleTransactionVolume;
+		sh:node :PriceSpecification;
+	];
+	sh:property [
+		sh:path schema:maxPrice;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:minPrice;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:price;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:priceCurrency;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:validFrom;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:validThrough;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:valueAddedTaxIncluded;
+		sh:node :Boolean;
+	].
+
+
+:Product a sh:NodeShape;
+	sh:targetClass schema:Product;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:additionalProperty;
+		sh:class schema:PropertyValue;
+	];
+	sh:property [
+		sh:path schema:aggregateRating;
+		sh:node :AggregateRating;
+	];
+	sh:property [
+		sh:path schema:audience;
+		sh:node :Audience;
+	];
+	sh:property [
+		sh:path schema:award;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:awards;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:brand;
+		sh:or (
+			[sh:node :Brand]
+			[sh:class schema:Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:category;
+		sh:or (
+			[sh:node :Thing]
+			[sh:node :URL]
+			[sh:node :PhysicalActivityCategory]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:color;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:depth;
+		sh:or (
+			[sh:node :Distance]
+			[sh:class schema:QuantitativeValue]
+		);
+	];
+	sh:property [
+		sh:path schema:gtin12;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:gtin13;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:gtin14;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:gtin8;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:height;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Distance]
+		);
+	];
+	sh:property [
+		sh:path schema:isAccessoryOrSparePartFor;
+		sh:class schema:Product;
+	];
+	sh:property [
+		sh:path schema:isConsumableFor;
+		sh:class schema:Product;
+	];
+	sh:property [
+		sh:path schema:isRelatedTo;
+		sh:or (
+			[sh:class schema:Product]
+			[sh:node :Service]
+		);
+	];
+	sh:property [
+		sh:path schema:isSimilarTo;
+		sh:or (
+			[sh:node :Service]
+			[sh:class schema:Product]
+		);
+	];
+	sh:property [
+		sh:path schema:itemCondition;
+		sh:class schema:OfferItemCondition;
+	];
+	sh:property [
+		sh:path schema:logo;
+		sh:or (
+			[sh:node :ImageObject]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:manufacturer;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:material;
+		sh:or (
+			[sh:class schema:Product]
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:model;
+		sh:or (
+			[sh:class schema:ProductModel]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:mpn;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:offers;
+		sh:or (
+			[sh:class schema:Demand]
+			[sh:class schema:Offer]
+		);
+	];
+	sh:property [
+		sh:path schema:productID;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:productionDate;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:purchaseDate;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:releaseDate;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:review;
+		sh:node :Review;
+	];
+	sh:property [
+		sh:path schema:reviews;
+		sh:node :Review;
+	];
+	sh:property [
+		sh:path schema:sku;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:slogan;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:weight;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:width;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Distance]
+		);
+	].
+
+
+:ProductModel a sh:NodeShape;
+	sh:targetClass schema:ProductModel;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:isVariantOf;
+		sh:class schema:ProductModel;
+	];
+	sh:property [
+		sh:path schema:predecessorOf;
+		sh:class schema:ProductModel;
+	];
+	sh:property [
+		sh:path schema:successorOf;
+		sh:class schema:ProductModel;
+	].
+
+
+:ProfessionalService a sh:NodeShape;
+	sh:targetClass schema:ProfessionalService;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ProfilePage a sh:NodeShape;
+	sh:targetClass schema:ProfilePage;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ProgramMembership a sh:NodeShape;
+	sh:targetClass schema:ProgramMembership;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:hostingOrganization;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:member;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:members;
+		sh:or (
+			[sh:node :Person]
+			[sh:class schema:Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:membershipNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:programName;
+		sh:node :Text;
+	].
+
+
+:PronounceableText a sh:NodeShape;
+	sh:targetClass schema:PronounceableText;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:inLanguage;
+		sh:or (
+			[sh:node :Text]
+			[sh:class schema:Language]
+		);
+	].
+
+
+:PropertyValue a sh:NodeShape;
+	sh:targetClass schema:PropertyValue;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:maxValue;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:minValue;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:propertyID;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:unitCode;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:unitText;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:value;
+		sh:or (
+			[sh:node :Boolean]
+			[sh:node :StructuredValue]
+			[sh:node :Number]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:valueReference;
+		sh:or (
+			[sh:class schema:PropertyValue]
+			[sh:node :StructuredValue]
+			[sh:node :QualitativeValue]
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Enumeration]
+		);
+	].
+
+
+:PropertyValueSpecification a sh:NodeShape;
+	sh:targetClass schema:PropertyValueSpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:defaultValue;
+		sh:or (
+			[sh:node :Thing]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:maxValue;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:minValue;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:multipleValues;
+		sh:node :Boolean;
+	];
+	sh:property [
+		sh:path schema:readonlyValue;
+		sh:node :Boolean;
+	];
+	sh:property [
+		sh:path schema:stepValue;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:valueMaxLength;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:valueMinLength;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:valueName;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:valuePattern;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:valueRequired;
+		sh:node :Boolean;
+	].
+
+
+:PublicationEvent a sh:NodeShape;
+	sh:targetClass schema:PublicationEvent;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:free;
+		sh:node :Boolean;
+	];
+	sh:property [
+		sh:path schema:isAccessibleForFree;
+		sh:node :Boolean;
+	];
+	sh:property [
+		sh:path schema:publishedOn;
+		sh:node :BroadcastService;
+	].
+
+
+:PublicationIssue a sh:NodeShape;
+	sh:targetClass schema:PublicationIssue;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:issueNumber;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Integer]
+		);
+	];
+	sh:property [
+		sh:path schema:pageEnd;
+		sh:or (
+			[sh:node :Integer]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:pageStart;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Integer]
+		);
+	];
+	sh:property [
+		sh:path schema:pagination;
+		sh:node :Text;
+	].
+
+
+:PublicationVolume a sh:NodeShape;
+	sh:targetClass schema:PublicationVolume;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:pageEnd;
+		sh:or (
+			[sh:node :Integer]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:pageStart;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Integer]
+		);
+	];
+	sh:property [
+		sh:path schema:pagination;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:volumeNumber;
+		sh:or (
+			[sh:node :Integer]
+			[sh:node :Text]
+		);
+	].
+
+
+:PublicSwimmingPool a sh:NodeShape;
+	sh:targetClass schema:PublicSwimmingPool;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:QAPage a sh:NodeShape;
+	sh:targetClass schema:QAPage;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:QualitativeValue a sh:NodeShape;
+	sh:targetClass schema:QualitativeValue;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:additionalProperty;
+		sh:class schema:PropertyValue;
+	];
+	sh:property [
+		sh:path schema:equal;
+		sh:node :QualitativeValue;
+	];
+	sh:property [
+		sh:path schema:greater;
+		sh:node :QualitativeValue;
+	];
+	sh:property [
+		sh:path schema:greaterOrEqual;
+		sh:node :QualitativeValue;
+	];
+	sh:property [
+		sh:path schema:lesser;
+		sh:node :QualitativeValue;
+	];
+	sh:property [
+		sh:path schema:lesserOrEqual;
+		sh:node :QualitativeValue;
+	];
+	sh:property [
+		sh:path schema:nonEqual;
+		sh:node :QualitativeValue;
+	];
+	sh:property [
+		sh:path schema:valueReference;
+		sh:or (
+			[sh:class schema:PropertyValue]
+			[sh:node :StructuredValue]
+			[sh:node :QualitativeValue]
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Enumeration]
+		);
+	].
+
+
+:QuantitativeValue a sh:NodeShape;
+	sh:targetClass schema:QuantitativeValue;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:additionalProperty;
+		sh:class schema:PropertyValue;
+	];
+	sh:property [
+		sh:path schema:maxValue;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:minValue;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:unitCode;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:unitText;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:value;
+		sh:or (
+			[sh:node :Boolean]
+			[sh:node :StructuredValue]
+			[sh:node :Number]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:valueReference;
+		sh:or (
+			[sh:class schema:PropertyValue]
+			[sh:node :StructuredValue]
+			[sh:node :QualitativeValue]
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Enumeration]
+		);
+	].
+
+
+:QuantitativeValueDistribution a sh:NodeShape;
+	sh:targetClass schema:QuantitativeValueDistribution;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:duration;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:median;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:percentile10;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:percentile25;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:percentile75;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:percentile90;
+		sh:node :Number;
+	].
+
+
+:Quantity a sh:NodeShape;
+	sh:targetClass schema:Quantity;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Question a sh:NodeShape;
+	sh:targetClass schema:Question;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:acceptedAnswer;
+		sh:or (
+			[sh:class schema:ItemList]
+			[sh:node :Answer]
+		);
+	];
+	sh:property [
+		sh:path schema:answerCount;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:downvoteCount;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:suggestedAnswer;
+		sh:or (
+			[sh:node :Answer]
+			[sh:class schema:ItemList]
+		);
+	];
+	sh:property [
+		sh:path schema:upvoteCount;
+		sh:node :Integer;
+	].
+
+
+:QuoteAction a sh:NodeShape;
+	sh:targetClass schema:QuoteAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:RadioChannel a sh:NodeShape;
+	sh:targetClass schema:RadioChannel;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:RadioClip a sh:NodeShape;
+	sh:targetClass schema:RadioClip;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:RadioEpisode a sh:NodeShape;
+	sh:targetClass schema:RadioEpisode;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:RadioSeason a sh:NodeShape;
+	sh:targetClass schema:RadioSeason;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:RadioSeries a sh:NodeShape;
+	sh:targetClass schema:RadioSeries;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:actor;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:actors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:containsSeason;
+		sh:node :CreativeWorkSeason;
+	];
+	sh:property [
+		sh:path schema:director;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:directors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:episode;
+		sh:node :Episode;
+	];
+	sh:property [
+		sh:path schema:episodes;
+		sh:node :Episode;
+	];
+	sh:property [
+		sh:path schema:musicBy;
+		sh:or (
+			[sh:node :Person]
+			[sh:node :MusicGroup]
+		);
+	];
+	sh:property [
+		sh:path schema:numberOfEpisodes;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:numberOfSeasons;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:productionCompany;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:season;
+		sh:or (
+			[sh:node :CreativeWorkSeason]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:seasons;
+		sh:node :CreativeWorkSeason;
+	];
+	sh:property [
+		sh:path schema:trailer;
+		sh:class schema:VideoObject;
+	].
+
+
+:RadioStation a sh:NodeShape;
+	sh:targetClass schema:RadioStation;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Rating a sh:NodeShape;
+	sh:targetClass schema:Rating;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:author;
+		sh:or (
+			[sh:node :Person]
+			[sh:class schema:Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:bestRating;
+		sh:or (
+			[sh:node :Number]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:ratingValue;
+		sh:or (
+			[sh:node :Number]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:reviewAspect;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:worstRating;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Number]
+		);
+	].
+
+
+
+
+
+:ReactAction a sh:NodeShape;
+	sh:targetClass schema:ReactAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ReadAction a sh:NodeShape;
+	sh:targetClass schema:ReadAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:RealEstateAgent a sh:NodeShape;
+	sh:targetClass schema:RealEstateAgent;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:RealEstateListing a sh:NodeShape;
+	sh:targetClass schema:RealEstateListing;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:datePosted;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Date]
+		);
+	].
+
+
+:ReceiveAction a sh:NodeShape;
+	sh:targetClass schema:ReceiveAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:deliveryMethod;
+		sh:node :DeliveryMethod;
+	];
+	sh:property [
+		sh:path schema:sender;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Audience]
+			[sh:node :Person]
+		);
+	].
+
+
+:Recommendation a sh:NodeShape;
+	sh:targetClass schema:Recommendation;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:category;
+		sh:or (
+			[sh:node :Thing]
+			[sh:node :URL]
+			[sh:node :PhysicalActivityCategory]
+			[sh:node :Text]
+		);
+	].
+
+
+:RecyclingCenter a sh:NodeShape;
+	sh:targetClass schema:RecyclingCenter;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:RegisterAction a sh:NodeShape;
+	sh:targetClass schema:RegisterAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:RejectAction a sh:NodeShape;
+	sh:targetClass schema:RejectAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:RentAction a sh:NodeShape;
+	sh:targetClass schema:RentAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:landlord;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:realEstateAgent;
+		sh:node :RealEstateAgent;
+	].
+
+
+:RentalCarReservation a sh:NodeShape;
+	sh:targetClass schema:RentalCarReservation;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:dropoffLocation;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:dropoffTime;
+		sh:node :DateTime;
+	];
+	sh:property [
+		sh:path schema:pickupLocation;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:pickupTime;
+		sh:node :DateTime;
+	].
+
+
+:ReplaceAction a sh:NodeShape;
+	sh:targetClass schema:ReplaceAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:replacee;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:replacer;
+		sh:node :Thing;
+	].
+
+
+:ReplyAction a sh:NodeShape;
+	sh:targetClass schema:ReplyAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:resultComment;
+		sh:node :Comment;
+	].
+
+
+:Report a sh:NodeShape;
+	sh:targetClass schema:Report;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:reportNumber;
+		sh:node :Text;
+	].
+
+
+:Reservation a sh:NodeShape;
+	sh:targetClass schema:Reservation;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:bookingAgent;
+		sh:or (
+			[sh:node :Person]
+			[sh:class schema:Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:bookingTime;
+		sh:node :DateTime;
+	];
+	sh:property [
+		sh:path schema:broker;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:modifiedTime;
+		sh:node :DateTime;
+	];
+	sh:property [
+		sh:path schema:priceCurrency;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:programMembershipUsed;
+		sh:node :ProgramMembership;
+	];
+	sh:property [
+		sh:path schema:provider;
+		sh:or (
+			[sh:node :Person]
+			[sh:class schema:Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:reservationFor;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:reservationId;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:reservationStatus;
+		sh:node :ReservationStatusType;
+	];
+	sh:property [
+		sh:path schema:reservedTicket;
+		sh:node :Ticket;
+	];
+	sh:property [
+		sh:path schema:totalPrice;
+		sh:or (
+			[sh:node :PriceSpecification]
+			[sh:node :Text]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:underName;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	].
+
+
+:ReservationPackage a sh:NodeShape;
+	sh:targetClass schema:ReservationPackage;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:subReservation;
+		sh:node :Reservation;
+	].
+
+
+:ReservationStatusType a sh:NodeShape;
+	sh:targetClass schema:ReservationStatusType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ReserveAction a sh:NodeShape;
+	sh:targetClass schema:ReserveAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Reservoir a sh:NodeShape;
+	sh:targetClass schema:Reservoir;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Residence a sh:NodeShape;
+	sh:targetClass schema:Residence;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Resort a sh:NodeShape;
+	sh:targetClass schema:Resort;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Restaurant a sh:NodeShape;
+	sh:targetClass schema:Restaurant;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:RestrictedDiet a sh:NodeShape;
+	sh:targetClass schema:RestrictedDiet;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ResumeAction a sh:NodeShape;
+	sh:targetClass schema:ResumeAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ReturnAction a sh:NodeShape;
+	sh:targetClass schema:ReturnAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:recipient;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Audience]
+			[sh:node :ContactPoint]
+			[sh:node :Person]
+		);
+	].
+
+
+:Review a sh:NodeShape;
+	sh:targetClass schema:Review;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:itemReviewed;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:reviewAspect;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:reviewBody;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:reviewRating;
+		sh:class schema:Rating;
+	].
+
+
+:ReviewAction a sh:NodeShape;
+	sh:targetClass schema:ReviewAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:resultReview;
+		sh:node :Review;
+	].
+
+
+:RiverBodyOfWater a sh:NodeShape;
+	sh:targetClass schema:RiverBodyOfWater;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Role a sh:NodeShape;
+	sh:targetClass schema:Role;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:endDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:namedPosition;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:roleName;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:startDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	].
+
+
+:RoofingContractor a sh:NodeShape;
+	sh:targetClass schema:RoofingContractor;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Room a sh:NodeShape;
+	sh:targetClass schema:Room;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:RsvpAction a sh:NodeShape;
+	sh:targetClass schema:RsvpAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:additionalNumberOfGuests;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:comment;
+		sh:node :Comment;
+	];
+	sh:property [
+		sh:path schema:rsvpResponse;
+		sh:node :RsvpResponseType;
+	].
+
+
+:RsvpResponseType a sh:NodeShape;
+	sh:targetClass schema:RsvpResponseType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:RVPark a sh:NodeShape;
+	sh:targetClass schema:RVPark;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:SaleEvent a sh:NodeShape;
+	sh:targetClass schema:SaleEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Schedule a sh:NodeShape;
+	sh:targetClass schema:Schedule;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:duration;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:endDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:endTime;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Time]
+		);
+	];
+	sh:property [
+		sh:path schema:startDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:startTime;
+		sh:or (
+			[sh:node :Time]
+			[sh:node :DateTime]
+		);
+	].
+
+
+:ScheduleAction a sh:NodeShape;
+	sh:targetClass schema:ScheduleAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ScholarlyArticle a sh:NodeShape;
+	sh:targetClass schema:ScholarlyArticle;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:School a sh:NodeShape;
+	sh:targetClass schema:School;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ScreeningEvent a sh:NodeShape;
+	sh:targetClass schema:ScreeningEvent;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:videoFormat;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:workPresented;
+		sh:node :Movie;
+	].
+
+
+:Sculpture a sh:NodeShape;
+	sh:targetClass schema:Sculpture;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:SeaBodyOfWater a sh:NodeShape;
+	sh:targetClass schema:SeaBodyOfWater;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:SearchAction a sh:NodeShape;
+	sh:targetClass schema:SearchAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:query;
+		sh:node :Text;
+	].
+
+
+:SearchResultsPage a sh:NodeShape;
+	sh:targetClass schema:SearchResultsPage;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Season a sh:NodeShape;
+	sh:targetClass schema:Season;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Seat a sh:NodeShape;
+	sh:targetClass schema:Seat;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:seatNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:seatRow;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:seatSection;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:seatingType;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :QualitativeValue]
+		);
+	].
+
+
+:SelfStorage a sh:NodeShape;
+	sh:targetClass schema:SelfStorage;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:SellAction a sh:NodeShape;
+	sh:targetClass schema:SellAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:buyer;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:warrantyPromise;
+		sh:node :WarrantyPromise;
+	].
+
+
+:SendAction a sh:NodeShape;
+	sh:targetClass schema:SendAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:deliveryMethod;
+		sh:node :DeliveryMethod;
+	];
+	sh:property [
+		sh:path schema:recipient;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Audience]
+			[sh:node :ContactPoint]
+			[sh:node :Person]
+		);
+	].
+
+
+:Series a sh:NodeShape;
+	sh:targetClass schema:Series;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Service a sh:NodeShape;
+	sh:targetClass schema:Service;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:aggregateRating;
+		sh:node :AggregateRating;
+	];
+	sh:property [
+		sh:path schema:areaServed;
+		sh:or (
+			[sh:node :AdministrativeArea]
+			[sh:node :Text]
+			[sh:node :Place]
+			[sh:node :GeoShape]
+		);
+	];
+	sh:property [
+		sh:path schema:audience;
+		sh:node :Audience;
+	];
+	sh:property [
+		sh:path schema:availableChannel;
+		sh:node :ServiceChannel;
+	];
+	sh:property [
+		sh:path schema:award;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:brand;
+		sh:or (
+			[sh:node :Brand]
+			[sh:class schema:Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:broker;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:category;
+		sh:or (
+			[sh:node :Thing]
+			[sh:node :URL]
+			[sh:node :PhysicalActivityCategory]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:hasOfferCatalog;
+		sh:class schema:OfferCatalog;
+	];
+	sh:property [
+		sh:path schema:hoursAvailable;
+		sh:node :OpeningHoursSpecification;
+	];
+	sh:property [
+		sh:path schema:isRelatedTo;
+		sh:or (
+			[sh:class schema:Product]
+			[sh:node :Service]
+		);
+	];
+	sh:property [
+		sh:path schema:isSimilarTo;
+		sh:or (
+			[sh:node :Service]
+			[sh:class schema:Product]
+		);
+	];
+	sh:property [
+		sh:path schema:logo;
+		sh:or (
+			[sh:node :ImageObject]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:offers;
+		sh:or (
+			[sh:class schema:Demand]
+			[sh:class schema:Offer]
+		);
+	];
+	sh:property [
+		sh:path schema:produces;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:provider;
+		sh:or (
+			[sh:node :Person]
+			[sh:class schema:Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:providerMobility;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:review;
+		sh:node :Review;
+	];
+	sh:property [
+		sh:path schema:serviceArea;
+		sh:or (
+			[sh:node :Place]
+			[sh:node :GeoShape]
+			[sh:node :AdministrativeArea]
+		);
+	];
+	sh:property [
+		sh:path schema:serviceAudience;
+		sh:node :Audience;
+	];
+	sh:property [
+		sh:path schema:serviceOutput;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:serviceType;
+		sh:or (
+			[sh:node :GovernmentBenefitsType]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:slogan;
+		sh:node :Text;
+	].
+
+
+:ServiceChannel a sh:NodeShape;
+	sh:targetClass schema:ServiceChannel;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:availableLanguage;
+		sh:or (
+			[sh:node :Text]
+			[sh:class schema:Language]
+		);
+	];
+	sh:property [
+		sh:path schema:processingTime;
+		sh:node :Duration;
+	];
+	sh:property [
+		sh:path schema:providesService;
+		sh:node :Service;
+	];
+	sh:property [
+		sh:path schema:serviceLocation;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:servicePhone;
+		sh:node :ContactPoint;
+	];
+	sh:property [
+		sh:path schema:servicePostalAddress;
+		sh:node :PostalAddress;
+	];
+	sh:property [
+		sh:path schema:serviceSmsNumber;
+		sh:node :ContactPoint;
+	];
+	sh:property [
+		sh:path schema:serviceUrl;
+		sh:node :URL;
+	].
+
+
+:ShareAction a sh:NodeShape;
+	sh:targetClass schema:ShareAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ShoeStore a sh:NodeShape;
+	sh:targetClass schema:ShoeStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:ShoppingCenter a sh:NodeShape;
+	sh:targetClass schema:ShoppingCenter;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:SingleFamilyResidence a sh:NodeShape;
+	sh:targetClass schema:SingleFamilyResidence;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:numberOfRooms;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:occupancy;
+		sh:class schema:QuantitativeValue;
+	].
+
+
+:SiteNavigationElement a sh:NodeShape;
+	sh:targetClass schema:SiteNavigationElement;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:SkiResort a sh:NodeShape;
+	sh:targetClass schema:SkiResort;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:SocialEvent a sh:NodeShape;
+	sh:targetClass schema:SocialEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:SocialMediaPosting a sh:NodeShape;
+	sh:targetClass schema:SocialMediaPosting;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:sharedContent;
+		sh:node :CreativeWork;
+	].
+
+
+:SoftwareApplication a sh:NodeShape;
+	sh:targetClass schema:SoftwareApplication;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:applicationCategory;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:applicationSubCategory;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:applicationSuite;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:availableOnDevice;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:countriesNotSupported;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:countriesSupported;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:device;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:downloadUrl;
+		sh:node :URL;
+	];
+	sh:property [
+		sh:path schema:featureList;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:fileSize;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:installUrl;
+		sh:node :URL;
+	];
+	sh:property [
+		sh:path schema:memoryRequirements;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:operatingSystem;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:permissions;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:processorRequirements;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:releaseNotes;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:requirements;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:screenshot;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :ImageObject]
+		);
+	];
+	sh:property [
+		sh:path schema:softwareAddOn;
+		sh:node :SoftwareApplication;
+	];
+	sh:property [
+		sh:path schema:softwareHelp;
+		sh:node :CreativeWork;
+	];
+	sh:property [
+		sh:path schema:softwareRequirements;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:softwareVersion;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:storageRequirements;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:supportingData;
+		sh:node :DataFeed;
+	].
+
+
+:SoftwareSourceCode a sh:NodeShape;
+	sh:targetClass schema:SoftwareSourceCode;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:codeRepository;
+		sh:node :URL;
+	];
+	sh:property [
+		sh:path schema:codeSampleType;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:programmingLanguage;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :ComputerLanguage]
+		);
+	];
+	sh:property [
+		sh:path schema:runtime;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:runtimePlatform;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:sampleType;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:targetProduct;
+		sh:node :SoftwareApplication;
+	].
+
+
+:SomeProducts a sh:NodeShape;
+	sh:targetClass schema:SomeProducts;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:inventoryLevel;
+		sh:class schema:QuantitativeValue;
+	].
+
+
+:SpeakableSpecification a sh:NodeShape;
+	sh:targetClass schema:SpeakableSpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:cssSelector;
+		sh:node :CssSelectorType;
+	];
+	sh:property [
+		sh:path schema:xpath;
+		sh:node :XPathType;
+	].
+
+
+:SpecialAnnouncement a sh:NodeShape;
+	sh:targetClass schema:SpecialAnnouncement;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:category;
+		sh:or (
+			[sh:node :Thing]
+			[sh:node :URL]
+			[sh:node :PhysicalActivityCategory]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:datePosted;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Date]
+		);
+	].
+
+
+:Specialty a sh:NodeShape;
+	sh:targetClass schema:Specialty;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:SportingGoodsStore a sh:NodeShape;
+	sh:targetClass schema:SportingGoodsStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:SportsActivityLocation a sh:NodeShape;
+	sh:targetClass schema:SportsActivityLocation;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:SportsClub a sh:NodeShape;
+	sh:targetClass schema:SportsClub;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:SportsEvent a sh:NodeShape;
+	sh:targetClass schema:SportsEvent;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:awayTeam;
+		sh:or (
+			[sh:node :Person]
+			[sh:node :SportsTeam]
+		);
+	];
+	sh:property [
+		sh:path schema:competitor;
+		sh:or (
+			[sh:node :Person]
+			[sh:node :SportsTeam]
+		);
+	];
+	sh:property [
+		sh:path schema:homeTeam;
+		sh:or (
+			[sh:node :SportsTeam]
+			[sh:node :Person]
+		);
+	].
+
+
+:SportsOrganization a sh:NodeShape;
+	sh:targetClass schema:SportsOrganization;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:SportsTeam a sh:NodeShape;
+	sh:targetClass schema:SportsTeam;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:athlete;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:coach;
+		sh:node :Person;
+	].
+
+
+:SpreadsheetDigitalDocument a sh:NodeShape;
+	sh:targetClass schema:SpreadsheetDigitalDocument;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:StadiumOrArena a sh:NodeShape;
+	sh:targetClass schema:StadiumOrArena;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:State a sh:NodeShape;
+	sh:targetClass schema:State;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:SteeringPositionValue a sh:NodeShape;
+	sh:targetClass schema:SteeringPositionValue;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Store a sh:NodeShape;
+	sh:targetClass schema:Store;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:StructuredValue a sh:NodeShape;
+	sh:targetClass schema:StructuredValue;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:SubscribeAction a sh:NodeShape;
+	sh:targetClass schema:SubscribeAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:SubwayStation a sh:NodeShape;
+	sh:targetClass schema:SubwayStation;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Suite a sh:NodeShape;
+	sh:targetClass schema:Suite;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:bed;
+		sh:or (
+			[sh:node :BedDetails]
+			[sh:node :Text]
+			[sh:node :BedType]
+		);
+	];
+	sh:property [
+		sh:path schema:numberOfRooms;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:occupancy;
+		sh:class schema:QuantitativeValue;
+	].
+
+
+:SuspendAction a sh:NodeShape;
+	sh:targetClass schema:SuspendAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Synagogue a sh:NodeShape;
+	sh:targetClass schema:Synagogue;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Table a sh:NodeShape;
+	sh:targetClass schema:Table;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:TakeAction a sh:NodeShape;
+	sh:targetClass schema:TakeAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:TattooParlor a sh:NodeShape;
+	sh:targetClass schema:TattooParlor;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Taxi a sh:NodeShape;
+	sh:targetClass schema:Taxi;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:TaxiReservation a sh:NodeShape;
+	sh:targetClass schema:TaxiReservation;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:partySize;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Integer]
+		);
+	];
+	sh:property [
+		sh:path schema:pickupLocation;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:pickupTime;
+		sh:node :DateTime;
+	].
+
+
+:TaxiService a sh:NodeShape;
+	sh:targetClass schema:TaxiService;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:TaxiStand a sh:NodeShape;
+	sh:targetClass schema:TaxiStand;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:TechArticle a sh:NodeShape;
+	sh:targetClass schema:TechArticle;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:dependencies;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:proficiencyLevel;
+		sh:node :Text;
+	].
+
+
+:TelevisionChannel a sh:NodeShape;
+	sh:targetClass schema:TelevisionChannel;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:TelevisionStation a sh:NodeShape;
+	sh:targetClass schema:TelevisionStation;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:TennisComplex a sh:NodeShape;
+	sh:targetClass schema:TennisComplex;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:TextDigitalDocument a sh:NodeShape;
+	sh:targetClass schema:TextDigitalDocument;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:TheaterEvent a sh:NodeShape;
+	sh:targetClass schema:TheaterEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:TheaterGroup a sh:NodeShape;
+	sh:targetClass schema:TheaterGroup;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Ticket a sh:NodeShape;
+	sh:targetClass schema:Ticket;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:dateIssued;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:issuedBy;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:priceCurrency;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:ticketNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:ticketToken;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:ticketedSeat;
+		sh:node :Seat;
+	];
+	sh:property [
+		sh:path schema:totalPrice;
+		sh:or (
+			[sh:node :PriceSpecification]
+			[sh:node :Text]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:underName;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	].
+
+
+:TieAction a sh:NodeShape;
+	sh:targetClass schema:TieAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Time a sh:NodeShape;
+	sh:targetClass schema:Time;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:TipAction a sh:NodeShape;
+	sh:targetClass schema:TipAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:recipient;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Audience]
+			[sh:node :ContactPoint]
+			[sh:node :Person]
+		);
+	].
+
+
+:TireShop a sh:NodeShape;
+	sh:targetClass schema:TireShop;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:TouristAttraction a sh:NodeShape;
+	sh:targetClass schema:TouristAttraction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:availableLanguage;
+		sh:or (
+			[sh:node :Text]
+			[sh:class schema:Language]
+		);
+	];
+	sh:property [
+		sh:path schema:touristType;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Audience]
+		);
+	].
+
+
+:TouristDestination a sh:NodeShape;
+	sh:targetClass schema:TouristDestination;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:touristType;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Audience]
+		);
+	].
+
+
+:TouristInformationCenter a sh:NodeShape;
+	sh:targetClass schema:TouristInformationCenter;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:TouristTrip a sh:NodeShape;
+	sh:targetClass schema:TouristTrip;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:touristType;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Audience]
+		);
+	].
+
+
+:ToyStore a sh:NodeShape;
+	sh:targetClass schema:ToyStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:TrackAction a sh:NodeShape;
+	sh:targetClass schema:TrackAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:deliveryMethod;
+		sh:node :DeliveryMethod;
+	].
+
+
+:TradeAction a sh:NodeShape;
+	sh:targetClass schema:TradeAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:price;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:priceCurrency;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:priceSpecification;
+		sh:node :PriceSpecification;
+	].
+
+
+:TrainReservation a sh:NodeShape;
+	sh:targetClass schema:TrainReservation;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:TrainStation a sh:NodeShape;
+	sh:targetClass schema:TrainStation;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:TrainTrip a sh:NodeShape;
+	sh:targetClass schema:TrainTrip;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:arrivalPlatform;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:arrivalStation;
+		sh:node :TrainStation;
+	];
+	sh:property [
+		sh:path schema:departurePlatform;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:departureStation;
+		sh:node :TrainStation;
+	];
+	sh:property [
+		sh:path schema:trainName;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:trainNumber;
+		sh:node :Text;
+	].
+
+
+:TransferAction a sh:NodeShape;
+	sh:targetClass schema:TransferAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:fromLocation;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:toLocation;
+		sh:node :Place;
+	].
+
+
+:TravelAction a sh:NodeShape;
+	sh:targetClass schema:TravelAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:distance;
+		sh:node :Distance;
+	].
+
+
+:TravelAgency a sh:NodeShape;
+	sh:targetClass schema:TravelAgency;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Trip a sh:NodeShape;
+	sh:targetClass schema:Trip;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:arrivalTime;
+		sh:or (
+			[sh:node :Time]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:departureTime;
+		sh:or (
+			[sh:node :Time]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:offers;
+		sh:or (
+			[sh:class schema:Demand]
+			[sh:class schema:Offer]
+		);
+	];
+	sh:property [
+		sh:path schema:provider;
+		sh:or (
+			[sh:node :Person]
+			[sh:class schema:Organization]
+		);
+	].
+
+
+:TVClip a sh:NodeShape;
+	sh:targetClass schema:TVClip;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:partOfTVSeries;
+		sh:node :TVSeries;
+	].
+
+
+:TVEpisode a sh:NodeShape;
+	sh:targetClass schema:TVEpisode;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:countryOfOrigin;
+		sh:node :Country;
+	];
+	sh:property [
+		sh:path schema:partOfTVSeries;
+		sh:node :TVSeries;
+	].
+
+
+:TVSeason a sh:NodeShape;
+	sh:targetClass schema:TVSeason;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:countryOfOrigin;
+		sh:node :Country;
+	];
+	sh:property [
+		sh:path schema:partOfTVSeries;
+		sh:node :TVSeries;
+	].
+
+
+:TVSeries a sh:NodeShape;
+	sh:targetClass schema:TVSeries;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:actor;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:actors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:containsSeason;
+		sh:node :CreativeWorkSeason;
+	];
+	sh:property [
+		sh:path schema:countryOfOrigin;
+		sh:node :Country;
+	];
+	sh:property [
+		sh:path schema:director;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:directors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:episode;
+		sh:node :Episode;
+	];
+	sh:property [
+		sh:path schema:episodes;
+		sh:node :Episode;
+	];
+	sh:property [
+		sh:path schema:musicBy;
+		sh:or (
+			[sh:node :Person]
+			[sh:node :MusicGroup]
+		);
+	];
+	sh:property [
+		sh:path schema:numberOfEpisodes;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:numberOfSeasons;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:productionCompany;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:season;
+		sh:or (
+			[sh:node :CreativeWorkSeason]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:seasons;
+		sh:node :CreativeWorkSeason;
+	];
+	sh:property [
+		sh:path schema:trailer;
+		sh:class schema:VideoObject;
+	].
+
+
+:TypeAndQuantityNode a sh:NodeShape;
+	sh:targetClass schema:TypeAndQuantityNode;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:amountOfThisGood;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:businessFunction;
+		sh:node :BusinessFunction;
+	];
+	sh:property [
+		sh:path schema:typeOfGood;
+		sh:or (
+			[sh:node :Service]
+			[sh:class schema:Product]
+		);
+	];
+	sh:property [
+		sh:path schema:unitCode;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:unitText;
+		sh:node :Text;
+	].
+
+
+:UnitPriceSpecification a sh:NodeShape;
+	sh:targetClass schema:UnitPriceSpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:billingIncrement;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:priceType;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:referenceQuantity;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:unitCode;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:unitText;
+		sh:node :Text;
+	].
+
+
+:UnRegisterAction a sh:NodeShape;
+	sh:targetClass schema:UnRegisterAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:UpdateAction a sh:NodeShape;
+	sh:targetClass schema:UpdateAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:collection;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:targetCollection;
+		sh:node :Thing;
+	].
+
+
+:UseAction a sh:NodeShape;
+	sh:targetClass schema:UseAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:UserBlocks a sh:NodeShape;
+	sh:targetClass schema:UserBlocks;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:UserCheckins a sh:NodeShape;
+	sh:targetClass schema:UserCheckins;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:UserComments a sh:NodeShape;
+	sh:targetClass schema:UserComments;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:commentText;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:commentTime;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Date]
+		);
+	];
+	sh:property [
+		sh:path schema:creator;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:discusses;
+		sh:node :CreativeWork;
+	];
+	sh:property [
+		sh:path schema:replyToUrl;
+		sh:node :URL;
+	].
+
+
+:UserDownloads a sh:NodeShape;
+	sh:targetClass schema:UserDownloads;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:UserInteraction a sh:NodeShape;
+	sh:targetClass schema:UserInteraction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:UserLikes a sh:NodeShape;
+	sh:targetClass schema:UserLikes;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:UserPageVisits a sh:NodeShape;
+	sh:targetClass schema:UserPageVisits;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:UserPlays a sh:NodeShape;
+	sh:targetClass schema:UserPlays;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:UserPlusOnes a sh:NodeShape;
+	sh:targetClass schema:UserPlusOnes;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:UserTweets a sh:NodeShape;
+	sh:targetClass schema:UserTweets;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Vehicle a sh:NodeShape;
+	sh:targetClass schema:Vehicle;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:cargoVolume;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:dateVehicleFirstRegistered;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:driveWheelConfiguration;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :DriveWheelConfigurationValue]
+		);
+	];
+	sh:property [
+		sh:path schema:fuelConsumption;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:fuelEfficiency;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:fuelType;
+		sh:or (
+			[sh:node :QualitativeValue]
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:knownVehicleDamages;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:mileageFromOdometer;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:numberOfAirbags;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:numberOfAxles;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:numberOfDoors;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:numberOfForwardGears;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:numberOfPreviousOwners;
+		sh:or (
+			[sh:node :Number]
+			[sh:class schema:QuantitativeValue]
+		);
+	];
+	sh:property [
+		sh:path schema:productionDate;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:purchaseDate;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:steeringPosition;
+		sh:node :SteeringPositionValue;
+	];
+	sh:property [
+		sh:path schema:vehicleConfiguration;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:vehicleEngine;
+		sh:node :EngineSpecification;
+	];
+	sh:property [
+		sh:path schema:vehicleIdentificationNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:vehicleInteriorColor;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:vehicleInteriorType;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:vehicleModelDate;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:vehicleSeatingCapacity;
+		sh:or (
+			[sh:node :Number]
+			[sh:class schema:QuantitativeValue]
+		);
+	];
+	sh:property [
+		sh:path schema:vehicleTransmission;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+			[sh:node :QualitativeValue]
+		);
+	].
+
+
+:VideoGallery a sh:NodeShape;
+	sh:targetClass schema:VideoGallery;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:VideoGame a sh:NodeShape;
+	sh:targetClass schema:VideoGame;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:actor;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:actors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:cheatCode;
+		sh:node :CreativeWork;
+	];
+	sh:property [
+		sh:path schema:director;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:directors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:gamePlatform;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Thing]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:gameServer;
+		sh:node :GameServer;
+	];
+	sh:property [
+		sh:path schema:gameTip;
+		sh:node :CreativeWork;
+	];
+	sh:property [
+		sh:path schema:musicBy;
+		sh:or (
+			[sh:node :Person]
+			[sh:node :MusicGroup]
+		);
+	];
+	sh:property [
+		sh:path schema:playMode;
+		sh:node :GamePlayMode;
+	];
+	sh:property [
+		sh:path schema:trailer;
+		sh:class schema:VideoObject;
+	].
+
+
+:VideoGameClip a sh:NodeShape;
+	sh:targetClass schema:VideoGameClip;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:VideoGameSeries a sh:NodeShape;
+	sh:targetClass schema:VideoGameSeries;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:actor;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:actors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:characterAttribute;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:cheatCode;
+		sh:node :CreativeWork;
+	];
+	sh:property [
+		sh:path schema:containsSeason;
+		sh:node :CreativeWorkSeason;
+	];
+	sh:property [
+		sh:path schema:director;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:directors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:episode;
+		sh:node :Episode;
+	];
+	sh:property [
+		sh:path schema:episodes;
+		sh:node :Episode;
+	];
+	sh:property [
+		sh:path schema:gameItem;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:gameLocation;
+		sh:or (
+			[sh:node :PostalAddress]
+			[sh:node :Place]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:gamePlatform;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Thing]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:musicBy;
+		sh:or (
+			[sh:node :Person]
+			[sh:node :MusicGroup]
+		);
+	];
+	sh:property [
+		sh:path schema:numberOfEpisodes;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:numberOfPlayers;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:numberOfSeasons;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:playMode;
+		sh:node :GamePlayMode;
+	];
+	sh:property [
+		sh:path schema:productionCompany;
+		sh:class schema:Organization;
+	];
+	sh:property [
+		sh:path schema:quest;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:season;
+		sh:or (
+			[sh:node :CreativeWorkSeason]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:seasons;
+		sh:node :CreativeWorkSeason;
+	];
+	sh:property [
+		sh:path schema:trailer;
+		sh:class schema:VideoObject;
+	].
+
+
+:VideoObject a sh:NodeShape;
+	sh:targetClass schema:VideoObject;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:actor;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:actors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:caption;
+		sh:or (
+			[sh:node :Text]
+			[sh:class schema:MediaObject]
+		);
+	];
+	sh:property [
+		sh:path schema:director;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:directors;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:musicBy;
+		sh:or (
+			[sh:node :Person]
+			[sh:node :MusicGroup]
+		);
+	];
+	sh:property [
+		sh:path schema:thumbnail;
+		sh:node :ImageObject;
+	];
+	sh:property [
+		sh:path schema:transcript;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:videoFrameSize;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:videoQuality;
+		sh:node :Text;
+	].
+
+
+:ViewAction a sh:NodeShape;
+	sh:targetClass schema:ViewAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:VirtualLocation a sh:NodeShape;
+	sh:targetClass schema:VirtualLocation;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:VisualArtsEvent a sh:NodeShape;
+	sh:targetClass schema:VisualArtsEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:VisualArtwork a sh:NodeShape;
+	sh:targetClass schema:VisualArtwork;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:artEdition;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Integer]
+		);
+	];
+	sh:property [
+		sh:path schema:artMedium;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:artform;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:artworkSurface;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:depth;
+		sh:or (
+			[sh:node :Distance]
+			[sh:class schema:QuantitativeValue]
+		);
+	];
+	sh:property [
+		sh:path schema:height;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Distance]
+		);
+	];
+	sh:property [
+		sh:path schema:surface;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:width;
+		sh:or (
+			[sh:class schema:QuantitativeValue]
+			[sh:node :Distance]
+		);
+	].
+
+
+:Volcano a sh:NodeShape;
+	sh:targetClass schema:Volcano;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:VoteAction a sh:NodeShape;
+	sh:targetClass schema:VoteAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:candidate;
+		sh:node :Person;
+	].
+
+
+:WantAction a sh:NodeShape;
+	sh:targetClass schema:WantAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:WarrantyPromise a sh:NodeShape;
+	sh:targetClass schema:WarrantyPromise;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:durationOfWarranty;
+		sh:class schema:QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:warrantyScope;
+		sh:node :WarrantyScope;
+	].
+
+
+:WarrantyScope a sh:NodeShape;
+	sh:targetClass schema:WarrantyScope;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:WatchAction a sh:NodeShape;
+	sh:targetClass schema:WatchAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Waterfall a sh:NodeShape;
+	sh:targetClass schema:Waterfall;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:WearAction a sh:NodeShape;
+	sh:targetClass schema:WearAction;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:WebApplication a sh:NodeShape;
+	sh:targetClass schema:WebApplication;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:browserRequirements;
+		sh:node :Text;
+	].
+
+
+:WebPage a sh:NodeShape;
+	sh:targetClass schema:WebPage;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:breadcrumb;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :BreadcrumbList]
+		);
+	];
+	sh:property [
+		sh:path schema:lastReviewed;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:mainContentOfPage;
+		sh:node :WebPageElement;
+	];
+	sh:property [
+		sh:path schema:primaryImageOfPage;
+		sh:node :ImageObject;
+	];
+	sh:property [
+		sh:path schema:relatedLink;
+		sh:node :URL;
+	];
+	sh:property [
+		sh:path schema:reviewedBy;
+		sh:or (
+			[sh:class schema:Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:significantLink;
+		sh:node :URL;
+	];
+	sh:property [
+		sh:path schema:significantLinks;
+		sh:node :URL;
+	];
+	sh:property [
+		sh:path schema:speakable;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :SpeakableSpecification]
+		);
+	];
+	sh:property [
+		sh:path schema:specialty;
+		sh:node :Specialty;
+	].
+
+
+:WebPageElement a sh:NodeShape;
+	sh:targetClass schema:WebPageElement;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:cssSelector;
+		sh:node :CssSelectorType;
+	];
+	sh:property [
+		sh:path schema:xpath;
+		sh:node :XPathType;
+	].
+
+
+:WebSite a sh:NodeShape;
+	sh:targetClass schema:WebSite;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:issn;
+		sh:node :Text;
+	].
+
+
+:WholesaleStore a sh:NodeShape;
+	sh:targetClass schema:WholesaleStore;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:WinAction a sh:NodeShape;
+	sh:targetClass schema:WinAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:loser;
+		sh:node :Person;
+	].
+
+
+:Winery a sh:NodeShape;
+	sh:targetClass schema:Winery;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:WorkersUnion a sh:NodeShape;
+	sh:targetClass schema:WorkersUnion;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:WPAdBlock a sh:NodeShape;
+	sh:targetClass schema:WPAdBlock;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:WPFooter a sh:NodeShape;
+	sh:targetClass schema:WPFooter;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:WPHeader a sh:NodeShape;
+	sh:targetClass schema:WPHeader;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:WPSideBar a sh:NodeShape;
+	sh:targetClass schema:WPSideBar;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:WriteAction a sh:NodeShape;
+	sh:targetClass schema:WriteAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:inLanguage;
+		sh:or (
+			[sh:node :Text]
+			[sh:class schema:Language]
+		);
+	];
+	sh:property [
+		sh:path schema:language;
+		sh:class schema:Language;
+	].
+
+
+:XPathType a sh:NodeShape;
+	sh:targetClass schema:XPathType;
+	sh:nodeKind sh:BlankNodeOrIRI.
+
+
+:Zoo a sh:NodeShape;
+	sh:targetClass schema:Zoo;
+	sh:nodeKind sh:BlankNodeOrIRI.

@@ -1,0 +1,9 @@
+<#ActionAccessSpecification> @<#Intangible> AND EXTRA a { 
+	a [schema:ActionAccessSpecification];
+	schema:availabilityEnds (@<#DateTime> OR @<#Time> OR @<#Date>) * ;
+	schema:availabilityStarts (@<#Date> OR @<#Time> OR @<#DateTime>) * ;
+	schema:category (@<#Thing> OR @<#URL> OR @<#PhysicalActivityCategory> OR @<#Text>) * ;
+	schema:eligibleRegion (@<#Text> OR @<#Place> OR @<#GeoShape>) * ;
+	schema:expectsAcceptanceOf @<#Offer> * ;
+	schema:requiresSubscription (@<#MediaSubscription> OR @<#Boolean>) * ;
+}

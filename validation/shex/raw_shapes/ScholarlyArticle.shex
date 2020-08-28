@@ -1,0 +1,3 @@
+<#ScholarlyArticle> @<#Article> AND EXTRA a { 
+	a [schema:ScholarlyArticle];
+}

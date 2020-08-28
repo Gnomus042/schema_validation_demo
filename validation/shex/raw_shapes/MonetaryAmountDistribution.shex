@@ -1,0 +1,4 @@
+<#MonetaryAmountDistribution> @<#QuantitativeValueDistribution> AND EXTRA a { 
+	a [schema:MonetaryAmountDistribution];
+	schema:currency @<#Text> * ;
+}

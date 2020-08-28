@@ -1,0 +1,11 @@
+:Airline a sh:NodeShape;
+	sh:targetClass schema:Airline;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:boardingPolicy;
+		sh:node :BoardingPolicyType;
+	];
+	sh:property [
+		sh:path schema:iataCode;
+		sh:node :Text;
+	].

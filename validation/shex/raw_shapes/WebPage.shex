@@ -1,0 +1,13 @@
+<#WebPage> @<#CreativeWork> AND EXTRA a { 
+	a [schema:CheckoutPage schema:AboutPage schema:ContactPage schema:ItemPage schema:CollectionPage schema:FAQPage schema:ProfilePage schema:MediaGallery schema:QAPage schema:ImageGallery schema:VideoGallery schema:SearchResultsPage schema:WebPage];
+	schema:breadcrumb (@<#URL> OR @<#Text> OR @<#BreadcrumbList>) * ;
+	schema:lastReviewed @<#Date> * ;
+	schema:mainContentOfPage @<#WebPageElement> * ;
+	schema:primaryImageOfPage @<#URL> OR @<#ImageObject> * ;
+	schema:relatedLink @<#URL> * ;
+	schema:reviewedBy (@<#Organization> OR @<#Person>) * ;
+	schema:significantLink @<#URL> * ;
+	schema:significantLinks @<#URL> * ;
+	schema:speakable (@<#URL> OR @<#SpeakableSpecification>) * ;
+	schema:specialty @<#Specialty> * ;
+}

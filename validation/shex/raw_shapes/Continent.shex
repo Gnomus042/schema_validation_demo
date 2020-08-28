@@ -1,0 +1,3 @@
+<#Continent> @<#Landform> AND EXTRA a { 
+	a [schema:Continent];
+}

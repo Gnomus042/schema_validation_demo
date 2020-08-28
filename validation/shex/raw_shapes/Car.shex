@@ -1,0 +1,3 @@
+<#Car> @<#Vehicle> AND EXTRA a { 
+	a [schema:Car];
+}

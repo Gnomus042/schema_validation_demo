@@ -1,0 +1,3 @@
+<#MapCategoryType> @<#Enumeration> AND EXTRA a { 
+	a [schema:MapCategoryType];
+}

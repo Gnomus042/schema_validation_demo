@@ -1,0 +1,3 @@
+<#AmusementPark> @<#EntertainmentBusiness> AND EXTRA a { 
+	a [schema:AmusementPark];
+}

@@ -1,0 +1,49 @@
+:BroadcastService a sh:NodeShape;
+	sh:targetClass schema:BroadcastService;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:area;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:broadcastAffiliateOf;
+		sh:node :Organization;
+	];
+	sh:property [
+		sh:path schema:broadcastDisplayName;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:broadcastFrequency;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :BroadcastFrequencySpecification]
+		);
+	];
+	sh:property [
+		sh:path schema:broadcastTimezone;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:broadcaster;
+		sh:node :Organization;
+	];
+	sh:property [
+		sh:path schema:hasBroadcastChannel;
+		sh:node :BroadcastChannel;
+	];
+	sh:property [
+		sh:path schema:inLanguage;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Language]
+		);
+	];
+	sh:property [
+		sh:path schema:parentService;
+		sh:node :BroadcastService;
+	];
+	sh:property [
+		sh:path schema:videoFormat;
+		sh:node :Text;
+	].

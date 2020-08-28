@@ -1,0 +1,27 @@
+:TrainTrip a sh:NodeShape;
+	sh:targetClass schema:TrainTrip;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:arrivalPlatform;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:arrivalStation;
+		sh:node :TrainStation;
+	];
+	sh:property [
+		sh:path schema:departurePlatform;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:departureStation;
+		sh:node :TrainStation;
+	];
+	sh:property [
+		sh:path schema:trainName;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:trainNumber;
+		sh:node :Text;
+	].

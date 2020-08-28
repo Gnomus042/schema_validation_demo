@@ -1,0 +1,3 @@
+<#MovieRentalStore> @<#Store> AND EXTRA a { 
+	a [schema:MovieRentalStore];
+}

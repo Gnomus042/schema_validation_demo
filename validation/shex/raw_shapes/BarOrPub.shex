@@ -1,0 +1,3 @@
+<#BarOrPub> @<#FoodEstablishment> AND EXTRA a { 
+	a [schema:BarOrPub];
+}

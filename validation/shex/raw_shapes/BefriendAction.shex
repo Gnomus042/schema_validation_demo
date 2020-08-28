@@ -1,0 +1,3 @@
+<#BefriendAction> @<#InteractAction> AND EXTRA a { 
+	a [schema:BefriendAction];
+}

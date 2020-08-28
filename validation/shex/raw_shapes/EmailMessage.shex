@@ -1,0 +1,3 @@
+<#EmailMessage> @<#Message> AND EXTRA a { 
+	a [schema:EmailMessage];
+}

@@ -1,0 +1,4 @@
+<#HowToSection> @<#CreativeWork> AND EXTRA a { 
+	a [schema:HowToSection];
+	schema:steps (@<#CreativeWork> OR @<#ItemList> OR @<#Text>) * ;
+}

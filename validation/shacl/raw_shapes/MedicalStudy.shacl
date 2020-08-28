@@ -1,0 +1,10 @@
+:MedicalStudy a sh:NodeShape;
+	sh:targetClass schema:MedicalStudy;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:sponsor;
+		sh:or (
+			[sh:node :Organization]
+			[sh:node :Person]
+		);
+	].

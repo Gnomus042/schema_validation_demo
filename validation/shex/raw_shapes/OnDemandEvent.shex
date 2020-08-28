@@ -1,0 +1,3 @@
+<#OnDemandEvent> @<#PublicationEvent> AND EXTRA a { 
+	a [schema:OnDemandEvent];
+}

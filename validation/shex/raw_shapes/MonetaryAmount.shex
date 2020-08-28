@@ -1,0 +1,9 @@
+<#MonetaryAmount> @<#StructuredValue> AND EXTRA a { 
+	a [schema:MonetaryAmount];
+	schema:currency @<#Text> * ;
+	schema:maxValue @<#Number> * ;
+	schema:minValue @<#Number> * ;
+	schema:validFrom (@<#Date> OR @<#DateTime>) * ;
+	schema:validThrough (@<#Date> OR @<#DateTime>) * ;
+	schema:value (@<#Boolean> OR @<#StructuredValue> OR @<#Number> OR @<#Text>) * ;
+}

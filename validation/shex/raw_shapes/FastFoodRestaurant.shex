@@ -1,0 +1,3 @@
+<#FastFoodRestaurant> @<#FoodEstablishment> AND EXTRA a { 
+	a [schema:FastFoodRestaurant];
+}

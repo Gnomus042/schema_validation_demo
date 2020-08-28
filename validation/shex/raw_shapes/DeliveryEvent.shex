@@ -1,0 +1,7 @@
+<#DeliveryEvent> @<#Event> AND EXTRA a { 
+	a [schema:DeliveryEvent];
+	schema:accessCode @<#Text> * ;
+	schema:availableFrom @<#DateTime> * ;
+	schema:availableThrough @<#DateTime> * ;
+	schema:hasDeliveryMethod @<#DeliveryMethod> * ;
+}

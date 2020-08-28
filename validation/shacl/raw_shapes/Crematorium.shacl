@@ -1,0 +1,3 @@
+:Crematorium a sh:NodeShape;
+	sh:targetClass schema:Crematorium;
+	sh:nodeKind sh:BlankNodeOrIRI.

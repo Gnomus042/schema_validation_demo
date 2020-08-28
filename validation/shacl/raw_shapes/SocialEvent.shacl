@@ -1,0 +1,3 @@
+:SocialEvent a sh:NodeShape;
+	sh:targetClass schema:SocialEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.

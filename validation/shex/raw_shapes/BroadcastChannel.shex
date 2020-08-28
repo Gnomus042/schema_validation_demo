@@ -1,0 +1,9 @@
+<#BroadcastChannel> @<#Intangible> AND EXTRA a { 
+	a [schema:AMRadioChannel schema:RadioChannel schema:TelevisionChannel schema:FMRadioChannel schema:BroadcastChannel];
+	schema:broadcastChannelId @<#Text> * ;
+	schema:broadcastFrequency (@<#Text> OR @<#BroadcastFrequencySpecification>) * ;
+	schema:broadcastServiceTier @<#Text> * ;
+	schema:genre (@<#Text> OR @<#URL>) * ;
+	schema:inBroadcastLineup @<#CableOrSatelliteService> * ;
+	schema:providesBroadcastService @<#BroadcastService> * ;
+}

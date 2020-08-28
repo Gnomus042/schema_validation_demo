@@ -1,0 +1,4 @@
+<#EngineSpecification> @<#StructuredValue> AND EXTRA a { 
+	a [schema:EngineSpecification];
+	schema:fuelType (@<#QualitativeValue> OR @<#Text> OR @<#URL>) * ;
+}

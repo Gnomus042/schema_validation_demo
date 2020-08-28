@@ -1,0 +1,4 @@
+<#TipAction> @<#TradeAction> AND EXTRA a { 
+	a [schema:TipAction];
+	schema:recipient (@<#Organization> OR @<#Audience> OR @<#ContactPoint> OR @<#Person>) * ;
+}

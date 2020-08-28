@@ -1,0 +1,3 @@
+:PaintAction a sh:NodeShape;
+	sh:targetClass schema:PaintAction;
+	sh:nodeKind sh:BlankNodeOrIRI.

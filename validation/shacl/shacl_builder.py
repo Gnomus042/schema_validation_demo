@@ -7,6 +7,9 @@ def pack():
     shacls = [open('base.shacl').read()]
     for file in os.listdir('shapes'):
         shacls.append(open(f'shapes/{file}').read())
+    for file in os.listdir('raw_shapes'):
+        if file not in os.listdir('shapes'):
+            shacls.append(open(f'raw_shapes/{file}').read())
 
     # for dir in os.listdir('specific'):
     #     for file in os.listdir(f'specific/{dir}'):

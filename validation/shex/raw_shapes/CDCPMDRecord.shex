@@ -1,0 +1,4 @@
+<#CDCPMDRecord>  EXTRA a { 
+	a [schema:CDCPMDRecord];
+	schema:datePosted (@<#DateTime> OR @<#Date>) * ;
+}

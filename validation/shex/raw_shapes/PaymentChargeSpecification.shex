@@ -1,0 +1,5 @@
+<#PaymentChargeSpecification> @<#PriceSpecification> AND EXTRA a { 
+	a [schema:PaymentChargeSpecification];
+	schema:appliesToDeliveryMethod @<#DeliveryMethod> * ;
+	schema:appliesToPaymentMethod @<#PaymentMethod> * ;
+}
