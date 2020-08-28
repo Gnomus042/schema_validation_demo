@@ -1,0 +1,101 @@
+body, html {
+    height: 100%;
+    padding: 0;
+    font: 16px "Roboto", Helvetica, Arial, sans-serif;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.header {
+    height: 60px;
+    background: rgb(0,150,136);
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-weight: bold;
+}
+
+.header .lang-selector {
+    display: flex;
+    justify-content: right;
+    margin: auto 0;
+}
+
+.header .title {
+    font-size: 24px;
+    line-height: 60px;
+}
+
+.content {
+    display: flex;
+    height: calc(100vh - 60px);
+}
+
+.block {
+    width: 50%;
+    height: 100%;
+}
+
+.output-block {
+    overflow: auto;
+    background: #fafafa;
+}
+
+#input-text {
+    width: 100%;
+    height: 100%;
+}
+
+#validate-btn {
+    position: absolute;
+    left: calc(50vw - 28px);
+    top: calc(50vh - 60px);
+    height: 56px;
+    width: 56px;
+    padding: 13px;
+    background:rgb(158,158,158);
+    border-radius: 50%;
+}
+
+#validate-btn > img {
+    height: 30px;
+    display: flex;
+    flex-flow: row;
+}
+
+.data-items {
+    margin: 0 20px;
+    background: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+}
+
+.data-item {
+    display: flex;
+    width: 100%;
+    border-bottom: lightgrey 0.3px solid;
+    padding: 5px;
+}
+
+.data-item > .info {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+
+}
+
+.data-item > .info > .predicate {
+    font-weight: bold;
+    display: flex;
+}
+
+.data-item > .info > .object {
+    width: 60%;
+    word-break: break-all;
+}

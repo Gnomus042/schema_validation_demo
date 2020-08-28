@@ -1,11 +1,13 @@
 import codecs
-
-from flask import Flask, render_template, jsonify, send_file, Response
+from flask import Flask, render_template, jsonify, send_file, Response, Blueprint
 import os
 
 import config
 
 app = Flask(__name__)
+
+from sdtt import sdtt as sdtt_blueprint
+app.register_blueprint(sdtt_blueprint)
 
 
 @app.route('/')
