@@ -3,6 +3,12 @@ let services;
 $.get('/services', (res) => services = res.services);
 
 async function parse(input) {
+    let data = JSON.parse(input);
+    if (data['@graph']) data['@graph'].forEach(x => parseItem(JSON.stringify(x)));
+    else parseItem(input);
+}
+
+async function parseItem(input) {
     input = await validation.prepareData(input);
     let dataset = await validation.loadDataset(input, 'json-ld');
     let startId = JSON.parse(input)['@id'];
