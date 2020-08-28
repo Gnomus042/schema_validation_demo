@@ -60,7 +60,7 @@ def shacl_shapes(service):
     base = open(f'{config.shacl_path}/full.shacl').read()
     for dir in os.listdir(f'{config.shacl_path}/specific'):
         specific = open(f'{config.shacl_path}/specific/{dir}/{service}.shacl').read()
-        base += specific
+        base += '\n\n'+specific
     return base
 
 
