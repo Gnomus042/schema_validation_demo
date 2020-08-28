@@ -42809,7 +42809,7 @@ async function validateShEx(dataStr, shexShapes, dataId, shape, service) {
         node: dataId,
         shape: `http://schema.org/shex#${service}${shape}`,
     }]), schema);
-    return errors.toStructuredDataReport();
+    return uniqueBy(errors.toStructuredDataReport(), 'property');
 }
 
 function uniqueBy(items, key) {
