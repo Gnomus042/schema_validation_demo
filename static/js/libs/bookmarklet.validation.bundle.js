@@ -41855,7 +41855,7 @@ async function validate(data, service, options) {
 module.exports = {validate: validate, loadDataset: shaclValidator.loadDataset, prepareData: prepareData};
 
 
-//validate(fs.readFileSync('data/0.json'), 'Google').then(res => console.log(res));
+//validate(fs.readFileSync('data/0.json'), 'Google', {shex:true}).then(res => console.log(res));
 
 
 /***/ }),
