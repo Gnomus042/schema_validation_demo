@@ -1,0 +1,18 @@
+:CookAction a sh:NodeShape;
+	sh:targetClass schema:CookAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:foodEstablishment;
+		sh:or (
+			[sh:node :FoodEstablishment]
+			[sh:node :Place]
+		);
+	];
+	sh:property [
+		sh:path schema:foodEvent;
+		sh:node :FoodEvent;
+	];
+	sh:property [
+		sh:path schema:recipe;
+		sh:node :Recipe;
+	].

@@ -1,0 +1,3 @@
+<#ReadAction> @<#ConsumeAction> AND EXTRA a { 
+	a [schema:ReadAction];
+}

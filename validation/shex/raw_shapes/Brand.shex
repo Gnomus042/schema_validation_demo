@@ -1,0 +1,7 @@
+<#Brand> @<#Intangible> AND EXTRA a { 
+	a [schema:Brand];
+	schema:aggregateRating @<#AggregateRating> * ;
+	schema:logo (@<#ImageObject> OR @<#URL>) * ;
+	schema:review @<#Review> * ;
+	schema:slogan @<#Text> * ;
+}

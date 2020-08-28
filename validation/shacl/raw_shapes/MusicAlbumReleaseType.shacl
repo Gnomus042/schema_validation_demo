@@ -1,0 +1,3 @@
+:MusicAlbumReleaseType a sh:NodeShape;
+	sh:targetClass schema:MusicAlbumReleaseType;
+	sh:nodeKind sh:BlankNodeOrIRI.

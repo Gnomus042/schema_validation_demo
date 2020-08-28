@@ -1,0 +1,3 @@
+<#BlogPosting> @<#SocialMediaPosting> AND EXTRA a { 
+	a [schema:LiveBlogPosting schema:BlogPosting];
+}

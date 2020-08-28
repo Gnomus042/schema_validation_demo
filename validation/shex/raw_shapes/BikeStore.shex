@@ -1,0 +1,3 @@
+<#BikeStore> @<#Store> AND EXTRA a { 
+	a [schema:BikeStore];
+}

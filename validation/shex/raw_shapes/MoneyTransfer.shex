@@ -1,0 +1,4 @@
+<#MoneyTransfer>  EXTRA a { 
+	a [schema:MoneyTransfer];
+	schema:amount (@<#MonetaryAmount> OR @<#Number>) * ;
+}

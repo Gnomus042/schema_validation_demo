@@ -1,0 +1,3 @@
+<#CheckoutPage> @<#WebPage> AND EXTRA a { 
+	a [schema:CheckoutPage];
+}

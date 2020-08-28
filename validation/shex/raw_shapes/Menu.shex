@@ -1,0 +1,5 @@
+<#Menu> @<#CreativeWork> AND EXTRA a { 
+	a [schema:Menu];
+	schema:hasMenuItem @<#MenuItem> * ;
+	schema:hasMenuSection @<#MenuSection> * ;
+}

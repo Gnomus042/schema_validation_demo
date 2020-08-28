@@ -1,0 +1,3 @@
+<#DaySpa> @<#HealthAndBeautyBusiness> AND EXTRA a { 
+	a [schema:DaySpa];
+}

@@ -1,0 +1,3 @@
+<#Synagogue> @<#PlaceOfWorship> AND EXTRA a { 
+	a [schema:Synagogue];
+}

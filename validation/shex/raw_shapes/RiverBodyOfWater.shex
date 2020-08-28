@@ -1,0 +1,3 @@
+<#RiverBodyOfWater> @<#BodyOfWater> AND EXTRA a { 
+	a [schema:RiverBodyOfWater];
+}

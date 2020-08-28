@@ -1,3 +1,9 @@
 :Date a sh:NodeShape;
-    sh:node :Text;
-    sh:pattern ".*".
+    sh:or(
+        [
+            sh:nodeKind sh:Literal;
+            sh:pattern ".*"
+        ]
+        [sh:datatype xsd:date]
+    ).
+

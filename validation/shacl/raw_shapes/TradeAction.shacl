@@ -1,0 +1,18 @@
+:TradeAction a sh:NodeShape;
+	sh:targetClass schema:TradeAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:price;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:priceCurrency;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:priceSpecification;
+		sh:node :PriceSpecification;
+	].

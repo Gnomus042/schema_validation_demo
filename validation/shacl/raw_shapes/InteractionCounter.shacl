@@ -1,0 +1,18 @@
+:InteractionCounter a sh:NodeShape;
+	sh:targetClass schema:InteractionCounter;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:interactionService;
+		sh:or (
+			[sh:node :WebSite]
+			[sh:node :SoftwareApplication]
+		);
+	];
+	sh:property [
+		sh:path schema:interactionType;
+		sh:node :Action;
+	];
+	sh:property [
+		sh:path schema:userInteractionCount;
+		sh:node :Integer;
+	].

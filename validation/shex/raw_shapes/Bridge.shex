@@ -1,0 +1,3 @@
+<#Bridge> @<#CivicStructure> AND EXTRA a { 
+	a [schema:Bridge];
+}

@@ -1,0 +1,11 @@
+:TVSeason a sh:NodeShape;
+	sh:targetClass schema:TVSeason;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:countryOfOrigin;
+		sh:node :Country;
+	];
+	sh:property [
+		sh:path schema:partOfTVSeries;
+		sh:node :TVSeries;
+	].

@@ -1,0 +1,23 @@
+:AlignmentObject a sh:NodeShape;
+	sh:targetClass schema:AlignmentObject;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:alignmentType;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:educationalFramework;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:targetDescription;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:targetName;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:targetUrl;
+		sh:node :URL;
+	].

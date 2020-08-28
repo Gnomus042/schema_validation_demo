@@ -1,0 +1,3 @@
+:GolfCourse a sh:NodeShape;
+	sh:targetClass schema:GolfCourse;
+	sh:nodeKind sh:BlankNodeOrIRI.

@@ -1,0 +1,3 @@
+<#AutomatedTeller> @<#FinancialService> AND EXTRA a { 
+	a [schema:AutomatedTeller];
+}

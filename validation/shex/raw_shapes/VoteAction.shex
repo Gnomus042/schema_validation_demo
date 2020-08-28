@@ -1,0 +1,4 @@
+<#VoteAction> @<#ChooseAction> AND EXTRA a { 
+	a [schema:VoteAction];
+	schema:candidate @<#Person> * ;
+}

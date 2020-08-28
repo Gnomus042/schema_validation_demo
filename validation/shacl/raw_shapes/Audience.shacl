@@ -1,0 +1,11 @@
+:Audience a sh:NodeShape;
+	sh:targetClass schema:Audience;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:audienceType;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:geographicArea;
+		sh:node :AdministrativeArea;
+	].

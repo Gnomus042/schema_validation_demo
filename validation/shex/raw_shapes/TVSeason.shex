@@ -1,0 +1,5 @@
+<#TVSeason> @<#CreativeWork> AND EXTRA a { 
+	a [schema:TVSeason];
+	schema:countryOfOrigin @<#Country> * ;
+	schema:partOfTVSeries @<#TVSeries> * ;
+}

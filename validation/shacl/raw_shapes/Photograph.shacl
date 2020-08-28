@@ -1,0 +1,3 @@
+:Photograph a sh:NodeShape;
+	sh:targetClass schema:Photograph;
+	sh:nodeKind sh:BlankNodeOrIRI.

@@ -1,0 +1,3 @@
+<#HowToTip> @<#ListItem> AND EXTRA a { 
+	a [schema:HowToTip];
+}

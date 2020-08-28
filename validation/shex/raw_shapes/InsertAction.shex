@@ -1,0 +1,4 @@
+<#InsertAction> @<#AddAction> AND EXTRA a { 
+	a [schema:AppendAction schema:PrependAction schema:InsertAction];
+	schema:toLocation @<#Place> * ;
+}

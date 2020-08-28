@@ -1,0 +1,3 @@
+<#DataType> EXTRA a {
+	a [schema:DataType];
+}

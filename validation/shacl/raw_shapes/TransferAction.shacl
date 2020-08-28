@@ -1,0 +1,11 @@
+:TransferAction a sh:NodeShape;
+	sh:targetClass schema:TransferAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:fromLocation;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:toLocation;
+		sh:node :Place;
+	].

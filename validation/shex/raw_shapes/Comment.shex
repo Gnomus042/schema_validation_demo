@@ -1,0 +1,6 @@
+<#Comment> @<#CreativeWork> AND EXTRA a { 
+	a [schema:Answer schema:Comment];
+	schema:downvoteCount @<#Integer> * ;
+	schema:parentItem @<#Question> * ;
+	schema:upvoteCount @<#Integer> * ;
+}

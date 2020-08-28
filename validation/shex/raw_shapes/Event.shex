@@ -1,0 +1,38 @@
+<#Event> @<#Thing> AND EXTRA a { 
+	a [schema:UserBlocks schema:SocialEvent schema:BroadcastEvent schema:OnDemandEvent schema:DanceEvent schema:UserComments schema:BusinessEvent schema:Festival schema:SaleEvent schema:CourseInstance schema:MusicEvent schema:DeliveryEvent schema:UserPageVisits schema:UserLikes schema:UserPlusOnes schema:LiteraryEvent schema:ExhibitionEvent schema:SportsEvent schema:UserPlays schema:TheaterEvent schema:PublicationEvent schema:FoodEvent schema:ComedyEvent schema:UserTweets schema:VisualArtsEvent schema:ChildrensEvent schema:UserCheckins schema:ScreeningEvent schema:EducationEvent schema:UserDownloads schema:UserInteraction schema:Event];
+	schema:about @<#Thing> * ;
+	schema:actor @<#Person> * ;
+	schema:aggregateRating @<#AggregateRating> * ;
+	schema:attendee (@<#Organization> OR @<#Person>) * ;
+	schema:attendees (@<#Organization> OR @<#Person>) * ;
+	schema:audience @<#Audience> * ;
+	schema:composer (@<#Organization> OR @<#Person>) * ;
+	schema:contributor (@<#Organization> OR @<#Person>) * ;
+	schema:director @<#Person> * ;
+	schema:doorTime (@<#Time> OR @<#DateTime>) * ;
+	schema:duration @<#Duration> * ;
+	schema:endDate (@<#Date> OR @<#DateTime>) * ;
+	schema:eventStatus @<#EventStatusType> * ;
+	schema:funder (@<#Organization> OR @<#Person>) * ;
+	schema:inLanguage (@<#Text> OR @<#Language>) * ;
+	schema:isAccessibleForFree @<#Boolean> * ;
+	schema:location (@<#VirtualLocation> OR @<#Place> OR @<#Text> OR @<#PostalAddress>) * ;
+	schema:maximumAttendeeCapacity @<#Integer> * ;
+	schema:offers (@<#Demand> OR @<#Offer>) * ;
+	schema:organizer (@<#Organization> OR @<#Person>) * ;
+	schema:performer (@<#Organization> OR @<#Person>) * ;
+	schema:performers (@<#Person> OR @<#Organization>) * ;
+	schema:previousStartDate @<#Date> * ;
+	schema:recordedIn @<#CreativeWork> * ;
+	schema:remainingAttendeeCapacity @<#Integer> * ;
+	schema:review @<#Review> * ;
+	schema:sponsor (@<#Organization> OR @<#Person>) * ;
+	schema:startDate (@<#Date> OR @<#DateTime>) * ;
+	schema:subEvent @<#Event> * ;
+	schema:subEvents @<#Event> * ;
+	schema:superEvent @<#Event> * ;
+	schema:translator (@<#Organization> OR @<#Person>) * ;
+	schema:typicalAgeRange @<#Text> * ;
+	schema:workFeatured @<#CreativeWork> * ;
+	schema:workPerformed @<#CreativeWork> * ;
+}

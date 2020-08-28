@@ -1,0 +1,13 @@
+<#VideoObject> @<#MediaObject> AND EXTRA a { 
+	a [schema:VideoObject];
+	schema:actor @<#Person> * ;
+	schema:actors @<#Person> * ;
+	schema:caption (@<#Text> OR @<#MediaObject>) * ;
+	schema:director @<#Person> * ;
+	schema:directors @<#Person> * ;
+	schema:musicBy (@<#Person> OR @<#MusicGroup>) * ;
+	schema:thumbnail @<#ImageObject> * ;
+	schema:transcript @<#Text> * ;
+	schema:videoFrameSize @<#Text> * ;
+	schema:videoQuality @<#Text> * ;
+}

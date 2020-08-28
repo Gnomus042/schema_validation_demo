@@ -1,0 +1,3 @@
+<#TieAction> @<#AchieveAction> AND EXTRA a { 
+	a [schema:TieAction];
+}

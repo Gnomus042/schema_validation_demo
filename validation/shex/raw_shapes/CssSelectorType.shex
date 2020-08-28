@@ -1,0 +1,3 @@
+<#CssSelectorType>  EXTRA a { 
+	a [schema:CssSelectorType];
+}

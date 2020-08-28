@@ -1,0 +1,3 @@
+<#HighSchool> @<#EducationalOrganization> AND EXTRA a { 
+	a [schema:HighSchool];
+}

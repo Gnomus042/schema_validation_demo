@@ -1,0 +1,3 @@
+<#ChildrensEvent> @<#Event> AND EXTRA a { 
+	a [schema:ChildrensEvent];
+}

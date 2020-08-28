@@ -1,0 +1,4 @@
+<#DonateAction> @<#TradeAction> AND EXTRA a { 
+	a [schema:DonateAction];
+	schema:recipient (@<#Organization> OR @<#Audience> OR @<#ContactPoint> OR @<#Person>) * ;
+}

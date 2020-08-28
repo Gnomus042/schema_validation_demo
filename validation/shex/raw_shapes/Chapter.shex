@@ -1,0 +1,6 @@
+<#Chapter>  EXTRA a { 
+	a [schema:Chapter];
+	schema:pageEnd (@<#Integer> OR @<#Text>) * ;
+	schema:pageStart (@<#Text> OR @<#Integer>) * ;
+	schema:pagination @<#Text> * ;
+}

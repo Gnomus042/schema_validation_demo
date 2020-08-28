@@ -1,0 +1,4 @@
+<#Grant>  EXTRA a { 
+	a [schema:Grant];
+	schema:sponsor (@<#Organization> OR @<#Person>) * ;
+}

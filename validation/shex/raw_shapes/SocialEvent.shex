@@ -1,0 +1,3 @@
+<#SocialEvent> @<#Event> AND EXTRA a { 
+	a [schema:SocialEvent];
+}

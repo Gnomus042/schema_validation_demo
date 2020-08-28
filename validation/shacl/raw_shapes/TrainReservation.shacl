@@ -1,0 +1,3 @@
+:TrainReservation a sh:NodeShape;
+	sh:targetClass schema:TrainReservation;
+	sh:nodeKind sh:BlankNodeOrIRI.

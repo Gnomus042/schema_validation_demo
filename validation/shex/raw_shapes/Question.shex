@@ -1,0 +1,8 @@
+<#Question> @<#CreativeWork> AND EXTRA a { 
+	a [schema:Question];
+	schema:acceptedAnswer (@<#ItemList> OR @<#Answer>) * ;
+	schema:answerCount @<#Integer> * ;
+	schema:downvoteCount @<#Integer> * ;
+	schema:suggestedAnswer (@<#Answer> OR @<#ItemList>) * ;
+	schema:upvoteCount @<#Integer> * ;
+}

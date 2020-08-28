@@ -1,0 +1,5 @@
+<#SellAction> @<#TradeAction> AND EXTRA a { 
+	a [schema:SellAction];
+	schema:buyer @<#Person> * ;
+	schema:warrantyPromise @<#WarrantyPromise> * ;
+}

@@ -1,0 +1,4 @@
+<#Drug>  EXTRA a { 
+	a [schema:Drug];
+	schema:manufacturer @<#Organization> * ;
+}

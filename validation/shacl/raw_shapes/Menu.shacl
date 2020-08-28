@@ -1,0 +1,11 @@
+:Menu a sh:NodeShape;
+	sh:targetClass schema:Menu;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:hasMenuItem;
+		sh:node :MenuItem;
+	];
+	sh:property [
+		sh:path schema:hasMenuSection;
+		sh:node :MenuSection;
+	].

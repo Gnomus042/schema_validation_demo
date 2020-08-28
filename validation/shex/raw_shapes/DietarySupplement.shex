@@ -1,0 +1,4 @@
+<#DietarySupplement>  EXTRA a { 
+	a [schema:DietarySupplement];
+	schema:manufacturer @<#Organization> * ;
+}

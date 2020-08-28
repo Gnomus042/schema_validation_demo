@@ -1,0 +1,50 @@
+:PropertyValueSpecification a sh:NodeShape;
+	sh:targetClass schema:PropertyValueSpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:defaultValue;
+		sh:or (
+			[sh:node :Thing]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:maxValue;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:minValue;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:multipleValues;
+		sh:node :Boolean;
+	];
+	sh:property [
+		sh:path schema:readonlyValue;
+		sh:node :Boolean;
+	];
+	sh:property [
+		sh:path schema:stepValue;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:valueMaxLength;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:valueMinLength;
+		sh:node :Number;
+	];
+	sh:property [
+		sh:path schema:valueName;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:valuePattern;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:valueRequired;
+		sh:node :Boolean;
+	].

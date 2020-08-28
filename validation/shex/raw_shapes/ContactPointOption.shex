@@ -1,0 +1,3 @@
+<#ContactPointOption> @<#Enumeration> AND EXTRA a { 
+	a [schema:ContactPointOption];
+}

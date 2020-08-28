@@ -1,0 +1,3 @@
+:ItemPage a sh:NodeShape;
+	sh:targetClass schema:ItemPage;
+	sh:nodeKind sh:BlankNodeOrIRI.

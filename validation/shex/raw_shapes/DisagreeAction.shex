@@ -1,0 +1,3 @@
+<#DisagreeAction> @<#ReactAction> AND EXTRA a { 
+	a [schema:DisagreeAction];
+}

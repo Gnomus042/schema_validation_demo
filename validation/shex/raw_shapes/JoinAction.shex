@@ -1,0 +1,4 @@
+<#JoinAction> @<#InteractAction> AND EXTRA a { 
+	a [schema:JoinAction];
+	schema:event @<#Event> * ;
+}

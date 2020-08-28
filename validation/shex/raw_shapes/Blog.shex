@@ -1,0 +1,6 @@
+<#Blog> @<#CreativeWork> AND EXTRA a { 
+	a [schema:Blog];
+	schema:blogPost @<#BlogPosting> * ;
+	schema:blogPosts @<#BlogPosting> * ;
+	schema:issn @<#Text> * ;
+}

@@ -1,0 +1,3 @@
+:DeactivateAction a sh:NodeShape;
+	sh:targetClass schema:DeactivateAction;
+	sh:nodeKind sh:BlankNodeOrIRI.

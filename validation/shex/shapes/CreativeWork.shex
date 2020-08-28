@@ -29,7 +29,7 @@
 	schema:creator (@<#Organization> OR @<#Person>) *;
 	schema:dateCreated (@<#Date> OR @<#DateTime>) *;
 	schema:dateModified (@<#DateTime> OR @<#Date>) *;
-	schema:datePublished (@<#Date> OR @<#DateTime>) * %js:{ !isNaN(Date.parse(RdfTerm.getLiteralValue(ctx.object))) %};
+	schema:datePublished (@<#Date> OR @<#DateTime>) *;
 	schema:discussionUrl @<#URL> *;
 	schema:editor @<#Person> *;
 	schema:educationalAlignment @<#AlignmentObject> *;

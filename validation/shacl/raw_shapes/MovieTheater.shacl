@@ -1,0 +1,7 @@
+:MovieTheater a sh:NodeShape;
+	sh:targetClass schema:MovieTheater;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:screenCount;
+		sh:node :Number;
+	].

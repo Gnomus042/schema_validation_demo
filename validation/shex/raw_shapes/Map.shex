@@ -1,0 +1,4 @@
+<#Map> @<#CreativeWork> AND EXTRA a { 
+	a [schema:Map];
+	schema:mapType @<#MapCategoryType> * ;
+}

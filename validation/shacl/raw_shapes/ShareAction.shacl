@@ -1,0 +1,3 @@
+:ShareAction a sh:NodeShape;
+	sh:targetClass schema:ShareAction;
+	sh:nodeKind sh:BlankNodeOrIRI.

@@ -1,0 +1,3 @@
+:Campground a sh:NodeShape;
+	sh:targetClass schema:Campground;
+	sh:nodeKind sh:BlankNodeOrIRI.

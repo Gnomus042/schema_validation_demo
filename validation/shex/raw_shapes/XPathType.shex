@@ -1,0 +1,3 @@
+<#XPathType>  EXTRA a { 
+	a [schema:XPathType];
+}

@@ -1,0 +1,3 @@
+:DefenceEstablishment a sh:NodeShape;
+	sh:targetClass schema:DefenceEstablishment;
+	sh:nodeKind sh:BlankNodeOrIRI.

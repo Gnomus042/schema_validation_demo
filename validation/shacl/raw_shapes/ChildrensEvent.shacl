@@ -1,0 +1,3 @@
+:ChildrensEvent a sh:NodeShape;
+	sh:targetClass schema:ChildrensEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.

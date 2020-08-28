@@ -1,0 +1,251 @@
+:Organization a sh:NodeShape;
+	sh:targetClass schema:Organization;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:address;
+		sh:or (
+			[sh:node :PostalAddress]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:aggregateRating;
+		sh:node :AggregateRating;
+	];
+	sh:property [
+		sh:path schema:alumni;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:areaServed;
+		sh:or (
+			[sh:node :AdministrativeArea]
+			[sh:node :Text]
+			[sh:node :Place]
+			[sh:node :GeoShape]
+		);
+	];
+	sh:property [
+		sh:path schema:award;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:awards;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:brand;
+		sh:or (
+			[sh:node :Brand]
+			[sh:node :Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:contactPoint;
+		sh:node :ContactPoint;
+	];
+	sh:property [
+		sh:path schema:contactPoints;
+		sh:node :ContactPoint;
+	];
+	sh:property [
+		sh:path schema:department;
+		sh:node :Organization;
+	];
+	sh:property [
+		sh:path schema:dissolutionDate;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:duns;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:email;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:employee;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:employees;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:event;
+		sh:node :Event;
+	];
+	sh:property [
+		sh:path schema:events;
+		sh:node :Event;
+	];
+	sh:property [
+		sh:path schema:faxNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:founder;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:founders;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:foundingDate;
+		sh:node :Date;
+	];
+	sh:property [
+		sh:path schema:foundingLocation;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:funder;
+		sh:or (
+			[sh:node :Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:globalLocationNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:hasOfferCatalog;
+		sh:node :OfferCatalog;
+	];
+	sh:property [
+		sh:path schema:hasPOS;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:interactionStatistic;
+		sh:node :InteractionCounter;
+	];
+	sh:property [
+		sh:path schema:isicV4;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:legalName;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:leiCode;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:location;
+		sh:or (
+			[sh:node :VirtualLocation]
+			[sh:node :Place]
+			[sh:node :Text]
+			[sh:node :PostalAddress]
+		);
+	];
+	sh:property [
+		sh:path schema:logo;
+		sh:or (
+			[sh:node :ImageObject]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:makesOffer;
+		sh:node :Offer;
+	];
+	sh:property [
+		sh:path schema:member;
+		sh:or (
+			[sh:node :Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:memberOf;
+		sh:or (
+			[sh:node :Organization]
+			[sh:node :ProgramMembership]
+		);
+	];
+	sh:property [
+		sh:path schema:members;
+		sh:or (
+			[sh:node :Person]
+			[sh:node :Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:naics;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:numberOfEmployees;
+		sh:node :QuantitativeValue;
+	];
+	sh:property [
+		sh:path schema:owns;
+		sh:or (
+			[sh:node :OwnershipInfo]
+			[sh:node :Product]
+		);
+	];
+	sh:property [
+		sh:path schema:parentOrganization;
+		sh:node :Organization;
+	];
+	sh:property [
+		sh:path schema:publishingPrinciples;
+		sh:or (
+			[sh:node :CreativeWork]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:review;
+		sh:node :Review;
+	];
+	sh:property [
+		sh:path schema:reviews;
+		sh:node :Review;
+	];
+	sh:property [
+		sh:path schema:seeks;
+		sh:node :Demand;
+	];
+	sh:property [
+		sh:path schema:serviceArea;
+		sh:or (
+			[sh:node :Place]
+			[sh:node :GeoShape]
+			[sh:node :AdministrativeArea]
+		);
+	];
+	sh:property [
+		sh:path schema:slogan;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:sponsor;
+		sh:or (
+			[sh:node :Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:subOrganization;
+		sh:node :Organization;
+	];
+	sh:property [
+		sh:path schema:taxID;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:telephone;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:vatID;
+		sh:node :Text;
+	].

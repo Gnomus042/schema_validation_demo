@@ -1,0 +1,6 @@
+<#CookAction> @<#CreateAction> AND EXTRA a { 
+	a [schema:CookAction];
+	schema:foodEstablishment (@<#FoodEstablishment> OR @<#Place>) * ;
+	schema:foodEvent @<#FoodEvent> * ;
+	schema:recipe @<#Recipe> * ;
+}

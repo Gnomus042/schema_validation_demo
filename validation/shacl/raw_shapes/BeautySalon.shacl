@@ -1,0 +1,3 @@
+:BeautySalon a sh:NodeShape;
+	sh:targetClass schema:BeautySalon;
+	sh:nodeKind sh:BlankNodeOrIRI.

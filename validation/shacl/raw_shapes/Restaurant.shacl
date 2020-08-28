@@ -1,0 +1,3 @@
+:Restaurant a sh:NodeShape;
+	sh:targetClass schema:Restaurant;
+	sh:nodeKind sh:BlankNodeOrIRI.

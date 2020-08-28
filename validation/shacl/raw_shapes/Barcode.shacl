@@ -1,0 +1,3 @@
+:Barcode a sh:NodeShape;
+	sh:targetClass schema:Barcode;
+	sh:nodeKind sh:BlankNodeOrIRI.

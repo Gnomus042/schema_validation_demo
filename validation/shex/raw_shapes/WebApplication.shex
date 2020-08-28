@@ -1,0 +1,4 @@
+<#WebApplication> @<#SoftwareApplication> AND EXTRA a { 
+	a [schema:WebApplication];
+	schema:browserRequirements @<#Text> * ;
+}

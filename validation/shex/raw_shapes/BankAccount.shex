@@ -1,0 +1,3 @@
+<#BankAccount> @<#FinancialProduct> AND EXTRA a { 
+	a [schema:DepositAccount schema:BankAccount];
+}

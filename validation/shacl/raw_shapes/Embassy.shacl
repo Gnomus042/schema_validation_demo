@@ -1,0 +1,3 @@
+:Embassy a sh:NodeShape;
+	sh:targetClass schema:Embassy;
+	sh:nodeKind sh:BlankNodeOrIRI.

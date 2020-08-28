@@ -1,0 +1,3 @@
+<#RadioChannel> @<#BroadcastChannel> AND EXTRA a { 
+	a [schema:AMRadioChannel schema:FMRadioChannel schema:RadioChannel];
+}

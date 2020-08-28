@@ -1,0 +1,3 @@
+<#HowToStep> @<#ListItem> AND EXTRA a { 
+	a [schema:HowToStep];
+}

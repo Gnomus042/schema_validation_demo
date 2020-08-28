@@ -1,0 +1,46 @@
+:MusicComposition a sh:NodeShape;
+	sh:targetClass schema:MusicComposition;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:composer;
+		sh:or (
+			[sh:node :Organization]
+			[sh:node :Person]
+		);
+	];
+	sh:property [
+		sh:path schema:firstPerformance;
+		sh:node :Event;
+	];
+	sh:property [
+		sh:path schema:includedComposition;
+		sh:node :MusicComposition;
+	];
+	sh:property [
+		sh:path schema:iswcCode;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:lyricist;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:lyrics;
+		sh:node :CreativeWork;
+	];
+	sh:property [
+		sh:path schema:musicArrangement;
+		sh:node :MusicComposition;
+	];
+	sh:property [
+		sh:path schema:musicCompositionForm;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:musicalKey;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:recordedAs;
+		sh:node :MusicRecording;
+	].

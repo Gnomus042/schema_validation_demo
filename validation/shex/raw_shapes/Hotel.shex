@@ -1,0 +1,3 @@
+<#Hotel> @<#LodgingBusiness> AND EXTRA a { 
+	a [schema:Hotel];
+}

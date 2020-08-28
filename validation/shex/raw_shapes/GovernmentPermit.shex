@@ -1,0 +1,3 @@
+<#GovernmentPermit> @<#Permit> AND EXTRA a { 
+	a [schema:GovernmentPermit];
+}

@@ -1,0 +1,126 @@
+:SoftwareApplication a sh:NodeShape;
+	sh:targetClass schema:SoftwareApplication;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:applicationCategory;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:applicationSubCategory;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:applicationSuite;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:availableOnDevice;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:countriesNotSupported;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:countriesSupported;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:device;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:downloadUrl;
+		sh:node :URL;
+	];
+	sh:property [
+		sh:path schema:featureList;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:fileSize;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:installUrl;
+		sh:node :URL;
+	];
+	sh:property [
+		sh:path schema:memoryRequirements;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:operatingSystem;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:permissions;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:processorRequirements;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:releaseNotes;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:requirements;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:screenshot;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :ImageObject]
+		);
+	];
+	sh:property [
+		sh:path schema:softwareAddOn;
+		sh:node :SoftwareApplication;
+	];
+	sh:property [
+		sh:path schema:softwareHelp;
+		sh:node :CreativeWork;
+	];
+	sh:property [
+		sh:path schema:softwareRequirements;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:softwareVersion;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:storageRequirements;
+		sh:or (
+			[sh:node :URL]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:supportingData;
+		sh:node :DataFeed;
+	].

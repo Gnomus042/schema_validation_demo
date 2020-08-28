@@ -1,0 +1,3 @@
+:AppendAction a sh:NodeShape;
+	sh:targetClass schema:AppendAction;
+	sh:nodeKind sh:BlankNodeOrIRI.

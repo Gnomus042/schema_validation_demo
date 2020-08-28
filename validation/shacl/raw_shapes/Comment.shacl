@@ -1,0 +1,15 @@
+:Comment a sh:NodeShape;
+	sh:targetClass schema:Comment;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:downvoteCount;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:parentItem;
+		sh:node :Question;
+	];
+	sh:property [
+		sh:path schema:upvoteCount;
+		sh:node :Integer;
+	].

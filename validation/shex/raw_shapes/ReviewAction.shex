@@ -1,0 +1,4 @@
+<#ReviewAction> @<#AssessAction> AND EXTRA a { 
+	a [schema:ReviewAction];
+	schema:resultReview @<#Review> * ;
+}

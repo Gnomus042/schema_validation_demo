@@ -1,0 +1,3 @@
+<#GeneralContractor> @<#HomeAndConstructionBusiness> AND EXTRA a { 
+	a [schema:GeneralContractor];
+}

@@ -1,0 +1,3 @@
+<#EventStatusType> @<#Enumeration> AND EXTRA a { 
+	a [schema:EventStatusType];
+}

@@ -1,0 +1,15 @@
+<#ParcelDelivery> @<#Intangible> AND EXTRA a { 
+	a [schema:ParcelDelivery];
+	schema:carrier @<#Organization> * ;
+	schema:deliveryAddress @<#PostalAddress> * ;
+	schema:deliveryStatus @<#DeliveryEvent> * ;
+	schema:expectedArrivalFrom (@<#DateTime> OR @<#Date>) * ;
+	schema:expectedArrivalUntil (@<#DateTime> OR @<#Date>) * ;
+	schema:hasDeliveryMethod @<#DeliveryMethod> * ;
+	schema:itemShipped @<#Product> * ;
+	schema:originAddress @<#PostalAddress> * ;
+	schema:partOfOrder @<#Order> * ;
+	schema:provider (@<#Person> OR @<#Organization>) * ;
+	schema:trackingNumber @<#Text> * ;
+	schema:trackingUrl @<#URL> * ;
+}

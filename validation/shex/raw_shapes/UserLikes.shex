@@ -1,0 +1,3 @@
+<#UserLikes> @<#UserInteraction> AND EXTRA a { 
+	a [schema:UserLikes];
+}

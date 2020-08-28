@@ -1,0 +1,19 @@
+:Review a sh:NodeShape;
+	sh:targetClass schema:Review;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:itemReviewed;
+		sh:node :Thing;
+	];
+	sh:property [
+		sh:path schema:reviewAspect;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:reviewBody;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:reviewRating;
+		sh:node :Rating;
+	].

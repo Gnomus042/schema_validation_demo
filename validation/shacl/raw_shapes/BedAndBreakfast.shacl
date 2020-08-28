@@ -1,0 +1,3 @@
+:BedAndBreakfast a sh:NodeShape;
+	sh:targetClass schema:BedAndBreakfast;
+	sh:nodeKind sh:BlankNodeOrIRI.

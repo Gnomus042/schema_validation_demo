@@ -1,0 +1,3 @@
+<#Volcano> @<#Landform> AND EXTRA a { 
+	a [schema:Volcano];
+}

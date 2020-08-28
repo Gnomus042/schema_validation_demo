@@ -1,0 +1,3 @@
+<#FoodEvent> @<#Event> AND EXTRA a { 
+	a [schema:FoodEvent];
+}

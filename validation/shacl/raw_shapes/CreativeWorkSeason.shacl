@@ -1,0 +1,56 @@
+:CreativeWorkSeason a sh:NodeShape;
+	sh:targetClass schema:CreativeWorkSeason;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:actor;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:director;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:endDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:episode;
+		sh:node :Episode;
+	];
+	sh:property [
+		sh:path schema:episodes;
+		sh:node :Episode;
+	];
+	sh:property [
+		sh:path schema:numberOfEpisodes;
+		sh:node :Integer;
+	];
+	sh:property [
+		sh:path schema:partOfSeries;
+		sh:node :CreativeWorkSeries;
+	];
+	sh:property [
+		sh:path schema:productionCompany;
+		sh:node :Organization;
+	];
+	sh:property [
+		sh:path schema:seasonNumber;
+		sh:or (
+			[sh:node :Integer]
+			[sh:node :Text]
+		);
+	];
+	sh:property [
+		sh:path schema:startDate;
+		sh:or (
+			[sh:node :Date]
+			[sh:node :DateTime]
+		);
+	];
+	sh:property [
+		sh:path schema:trailer;
+		sh:node :VideoObject;
+	].

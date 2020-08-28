@@ -1,0 +1,11 @@
+:TechArticle a sh:NodeShape;
+	sh:targetClass schema:TechArticle;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:dependencies;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:proficiencyLevel;
+		sh:node :Text;
+	].

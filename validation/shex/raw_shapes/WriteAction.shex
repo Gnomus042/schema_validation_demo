@@ -1,0 +1,5 @@
+<#WriteAction> @<#CreateAction> AND EXTRA a { 
+	a [schema:WriteAction];
+	schema:inLanguage (@<#Text> OR @<#Language>) * ;
+	schema:language @<#Language> * ;
+}

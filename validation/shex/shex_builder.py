@@ -8,6 +8,9 @@ def pack():
     shapes = [base]
     for shex_file in os.listdir('shapes'):
         shapes.append(open(f'shapes/{shex_file}').read())
+    for shex_file in os.listdir('raw_shapes'):
+        if shex_file not in os.listdir('shapes'):
+            shapes.append(open(f'raw_shapes/{shex_file}').read())
     for topic in os.listdir('specific'):
         for shex_file in os.listdir(f'specific/{topic}'):
             shapes.append(open(f'specific/{topic}/{shex_file}').read())
@@ -16,7 +19,7 @@ def pack():
 
 
 def find_unknown():
-    defined_shapes = set([shex_file[:-5] for shex_file in os.listdir('shapes')])
+    defined_shapes = set([shex_file[:-5] for shex_file in os.listdir('shapes')+os.listdir('raw_shapes')])
     unknown = set()
     for shex_file in os.listdir('shapes'):
         shape = open(f'shapes/{shex_file}').read()

@@ -1,0 +1,3 @@
+<#RVPark> @<#CivicStructure> AND EXTRA a { 
+	a [schema:RVPark];
+}

@@ -1,0 +1,8 @@
+<#TypeAndQuantityNode> @<#StructuredValue> AND EXTRA a { 
+	a [schema:TypeAndQuantityNode];
+	schema:amountOfThisGood @<#Number> * ;
+	schema:businessFunction @<#BusinessFunction> * ;
+	schema:typeOfGood (@<#Service> OR @<#Product>) * ;
+	schema:unitCode (@<#URL> OR @<#Text>) * ;
+	schema:unitText @<#Text> * ;
+}

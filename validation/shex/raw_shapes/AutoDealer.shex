@@ -1,0 +1,3 @@
+<#AutoDealer> @<#AutomotiveBusiness> AND EXTRA a { 
+	a [schema:AutoDealer];
+}

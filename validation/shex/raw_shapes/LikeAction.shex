@@ -1,0 +1,3 @@
+<#LikeAction> @<#ReactAction> AND EXTRA a { 
+	a [schema:LikeAction];
+}

@@ -1,0 +1,14 @@
+:WriteAction a sh:NodeShape;
+	sh:targetClass schema:WriteAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:inLanguage;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :Language]
+		);
+	];
+	sh:property [
+		sh:path schema:language;
+		sh:node :Language;
+	].

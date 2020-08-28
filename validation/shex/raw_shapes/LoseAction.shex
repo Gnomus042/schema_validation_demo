@@ -1,0 +1,4 @@
+<#LoseAction> @<#AchieveAction> AND EXTRA a { 
+	a [schema:LoseAction];
+	schema:winner @<#Person> * ;
+}

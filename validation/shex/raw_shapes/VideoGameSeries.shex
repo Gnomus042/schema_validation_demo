@@ -1,0 +1,25 @@
+<#VideoGameSeries> @<#CreativeWorkSeries> AND EXTRA a { 
+	a [schema:VideoGameSeries];
+	schema:actor @<#Person> * ;
+	schema:actors @<#Person> * ;
+	schema:characterAttribute @<#Thing> * ;
+	schema:cheatCode @<#CreativeWork> * ;
+	schema:containsSeason @<#CreativeWorkSeason> * ;
+	schema:director @<#Person> * ;
+	schema:directors @<#Person> * ;
+	schema:episode @<#Episode> * ;
+	schema:episodes @<#Episode> * ;
+	schema:gameItem @<#Thing> * ;
+	schema:gameLocation (@<#PostalAddress> OR @<#Place> OR @<#URL>) * ;
+	schema:gamePlatform (@<#Text> OR @<#Thing> OR @<#URL>) * ;
+	schema:musicBy (@<#Person> OR @<#MusicGroup>) * ;
+	schema:numberOfEpisodes @<#Integer> * ;
+	schema:numberOfPlayers @<#QuantitativeValue> * ;
+	schema:numberOfSeasons @<#Integer> * ;
+	schema:playMode @<#GamePlayMode> * ;
+	schema:productionCompany @<#Organization> * ;
+	schema:quest @<#Thing> * ;
+	schema:season (@<#CreativeWorkSeason> OR @<#URL>) * ;
+	schema:seasons @<#CreativeWorkSeason> * ;
+	schema:trailer @<#VideoObject> * ;
+}

@@ -1,0 +1,3 @@
+<#Time>  EXTRA a { 
+	a [schema:Time];
+}

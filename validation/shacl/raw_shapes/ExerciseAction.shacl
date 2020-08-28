@@ -1,0 +1,39 @@
+:ExerciseAction a sh:NodeShape;
+	sh:targetClass schema:ExerciseAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:course;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:distance;
+		sh:node :Distance;
+	];
+	sh:property [
+		sh:path schema:exerciseCourse;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:fromLocation;
+		sh:node :Place;
+	];
+	sh:property [
+		sh:path schema:opponent;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:sportsActivityLocation;
+		sh:node :SportsActivityLocation;
+	];
+	sh:property [
+		sh:path schema:sportsEvent;
+		sh:node :SportsEvent;
+	];
+	sh:property [
+		sh:path schema:sportsTeam;
+		sh:node :SportsTeam;
+	];
+	sh:property [
+		sh:path schema:toLocation;
+		sh:node :Place;
+	].

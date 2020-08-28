@@ -1,0 +1,10 @@
+<#EntryPoint> @<#URL> OR (@<#Intangible> AND EXTRA a {
+	a [schema:EntryPoint];
+	schema:actionApplication @<#SoftwareApplication> * ;
+	schema:actionPlatform (@<#Text> OR @<#URL>) * ;
+	schema:application @<#SoftwareApplication> * ;
+	schema:contentType @<#Text> * ;
+	schema:encodingType @<#Text> * ;
+	schema:httpMethod @<#Text> * ;
+	schema:urlTemplate @<#Text> * ;
+})

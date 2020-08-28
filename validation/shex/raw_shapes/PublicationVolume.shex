@@ -1,0 +1,7 @@
+<#PublicationVolume> @<#CreativeWork> AND EXTRA a { 
+	a [schema:PublicationVolume];
+	schema:pageEnd (@<#Integer> OR @<#Text>) * ;
+	schema:pageStart (@<#Text> OR @<#Integer>) * ;
+	schema:pagination @<#Text> * ;
+	schema:volumeNumber (@<#Integer> OR @<#Text>) * ;
+}

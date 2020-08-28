@@ -1,0 +1,4 @@
+<#MobileApplication> @<#SoftwareApplication> AND EXTRA a { 
+	a [schema:MobileApplication];
+	schema:carrierRequirements @<#Text> * ;
+}

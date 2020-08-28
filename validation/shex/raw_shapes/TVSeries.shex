@@ -1,0 +1,18 @@
+<#TVSeries> @<#CreativeWorkSeries> AND EXTRA a { 
+	a [schema:TVSeries];
+	schema:actor @<#Person> * ;
+	schema:actors @<#Person> * ;
+	schema:containsSeason @<#CreativeWorkSeason> * ;
+	schema:countryOfOrigin @<#Country> * ;
+	schema:director @<#Person> * ;
+	schema:directors @<#Person> * ;
+	schema:episode @<#Episode> * ;
+	schema:episodes @<#Episode> * ;
+	schema:musicBy (@<#Person> OR @<#MusicGroup>) * ;
+	schema:numberOfEpisodes @<#Integer> * ;
+	schema:numberOfSeasons @<#Integer> * ;
+	schema:productionCompany @<#Organization> * ;
+	schema:season (@<#CreativeWorkSeason> OR @<#URL>) * ;
+	schema:seasons @<#CreativeWorkSeason> * ;
+	schema:trailer @<#VideoObject> * ;
+}

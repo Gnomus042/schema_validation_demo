@@ -1,0 +1,3 @@
+:CampingPitch a sh:NodeShape;
+	sh:targetClass schema:CampingPitch;
+	sh:nodeKind sh:BlankNodeOrIRI.

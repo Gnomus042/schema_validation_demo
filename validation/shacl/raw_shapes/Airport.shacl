@@ -1,0 +1,11 @@
+:Airport a sh:NodeShape;
+	sh:targetClass schema:Airport;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:iataCode;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:icaoCode;
+		sh:node :Text;
+	].

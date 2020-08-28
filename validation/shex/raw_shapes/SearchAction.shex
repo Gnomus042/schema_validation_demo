@@ -1,0 +1,4 @@
+<#SearchAction> @<#Action> AND EXTRA a { 
+	a [schema:SearchAction];
+	schema:query @<#Text> * ;
+}

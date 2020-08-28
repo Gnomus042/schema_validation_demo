@@ -1,0 +1,3 @@
+:BankAccount a sh:NodeShape;
+	sh:targetClass schema:BankAccount;
+	sh:nodeKind sh:BlankNodeOrIRI.

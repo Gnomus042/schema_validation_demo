@@ -1,0 +1,3 @@
+<#MusicVideoObject> @<#MediaObject> AND EXTRA a { 
+	a [schema:MusicVideoObject];
+}

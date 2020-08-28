@@ -1,0 +1,5 @@
+<#ChooseAction> @<#AssessAction> AND EXTRA a { 
+	a [schema:VoteAction schema:ChooseAction];
+	schema:actionOption (@<#Thing> OR @<#Text>) * ;
+	schema:option (@<#Thing> OR @<#Text>) * ;
+}

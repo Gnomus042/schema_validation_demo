@@ -1,0 +1,19 @@
+<#Invoice> @<#Intangible> AND EXTRA a { 
+	a [schema:Invoice];
+	schema:accountId @<#Text> * ;
+	schema:billingPeriod @<#Duration> * ;
+	schema:broker (@<#Organization> OR @<#Person>) * ;
+	schema:category (@<#Thing> OR @<#URL> OR @<#PhysicalActivityCategory> OR @<#Text>) * ;
+	schema:confirmationNumber @<#Text> * ;
+	schema:customer (@<#Organization> OR @<#Person>) * ;
+	schema:minimumPaymentDue (@<#PriceSpecification> OR @<#MonetaryAmount>) * ;
+	schema:paymentDue @<#DateTime> * ;
+	schema:paymentDueDate (@<#Date> OR @<#DateTime>) * ;
+	schema:paymentMethod @<#PaymentMethod> * ;
+	schema:paymentMethodId @<#Text> * ;
+	schema:paymentStatus (@<#PaymentStatusType> OR @<#Text>) * ;
+	schema:provider (@<#Person> OR @<#Organization>) * ;
+	schema:referencesOrder @<#Order> * ;
+	schema:scheduledPaymentDate @<#Date> * ;
+	schema:totalPaymentDue (@<#PriceSpecification> OR @<#MonetaryAmount>) * ;
+}

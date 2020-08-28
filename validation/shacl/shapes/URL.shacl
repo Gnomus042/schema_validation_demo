@@ -1,2 +1,5 @@
 :URL a sh:NodeShape;
-    sh:pattern "^(https?|gopher|ftps?):" .
+    sh:or (
+        [sh:nodeKind sh:IRI]
+        [sh:pattern "^(https?|gopher|ftps?):"]
+    ).

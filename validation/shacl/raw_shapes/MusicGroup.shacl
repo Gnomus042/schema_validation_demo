@@ -1,0 +1,33 @@
+:MusicGroup a sh:NodeShape;
+	sh:targetClass schema:MusicGroup;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:album;
+		sh:node :MusicAlbum;
+	];
+	sh:property [
+		sh:path schema:albums;
+		sh:node :MusicAlbum;
+	];
+	sh:property [
+		sh:path schema:genre;
+		sh:or (
+			[sh:node :Text]
+			[sh:node :URL]
+		);
+	];
+	sh:property [
+		sh:path schema:musicGroupMember;
+		sh:node :Person;
+	];
+	sh:property [
+		sh:path schema:track;
+		sh:or (
+			[sh:node :MusicRecording]
+			[sh:node :ItemList]
+		);
+	];
+	sh:property [
+		sh:path schema:tracks;
+		sh:node :MusicRecording;
+	].

@@ -1,0 +1,11 @@
+<#Ticket> @<#Intangible> AND EXTRA a { 
+	a [schema:Ticket];
+	schema:dateIssued (@<#Date> OR @<#DateTime>) * ;
+	schema:issuedBy @<#Organization> * ;
+	schema:priceCurrency @<#Text> * ;
+	schema:ticketNumber @<#Text> * ;
+	schema:ticketToken (@<#URL> OR @<#Text>) * ;
+	schema:ticketedSeat @<#Seat> * ;
+	schema:totalPrice (@<#PriceSpecification> OR @<#Text> OR @<#Number>) * ;
+	schema:underName (@<#Organization> OR @<#Person>) * ;
+}

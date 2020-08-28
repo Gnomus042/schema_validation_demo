@@ -1,0 +1,4 @@
+<#LendAction> @<#TransferAction> AND EXTRA a { 
+	a [schema:LendAction];
+	schema:borrower @<#Person> * ;
+}

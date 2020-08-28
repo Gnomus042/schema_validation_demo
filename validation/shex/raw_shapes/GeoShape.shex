@@ -1,0 +1,11 @@
+<#GeoShape> @<#StructuredValue> AND EXTRA a { 
+	a [schema:GeoCircle schema:GeoShape];
+	schema:address (@<#PostalAddress> OR @<#Text>) * ;
+	schema:addressCountry (@<#Country> OR @<#Text>) * ;
+	schema:box @<#Text> * ;
+	schema:circle @<#Text> * ;
+	schema:elevation (@<#Number> OR @<#Text>) * ;
+	schema:line @<#Text> * ;
+	schema:polygon @<#Text> * ;
+	schema:postalCode @<#Text> * ;
+}

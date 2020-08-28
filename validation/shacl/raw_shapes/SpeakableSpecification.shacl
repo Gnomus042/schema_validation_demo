@@ -1,0 +1,11 @@
+:SpeakableSpecification a sh:NodeShape;
+	sh:targetClass schema:SpeakableSpecification;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:cssSelector;
+		sh:node :CssSelectorType;
+	];
+	sh:property [
+		sh:path schema:xpath;
+		sh:node :XPathType;
+	].

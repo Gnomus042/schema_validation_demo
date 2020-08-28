@@ -1,0 +1,3 @@
+:BoardingPolicyType a sh:NodeShape;
+	sh:targetClass schema:BoardingPolicyType;
+	sh:nodeKind sh:BlankNodeOrIRI.

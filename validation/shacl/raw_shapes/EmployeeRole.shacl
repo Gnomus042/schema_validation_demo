@@ -1,0 +1,15 @@
+:EmployeeRole a sh:NodeShape;
+	sh:targetClass schema:EmployeeRole;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:baseSalary;
+		sh:or (
+			[sh:node :PriceSpecification]
+			[sh:node :MonetaryAmount]
+			[sh:node :Number]
+		);
+	];
+	sh:property [
+		sh:path schema:salaryCurrency;
+		sh:node :Text;
+	].

@@ -1,0 +1,3 @@
+<#DepositAccount> @<#InvestmentOrDeposit> AND EXTRA a { 
+	a [schema:DepositAccount];
+}

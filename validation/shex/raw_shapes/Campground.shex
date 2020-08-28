@@ -1,0 +1,3 @@
+<#Campground> @<#LodgingBusiness> AND EXTRA a { 
+	a [schema:Campground];
+}

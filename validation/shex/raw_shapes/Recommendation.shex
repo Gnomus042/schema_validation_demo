@@ -1,0 +1,4 @@
+<#Recommendation>  EXTRA a { 
+	a [schema:Recommendation];
+	schema:category (@<#Thing> OR @<#URL> OR @<#PhysicalActivityCategory> OR @<#Text>) * ;
+}

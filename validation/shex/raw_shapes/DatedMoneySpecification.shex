@@ -1,0 +1,7 @@
+<#DatedMoneySpecification> @<#StructuredValue> AND EXTRA a { 
+	a [schema:DatedMoneySpecification];
+	schema:amount (@<#MonetaryAmount> OR @<#Number>) * ;
+	schema:currency @<#Text> * ;
+	schema:endDate (@<#Date> OR @<#DateTime>) * ;
+	schema:startDate (@<#Date> OR @<#DateTime>) * ;
+}

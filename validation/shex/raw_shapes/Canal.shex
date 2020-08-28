@@ -1,0 +1,3 @@
+<#Canal> @<#BodyOfWater> AND EXTRA a { 
+	a [schema:Canal];
+}

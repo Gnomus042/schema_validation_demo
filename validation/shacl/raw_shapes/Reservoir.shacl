@@ -1,0 +1,3 @@
+:Reservoir a sh:NodeShape;
+	sh:targetClass schema:Reservoir;
+	sh:nodeKind sh:BlankNodeOrIRI.

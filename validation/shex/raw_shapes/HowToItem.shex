@@ -1,0 +1,4 @@
+<#HowToItem> @<#ListItem> AND EXTRA a { 
+	a [schema:HowToTool schema:HowToSupply schema:HowToItem];
+	schema:requiredQuantity (@<#QuantitativeValue> OR @<#Number> OR @<#Text>) * ;
+}

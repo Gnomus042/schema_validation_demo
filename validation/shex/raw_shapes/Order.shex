@@ -1,0 +1,25 @@
+<#Order> @<#Intangible> AND EXTRA a { 
+	a [schema:Order];
+	schema:acceptedOffer @<#Offer> * ;
+	schema:billingAddress @<#PostalAddress> * ;
+	schema:broker (@<#Organization> OR @<#Person>) * ;
+	schema:confirmationNumber @<#Text> * ;
+	schema:customer (@<#Organization> OR @<#Person>) * ;
+	schema:discount (@<#Text> OR @<#Number>) * ;
+	schema:discountCode @<#Text> * ;
+	schema:discountCurrency @<#Text> * ;
+	schema:isGift @<#Boolean> * ;
+	schema:merchant (@<#Organization> OR @<#Person>) * ;
+	schema:orderDate (@<#DateTime> OR @<#Date>) * ;
+	schema:orderDelivery @<#ParcelDelivery> * ;
+	schema:orderNumber @<#Text> * ;
+	schema:orderStatus @<#OrderStatus> * ;
+	schema:orderedItem (@<#OrderItem> OR @<#Product> OR @<#Service>) * ;
+	schema:partOfInvoice @<#Invoice> * ;
+	schema:paymentDue @<#DateTime> * ;
+	schema:paymentDueDate (@<#Date> OR @<#DateTime>) * ;
+	schema:paymentMethod @<#PaymentMethod> * ;
+	schema:paymentMethodId @<#Text> * ;
+	schema:paymentUrl @<#URL> * ;
+	schema:seller (@<#Organization> OR @<#Person>) * ;
+}

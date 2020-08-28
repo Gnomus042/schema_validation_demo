@@ -1,0 +1,3 @@
+<#CreateAction> @<#Action> AND EXTRA a { 
+	a [schema:PaintAction schema:CookAction schema:PhotographAction schema:FilmAction schema:DrawAction schema:WriteAction schema:CreateAction];
+}

@@ -1,0 +1,4 @@
+<#PerformanceRole> @<#Role> AND EXTRA a { 
+	a [schema:PerformanceRole];
+	schema:characterName @<#Text> * ;
+}

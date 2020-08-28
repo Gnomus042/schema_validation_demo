@@ -1,0 +1,4 @@
+<#OrganizationRole> @<#Role> AND EXTRA a { 
+	a [schema:EmployeeRole schema:OrganizationRole];
+	schema:numberedPosition @<#Number> * ;
+}

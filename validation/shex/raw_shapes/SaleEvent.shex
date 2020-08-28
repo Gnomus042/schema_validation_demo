@@ -1,0 +1,3 @@
+<#SaleEvent> @<#Event> AND EXTRA a { 
+	a [schema:SaleEvent];
+}

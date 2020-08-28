@@ -1,0 +1,3 @@
+:MensClothingStore a sh:NodeShape;
+	sh:targetClass schema:MensClothingStore;
+	sh:nodeKind sh:BlankNodeOrIRI.

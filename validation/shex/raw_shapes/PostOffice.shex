@@ -1,0 +1,3 @@
+<#PostOffice> @<#GovernmentOffice> AND EXTRA a { 
+	a [schema:PostOffice];
+}

@@ -1,0 +1,3 @@
+:VideoGameClip a sh:NodeShape;
+	sh:targetClass schema:VideoGameClip;
+	sh:nodeKind sh:BlankNodeOrIRI.

@@ -1,0 +1,3 @@
+<#Crematorium> @<#CivicStructure> AND EXTRA a { 
+	a [schema:Crematorium];
+}

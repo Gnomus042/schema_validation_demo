@@ -1,0 +1,3 @@
+:DriveWheelConfigurationValue a sh:NodeShape;
+	sh:targetClass schema:DriveWheelConfigurationValue;
+	sh:nodeKind sh:BlankNodeOrIRI.

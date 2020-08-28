@@ -1,0 +1,3 @@
+:FoodEvent a sh:NodeShape;
+	sh:targetClass schema:FoodEvent;
+	sh:nodeKind sh:BlankNodeOrIRI.

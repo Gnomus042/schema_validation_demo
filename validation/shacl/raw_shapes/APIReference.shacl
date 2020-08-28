@@ -1,0 +1,23 @@
+:APIReference a sh:NodeShape;
+	sh:targetClass schema:APIReference;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:assembly;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:assemblyVersion;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:executableLibraryName;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:programmingModel;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:targetPlatform;
+		sh:node :Text;
+	].

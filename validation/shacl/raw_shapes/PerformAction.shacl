@@ -1,0 +1,7 @@
+:PerformAction a sh:NodeShape;
+	sh:targetClass schema:PerformAction;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:entertainmentBusiness;
+		sh:node :EntertainmentBusiness;
+	].

@@ -1,0 +1,7 @@
+<#MenuItem> @<#Intangible> AND EXTRA a { 
+	a [schema:MenuItem];
+	schema:menuAddOn (@<#MenuItem> OR @<#MenuSection>) * ;
+	schema:nutrition @<#NutritionInformation> * ;
+	schema:offers (@<#Demand> OR @<#Offer>) * ;
+	schema:suitableForDiet @<#RestrictedDiet> * ;
+}

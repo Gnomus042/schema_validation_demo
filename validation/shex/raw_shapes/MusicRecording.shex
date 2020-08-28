@@ -1,0 +1,9 @@
+<#MusicRecording> @<#CreativeWork> AND EXTRA a { 
+	a [schema:MusicRecording];
+	schema:byArtist (@<#MusicGroup> OR @<#Person>) * ;
+	schema:duration @<#Duration> * ;
+	schema:inAlbum @<#MusicAlbum> * ;
+	schema:inPlaylist @<#MusicPlaylist> * ;
+	schema:isrcCode @<#Text> * ;
+	schema:recordingOf @<#MusicComposition> * ;
+}

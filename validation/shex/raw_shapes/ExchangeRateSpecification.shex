@@ -1,0 +1,4 @@
+<#ExchangeRateSpecification>  EXTRA a { 
+	a [schema:ExchangeRateSpecification];
+	schema:currency @<#Text> * ;
+}

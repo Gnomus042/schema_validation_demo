@@ -1,0 +1,3 @@
+:Library a sh:NodeShape;
+	sh:targetClass schema:Library;
+	sh:nodeKind sh:BlankNodeOrIRI.

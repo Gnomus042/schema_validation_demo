@@ -1,0 +1,10 @@
+<#QuantitativeValue> @<#StructuredValue> AND EXTRA a { 
+	a [schema:QuantitativeValue];
+	schema:additionalProperty @<#PropertyValue> * ;
+	schema:maxValue @<#Number> * ;
+	schema:minValue @<#Number> * ;
+	schema:unitCode (@<#URL> OR @<#Text>) * ;
+	schema:unitText @<#Text> * ;
+	schema:value (@<#Boolean> OR @<#StructuredValue> OR @<#Number> OR @<#Text>) * ;
+	schema:valueReference (@<#PropertyValue> OR @<#StructuredValue> OR @<#QualitativeValue> OR @<#QuantitativeValue> OR @<#Enumeration>) * ;
+}

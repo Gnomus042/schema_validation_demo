@@ -1,0 +1,3 @@
+<#RecyclingCenter> @<#LocalBusiness> AND EXTRA a { 
+	a [schema:RecyclingCenter];
+}

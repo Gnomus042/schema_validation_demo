@@ -1,0 +1,3 @@
+<#MarryAction> @<#InteractAction> AND EXTRA a { 
+	a [schema:MarryAction];
+}

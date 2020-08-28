@@ -1,0 +1,8 @@
+<#OrderItem> @<#Intangible> AND EXTRA a { 
+	a [schema:OrderItem];
+	schema:orderDelivery @<#ParcelDelivery> * ;
+	schema:orderItemNumber @<#Text> * ;
+	schema:orderItemStatus @<#OrderStatus> * ;
+	schema:orderQuantity @<#Number> * ;
+	schema:orderedItem (@<#OrderItem> OR @<#Product> OR @<#Service>) * ;
+}

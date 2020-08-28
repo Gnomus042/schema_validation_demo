@@ -1,0 +1,60 @@
+:ParcelDelivery a sh:NodeShape;
+	sh:targetClass schema:ParcelDelivery;
+	sh:nodeKind sh:BlankNodeOrIRI;
+	sh:property [
+		sh:path schema:carrier;
+		sh:node :Organization;
+	];
+	sh:property [
+		sh:path schema:deliveryAddress;
+		sh:node :PostalAddress;
+	];
+	sh:property [
+		sh:path schema:deliveryStatus;
+		sh:node :DeliveryEvent;
+	];
+	sh:property [
+		sh:path schema:expectedArrivalFrom;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Date]
+		);
+	];
+	sh:property [
+		sh:path schema:expectedArrivalUntil;
+		sh:or (
+			[sh:node :DateTime]
+			[sh:node :Date]
+		);
+	];
+	sh:property [
+		sh:path schema:hasDeliveryMethod;
+		sh:node :DeliveryMethod;
+	];
+	sh:property [
+		sh:path schema:itemShipped;
+		sh:node :Product;
+	];
+	sh:property [
+		sh:path schema:originAddress;
+		sh:node :PostalAddress;
+	];
+	sh:property [
+		sh:path schema:partOfOrder;
+		sh:node :Order;
+	];
+	sh:property [
+		sh:path schema:provider;
+		sh:or (
+			[sh:node :Person]
+			[sh:node :Organization]
+		);
+	];
+	sh:property [
+		sh:path schema:trackingNumber;
+		sh:node :Text;
+	];
+	sh:property [
+		sh:path schema:trackingUrl;
+		sh:node :URL;
+	].
