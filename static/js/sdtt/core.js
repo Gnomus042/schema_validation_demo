@@ -43,7 +43,7 @@ function clearServicesDuplictes(report) {
 
 async function validate(data, lang) {
     let report = (await (Promise.all(services.map(async service => {
-        let res = (await validation.validate(data, service))[lang];
+        let res = (await validation.validate(data, service, {shex: lang==='shex', shacl: lang === 'shacl'}))[lang];
         res.forEach(x => x.services = [service]);
         return res;
     })))).flat();

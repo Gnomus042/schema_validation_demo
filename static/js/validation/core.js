@@ -18,7 +18,7 @@ function validate(data) {
     new Promise((resolve, reject) => {
         let readyCount = 0;
         supportedServices.forEach((service, idx) => {
-            validation.validate(JSON.stringify(data), service).then(res => {
+            validation.validate(JSON.stringify(data), service, {shex: true, shacl: true}).then(res => {
                 report.set(service, res);
                 readyCount++;
                 if (readyCount === supportedServices.length) {

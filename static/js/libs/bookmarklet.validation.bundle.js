@@ -41839,22 +41839,23 @@ async function prepareData(dataStr) {
     return JSON.stringify(data);
 }
 
-async function validate(data, service) {
+async function validate(data, service, options) {
     if (!dataLoaded) {
         await loadData();
     }
     data = await prepareData(data);
     let shape = JSON.parse(data)['@type'];
-    let shexRes = await shexValidator.validate(data, shexShapes, defaultId, shape, service);
-    let shaclRes = await shaclValidator.validate(data, shaclSubClasses, shaclShapes[service]);
-    //let shaclRes = [];
+    let shexRes = [];
+    let shaclRes = [];
+    if (options.shex) shexRes = await shexValidator.validate(data, shexShapes, defaultId, shape, service);
+    if (options.shacl) shaclRes = await shaclValidator.validate(data, shaclSubClasses, shaclShapes[service]);
     return {'shex': shexRes, 'shacl': shaclRes};
 }
 
 module.exports = {validate: validate, loadDataset: shaclValidator.loadDataset, prepareData: prepareData};
 
 
-//validate(fs.readFileSync('data/0.json'), '').then(res => console.log(res));
+//validate(fs.readFileSync('data/0.json'), 'Google').then(res => console.log(res));
 
 
 /***/ }),
