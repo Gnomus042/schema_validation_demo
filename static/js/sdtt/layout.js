@@ -1,10 +1,10 @@
 let currText = "";
 
-$("#validate-btn").on('click', () => {
+$("#validate-btn").on('click', async () => {
     $('.output-block').empty();
     currText = $("#input-text").val();
     $("#validate-btn").addClass('disabled');
-    parse(currText);
+    await parse(currText);
 });
 
 $(document).bind('keypress', function (e) {
@@ -61,8 +61,9 @@ function failureLayout(failure, type) {
 function addReport(type, report, dataItems) {
     let errors = report.filter(x => x.severity === 'error');
     let warnings = report.filter(x => x.severity === 'warning');
+    let id = $('.report').length;
     let reportLayout = `
-        <div class="report">
+        <div class="report" id="report-${id}">
             <div class="title">
                 <div><b>${type}</b></div>
                 <div class="error"><span id="errors-count">${errors.length}</span> errors</div>
@@ -74,7 +75,7 @@ function addReport(type, report, dataItems) {
         </div>
     `;
     $('.output-block').append(reportLayout);
-    $( ".report>.title" ).on( "click", function() {
+    $( `#report-${id}>.title` ).on( "click", function() {
       $(this).parent().find('.errors').toggle();
       $(this).parent().find('.data-items').toggle();
     });

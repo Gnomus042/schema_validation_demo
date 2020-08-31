@@ -87,6 +87,7 @@ body, html {
 .report > .title {
     display: flex;
     padding: 5px;
+    cursor: pointer;
 }
 
 
@@ -160,6 +161,6 @@ body, html {
 
 .service-icon {
     height: 24px;
-    width: 24px;
+    max-width: 100px;
     margin: auto 0.5px;
 }

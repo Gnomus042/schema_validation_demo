@@ -26,26 +26,49 @@ function parseDataItems(dataset, shapeId, indent) {
     let dataItems = [];
     let shape = dataset.match(shapeId, undefined, undefined);
     shape.forEach(quad => {
-       dataItems.push(dataItemLayout(clearURL(quad.predicate.value), quad.object.value, indent));
-       dataItems.push(...parseDataItems(dataset, quad.object, indent+1));
+        dataItems.push(dataItemLayout(clearURL(quad.predicate.value), quad.object.value, indent));
+        dataItems.push(...parseDataItems(dataset, quad.object, indent + 1));
     });
     return dataItems;
 }
 
-function clearServicesDuplictes(report) {
+function clearServicesDuplicates(report) {
     let seen = {};
     report.forEach(item => {
-        if (seen[item.property]) seen[item.property].services.push(...item.services);
-        else seen[item.property] = item;
+        if (seen[item.property]) {
+            item.services.forEach(service => {
+                if (!seen[item.property].services.includes(service)) {
+                    seen[item.property].services.push(service);
+                }
+            });
+        } else seen[item.property] = item;
     });
     return Object.values(seen);
 }
 
-async function validate(data, lang) {
-    let report = (await (Promise.all(services.map(async service => {
-        let res = (await validation.validate(data, service, {shex: lang==='shex', shacl: lang === 'shacl'}))[lang];
-        res.forEach(x => x.services = [service]);
+async function clearTop(top, low) {
+    top.forEach(topItem => {
+        low = low.filter(lowItem => lowItem.property !== topItem.property && lowItem.message !== topItem.message);
+    });
+    return low;
+}
+
+async function validateService(data, lang, service, options) {
+    try {
+        let res = (await validation.validate(data, service, {
+            shex: lang === 'shex', shacl: lang === 'shacl'
+        }))[lang];
+        res.forEach(x => x.services = [ (options && options.serviceName) || service]);
         return res;
-    })))).flat();
-    return clearServicesDuplictes(report);
+    } catch (e) {
+        return [];
+    }
+}
+
+async function validate(data, lang) {
+    let schemaReport = await validateService(data, lang, '', {serviceName: 'Schema'});
+    let report = (await (Promise.all(services.map(async service => await validateService(data, lang, service))))).flat();
+    report = await clearTop(schemaReport, report);
+    schemaReport.push(...report);
+    return clearServicesDuplicates(schemaReport);
 }
