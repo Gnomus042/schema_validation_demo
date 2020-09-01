@@ -41811,7 +41811,7 @@ const shexValidator = __webpack_require__(183);
 const shaclValidator = __webpack_require__(222);
 let fs = __webpack_require__(379);
 
-let server = 'http://127.0.0.1:5000/'
+let server = 'https://gnomus042.com'
 
 let context, shaclShapes = {}, shaclSubClasses, services, shexShapes;
 let defaultId = 'https://example.org/recipe';
