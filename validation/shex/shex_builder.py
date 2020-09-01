@@ -3,23 +3,32 @@ import re
 import json
 
 
+def find_files(directory, stop_elements, extension='.shex'):
+    files = []
+    for element in os.listdir(directory):
+        _, ext = os.path.splitext(element)
+        if stop_elements and element in stop_elements:
+            continue
+        path = os.path.join(directory, element)
+        if os.path.isfile(path) and (extension == None or extension == ext):
+            files.append(open(path).read())
+        else:
+            files += find_files(path, stop_elements, extension)
+    return files
+
+
 def pack():
     base = open('base.shex').read()
     shapes = [base]
-    for shex_file in os.listdir('shapes'):
-        shapes.append(open(f'shapes/{shex_file}').read())
-    for shex_file in os.listdir('raw_shapes'):
-        if shex_file not in os.listdir('shapes'):
-            shapes.append(open(f'raw_shapes/{shex_file}').read())
-    for topic in os.listdir('specific'):
-        for shex_file in os.listdir(f'specific/{topic}'):
-            shapes.append(open(f'specific/{topic}/{shex_file}').read())
+    shapes += find_files('shapes', [])
+    shapes += find_files('raw_shapes', os.listdir('shapes'))
+    shapes += find_files('specific', [])
     full = fill_temp_holes(('\n' * 3).join(shapes))
     open('full.shex', 'w').write(full)
 
 
 def find_unknown():
-    defined_shapes = set([shex_file[:-5] for shex_file in os.listdir('shapes')+os.listdir('raw_shapes')])
+    defined_shapes = set([shex_file[:-5] for shex_file in os.listdir('shapes') + os.listdir('raw_shapes')])
     unknown = set()
     for shex_file in os.listdir('shapes'):
         shape = open(f'shapes/{shex_file}').read()
@@ -37,4 +46,3 @@ def fill_temp_holes(shex):
 
 if __name__ == '__main__':
     pack()
-

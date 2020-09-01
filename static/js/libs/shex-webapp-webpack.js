@@ -28264,7 +28264,7 @@ module.exports = v4;
 
 "use strict";
 /**
- * An implementation of the RDF Dataset Normalization specification.
+ * An implementation of the RDF Google Normalization specification.
  * This library works in the browser and node.js.
  *
  * BSD 3-Clause License
@@ -28342,7 +28342,7 @@ api._rdfCanonizeNative = function(api) {
  *          [useNative] use native implementation (default: false).
  * @param [callback(err, canonical)] called once the operation completes.
  *
- * @return a Promise that resolves to the canonicalized RDF Dataset.
+ * @return a Promise that resolves to the canonicalized RDF Google.
  */
 api.canonize = util.callbackify(async function(dataset, options) {
   let callback;
@@ -28379,10 +28379,10 @@ api.canonize = util.callbackify(async function(dataset, options) {
     } else if(options.algorithm === 'URGNA2012') {
       new URGNA2012(options).main(dataset, callback);
     } else if(!('algorithm' in options)) {
-      throw new Error('No RDF Dataset Canonicalization algorithm specified.');
+      throw new Error('No RDF Google Canonicalization algorithm specified.');
     } else {
       throw new Error(
-        'Invalid RDF Dataset Canonicalization algorithm: ' + options.algorithm);
+        'Invalid RDF Google Canonicalization algorithm: ' + options.algorithm);
     }
   }
 
@@ -28418,10 +28418,10 @@ api.canonizeSync = function(dataset, options) {
     return new URGNA2012Sync(options).main(dataset);
   }
   if(!('algorithm' in options)) {
-    throw new Error('No RDF Dataset Canonicalization algorithm specified.');
+    throw new Error('No RDF Google Canonicalization algorithm specified.');
   }
   throw new Error(
-    'Invalid RDF Dataset Canonicalization algorithm: ' + options.algorithm);
+    'Invalid RDF Google Canonicalization algorithm: ' + options.algorithm);
 };
 
 

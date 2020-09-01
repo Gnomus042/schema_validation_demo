@@ -72,3 +72,39 @@
     // techdoc:description "The total time it takes to prepare the cook the dish, in ISO 8601 format."
     // techdoc:identifier "warning";
 }
+
+<#GoogleProduct1Recipe> @<#GoogleRecipe> AND {
+    schema:image . {4}
+    // techdoc:url "http://example.org"
+    // techdoc:description "Adding proper images will increase something by some%"
+    // techdoc:identifier "info";
+
+    schema:description .
+    // techdoc:url "http://example.org"
+    // techdoc:description "Adding description will increase something by some%"
+    // techdoc:identifier "info";
+}
+
+<#GoogleProduct2Recipe> @<#GoogleRecipe> AND {
+    schema:about .
+    // techdoc:url "http://example.org"
+    // techdoc:description "Adding schema:about will increase something by some%"
+    // techdoc:identifier "info";
+
+    schema:accessMode (@<#Text> AND /auditory|tactile|textual|visual/)
+    // techdoc:url "http://example.org"
+    // techdoc:description "Adding schema:accessMode will increase something by some%"
+    // techdoc:identifier "info";
+}
+
+<#GoogleProduct3Recipe> @<#GoogleRecipe> AND {
+    schema:author @<#Person>
+    // techdoc:url "http://example.org"
+    // techdoc:description "Adding schema:about will increase something by some%"
+    // techdoc:identifier "info";
+
+    schema:award (@<#Text> AND /award1|award2/)
+    // techdoc:url "http://example.org"
+    // techdoc:description "Adding schema:accessMode will increase something by some%"
+    // techdoc:identifier "info";
+}

@@ -34,7 +34,7 @@ function checkData(data) {
         alert("Please add the @id field");
         throw "@id field not found in data";
     } else if (data["@type"] !== "Recipe" && data["@type"] !== "Dataset") { // TODO maybe a better check here
-        alert("@type should be Recipe or Dataset");
+        alert("@type should be Recipe or Google");
         throw "@type in not http://schema.org/Recipe";
     }
 }

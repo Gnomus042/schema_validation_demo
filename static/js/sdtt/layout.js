@@ -1,7 +1,7 @@
 let currText = "";
 
 $("#validate-btn").on('click', async () => {
-    $('.output-block').empty();
+    $('.reports').empty();
     currText = $("#input-text").val();
     $("#validate-btn").addClass('disabled');
     await parse(currText);
@@ -31,9 +31,9 @@ $(document).delegate('#input-text', 'keydown', function (e) {
 });
 
 $('#input-text').keyup(() => {
-   if ($(this).text() !== currText) {
-       $("#validate-btn").removeClass('disabled');
-   }
+    if ($(this).text() !== currText) {
+        $("#validate-btn").removeClass('disabled');
+    }
 });
 
 function dataItemLayout(predicate, object, indent) {
@@ -48,19 +48,24 @@ function dataItemLayout(predicate, object, indent) {
 
 function failureLayout(failure, type) {
     let services = failure.services.map(x => `<img class="service-icon" src="static/images/services/${x}.png" alt="${x}"/>`).join('')
+    let url = failure.url ? `<a href=\"${failure.url}\">Docs</a>` : "";
     return `<div class="failure ${type}">
         <div class="property">
             <img src="static/images/icons/${type}.svg" alt="${type}">
             <div>${clearURL(failure.property)}</div>
         </div>
-        <div class="message">${clearURL(failure.message)}</div>
+        <div class="message">
+            <div class="text-justify">${clearURL(failure.message) || ""}.</div> 
+            <div class="text-justify">${failure.description || ""} ${url}</div>
+        </div>
         <div class="services">${services}</div>
     </div>`
 }
 
 function addReport(type, report, dataItems) {
-    let errors = report.filter(x => x.severity === 'error');
-    let warnings = report.filter(x => x.severity === 'warning');
+    let errors = report.filter(x => x.severity === 'error').map(x => failureLayout(x, x.severity));
+    let warnings = report.filter(x => x.severity === 'warning').map(x => failureLayout(x, x.severity));
+    let infos = report.filter(x => x.severity === 'info').map(x => failureLayout(x, 'recommendation'));
     let id = $('.report').length;
     let reportLayout = `
         <div class="report" id="report-${id}">
@@ -70,13 +75,56 @@ function addReport(type, report, dataItems) {
                 <div class="warning"><span id="warnings-count">${warnings.length}</span> warnings</div>
             </div>
             <div class="data-items">${dataItems.join('')}</div>
-            <div class="errors">${errors.map(x => failureLayout(x, x.severity)).join('') +
-    warnings.map(x => failureLayout(x, x.severity)).join('')}</div>
+            <div class="errors">${errors.join('') + warnings.join('') + infos.join('')}</div>
         </div>
     `;
-    $('.output-block').append(reportLayout);
-    $( `#report-${id}>.title` ).on( "click", function() {
-      $(this).parent().find('.errors').toggle();
-      $(this).parent().find('.data-items').toggle();
+    $('.reports').append(reportLayout);
+    $(`#report-${id}>.title`).on("click", function () {
+        $(this).parent().find('.errors').toggle();
+        $(this).parent().find('.data-items').toggle();
     });
+}
+
+function constructHierarchySelector(data, indent) {
+    let name = data.serviceName || data.service;
+    $('.h-items').append(`<div class="h-item">
+          <div style="width: ${indent*30}px"></div>
+          <input type="checkbox" checked id="${name}" class="form-control">
+          <div> <img src="static/images/services/${name}.png" class="service-icon" alt="${name}"> ${name}</div>
+     </div>`);
+    $(`#${name}`).change(function ()  {
+        data.disabled = !this.checked;
+        if (data.disabled) {
+            disableBranch(data);
+        } else {
+            enableBranch(hierarchy, data);
+        }
+    })
+    if (data.nested)
+        data.nested.forEach(x => constructHierarchySelector(x, indent+1));
+}
+
+function disableBranch(node) {
+    let name = node.serviceName || node.service;
+    $(`#${name}`).prop('checked', false);
+    node.disabled = true;
+    if (node.nested)
+        node.nested.forEach(nest => disableBranch(nest));
+}
+
+function enableBranch(node, tnode) {
+    let name = node.serviceName || node.service;
+    if (node.service === tnode.service) {
+        node.disabled = false;
+        $(`#${name}`).prop('checked', true);
+        return true;
+    }
+    if (!node.nested) return false;
+    let toCheck = false;
+    node.nested.forEach(nest => toCheck = toCheck || enableBranch(nest, tnode));
+    if (toCheck) {
+        node.disabled = false;
+        $(`#${name}`).prop('checked', true);
+    }
+    return toCheck;
 }

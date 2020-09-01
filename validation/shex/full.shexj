@@ -31307,6 +31307,369 @@
       },
       {
          "type": "ShapeAnd",
+         "id": "http://schema.org/shex#BingRecipe",
+         "shapeExprs": [
+            "http://schema.org/shex#Recipe",
+            {
+               "type": "Shape",
+               "expression": {
+                  "type": "EachOf",
+                  "expressions": [
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/name",
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "Required. Name of the recipe."
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/author",
+                        "min": 1,
+                        "max": -1,
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "The author of the recipe."
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "warning"
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/datePublished",
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "The date the recipe was published."
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "warning"
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/recipeCategory",
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "The type of dish. For example, the dish could be an appetizer, main course, or desert."
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "warning"
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/description",
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "Summary describing the recipe."
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "warning"
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/image",
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "Picture associated with the recipe. This can be a picture of the dish or the ingredients of the dish."
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "warning"
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/review",
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "Review of the recipe."
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "warning"
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/prepTime",
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "The amount of time needed to prepare the ingredients of the recipe."
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "warning"
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/totalTime",
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "The total time it takes to prepare the ingredients and cook the dish."
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "warning"
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/recipeYield",
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "The quantity of the dish prepared by the recipe (e.g. number of servings)."
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "warning"
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/nutrition",
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "Nutritional information of the dish the recipe is used to prepare."
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "warning"
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/recipeIngredient",
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "An ingredient used in the recipe."
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "warning"
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/recipeInstructions",
+                        "min": 1,
+                        "max": -1,
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "The steps specified by the recipe to prepare the dish."
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "warning"
+                              }
+                           }
+                        ]
+                     }
+                  ]
+               }
+            }
+         ]
+      },
+      {
+         "type": "ShapeAnd",
          "id": "http://schema.org/shex#GoogleDataset",
          "shapeExprs": [
             "http://schema.org/shex#Dataset",
@@ -31780,369 +32143,6 @@
       },
       {
          "type": "ShapeAnd",
-         "id": "http://schema.org/shex#BingRecipe",
-         "shapeExprs": [
-            "http://schema.org/shex#Recipe",
-            {
-               "type": "Shape",
-               "expression": {
-                  "type": "EachOf",
-                  "expressions": [
-                     {
-                        "type": "TripleConstraint",
-                        "predicate": "http://schema.org/name",
-                        "annotations": [
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/url",
-                              "object": {
-                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/description",
-                              "object": {
-                                 "value": "Required. Name of the recipe."
-                              }
-                           }
-                        ]
-                     },
-                     {
-                        "type": "TripleConstraint",
-                        "predicate": "http://schema.org/author",
-                        "min": 1,
-                        "max": -1,
-                        "annotations": [
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/url",
-                              "object": {
-                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/description",
-                              "object": {
-                                 "value": "The author of the recipe."
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/identifier",
-                              "object": {
-                                 "value": "warning"
-                              }
-                           }
-                        ]
-                     },
-                     {
-                        "type": "TripleConstraint",
-                        "predicate": "http://schema.org/datePublished",
-                        "annotations": [
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/url",
-                              "object": {
-                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/description",
-                              "object": {
-                                 "value": "The date the recipe was published."
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/identifier",
-                              "object": {
-                                 "value": "warning"
-                              }
-                           }
-                        ]
-                     },
-                     {
-                        "type": "TripleConstraint",
-                        "predicate": "http://schema.org/recipeCategory",
-                        "annotations": [
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/url",
-                              "object": {
-                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/description",
-                              "object": {
-                                 "value": "The type of dish. For example, the dish could be an appetizer, main course, or desert."
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/identifier",
-                              "object": {
-                                 "value": "warning"
-                              }
-                           }
-                        ]
-                     },
-                     {
-                        "type": "TripleConstraint",
-                        "predicate": "http://schema.org/description",
-                        "annotations": [
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/url",
-                              "object": {
-                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/description",
-                              "object": {
-                                 "value": "Summary describing the recipe."
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/identifier",
-                              "object": {
-                                 "value": "warning"
-                              }
-                           }
-                        ]
-                     },
-                     {
-                        "type": "TripleConstraint",
-                        "predicate": "http://schema.org/image",
-                        "annotations": [
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/url",
-                              "object": {
-                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/description",
-                              "object": {
-                                 "value": "Picture associated with the recipe. This can be a picture of the dish or the ingredients of the dish."
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/identifier",
-                              "object": {
-                                 "value": "warning"
-                              }
-                           }
-                        ]
-                     },
-                     {
-                        "type": "TripleConstraint",
-                        "predicate": "http://schema.org/review",
-                        "annotations": [
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/url",
-                              "object": {
-                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/description",
-                              "object": {
-                                 "value": "Review of the recipe."
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/identifier",
-                              "object": {
-                                 "value": "warning"
-                              }
-                           }
-                        ]
-                     },
-                     {
-                        "type": "TripleConstraint",
-                        "predicate": "http://schema.org/prepTime",
-                        "annotations": [
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/url",
-                              "object": {
-                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/description",
-                              "object": {
-                                 "value": "The amount of time needed to prepare the ingredients of the recipe."
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/identifier",
-                              "object": {
-                                 "value": "warning"
-                              }
-                           }
-                        ]
-                     },
-                     {
-                        "type": "TripleConstraint",
-                        "predicate": "http://schema.org/totalTime",
-                        "annotations": [
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/url",
-                              "object": {
-                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/description",
-                              "object": {
-                                 "value": "The total time it takes to prepare the ingredients and cook the dish."
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/identifier",
-                              "object": {
-                                 "value": "warning"
-                              }
-                           }
-                        ]
-                     },
-                     {
-                        "type": "TripleConstraint",
-                        "predicate": "http://schema.org/recipeYield",
-                        "annotations": [
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/url",
-                              "object": {
-                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/description",
-                              "object": {
-                                 "value": "The quantity of the dish prepared by the recipe (e.g. number of servings)."
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/identifier",
-                              "object": {
-                                 "value": "warning"
-                              }
-                           }
-                        ]
-                     },
-                     {
-                        "type": "TripleConstraint",
-                        "predicate": "http://schema.org/nutrition",
-                        "annotations": [
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/url",
-                              "object": {
-                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/description",
-                              "object": {
-                                 "value": "Nutritional information of the dish the recipe is used to prepare."
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/identifier",
-                              "object": {
-                                 "value": "warning"
-                              }
-                           }
-                        ]
-                     },
-                     {
-                        "type": "TripleConstraint",
-                        "predicate": "http://schema.org/recipeIngredient",
-                        "annotations": [
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/url",
-                              "object": {
-                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/description",
-                              "object": {
-                                 "value": "An ingredient used in the recipe."
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/identifier",
-                              "object": {
-                                 "value": "warning"
-                              }
-                           }
-                        ]
-                     },
-                     {
-                        "type": "TripleConstraint",
-                        "predicate": "http://schema.org/recipeInstructions",
-                        "min": 1,
-                        "max": -1,
-                        "annotations": [
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/url",
-                              "object": {
-                                 "value": "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa"
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/description",
-                              "object": {
-                                 "value": "The steps specified by the recipe to prepare the dish."
-                              }
-                           },
-                           {
-                              "type": "Annotation",
-                              "predicate": "http://schema.org/identifier",
-                              "object": {
-                                 "value": "warning"
-                              }
-                           }
-                        ]
-                     }
-                  ]
-               }
-            }
-         ]
-      },
-      {
-         "type": "ShapeAnd",
          "id": "http://schema.org/shex#GoogleRecipe",
          "shapeExprs": [
             "http://schema.org/shex#Recipe",
@@ -32548,6 +32548,236 @@
                               "predicate": "http://schema.org/identifier",
                               "object": {
                                  "value": "warning"
+                              }
+                           }
+                        ]
+                     }
+                  ]
+               }
+            }
+         ]
+      },
+      {
+         "type": "ShapeAnd",
+         "id": "http://schema.org/shex#GoogleProduct1Recipe",
+         "shapeExprs": [
+            "http://schema.org/shex#GoogleRecipe",
+            {
+               "type": "Shape",
+               "expression": {
+                  "type": "EachOf",
+                  "expressions": [
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/image",
+                        "min": 4,
+                        "max": 4,
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "http://example.org"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "Adding proper images will increase something by some%"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "info"
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/description",
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "http://example.org"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "Adding description will increase something by some%"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "info"
+                              }
+                           }
+                        ]
+                     }
+                  ]
+               }
+            }
+         ]
+      },
+      {
+         "type": "ShapeAnd",
+         "id": "http://schema.org/shex#GoogleProduct2Recipe",
+         "shapeExprs": [
+            "http://schema.org/shex#GoogleRecipe",
+            {
+               "type": "Shape",
+               "expression": {
+                  "type": "EachOf",
+                  "expressions": [
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/about",
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "http://example.org"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "Adding schema:about will increase something by some%"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "info"
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/accessMode",
+                        "valueExpr": {
+                           "type": "ShapeAnd",
+                           "shapeExprs": [
+                              "http://schema.org/shex#Text",
+                              {
+                                 "type": "NodeConstraint",
+                                 "pattern": "auditory|tactile|textual|visual"
+                              }
+                           ]
+                        },
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "http://example.org"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "Adding schema:accessMode will increase something by some%"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "info"
+                              }
+                           }
+                        ]
+                     }
+                  ]
+               }
+            }
+         ]
+      },
+      {
+         "type": "ShapeAnd",
+         "id": "http://schema.org/shex#GoogleProduct3Recipe",
+         "shapeExprs": [
+            "http://schema.org/shex#GoogleRecipe",
+            {
+               "type": "Shape",
+               "expression": {
+                  "type": "EachOf",
+                  "expressions": [
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/author",
+                        "valueExpr": "http://schema.org/shex#Person",
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "http://example.org"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "Adding schema:author will increase something by some%"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "info"
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "http://schema.org/award",
+                        "valueExpr": {
+                           "type": "ShapeAnd",
+                           "shapeExprs": [
+                              "http://schema.org/shex#Text",
+                              {
+                                 "type": "NodeConstraint",
+                                 "pattern": "award1|award2"
+                              }
+                           ]
+                        },
+                        "annotations": [
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/url",
+                              "object": {
+                                 "value": "http://example.org"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/description",
+                              "object": {
+                                 "value": "Adding schema:award will increase something by some%"
+                              }
+                           },
+                           {
+                              "type": "Annotation",
+                              "predicate": "http://schema.org/identifier",
+                              "object": {
+                                 "value": "info"
                               }
                            }
                         ]

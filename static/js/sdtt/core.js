@@ -1,6 +1,11 @@
-let services;
+let services, hierarchy;
 
 $.get('/services', (res) => services = res.services);
+$.get('/scc/hierarchy', (res) => {
+    hierarchy = JSON.parse(res.hierarchy);
+    constructHierarchySelector(hierarchy, 0);
+});
+
 
 async function parse(input) {
     let data = JSON.parse(input);
@@ -56,19 +61,30 @@ async function clearTop(top, low) {
 async function validateService(data, lang, service, options) {
     try {
         let res = (await validation.validate(data, service, {
-            shex: lang === 'shex', shacl: lang === 'shacl'
+            shex: lang === 'shex', shacl: lang === 'shacl', server: location.protocol + '//' + location.host
         }))[lang];
-        res.forEach(x => x.services = [ (options && options.serviceName) || service]);
+        res.forEach(x => x.services = [(options && options.serviceName) || service]);
         return res;
     } catch (e) {
         return [];
     }
 }
 
+async function recursiveValidate(data, lang, hr) {
+    if (hr.disabled) return [];
+    if (!hr.nested) {
+        let rep = await validateService(data, lang, hr.service, {serviceName: hr.serviceName || hr.service});
+        console.log(hr, rep)
+        return rep;
+    }
+    let rootReport = await validateService(data, lang, hr.service, {serviceName: hr.serviceName || hr.service});
+    let nestedReport = (await (Promise.all(hr.nested.map(async service => await recursiveValidate(data, lang, service))))).flat();
+    nestedReport = await clearTop(rootReport, nestedReport);
+    rootReport.push(...nestedReport);
+    return rootReport;
+}
+
 async function validate(data, lang) {
-    let schemaReport = await validateService(data, lang, '', {serviceName: 'Schema'});
-    let report = (await (Promise.all(services.map(async service => await validateService(data, lang, service))))).flat();
-    report = await clearTop(schemaReport, report);
-    schemaReport.push(...report);
+    let schemaReport = await recursiveValidate(data, lang, hierarchy);
     return clearServicesDuplicates(schemaReport);
 }
