@@ -4920,7 +4920,7 @@ BASE <http://schema.org/shex>
     // techdoc:identifier "warning";
 }
 
-<#GoogleRecipeProduct1> @<#GoogleRecipe> AND {
+<#GoogleProduct1Recipe> @<#GoogleRecipe> AND {
     schema:image . {4}
     // techdoc:url "http://example.org"
     // techdoc:description "Adding proper images will increase something by some%"
@@ -4932,7 +4932,7 @@ BASE <http://schema.org/shex>
     // techdoc:identifier "info";
 }
 
-<#GoogleRecipeProduct2> @<#GoogleRecipe> AND {
+<#GoogleProduct2Recipe> @<#GoogleRecipe> AND {
     schema:about .
     // techdoc:url "http://example.org"
     // techdoc:description "Adding schema:about will increase something by some%"
@@ -4944,15 +4944,15 @@ BASE <http://schema.org/shex>
     // techdoc:identifier "info";
 }
 
-<#GoogleRecipeProduct3> @<#GoogleRecipe> AND {
+<#GoogleProduct3Recipe> @<#GoogleRecipe> AND {
     schema:author @<#Person>
     // techdoc:url "http://example.org"
-    // techdoc:description "Adding schema:about will increase something by some%"
+    // techdoc:description "Adding schema:author will increase something by some%"
     // techdoc:identifier "info";
 
     schema:award (@<#Text> AND /award1|award2/)
     // techdoc:url "http://example.org"
-    // techdoc:description "Adding schema:accessMode will increase something by some%"
+    // techdoc:description "Adding schema:award will increase something by some%"
     // techdoc:identifier "info";
 }
 

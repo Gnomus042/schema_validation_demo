@@ -2,6 +2,14 @@ import os
 import re
 import json
 
+import sys
+from typing import List
+
+import dirlistproc
+from jsonasobj import as_json
+from pyshex.shex_evaluator import ShExEvaluator
+from rdflib import Namespace
+
 
 def find_files(directory, stop_elements, extension='.shex'):
     files = []
@@ -27,6 +35,13 @@ def pack():
     open('full.shex', 'w').write(full)
 
 
+def to_shexj(input_fn, output_fn):
+    evaluator: ShExEvaluator = ShExEvaluator(schema=input_fn)
+    with open(output_fn, 'w') as f:
+        f.write(as_json(evaluator._schema))
+    return True
+
+
 def find_unknown():
     defined_shapes = set([shex_file[:-5] for shex_file in os.listdir('shapes') + os.listdir('raw_shapes')])
     unknown = set()
@@ -46,3 +61,4 @@ def fill_temp_holes(shex):
 
 if __name__ == '__main__':
     pack()
+    to_shexj('full.shex', 'full.shexj')

@@ -13,6 +13,7 @@ $(document).bind('keypress', function (e) {
     }
 });
 
+
 $(document).delegate('#input-text', 'keydown', function (e) {
     var keyCode = e.keyCode || e.which;
 
@@ -47,8 +48,11 @@ function dataItemLayout(predicate, object, indent) {
 }
 
 function failureLayout(failure, type) {
-    let services = failure.services.map(x => `<img class="service-icon" src="static/images/services/${x}.png" alt="${x}"/>`).join('')
-    let url = failure.url ? `<a href=\"${failure.url}\">Docs</a>` : "";
+    let services = failure.services.map(x => {
+        return `<a href="${x.url || ''}" title="${x.description||""}">
+            <img class="service-icon" src="static/images/services/${x.service}.png" alt="${x.service}"/>
+        </a>`
+    }).join('');
     return `<div class="failure ${type}">
         <div class="property">
             <img src="static/images/icons/${type}.svg" alt="${type}">
@@ -56,9 +60,8 @@ function failureLayout(failure, type) {
         </div>
         <div class="message">
             <div class="text-justify">${clearURL(failure.message) || ""}.</div> 
-            <div class="text-justify">${failure.description || ""} ${url}</div>
         </div>
-        <div class="services">${services}</div>
+        <div class="services"><div>${services}</div></div>
     </div>`
 }
 
@@ -88,11 +91,11 @@ function addReport(type, report, dataItems) {
 function constructHierarchySelector(data, indent) {
     let name = data.serviceName || data.service;
     $('.h-items').append(`<div class="h-item">
-          <div style="width: ${indent*30}px"></div>
+          <div style="width: ${indent * 30}px"></div>
           <input type="checkbox" checked id="${name}" class="form-control">
           <div> <img src="static/images/services/${name}.png" class="service-icon" alt="${name}"> ${name}</div>
      </div>`);
-    $(`#${name}`).change(function ()  {
+    $(`#${name}`).change(function () {
         data.disabled = !this.checked;
         if (data.disabled) {
             disableBranch(data);
@@ -101,7 +104,7 @@ function constructHierarchySelector(data, indent) {
         }
     })
     if (data.nested)
-        data.nested.forEach(x => constructHierarchySelector(x, indent+1));
+        data.nested.forEach(x => constructHierarchySelector(x, indent + 1));
 }
 
 function disableBranch(node) {

@@ -35,7 +35,7 @@ def tests():
 
 @app.route('/shape/<lang>/<type>/<service>')
 def shape(lang, type, service):
-    return jsonify(shape=open(f'validation/{lang}/specific/{type}/{service}.{lang}').read())
+    return jsonify(shape=open(f'validation/{lang}/specific/{service}/{type}.{lang}').read())
 
 
 @app.route('/context')

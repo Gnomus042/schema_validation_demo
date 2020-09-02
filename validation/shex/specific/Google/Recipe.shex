@@ -100,11 +100,11 @@
 <#GoogleProduct3Recipe> @<#GoogleRecipe> AND {
     schema:author @<#Person>
     // techdoc:url "http://example.org"
-    // techdoc:description "Adding schema:about will increase something by some%"
+    // techdoc:description "Adding schema:author will increase something by some%"
     // techdoc:identifier "info";
 
     schema:award (@<#Text> AND /award1|award2/)
     // techdoc:url "http://example.org"
-    // techdoc:description "Adding schema:accessMode will increase something by some%"
+    // techdoc:description "Adding schema:award will increase something by some%"
     // techdoc:identifier "info";
 }

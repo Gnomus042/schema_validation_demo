@@ -38,17 +38,26 @@ function parseDataItems(dataset, shapeId, indent) {
 }
 
 function clearServicesDuplicates(report) {
-    let seen = {};
+    let properties = {};
     report.forEach(item => {
-        if (seen[item.property]) {
-            item.services.forEach(service => {
-                if (!seen[item.property].services.includes(service)) {
-                    seen[item.property].services.push(service);
-                }
+        if (properties[item.property]) {
+            properties[item.property].services.push({
+                service: item.service,
+                description: item.description,
+                url: item.url
             });
-        } else seen[item.property] = item;
+        } else properties[item.property] = {
+            property: item.property,
+            severity: item.severity,
+            message: item.message,
+            services: [{
+                service: item.service,
+                description: item.description,
+                url: item.url
+            }]
+        };
     });
-    return Object.values(seen);
+    return Object.values(properties);
 }
 
 async function clearTop(top, low) {
@@ -61,9 +70,9 @@ async function clearTop(top, low) {
 async function validateService(data, lang, service, options) {
     try {
         let res = (await validation.validate(data, service, {
-            shex: lang === 'shex', shacl: lang === 'shacl', server: location.protocol + '//' + location.host
+            shex: lang === 'shex', shacl: lang === 'shacl'
         }))[lang];
-        res.forEach(x => x.services = [(options && options.serviceName) || service]);
+        res.forEach(x => x.service = (options && options.serviceName) || service);
         return res;
     } catch (e) {
         return [];
