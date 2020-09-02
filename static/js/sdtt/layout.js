@@ -37,6 +37,9 @@ $('#input-text').keyup(() => {
     }
 });
 
+$('.tests-display').mouseenter(() => $('.tests').removeClass('d-none'));
+$('.tests-display').mouseleave(() => $('.tests').addClass('d-none'));
+
 function dataItemLayout(predicate, object, indent) {
     let trueIndent = indent * 30;
     return `<div class="data-item">

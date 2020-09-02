@@ -14,7 +14,7 @@ body, html {
 
 .header {
     height: 60px;
-    background: rgb(0,150,136);
+    background: #1984ad;
     padding: 0 10px;
     display: flex;
     justify-content: space-between;
@@ -60,12 +60,13 @@ body, html {
     height: 56px;
     width: 56px;
     padding: 13px;
-    background:#009688;
+    background: #1984ad;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 #validate-btn.disabled {
-    background:rgb(158,158,158);
+    background: rgb(158, 158, 158);
 }
 
 #validate-btn > img {
@@ -77,7 +78,7 @@ body, html {
 .report {
     margin: 20px;
     background: white;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
 .report > div {
@@ -136,7 +137,7 @@ body, html {
     color: #F44336;
 }
 
-.warning{
+.warning {
     color: #EF6C00;
 }
 
@@ -199,7 +200,7 @@ body, html {
     background: white;
     padding: 3px 0;
     margin: 20px;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
 .hierarchy .title {
@@ -214,7 +215,7 @@ body, html {
     margin: 5px 10px;
 }
 
-.h-item *{
+.h-item * {
     margin: auto 5px;
 
 }
@@ -222,4 +223,33 @@ body, html {
 .h-item input[type='checkbox'] {
     height: 15px;
     width: 15px;
+}
+
+.tests-display {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    font-size: 16px;
+    background: rgba(25, 132, 173, 0.7);
+    cursor: pointer;
+    border: 1px solid rgba(25, 132, 173, 0.9);
+}
+
+#show-tests-btn {
+    font-weight: bold;
+    padding: 4px 8px;
+}
+
+#show-tests-btn:hover {
+    background: rgba(25, 132, 173, 0.9);
+}
+
+.test {
+    text-align: center;
+    padding: 3px;
+}
+
+.test:hover {
+    background: rgba(25, 132, 173, 0.9);
 }

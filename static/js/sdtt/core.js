@@ -1,11 +1,18 @@
-let services, hierarchy;
+let services, hierarchy, tests;
 
 $.get('/services', (res) => services = res.services);
-$.get('/scc/hierarchy', (res) => {
+$.get('/hierarchy', (res) => {
     hierarchy = JSON.parse(res.hierarchy);
     constructHierarchySelector(hierarchy, 0);
 });
-
+$.get('/tests', (res) => {
+    tests = res.tests;
+    $('#input-text').val(tests[1]);
+    tests.forEach((test, idx) => {
+        $('.tests').append(`<div class="test" id="test-${idx+1}">Test ${idx+1}</div>`);
+        $(`#test-${idx+1}`).click(() => $('#input-text').val(test));
+    })
+});
 
 async function parse(input) {
     let data = JSON.parse(input);

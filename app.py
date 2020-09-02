@@ -10,7 +10,7 @@ from sdtt import sdtt as sdtt_blueprint
 app.register_blueprint(sdtt_blueprint)
 
 
-@app.route('/')
+@app.route('/old')
 def index():
     return render_template('validation.html')
 

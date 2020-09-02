@@ -5,11 +5,11 @@ import config
 sdtt = Blueprint('sdtt', __name__)
 
 
-@sdtt.route('/scc')
+@sdtt.route('/')
 def index():
     return render_template('sdtt.html')
 
 
-@sdtt.route('/scc/hierarchy')
+@sdtt.route('/hierarchy')
 def hierarchy():
     return jsonify(hierarchy=json.dumps(config.hierarchy))
