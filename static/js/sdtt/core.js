@@ -30,8 +30,11 @@ async function parseItem(input) {
 }
 
 function clearURL(val) {
-    return val.replace('http://schema.org/', '')
+    if (!val) return '';
+    return val.replace('http://schema.org/shex#', '')
+        .replace('http://schema.org/', '')
         .replace('http://www.w3.org/1999/02/22-rdf-syntax-ns#type', '@type');
+
 }
 
 function parseDataItems(dataset, shapeId, indent) {
@@ -47,13 +50,14 @@ function parseDataItems(dataset, shapeId, indent) {
 function clearServicesDuplicates(report) {
     let properties = {};
     report.forEach(item => {
-        if (properties[item.property]) {
-            properties[item.property].services.push({
+        let key = item.property;
+        if (properties[key]) {
+            properties[key].services.push({
                 service: item.service,
                 description: item.description,
                 url: item.url
             });
-        } else properties[item.property] = {
+        } else properties[key] = {
             property: item.property,
             severity: item.severity,
             message: item.message,
@@ -64,7 +68,24 @@ function clearServicesDuplicates(report) {
             }]
         };
     });
-    return Object.values(properties);
+    let reports = Object.values(properties);
+    reports.forEach(report => clearGraph(hierarchy, report));
+    return reports;
+}
+
+function clearGraph(node, report) {
+    let found = report.services.filter(s => s.service === node.service || s.service === node.serviceName);
+    if (!node.nested) return;
+    if (found.length > 0) {
+        node.nested.forEach(nstd => removeNested(nstd, report));
+    } else {
+        node.nested.forEach(nstd => clearGraph(nstd, report));
+    }
+}
+
+function removeNested(node, report) {
+    report.services = report.services.filter(s => s.service !== node.service && s.service !== node.serviceName);
+    if ('nested' in report) report.nested.forEach(nstd => removeNested(nstd, report));
 }
 
 async function clearTop(top, low) {
@@ -100,7 +121,29 @@ async function recursiveValidate(data, lang, hr) {
     return rootReport;
 }
 
+
+
+function flattenHierarchy(hierarchy, report) {
+    if (hierarchy.service === report.service || hierarchy.serviceName === report.service) {
+        return !hierarchy.disabled;
+    }
+    if (!hierarchy.nested) return true;
+    let bol=true;
+    hierarchy.nested.forEach(nstd => bol = bol&&flattenHierarchy(nstd, report));
+    return bol;
+}
+
 async function validate(data, lang) {
-    let schemaReport = await recursiveValidate(data, lang, hierarchy);
-    return clearServicesDuplicates(schemaReport);
+    let schemaReport = await validation.validate(data, '', {shex: true});
+    schemaReport.shex.forEach(x =>{
+        x.service = clearURL(x.shape).replace(JSON.parse(data)['@type'], '');
+        if (x.service === '') x.service = 'Schema';
+    });
+    let report = [];
+    schemaReport.shex.forEach(x => {
+        if (flattenHierarchy(hierarchy, x)) {
+            report.push(x);
+        }
+    })
+    return clearServicesDuplicates(report);
 }
