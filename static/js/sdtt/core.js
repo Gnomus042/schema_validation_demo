@@ -88,41 +88,6 @@ function removeNested(node, report) {
     if ('nested' in report) report.nested.forEach(nstd => removeNested(nstd, report));
 }
 
-async function clearTop(top, low) {
-    top.forEach(topItem => {
-        low = low.filter(lowItem => lowItem.property !== topItem.property && lowItem.message !== topItem.message);
-    });
-    return low;
-}
-
-async function validateService(data, lang, service, options) {
-    try {
-        let res = (await validation.validate(data, service, {
-            shex: lang === 'shex', shacl: lang === 'shacl'
-        }))[lang];
-        res.forEach(x => x.service = (options && options.serviceName) || service);
-        return res;
-    } catch (e) {
-        return [];
-    }
-}
-
-async function recursiveValidate(data, lang, hr) {
-    if (hr.disabled) return [];
-    if (!hr.nested) {
-        let rep = await validateService(data, lang, hr.service, {serviceName: hr.serviceName || hr.service});
-        console.log(hr, rep)
-        return rep;
-    }
-    let rootReport = await validateService(data, lang, hr.service, {serviceName: hr.serviceName || hr.service});
-    let nestedReport = (await (Promise.all(hr.nested.map(async service => await recursiveValidate(data, lang, service))))).flat();
-    nestedReport = await clearTop(rootReport, nestedReport);
-    rootReport.push(...nestedReport);
-    return rootReport;
-}
-
-
-
 function flattenHierarchy(hierarchy, report) {
     if (hierarchy.service === report.service || hierarchy.serviceName === report.service) {
         return !hierarchy.disabled;
@@ -139,11 +104,5 @@ async function validate(data, lang) {
         x.service = clearURL(x.shape).replace(JSON.parse(data)['@type'], '');
         if (x.service === '') x.service = 'Schema';
     });
-    let report = [];
-    schemaReport.shex.forEach(x => {
-        if (flattenHierarchy(hierarchy, x)) {
-            report.push(x);
-        }
-    })
-    return clearServicesDuplicates(report);
+    return clearServicesDuplicates(schemaReport.shex);
 }
