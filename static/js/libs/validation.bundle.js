@@ -42708,10 +42708,15 @@ class ValidationReport {
             jsonReport.forEach(err => this.simplify(err, parentNode, parentShape));
             return;
         }
+        if (jsonReport.type === 'ShapeTest') {
+            this.simplify(jsonReport.solution.extensions);
+            return;
+        }
         if (jsonReport.type === 'ShapeAndFailure' ||
             jsonReport.type === 'Failure' ||
             jsonReport.type === 'SemActFailure' ||
             jsonReport.type === 'FailureList' ||
+            jsonReport.type === 'ExtendedResults' ||
             (!jsonReport.type) && jsonReport.errors) {
             const node = typeof jsonReport.node === 'object' ? null : jsonReport.node;
             jsonReport.errors
