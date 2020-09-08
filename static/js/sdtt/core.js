@@ -51,6 +51,7 @@ function clearServicesDuplicates(report) {
     let properties = {};
     report.forEach(item => {
         let key = item.property;
+        if (properties[key] && properties[key].services.filter(x => x.service === item.service).length > 0) return;
         if (properties[key]) {
             properties[key].services.push({
                 service: item.service,
@@ -74,8 +75,8 @@ function clearServicesDuplicates(report) {
 }
 
 function clearGraph(node, report) {
-    let found = report.services.filter(s => s.service === node.service || s.service === node.serviceName);
     if (!node.nested) return;
+    let found = report.services.filter(s => s.service === node.service || s.service === node.serviceName);
     if (found.length > 0) {
         node.nested.forEach(nstd => removeNested(nstd, report));
     } else {
@@ -85,7 +86,7 @@ function clearGraph(node, report) {
 
 function removeNested(node, report) {
     report.services = report.services.filter(s => s.service !== node.service && s.service !== node.serviceName);
-    if ('nested' in report) report.nested.forEach(nstd => removeNested(nstd, report));
+    if ('nested' in node) node.nested.forEach(nstd => removeNested(nstd, report));
 }
 
 function flattenHierarchy(hierarchy, report) {
@@ -100,9 +101,18 @@ function flattenHierarchy(hierarchy, report) {
 
 async function validate(data, lang) {
     let schemaReport = await validation.validate(data, '', {shex: true});
+    let reports = [];
     schemaReport.shex.forEach(x =>{
-        x.service = clearURL(x.shape).replace(JSON.parse(data)['@type'], '');
-        if (x.service === '') x.service = 'Schema';
+        x.service = clearURL(x.shape);
+        if (!x.service.includes('Google') && !x.service.includes('Bing') &&
+            !x.service.includes('Yandex') && !x.service.includes('Pinterest')) {
+            x.service = 'Schema';
+        } else {
+            x.service = x.service.replace(JSON.parse(data)['@type'], '');
+        }
+        if(flattenHierarchy(hierarchy, x)) {
+            reports.push(x);
+        }
     });
-    return clearServicesDuplicates(schemaReport.shex);
+    return clearServicesDuplicates(reports);
 }
