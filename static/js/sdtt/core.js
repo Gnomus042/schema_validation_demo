@@ -1,5 +1,15 @@
 let services, hierarchy, tests;
 
+let context, shexShapes, shexValidator;
+
+
+$.get('/context', (ctxt) => {
+    context = ctxt;
+    $.get('/shex/shapes', (shps) => {
+        shexShapes = JSON.parse(shps);
+        shexValidator = new validation.shexValidator(context, shexShapes);
+    });
+});
 $.get('/services', (res) => services = res.services);
 $.get('/hierarchy', (res) => {
     hierarchy = JSON.parse(res.hierarchy);
@@ -9,24 +19,29 @@ $.get('/tests', (res) => {
     tests = res.tests;
     $('#input-text').val(tests[1]);
     tests.forEach((test, idx) => {
-        $('.tests').append(`<div class="test" id="test-${idx+1}">Test ${idx+1}</div>`);
-        $(`#test-${idx+1}`).click(() => $('#input-text').val(test));
+        $('.tests').append(`<div class="test" id="test-${idx + 1}">Test ${idx + 1}</div>`);
+        $(`#test-${idx + 1}`).click(() => $('#input-text').val(test));
     })
 });
 
+
+
 async function parse(input) {
-    let data = JSON.parse(input);
-    if (data['@graph']) data['@graph'].forEach(x => parseItem(JSON.stringify(x)));
-    else parseItem(input);
+    try {
+        let data = JSON.parse(input);
+        if (data['@graph']) data['@graph'].forEach(x => parseItem(JSON.stringify(x)));
+        else parseItem(input);
+    } catch (e) {
+        parseItem(input);
+    }
 }
 
 async function parseItem(input) {
-    input = await validation.prepareData(input);
-    let dataset = await validation.loadDataset(input, 'json-ld');
-    let startId = JSON.parse(input)['@id'];
-    let dataItems = parseDataItems(dataset, startId, 0);
+    let baseUrl = validation.randomUrl();
+    let dataset = await validation.inputToQuads(input, baseUrl, context);
+    let dataItems = parseDataItems(dataset, baseUrl, 0);
     let report = await validate(input, $('#validation-lang-select').val());
-    addReport(clearURL(JSON.parse(input)['@type']), report, dataItems);
+    addReport('Recipe', report, dataItems);
 }
 
 function clearURL(val) {
@@ -36,7 +51,7 @@ function clearURL(val) {
 
 function parseDataItems(dataset, shapeId, indent) {
     let dataItems = [];
-    let shape = dataset.match(shapeId, undefined, undefined);
+    let shape = dataset.getQuads(shapeId, undefined, undefined);
     shape.forEach(quad => {
         dataItems.push(dataItemLayout(clearURL(quad.predicate.value), quad.object.value, indent));
         dataItems.push(...parseDataItems(dataset, quad.object, indent + 1));
@@ -74,11 +89,9 @@ async function clearTop(top, low) {
     return low;
 }
 
-async function validateService(data, lang, service, options) {
+async function validateService(data, service, options) {
     try {
-        let res = (await validation.validate(data, service, {
-            shex: lang === 'shex', shacl: lang === 'shacl'
-        }))[lang];
+        let res = await shexValidator.validate(data, service);
         res.forEach(x => x.service = (options && options.serviceName) || service);
         return res;
     } catch (e) {
@@ -86,21 +99,21 @@ async function validateService(data, lang, service, options) {
     }
 }
 
-async function recursiveValidate(data, lang, hr) {
+async function recursiveValidate(data, hr) {
     if (hr.disabled) return [];
     if (!hr.nested) {
-        let rep = await validateService(data, lang, hr.service, {serviceName: hr.serviceName || hr.service});
+        let rep = await validateService(data, hr.service, {serviceName: hr.serviceName || hr.service});
         console.log(hr, rep)
         return rep;
     }
-    let rootReport = await validateService(data, lang, hr.service, {serviceName: hr.serviceName || hr.service});
-    let nestedReport = (await (Promise.all(hr.nested.map(async service => await recursiveValidate(data, lang, service))))).flat();
+    let rootReport = await validateService(data, hr.service, {serviceName: hr.serviceName || hr.service});
+    let nestedReport = (await (Promise.all(hr.nested.map(async service => await recursiveValidate(data, service))))).flat();
     nestedReport = await clearTop(rootReport, nestedReport);
     rootReport.push(...nestedReport);
     return rootReport;
 }
 
-async function validate(data, lang) {
-    let schemaReport = await recursiveValidate(data, lang, hierarchy);
+async function validate(data) {
+    let schemaReport = await recursiveValidate(data, hierarchy);
     return clearServicesDuplicates(schemaReport);
 }
