@@ -32,6 +32,7 @@ async function recursiveValidate(data, hr) {
     }
     let rootReport = await validateService(data, hr.service, {serviceName: hr.serviceName || hr.service});
     let nestedReport = (await (Promise.all(hr.nested.map(async service => (await recursiveValidate(data, service)).failures)))).flat();
+    nestedReport = nestedReport.filter(nrprt => nrprt !== undefined);
     nestedReport = await clearTop(rootReport.failures, nestedReport);
     rootReport.failures.push(...nestedReport);
     return rootReport;
