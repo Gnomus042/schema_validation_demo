@@ -1,4 +1,4 @@
-let services, hierarchy, tests;
+let services, hierarchy, flatHierarchy, tests;
 
 let context;
 
@@ -11,6 +11,7 @@ $.get('/context', (ctxt) => {
 $.get('/services', (res) => services = res.services);
 $.get('/hierarchy', (res) => {
     hierarchy = JSON.parse(res.hierarchy);
+    flatHierarchy = flattenHierarchy(hierarchy);
     constructHierarchySelector(hierarchy, 0);
 });
 $.get('/tests', (res) => {
@@ -35,22 +36,14 @@ async function parse(input) {
 }
 
 async function parseItem(input) {
-    let baseUrl = validation.randomUrl();
     let report;
     if ($('#validation-lang-select').val() === 'shex') {
         report = await validateShex(input);
     } else {
-        report = await shaclValidator.validate(input);
-        report.failures.forEach(failure => {
-           if (failure.service.includes('Google')) failure.service = 'Google';
-           else if (failure.service.includes('Bing')) failure.service = 'Bing';
-           else if (failure.service.includes('Pinterest')) failure.service = 'Pinterest';
-           else if (failure.service.includes('Yandex')) failure.service = 'Yandex';
-           else failure.service = 'Schema';
-        });
+        report = await validateShacl(input);
     }
     let dataItems = parseDataItems(report.quads, report.baseUrl, 0);
-    addReport('Recipe', clearServicesDuplicates(report.failures), dataItems);
+    addReport(validation.getType(report.quads), clearServicesDuplicates(report.failures), dataItems);
 }
 
 function clearURL(val) {

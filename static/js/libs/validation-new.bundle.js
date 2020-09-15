@@ -7577,7 +7577,7 @@ exports.pipeline = __webpack_require__(240);
 
 var Buffer = __webpack_require__(2).Buffer
 var Transform = __webpack_require__(59).Transform
-var StringDecoder = __webpack_require__(33).StringDecoder
+var StringDecoder = __webpack_require__(34).StringDecoder
 var inherits = __webpack_require__(1)
 
 function CipherBase (hashMode) {
@@ -9804,7 +9804,7 @@ var objectKeys = Object.keys || function (obj) {
 module.exports = Duplex;
 
 /*<replacement>*/
-var util = Object.create(__webpack_require__(34));
+var util = Object.create(__webpack_require__(35));
 util.inherits = __webpack_require__(1);
 /*</replacement>*/
 
@@ -10338,6 +10338,238 @@ module.exports = Hash
 
 /***/ }),
 /* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+const fs = __webpack_require__(89);
+const axios = __webpack_require__(187);
+
+const jsonld = __webpack_require__(204);
+const n3 = __webpack_require__(403);
+const { namedNode, blankNode, variable, literal, defaultGraph, quad } = n3.DataFactory;
+const Store = n3.Store;
+const streamify = __webpack_require__(241);
+const RdfaParser = __webpack_require__(250).RdfaParser;
+const microdata = __webpack_require__(270);
+
+const errors = __webpack_require__(132);
+
+const TYPE = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type';
+
+/**
+ * Loads related data (shapes, context, etc.) from remote or local source
+ * @param {string} link url to the remote source or local path
+ * @return {*}
+ */
+async function loadData(link) {
+    if (link.match("^https?://")) {
+        return (await axios.get(link)).data;
+    }
+    return fs.readFileSync(link).toString();
+}
+
+/**
+ * Removes duplicates from objects array
+ * @param {[object]} items
+ * @param {[string]} keys
+ * @returns {[object]}
+ */
+function uniqueBy(items, keys) {
+    let seen = {};
+    return items.filter(function (item) {
+        let val = '';
+        keys.forEach(key => val += item[key]);
+        return seen.hasOwnProperty(val) ? false : (seen[val] = true);
+    })
+}
+
+/**
+ *  Generates random URL as base
+ *  @param {number} length
+ *  @return {string}
+ */
+function randomUrl(length = 16) {
+    let result = 'https://example.org/';
+    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+}
+
+/**
+ * Parses json-ld to quads into the n3.Store
+ * @param {string} text input data
+ * @param {string} baseUrl
+ * @param {object} context schema.org context
+ * @return {Promise<Store>}
+ */
+async function parseJsonLd(text, baseUrl, context) {
+    let data = JSON.parse(text);
+    data['@id'] = baseUrl;
+    data['@context'] = context;
+    const nquads = await jsonld.toRDF(data, {format: 'application/n-quads'});
+    const turtleParser = new n3.Parser({
+        format: "text/turtle",
+        baseIRI: baseUrl,
+    });
+    let store = new Store();
+    turtleParser.parse(nquads).forEach(quad => {
+        store.addQuad(quad);
+    });
+    return store;
+}
+
+
+/**
+ * Parse RDFa to quads into the n3.Store
+ * @param {string} text input data
+ * @param {string} baseUrl
+ * @return {Promise<Store>}
+ */
+async function parseRdfa(text, baseUrl) {
+    const textStream = streamify(text);
+    return new Promise((res, rej) => {
+        let store = new Store();
+        const rdfaParser = new RdfaParser({ baseIRI: baseUrl, contentType: 'text/html' });
+        textStream.pipe(rdfaParser)
+            .on('data', quad => {
+                quad.object.value = quad.object.value.replace('https://schema.org/', 'http://schema.org/');
+                quad.predicate.value = quad.predicate.value.replace('https://schema.org/', 'http://schema.org/');
+                quad.subject.value = quad.subject.value.replace('https://schema.org/', 'http://schema.org/');
+                store.addQuad(quad);
+            })
+            .on('error', err => rej(err))
+            .on('end', () => res(store));
+    });
+}
+
+/**
+ * Parses microdata subject, predicate or object to quadable format
+ * TODO review if these format transformations could be done in the library; needs testing
+ * @param {string|object} val
+ * @param {string} baseURL
+ * @return {Literal|BlankNode|NamedNode}
+ */
+function parseMicrodataValue(val, baseURL) {
+    if (typeof val === "string") {
+        if (val.match("^https?://")) {
+            val = val.replace("https://schema.org/", "http://schema.org/") // TODO remove substitution of https by http
+            return namedNode(val);
+        } else if (val.match("^_:")) {
+            if (val === "_:0") return namedNode(baseURL);
+            return blankNode(val.substr(2));
+        } else {
+            return literal(val);
+        }
+    }
+    if ('id' in val) {
+        return namedNode(val.id.replace("https://schema.org/", "http://schema.org/")) // TODO remove substitution of https by http
+    } if ('value' in val) {
+        return literal(val.value);
+    }
+    throw `Unknown value during the microdata triples parsing: ${JSON.stringify(val)}`;
+}
+
+/**
+ * Parses microdata triples to n3 quads
+ * @param triple - microdata triple
+ * @baseUrl {string}
+ * @graph {*}
+ * @return {Quad}
+ */
+function microdataTripleToQuad(triple, baseUrl, graph) {
+    let subject = parseMicrodataValue(triple.subject, baseUrl);
+    let predicate = parseMicrodataValue(triple.predicate, baseUrl);
+    let object = parseMicrodataValue(triple.object, baseUrl);
+    return quad(subject, predicate, object, graph);
+}
+
+/**
+ * Parses microdata to quads into the n3.Store
+ * @param {string} text
+ * @param {string} baseUrl
+ * @return {Promise<Store>}
+ */
+async function parseMicrodata(text, baseUrl) {
+    let triples = microdata.toRdf(text, {base: baseUrl});
+    if (text.length > 0 && triples.length === 0) {
+        throw "Microdata parsing error";
+    }
+    let store = new Store();
+    let graph = defaultGraph();
+    triples.forEach(triple => store.addQuad(microdataTripleToQuad(triple, baseUrl, graph)));
+    return store;
+}
+
+
+/**
+ *
+ */
+function parseTurtle(text) {
+    const turtleParser = new n3.Parser({
+        format: "text/turtle"
+    });
+    let store = new Store();
+    turtleParser.parse(text).forEach(quad => {
+        store.addQuad(quad);
+    });
+    return store;
+}
+
+/**
+ * Helper for trying to parse input text into a certain format
+ * @param parser parser function
+ * @returns {Promise<undefined|Store>}
+ */
+async function tryParse(parser) {
+    let quads;
+    try {
+        quads = await parser();
+    } catch (e) {}
+    return quads;
+}
+
+/**
+ * Transforms input to quads
+ * @param text - input data
+ * @param baseUrl
+ * @param context - Schema.org context for json-ld
+ * @returns {Promise<Store>}
+ */
+async function inputToQuads(text, baseUrl, context) {
+    const jsonParser = async () => await parseJsonLd(text, baseUrl, context);
+    const rdfaParser = async () => await parseRdfa(text, baseUrl);
+    const microdataParser = async () => await parseMicrodata(text, baseUrl);
+    let res = await tryParse(jsonParser) || await tryParse(microdataParser) || await tryParse(rdfaParser);
+    if (!res || res.getQuads().length === 0) throw new errors.InvalidDataError("Error while parsing the data. This could be caused by incorrect data or incorrect data format. Possible formats: json-ld, microdata, rdfa");
+    return res;
+}
+
+/**
+ * @param {Store} quads
+ * @param {string} baseUrl
+ * @returns {string}
+ */
+function getType(quads, baseUrl) {
+    let typeQuads = quads.getQuads(baseUrl, TYPE, undefined);
+    if (typeQuads.length === 0) throw new errors.InvalidDataError("Data is required to have a type field ");
+    return typeQuads[0].object.value.replace(this.schemaUrl, '');
+}
+
+module.exports = {
+    randomUrl: randomUrl,
+    loadData: loadData,
+    uniqueBy: uniqueBy,
+    getType: getType,
+    inputToQuads: inputToQuads,
+    parseTurtle: parseTurtle,
+};
+
+/***/ }),
+/* 32 */
 /***/ (function(module, exports) {
 
 /**
@@ -10356,7 +10588,7 @@ module.exports = {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10395,7 +10627,7 @@ module.exports = {
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10697,7 +10929,7 @@ function simpleEnd(buf) {
 }
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {// Copyright Joyent, Inc. and other Node contributors.
@@ -10811,7 +11043,7 @@ function objectToString(o) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(5).Buffer))
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10842,7 +11074,7 @@ exports.hasChildren = hasChildren;
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10879,7 +11111,7 @@ module.exports = function createHash (alg) {
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {module.exports = function xor (a, b) {
@@ -10896,7 +11128,7 @@ module.exports = function createHash (alg) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(5).Buffer))
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10995,7 +11227,7 @@ BlockHash.prototype._pad = function pad() {
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11153,227 +11385,6 @@ EncoderBuffer.prototype.join = function join(out, offset) {
   return out;
 };
 
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-const fs = __webpack_require__(89);
-const axios = __webpack_require__(187);
-
-const jsonld = __webpack_require__(204);
-const n3 = __webpack_require__(403);
-const { namedNode, blankNode, variable, literal, defaultGraph, quad } = n3.DataFactory;
-const Store = n3.Store;
-
-const streamify = __webpack_require__(241);
-const RdfaParser = __webpack_require__(250).RdfaParser;
-
-const microdata = __webpack_require__(270);
-
-const errors = __webpack_require__(132);
-
-/**
- * Loads related data (shapes, context, etc.) from remote or local source
- * @param {string} link url to the remote source or local path
- * @return {*}
- */
-async function loadData(link) {
-    if (link.match("^https?://")) {
-        return (await axios.get(link)).data;
-    }
-    return fs.readFileSync(link).toString();
-}
-
-/**
- * Removes duplicates from objects array
- * @param {[object]} items
- * @param {[string]} keys
- * @returns {[object]}
- */
-function uniqueBy(items, keys) {
-    let seen = {};
-    return items.filter(function (item) {
-        let val = '';
-        keys.forEach(key => val += item[key]);
-        return seen.hasOwnProperty(val) ? false : (seen[val] = true);
-    })
-}
-
-/**
- *  Generates random URL as base
- *  @param {number} length
- *  @return {string}
- */
-function randomUrl(length = 16) {
-    let result = 'https://example.org/';
-    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return result;
-}
-
-/**
- * Parses json-ld to quads into the n3.Store
- * @param {string} text input data
- * @param {string} baseUrl
- * @param {object} context schema.org context
- * @return {Promise<Store>}
- */
-async function parseJsonLd(text, baseUrl, context) {
-    let data = JSON.parse(text);
-    data['@id'] = baseUrl;
-    data['@context'] = context;
-    const nquads = await jsonld.toRDF(data, {format: 'application/n-quads'});
-    const turtleParser = new n3.Parser({
-        format: "text/turtle",
-        baseIRI: baseUrl,
-    });
-    let store = new Store();
-    turtleParser.parse(nquads).forEach(quad => {
-        store.addQuad(quad);
-    });
-    return store;
-}
-
-
-/**
- * Parse RDFa to quads into the n3.Store
- * @param {string} text input data
- * @param {string} baseUrl
- * @return {Promise<Store>}
- */
-async function parseRdfa(text, baseUrl) {
-    const textStream = streamify(text);
-    return new Promise((res, rej) => {
-        let store = new Store();
-        const rdfaParser = new RdfaParser({ baseIRI: baseUrl, contentType: 'text/html' });
-        textStream.pipe(rdfaParser)
-            .on('data', quad => {
-                quad.object.value = quad.object.value.replace('https://schema.org/', 'http://schema.org/');
-                quad.predicate.value = quad.predicate.value.replace('https://schema.org/', 'http://schema.org/');
-                quad.subject.value = quad.subject.value.replace('https://schema.org/', 'http://schema.org/');
-                store.addQuad(quad);
-            })
-            .on('error', err => rej(err))
-            .on('end', () => res(store));
-    });
-}
-
-/**
- * Parses microdata subject, predicate or object to quadable format
- * TODO review if these format transformations could be done in the library; needs testing
- * @param {string|object} val
- * @param {string} baseURL
- * @return {Literal|BlankNode|NamedNode}
- */
-function parseMicrodataValue(val, baseURL) {
-    if (typeof val === "string") {
-        if (val.match("^https?://")) {
-            val = val.replace("https://schema.org/", "http://schema.org/") // TODO remove substitution of https by http
-            return namedNode(val);
-        } else if (val.match("^_:")) {
-            if (val === "_:0") return namedNode(baseURL);
-            return blankNode(val.substr(2));
-        } else {
-            return literal(val);
-        }
-    }
-    if ('id' in val) {
-        return namedNode(val.id.replace("https://schema.org/", "http://schema.org/")) // TODO remove substitution of https by http
-    } if ('value' in val) {
-        return literal(val.value);
-    }
-    throw `Unknown value during the microdata triples parsing: ${JSON.stringify(val)}`;
-}
-
-/**
- * Parses microdata triples to n3 quads
- * @param triple - microdata triple
- * @baseUrl {string}
- * @graph {*}
- * @return {Quad}
- */
-function microdataTripleToQuad(triple, baseUrl, graph) {
-    let subject = parseMicrodataValue(triple.subject, baseUrl);
-    let predicate = parseMicrodataValue(triple.predicate, baseUrl);
-    let object = parseMicrodataValue(triple.object, baseUrl);
-    return quad(subject, predicate, object, graph);
-}
-
-/**
- * Parses microdata to quads into the n3.Store
- * @param {string} text
- * @param {string} baseUrl
- * @return {Promise<Store>}
- */
-async function parseMicrodata(text, baseUrl) {
-    let triples = microdata.toRdf(text, {base: baseUrl});
-    if (text.length > 0 && triples.length === 0) {
-        throw "Microdata parsing error";
-    }
-    let store = new Store();
-    let graph = defaultGraph();
-    triples.forEach(triple => store.addQuad(microdataTripleToQuad(triple, baseUrl, graph)));
-    return store;
-}
-
-
-/**
- *
- */
-function parseTurtle(text) {
-    const turtleParser = new n3.Parser({
-        format: "text/turtle"
-    });
-    let store = new Store();
-    turtleParser.parse(text).forEach(quad => {
-        store.addQuad(quad);
-    });
-    return store;
-}
-
-/**
- * Helper for trying to parse input text into a certain format
- * @param parser parser function
- * @returns {Promise<undefined|Store>}
- */
-async function tryParse(parser) {
-    let quads;
-    try {
-        quads = await parser();
-    } catch (e) {}
-    return quads;
-}
-
-/**
- * Transforms input to quads
- * @param text - input data
- * @param baseUrl
- * @param context - Schema.org context for json-ld
- * @returns {Promise<Store>}
- */
-async function inputToQuads(text, baseUrl, context) {
-    const jsonParser = async () => await parseJsonLd(text, baseUrl, context);
-    const rdfaParser = async () => await parseRdfa(text, baseUrl);
-    const microdataParser = async () => await parseMicrodata(text, baseUrl);
-    let res = await tryParse(jsonParser) || await tryParse(microdataParser) || await tryParse(rdfaParser);
-    if (!res || res.getQuads().length === 0) throw new errors.InvalidDataError("Error while parsing the data. This could be caused by incorrect data or incorrect data format. Possible formats: json-ld, microdata, rdfa");
-    return res;
-}
-
-
-module.exports = {
-    randomUrl: randomUrl,
-    loadData: loadData,
-    uniqueBy: uniqueBy,
-    inputToQuads: inputToQuads,
-    parseTurtle: parseTurtle,
-};
 
 /***/ }),
 /* 41 */
@@ -14291,7 +14302,7 @@ module.exports = class IdentifierIssuer {
  *
  * Copyright 2011-2017 Digital Bazaar, Inc.
  */
-var forge = __webpack_require__(31);
+var forge = __webpack_require__(32);
 
 module.exports = forge.md = forge.md || {};
 forge.md.algorithms = forge.md.algorithms || {};
@@ -15123,7 +15134,7 @@ var Duplex;
 Writable.WritableState = WritableState;
 
 /*<replacement>*/
-var util = Object.create(__webpack_require__(34));
+var util = Object.create(__webpack_require__(35));
 util.inherits = __webpack_require__(1);
 /*</replacement>*/
 
@@ -15810,7 +15821,7 @@ __exportStar(__webpack_require__(259), exports);
 __exportStar(__webpack_require__(125), exports);
 __exportStar(__webpack_require__(260), exports);
 __exportStar(__webpack_require__(261), exports);
-__exportStar(__webpack_require__(35), exports);
+__exportStar(__webpack_require__(36), exports);
 
 
 /***/ }),
@@ -16893,7 +16904,7 @@ defineCurve('secp256k1', {
 var hash = exports;
 
 hash.utils = __webpack_require__(14);
-hash.common = __webpack_require__(38);
+hash.common = __webpack_require__(39);
 hash.sha = __webpack_require__(360);
 hash.ripemd = __webpack_require__(364);
 hash.hmac = __webpack_require__(365);
@@ -17000,8 +17011,8 @@ module.exports = safer
 
 
 const Reporter = __webpack_require__(86).Reporter;
-const EncoderBuffer = __webpack_require__(39).EncoderBuffer;
-const DecoderBuffer = __webpack_require__(39).DecoderBuffer;
+const EncoderBuffer = __webpack_require__(40).EncoderBuffer;
+const DecoderBuffer = __webpack_require__(40).DecoderBuffer;
 const assert = __webpack_require__(10);
 
 // Supported tags
@@ -22411,7 +22422,7 @@ module.exports = class URDNA2015 extends AsyncAlgorithm {
  */
 
 
-const forge = __webpack_require__(31);
+const forge = __webpack_require__(32);
 __webpack_require__(55);
 __webpack_require__(207);
 __webpack_require__(211);
@@ -22447,7 +22458,7 @@ module.exports = class MessageDigest {
  *
  * Copyright (c) 2010-2018 Digital Bazaar, Inc.
  */
-var forge = __webpack_require__(31);
+var forge = __webpack_require__(32);
 var baseN = __webpack_require__(210);
 
 /* Utilities API */
@@ -26556,7 +26567,7 @@ function ReadableState(options, stream, isDuplex) {
   this.encoding = null;
 
   if (options.encoding) {
-    if (!StringDecoder) StringDecoder = __webpack_require__(33).StringDecoder;
+    if (!StringDecoder) StringDecoder = __webpack_require__(34).StringDecoder;
     this.decoder = new StringDecoder(options.encoding);
     this.encoding = options.encoding;
   }
@@ -26718,7 +26729,7 @@ Readable.prototype.isPaused = function () {
 
 
 Readable.prototype.setEncoding = function (enc) {
-  if (!StringDecoder) StringDecoder = __webpack_require__(33).StringDecoder;
+  if (!StringDecoder) StringDecoder = __webpack_require__(34).StringDecoder;
   var decoder = new StringDecoder(enc);
   this._readableState.decoder = decoder; // If setEncoding(null), decoder.encoding equals utf8
 
@@ -28728,7 +28739,7 @@ function _isUint8Array(obj) {
 /*</replacement>*/
 
 /*<replacement>*/
-var util = Object.create(__webpack_require__(34));
+var util = Object.create(__webpack_require__(35));
 util.inherits = __webpack_require__(1);
 /*</replacement>*/
 
@@ -28833,7 +28844,7 @@ function ReadableState(options, stream) {
   this.decoder = null;
   this.encoding = null;
   if (options.encoding) {
-    if (!StringDecoder) StringDecoder = __webpack_require__(33).StringDecoder;
+    if (!StringDecoder) StringDecoder = __webpack_require__(34).StringDecoder;
     this.decoder = new StringDecoder(options.encoding);
     this.encoding = options.encoding;
   }
@@ -28989,7 +29000,7 @@ Readable.prototype.isPaused = function () {
 
 // backwards compatibility.
 Readable.prototype.setEncoding = function (enc) {
-  if (!StringDecoder) StringDecoder = __webpack_require__(33).StringDecoder;
+  if (!StringDecoder) StringDecoder = __webpack_require__(34).StringDecoder;
   this._readableState.decoder = new StringDecoder(enc);
   this._readableState.encoding = enc;
   return this;
@@ -29845,7 +29856,7 @@ module.exports = Transform;
 var Duplex = __webpack_require__(25);
 
 /*<replacement>*/
-var util = Object.create(__webpack_require__(34));
+var util = Object.create(__webpack_require__(35));
 util.inherits = __webpack_require__(1);
 /*</replacement>*/
 
@@ -31846,7 +31857,7 @@ exports.escape = escape;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.findAll = exports.existsOne = exports.findOne = exports.findOneChild = exports.find = exports.filter = void 0;
-var tagtypes_1 = __webpack_require__(35);
+var tagtypes_1 = __webpack_require__(36);
 /**
  * Search a node and its children for nodes passing a test function.
  *
@@ -34207,7 +34218,7 @@ DES.prototype._decrypt = function _decrypt(state, lStart, rStart, out, off) {
 /* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var xor = __webpack_require__(37)
+var xor = __webpack_require__(38)
 var Buffer = __webpack_require__(2).Buffer
 var incr32 = __webpack_require__(156)
 
@@ -34275,7 +34286,7 @@ var Buffer = __webpack_require__(2).Buffer
 var Transform = __webpack_require__(21)
 var inherits = __webpack_require__(1)
 var GHASH = __webpack_require__(341)
-var xor = __webpack_require__(37)
+var xor = __webpack_require__(38)
 var incr32 = __webpack_require__(156)
 
 function xorTest (a, b) {
@@ -38238,7 +38249,7 @@ exports.g1_256 = g1_256;
 
 
 var utils = __webpack_require__(14);
-var common = __webpack_require__(38);
+var common = __webpack_require__(39);
 var shaCommon = __webpack_require__(165);
 var assert = __webpack_require__(10);
 
@@ -38350,7 +38361,7 @@ SHA256.prototype._digest = function digest(enc) {
 
 
 var utils = __webpack_require__(14);
-var common = __webpack_require__(38);
+var common = __webpack_require__(39);
 var assert = __webpack_require__(10);
 
 var rotr64_hi = utils.rotr64_hi;
@@ -46022,7 +46033,7 @@ decoders.pem = __webpack_require__(379);
 const inherits = __webpack_require__(1);
 
 const bignum = __webpack_require__(170);
-const DecoderBuffer = __webpack_require__(39).DecoderBuffer;
+const DecoderBuffer = __webpack_require__(40).DecoderBuffer;
 const Node = __webpack_require__(85);
 
 // Import DER constants
@@ -46364,7 +46375,7 @@ module.exports = JSON.parse("{\"1.3.132.0.10\":\"secp256k1\",\"1.3.132.0.33\":\"
 /* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createHash = __webpack_require__(36)
+var createHash = __webpack_require__(37)
 var Buffer = __webpack_require__(2).Buffer
 
 module.exports = function (seed, len) {
@@ -46468,8 +46479,9 @@ module.exports = typeof queueMicrotask === 'function'
 module.exports = {
     shexValidator: __webpack_require__(182).Validator,
     shaclValidator: __webpack_require__(283).Validator,
-    inputToQuads: __webpack_require__(40).inputToQuads,
-    randomUrl: __webpack_require__(40).randomUrl,
+    inputToQuads: __webpack_require__(31).inputToQuads,
+    randomUrl: __webpack_require__(31).randomUrl,
+    getType: __webpack_require__(31).getType,
 }
 
 /***/ }),
@@ -46477,7 +46489,7 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 const shex = __webpack_require__(183);
-const utils = __webpack_require__(40);
+const utils = __webpack_require__(31);
 const errors = __webpack_require__(132);
 
 const TYPE = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type';
@@ -46643,17 +46655,6 @@ class ShexValidator {
     }
 
     /**
-     * @param {Store} quads
-     * @param {string} baseUrl
-     * @returns {string}
-     */
-    getType(quads, baseUrl) {
-        let typeQuads = quads.getQuads(baseUrl, TYPE, undefined);
-        if (typeQuads.length === 0) throw new errors.InvalidDataError("Data is required to have a type field ");
-        return typeQuads[0].object.value.replace(this.schemaUrl, '');
-    }
-
-    /**
      * Validates data against ShEx shapes
      * @param {string} data
      * @param {string} service - e.g. Google, Bing, ...
@@ -46664,7 +46665,7 @@ class ShexValidator {
         const baseUrl = options.baseUrl || utils.randomUrl();
         const quads = await utils.inputToQuads(data, baseUrl, this.context);
 
-        const shape = this.getType(quads, baseUrl);
+        const shape = utils.getType(quads, baseUrl).replace(/.*[\\/#]/, '');
         const db = shex.Util.makeN3DB(quads);
         const validator = shex.Validator.construct(this.shexShapes);
         const errors = new ValidationReport(validator.validate(db, [{
@@ -56917,7 +56918,7 @@ module.exports = class AsyncAlgorithm {
  *
  * Copyright (c) 2010-2015 Digital Bazaar, Inc.
  */
-var forge = __webpack_require__(31);
+var forge = __webpack_require__(32);
 __webpack_require__(55);
 __webpack_require__(100);
 
@@ -57686,7 +57687,7 @@ function _encodeWithByteBuffer(input, alphabet) {
  *
  * Copyright (c) 2010-2015 Digital Bazaar, Inc.
  */
-var forge = __webpack_require__(31);
+var forge = __webpack_require__(32);
 __webpack_require__(55);
 __webpack_require__(100);
 
@@ -58981,7 +58982,7 @@ const {
   RDF_OBJECT,
   RDF_XML_LITERAL,
   XSD_STRING,
-} = __webpack_require__(32);
+} = __webpack_require__(33);
 
 let _Node;
 if(typeof Node !== 'undefined') {
@@ -60318,7 +60319,7 @@ const {
   XSD_DOUBLE,
   XSD_INTEGER,
   XSD_STRING,
-} = __webpack_require__(32);
+} = __webpack_require__(33);
 
 const REGEX_BCP47 = /^[a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8})*$/;
 
@@ -60673,7 +60674,7 @@ const {
   XSD_DOUBLE,
   XSD_INTEGER,
   XSD_STRING,
-} = __webpack_require__(32);
+} = __webpack_require__(33);
 
 const {
   isAbsolute: _isAbsoluteIri
@@ -62996,7 +62997,7 @@ function _checkNestProperty(activeCtx, nestProperty, options) {
 
 
 const {parseLinkHeader, buildHeaders} = __webpack_require__(8);
-const {LINK_HEADER_CONTEXT} = __webpack_require__(32);
+const {LINK_HEADER_CONTEXT} = __webpack_require__(33);
 const JsonLdError = __webpack_require__(12);
 const RequestQueue = __webpack_require__(57);
 const {prependBase} = __webpack_require__(16);
@@ -63190,7 +63191,7 @@ function _request(request, options) {
 
 
 const {parseLinkHeader, buildHeaders} = __webpack_require__(8);
-const {LINK_HEADER_CONTEXT} = __webpack_require__(32);
+const {LINK_HEADER_CONTEXT} = __webpack_require__(33);
 const JsonLdError = __webpack_require__(12);
 const RequestQueue = __webpack_require__(57);
 const {prependBase} = __webpack_require__(16);
@@ -64132,7 +64133,7 @@ module.exports = PassThrough;
 var Transform = __webpack_require__(115);
 
 /*<replacement>*/
-var util = Object.create(__webpack_require__(34));
+var util = Object.create(__webpack_require__(35));
 util.inherits = __webpack_require__(1);
 /*</replacement>*/
 
@@ -65205,7 +65206,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getText = exports.getInnerHTML = exports.getOuterHTML = void 0;
-var tagtypes_1 = __webpack_require__(35);
+var tagtypes_1 = __webpack_require__(36);
 var dom_serializer_1 = __importDefault(__webpack_require__(255));
 function getOuterHTML(node, options) {
     return dom_serializer_1.default(node, options);
@@ -65771,7 +65772,7 @@ exports.prepend = prepend;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getElementsByTagType = exports.getElementsByTagName = exports.getElementById = exports.getElements = exports.testElement = void 0;
 var querying_1 = __webpack_require__(125);
-var tagtypes_1 = __webpack_require__(35);
+var tagtypes_1 = __webpack_require__(36);
 function isTextNode(node) {
     return node.type === "text" /* Text */;
 }
@@ -65865,7 +65866,7 @@ exports.getElementsByTagType = getElementsByTagType;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.uniqueSort = exports.compareDocumentPosition = exports.removeSubsets = void 0;
-var tagtypes_1 = __webpack_require__(35);
+var tagtypes_1 = __webpack_require__(36);
 /**
  * Given an array of nodes, remove any member that is contained by another.
  *
@@ -68886,7 +68887,7 @@ module.exports = toNquads;
 const SHACLValidator = __webpack_require__(284);
 const rdf = __webpack_require__(313);
 
-const utils = __webpack_require__(40);
+const utils = __webpack_require__(31);
 
 class ShaclValidator {
     constructor(shaclSchema, subclasses, context) {
@@ -80156,7 +80157,7 @@ module.exports = normalize
 
 
 exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = __webpack_require__(29)
-exports.createHash = exports.Hash = __webpack_require__(36)
+exports.createHash = exports.Hash = __webpack_require__(37)
 exports.createHmac = exports.Hmac = __webpack_require__(145)
 
 var algos = __webpack_require__(327)
@@ -81161,7 +81162,7 @@ exports.decrypt = function (self, block) {
 /* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var xor = __webpack_require__(37)
+var xor = __webpack_require__(38)
 
 exports.encrypt = function (self, block) {
   var data = xor(block, self._prev)
@@ -81185,7 +81186,7 @@ exports.decrypt = function (self, block) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var Buffer = __webpack_require__(2).Buffer
-var xor = __webpack_require__(37)
+var xor = __webpack_require__(38)
 
 function encryptStart (self, data, decrypt) {
   var len = data.length
@@ -81302,7 +81303,7 @@ exports.encrypt = function (self, chunk, decrypt) {
 /* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var xor = __webpack_require__(37)
+/* WEBPACK VAR INJECTION */(function(Buffer) {var xor = __webpack_require__(38)
 
 function getBlock (self) {
   self._prev = self._cipher.encryptBlock(self._prev)
@@ -85265,7 +85266,7 @@ function formatReturnValue(bn, enc) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var Buffer = __webpack_require__(2).Buffer
-var createHash = __webpack_require__(36)
+var createHash = __webpack_require__(37)
 var stream = __webpack_require__(20)
 var inherits = __webpack_require__(1)
 var sign = __webpack_require__(352)
@@ -90555,7 +90556,7 @@ exports.sha512 = __webpack_require__(167);
 
 
 var utils = __webpack_require__(14);
-var common = __webpack_require__(38);
+var common = __webpack_require__(39);
 var shaCommon = __webpack_require__(165);
 
 var rotl32 = utils.rotl32;
@@ -90715,7 +90716,7 @@ SHA384.prototype._digest = function digest(enc) {
 
 
 var utils = __webpack_require__(14);
-var common = __webpack_require__(38);
+var common = __webpack_require__(39);
 
 var rotl32 = utils.rotl32;
 var sum32 = utils.sum32;
@@ -92968,8 +92969,8 @@ PEMDecoder.prototype.decode = function decode(data, options) {
 const base = exports;
 
 base.Reporter = __webpack_require__(86).Reporter;
-base.DecoderBuffer = __webpack_require__(39).DecoderBuffer;
-base.EncoderBuffer = __webpack_require__(39).EncoderBuffer;
+base.DecoderBuffer = __webpack_require__(40).DecoderBuffer;
+base.EncoderBuffer = __webpack_require__(40).EncoderBuffer;
 base.Node = __webpack_require__(85);
 
 
@@ -96829,7 +96830,7 @@ exports.publicDecrypt = function publicDecrypt (key, buf) {
 
 var parseKeys = __webpack_require__(49)
 var randomBytes = __webpack_require__(29)
-var createHash = __webpack_require__(36)
+var createHash = __webpack_require__(37)
 var mgf = __webpack_require__(176)
 var xor = __webpack_require__(177)
 var BN = __webpack_require__(88)
@@ -96932,7 +96933,7 @@ var mgf = __webpack_require__(176)
 var xor = __webpack_require__(177)
 var BN = __webpack_require__(88)
 var crt = __webpack_require__(80)
-var createHash = __webpack_require__(36)
+var createHash = __webpack_require__(37)
 var withPublic = __webpack_require__(178)
 var Buffer = __webpack_require__(2).Buffer
 
