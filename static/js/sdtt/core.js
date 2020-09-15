@@ -1,14 +1,12 @@
 let services, hierarchy, tests;
 
-let context, shexShapes, shexValidator;
+let context;
 
 
 $.get('/context', (ctxt) => {
     context = ctxt;
-    $.get('/shex/shapes', (shps) => {
-        shexShapes = JSON.parse(shps);
-        shexValidator = new validation.shexValidator(context, shexShapes);
-    });
+    initShex(context);
+    initShacl(context);
 });
 $.get('/services', (res) => services = res.services);
 $.get('/hierarchy', (res) => {
@@ -38,10 +36,21 @@ async function parse(input) {
 
 async function parseItem(input) {
     let baseUrl = validation.randomUrl();
-    let dataset = await validation.inputToQuads(input, baseUrl, context);
-    let dataItems = parseDataItems(dataset, baseUrl, 0);
-    let report = await validate(input, $('#validation-lang-select').val());
-    addReport('Recipe', report, dataItems);
+    let report;
+    if ($('#validation-lang-select').val() === 'shex') {
+        report = await validateShex(input);
+    } else {
+        report = await shaclValidator.validate(input);
+        report.failures.forEach(failure => {
+           if (failure.service.includes('Google')) failure.service = 'Google';
+           else if (failure.service.includes('Bing')) failure.service = 'Bing';
+           else if (failure.service.includes('Pinterest')) failure.service = 'Pinterest';
+           else if (failure.service.includes('Yandex')) failure.service = 'Yandex';
+           else failure.service = 'Schema';
+        });
+    }
+    let dataItems = parseDataItems(report.quads, report.baseUrl, 0);
+    addReport('Recipe', clearServicesDuplicates(report.failures), dataItems);
 }
 
 function clearURL(val) {
@@ -80,40 +89,4 @@ function clearServicesDuplicates(report) {
         };
     });
     return Object.values(properties);
-}
-
-async function clearTop(top, low) {
-    top.forEach(topItem => {
-        low = low.filter(lowItem => lowItem.property !== topItem.property && lowItem.message !== topItem.message);
-    });
-    return low;
-}
-
-async function validateService(data, service, options) {
-    try {
-        let res = await shexValidator.validate(data, service);
-        res.forEach(x => x.service = (options && options.serviceName) || service);
-        return res;
-    } catch (e) {
-        return [];
-    }
-}
-
-async function recursiveValidate(data, hr) {
-    if (hr.disabled) return [];
-    if (!hr.nested) {
-        let rep = await validateService(data, hr.service, {serviceName: hr.serviceName || hr.service});
-        console.log(hr, rep)
-        return rep;
-    }
-    let rootReport = await validateService(data, hr.service, {serviceName: hr.serviceName || hr.service});
-    let nestedReport = (await (Promise.all(hr.nested.map(async service => await recursiveValidate(data, service))))).flat();
-    nestedReport = await clearTop(rootReport, nestedReport);
-    rootReport.push(...nestedReport);
-    return rootReport;
-}
-
-async function validate(data) {
-    let schemaReport = await recursiveValidate(data, hierarchy);
-    return clearServicesDuplicates(schemaReport);
 }

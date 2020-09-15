@@ -55,15 +55,6 @@ def shacl_shapes_full():
     return send_file(f'{config.shacl_path}/full.shacl')
 
 
-@app.route('/shacl/shapes/<service>')
-def shacl_shapes(service):
-    base = open(f'{config.shacl_path}/full.shacl').read()
-    for dir in os.listdir(f'{config.shacl_path}/specific'):
-        specific = open(f'{config.shacl_path}/specific/{dir}/{service}.shacl').read()
-        base += '\n\n'+specific
-    return base
-
-
 @app.route('/shacl/subclasses')
 def shacl_subclasses():
     return open(f'{config.shacl_path}/subclasses.ttl').read()
