@@ -8258,9 +8258,6 @@
 	].
 
 
-
-
-
 :ReactAction a sh:NodeShape;
 	sh:targetClass schema:ReactAction;
 	sh:nodeKind sh:BlankNodeOrIRI.
@@ -10635,3 +10632,341 @@
 	sh:targetClass schema:Zoo;
 	sh:nodeKind sh:BlankNodeOrIRI.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+:BingRecipe a sh:NodeShape;
+    sh:targetClass schema:Recipe;
+    sh:property [
+        sh:path schema:name;
+        sh:minCount 1;
+        sh:severity sh:Violation;
+        schema:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa";
+        schema:description "Required. Name of the recipe.";
+    ];
+    sh:property [
+        sh:path schema:author;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa";
+        schema:description "The author of the recipe.";
+    ];
+    sh:property [
+        sh:path schema:datePublished;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa";
+        schema:description "The date the recipe was published.";
+    ];
+    sh:property [
+        sh:path schema:recipeCategory;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa";
+        schema:description "The type of dish. For example, the dish could be an appetizer, main course, or desert.";
+    ];
+    sh:property [
+        sh:path schema:description;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa";
+        schema:description "Summary describing the recipe.";
+    ];
+    sh:property [
+        sh:path schema:image;
+        sh:minCount 1;
+        schema:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa";
+        schema:description "Picture associated with the recipe. This can be a picture of the dish or the ingredients of the dish.";
+    ];
+    sh:property [
+        sh:path schema:review;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa";
+        schema:description "Review of the recipe.";
+    ];
+    sh:property [
+        sh:path schema:prepTime;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa";
+        schema:description "The amount of time needed to prepare the ingredients of the recipe.";
+    ];
+    sh:property [
+        sh:path schema:totalTime;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa";
+        schema:description "The total time it takes to prepare the ingredients and cook the dish.";
+    ];
+    sh:property [
+        sh:path schema:recipeYield;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa";
+        schema:description "The quantity of the dish prepared by the recipe (e.g. number of servings).";
+    ];
+    sh:property [
+        sh:path schema:nutrition;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa";
+        schema:description "Nutritional information of the dish the recipe is used to prepare.";
+    ];
+    sh:property [
+        sh:path schema:recipeIngredient;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa";
+        schema:description "An ingredient used in the recipe.";
+    ];
+    sh:property [
+        sh:path schema:recipeInstructions;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://www.bing.com/webmaster/help/markup-recipes-da2b3faa";
+        schema:description "The steps specified by the recipe to prepare the dish.";
+    ].
+
+
+:GoogleRecipe a sh:NodeShape;
+    sh:targetClass schema:Recipe;
+    sh:property [
+        sh:path schema:name;
+        sh:minCount 1;
+        sh:severity sh:Violation;
+        schema:url "https://developers.google.com/search/docs/data-types/recipe#name";
+        schema:description "The name of the dish.";
+    ];
+    sh:property [
+        sh:path schema:image;
+        sh:minCount 1;
+        schema:url "https://developers.google.com/search/docs/data-types/recipe";
+        schema:description "Image of the completed dish.";
+    ];
+    sh:property [
+        sh:path schema:aggregateRating;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.google.com/search/docs/data-types/recipe#aggregateRating";
+        schema:description "Annotation for the average review score assigned to the item.";
+    ];
+    sh:property [
+        sh:path schema:author;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.google.com/search/docs/data-types/recipe#author";
+        schema:description: "The name of the person or organization that wrote the recipe.";
+    ];
+    sh:property [
+        sh:path schema:cookTime;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.google.com/search/docs/data-types/recipe#cookTime";
+        schema:description "The time it takes to actually cook the dish in ISO 8601 format";
+    ];
+    sh:property [
+        sh:path schema:datePublished;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.google.com/search/docs/data-types/recipe#datePublished";
+        schema:description "The date the recipe was published in ISO 8601 format";
+    ];
+    sh:property [
+        sh:path schema:description;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.google.com/search/docs/data-types/recipe#description";
+        schema:description "A short summary describing the dish.";
+    ];
+    sh:property [
+        sh:path schema:keywords;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.google.com/search/docs/data-types/recipe#keywords";
+        schema:description "Other terms for your recipe such as the season, the holiday, or other descriptors";
+    ];
+    sh:property [
+        sh:path schema:prepTime;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.google.com/search/docs/data-types/recipe#prepTime";
+        schema:description "The length of time it takes to prepare the dish, in ISO 8601 format";
+    ];
+    sh:property [
+        sh:path schema:recipeCategory;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.google.com/search/docs/data-types/recipe#recipeCategoty";
+        schema:description "The type of meal or course your recipe is about";
+    ];
+    sh:property [
+        sh:path schema:recipeCuisine;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.google.com/search/docs/data-types/recipe#recipeCusine";
+        schema:description "The region associated with your recipe";
+    ];
+    sh:property [
+        sh:path schema:recipeIngredient;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.google.com/search/docs/data-types/recipe#recipeIngredient";
+        schema:description "An ingredient used in the recipe.";
+    ];
+    sh:property [
+        sh:path schema:recipeInstructions;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.google.com/search/docs/data-types/recipe#recipeInstructions";
+        schema:description "The steps to make the dish";
+    ];
+    sh:property [
+        sh:path schema:recipeYield;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.google.com/search/docs/data-types/recipe#recipeYield";
+        schema:description "The quantity produced by the recipe. Specify the number of servings produced from this recipe with just a number";
+    ];
+    sh:property [
+        sh:path schema:totalTime;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.google.com/search/docs/data-types/recipe#totalTime";
+        schema:description "The total time it takes to prepare the cook the dish, in ISO 8601 format";
+    ].
+
+
+:PinterestRecipe a sh:NodeShape;
+    sh:targetClass schema:Recipe;
+    sh:property [
+        sh:path schema:name;
+        sh:minCount 1;
+        sh:severity sh:Violation;
+        schema:url "https://developers.pinterest.com/docs/rich-pins/recipes/";
+        schema:description "The name of the recipe. This title may be truncated, depending on length. All formatting and HTML tags will be removed.";
+    ];
+    sh:property [
+        sh:path schema:ingredients;
+        sh:minCount 1;
+        sh:severity sh:Violation;
+        schema:url "https://developers.pinterest.com/docs/rich-pins/recipes/";
+        schema:description "The ingredients used in the recipe. Annotate each individual ingredient separately.";
+    ];
+    sh:property [
+        sh:path schema:url;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.pinterest.com/docs/rich-pins/recipes/";
+        schema:description "The canonical URL for the page.";
+    ];
+    sh:property [
+        sh:path schema:image;
+        sh:minCount 1;
+        schema:url "https://developers.pinterest.com/docs/rich-pins/recipes/";
+        schema:description "The URL for a high-resolution image of the recipe. You can add up to 6 images..";
+    ];
+    sh:property [
+        sh:path schema:totalTime;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.pinterest.com/docs/rich-pins/recipes/";
+        schema:description "The total time it takes to cook and prepare the recipe.";
+    ];
+    sh:property [
+        sh:path schema:recipeYield;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.pinterest.com/docs/rich-pins/recipes/";
+        schema:description "The quantity or servings made by this recipe";
+    ];
+    sh:property [
+        sh:path schema:aggregateRating;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://developers.pinterest.com/docs/rich-pins/recipes/";
+        schema:description "The overall rating, based on a collection of reviews or ratings, of the item.";
+    ].
+
+
+:YandexRecipe a sh:NodeShape;
+    sh:targetClass schema:Recipe;
+    sh:property [
+        sh:path schema:name;
+        sh:minCount 1;
+        sh:severity sh:Violation;
+        schema:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html";
+        schema:description "The recipe or dish name.";
+    ];
+    sh:property [
+        sh:path schema:recipeIngredient;
+        sh:minCount 1;
+        sh:severity sh:Violation;
+        schema:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html";
+        schema:description "Ingredients in the recipe and their volumes or amounts (may be several).";
+    ];
+    sh:property [
+        sh:path schema:recipeInstructions;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html";
+        schema:description "cooking instructions.";
+    ];
+    sh:property [
+        sh:path schema:recipeCategory;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html";
+        schema:description "Type of dish: for example, hot main dish, dessert.";
+    ];
+    sh:property [
+        sh:path schema:recipeYield;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html";
+        schema:description "Number of servings.";
+    ];
+    sh:property [
+        sh:path schema:totalTime;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html";
+        schema:description "Cooking time (if missing, cookTime is used). Specified in the ISO 8601 format. For example, PT30M (30 minutes).";
+    ];
+    sh:property [
+        sh:path schema:image;
+        sh:minCount 1;
+        schema:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html";
+        schema:description " URL of the cooking images (can be several). We recommend you to fill in this field for creating a better snippet.";
+    ];
+    sh:property [
+        sh:path schema:author;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html";
+        schema:description "Author of the recipe.";
+    ];
+    sh:property [
+        sh:path schema:nutrition;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html";
+        schema:description "National cuisine the recipe belongs to. One recipe can contain only one cuisine—type element.";
+    ];
+    sh:property [
+        sh:path schema:recipeCuisine;
+        sh:minCount 1;
+        sh:severity sh:Warning;
+        schema:url "https://yandex.com/support/webmaster/supported-schemas/recipe.html";
+        schema:description "Energy and nutrition value of the dish, meaning the number of calories and the amount of fat, protein, carbohydrates, vitamins, and so on.";
+    ].

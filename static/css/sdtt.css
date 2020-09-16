@@ -22,10 +22,21 @@ body, html {
     font-weight: bold;
 }
 
-.header .lang-selector {
+.header div {
     display: flex;
     justify-content: right;
     margin: auto 0;
+    margin-left: 10px;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+}
+
+.header a:hover {
+    color: #fafafa;
+    text-decoration: none;
 }
 
 .header .title {
