@@ -47,8 +47,11 @@ async function parseItem(input) {
 }
 
 function clearURL(val) {
-    return val.replace('http://schema.org/', '')
+    if (!val) return '';
+    return val.replace('http://schema.org/shex#', '')
+        .replace('http://schema.org/', '')
         .replace('http://www.w3.org/1999/02/22-rdf-syntax-ns#type', '@type');
+
 }
 
 function parseDataItems(dataset, shapeId, indent) {
@@ -64,13 +67,15 @@ function parseDataItems(dataset, shapeId, indent) {
 function clearServicesDuplicates(report) {
     let properties = {};
     report.forEach(item => {
-        if (properties[item.property]) {
-            properties[item.property].services.push({
+        let key = item.property;
+        if (properties[key] && properties[key].services.filter(x => x.service === item.service).length > 0) return;
+        if (properties[key]) {
+            properties[key].services.push({
                 service: item.service,
                 description: item.description,
                 url: item.url
             });
-        } else properties[item.property] = {
+        } else properties[key] = {
             property: item.property,
             severity: item.severity,
             message: item.message,
@@ -81,5 +86,7 @@ function clearServicesDuplicates(report) {
             }]
         };
     });
-    return Object.values(properties);
+    let reports = Object.values(properties);
+    reports.forEach(report => clearGraph(hierarchy, report));
+    return reports;
 }
