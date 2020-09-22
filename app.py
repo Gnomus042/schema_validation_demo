@@ -1,63 +1,54 @@
-import codecs
-from flask import Flask, render_template, jsonify, send_file, Response, Blueprint
+from flask import Flask, render_template, jsonify, send_file
+from flask_cors import CORS
 import os
+import json
 
 import config
 
 app = Flask(__name__)
-
-from sdtt import sdtt as sdtt_blueprint
-app.register_blueprint(sdtt_blueprint)
+CORS(app)
 
 
-@app.route('/old')
-def index():
-    return render_template('validation.html')
+@app.route('/')
+def demo():
+    return render_template('scc.html')
 
 
-@app.route('/services')
+@app.route('/hierarchy')
 def services():
-    return jsonify(services=config.supported_services)
+    return config.hierarchy
 
 
-@app.route('/services/allowed')
-def services_allowed():
-    return config.allowed_for_validation
+@app.route('/services/map')
+def shape_to_service():
+    sts_path = os.path.join(os.curdir, 'validation', 'shapeToService.json')
+    return send_file(sts_path)
 
 
 @app.route('/tests')
 def tests():
-    tests = []
-    for filename in sorted(list(os.listdir(config.tests_path))):
-        tests.append(open(f'{config.tests_path}/{filename}').read())
-    return jsonify(tests=tests)
-
-
-@app.route('/shape/<lang>/<type>/<service>')
-def shape(lang, type, service):
-    return jsonify(shape=open(f'validation/{lang}/specific/{service}/{type}.{lang}').read())
-
-
-@app.route('/context')
-def context():
-    return send_file('validation/context.json')
+    tests_path = os.path.join(os.curdir, 'validation', 'tests')
+    file_paths = [os.path.join(tests_path, file) for file in sorted(list(os.listdir(tests_path)))]
+    test_data = [open(file_path).read() for file_path in file_paths]
+    return jsonify(tests=test_data)
 
 
 @app.route('/shex/shapes')
 def shex_shapes():
-    return Response(response=codecs.open(f'{config.shex_path}/extends-full.shexj', 'r', 'utf-8').read(),
-                    status=200,
-                    mimetype='text/shex')
+    shapes_path = os.path.join(os.curdir, 'validation', 'shex', 'full.shexj')
+    return send_file(shapes_path)
 
 
 @app.route('/shacl/shapes')
 def shacl_shapes_full():
-    return send_file(f'{config.shacl_path}/full.shacl')
+    shacl_path = os.path.join(os.curdir, 'validation', 'shacl', 'full.shacl')
+    return send_file(shacl_path)
 
 
 @app.route('/shacl/subclasses')
 def shacl_subclasses():
-    return open(f'{config.shacl_path}/subclasses.ttl').read()
+    subclasses_path = os.path.join(os.curdir, 'validation', 'shacl', 'subclasses.ttl')
+    return open(subclasses_path).read()
 
 
 if __name__ == '__main__':

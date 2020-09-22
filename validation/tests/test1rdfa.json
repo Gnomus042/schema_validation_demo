@@ -1,4 +1,4 @@
-<div vocab="https://schema.org/" typeof="Recipe">
+<div vocab="http://schema.org/" typeof="Recipe">
   <span property="name">Mom's World Famous Banana Bread</span>
   By <span property="author">John Smith</span>,
   <meta property="datePublished" content="2009-05-08">May 8, 2009
@@ -8,7 +8,7 @@
   Prep Time: <meta property="prepTime" content="PT15M">15 minutes
   Cook time: <meta property="cookTime" content="PT1H">1 hour
   Yield: <span property="recipeYield">1 loaf</span>
-  Tags: <link property="suitableForDiet" href="https://schema.org/LowFatDiet" />Low Fat
+  Tags: <link property="suitableForDiet" href="http://schema.org/LowFatDiet" />Low Fat
   <div property="nutrition" typeof="NutritionInformation">
     Nutrition facts:
     <span property="calories">240 calories</span>,
@@ -26,7 +26,7 @@
   </span>
   140 comments:
   <div property="interactionStatistic" typeof="InteractionCounter">
-    <meta property="interactionType" content="https://schema.org/CommentAction" />
+    <meta property="interactionType" content="http://schema.org/CommentAction" />
     <meta property="userInteractionCount" content="140" />
   </div>
   From Janel, May 5 -- thank you, great recipe!

@@ -1,47 +1,48 @@
-let currText = "";
+let lastValidation;
 
-$("#validate-btn").on('click', async () => {
+$('#validate-btn').click(() => {
     $('.reports').empty();
-    currText = $("#input-text").val();
-    $("#validate-btn").addClass('disabled');
-    await parse(currText);
+    lastValidation = $('#input-text').val();
+    validate(lastValidation, $('#validation-lang-select').val());
 });
 
 $(document).bind('keypress', function (e) {
     if (e.keyCode === 10 && e.ctrlKey) {
-        $("#validate-btn").click();
+        $('#validate-btn').click();
     }
 });
 
-
 $(document).delegate('#input-text', 'keydown', function (e) {
     var keyCode = e.keyCode || e.which;
-
     if (keyCode === 9) {
         e.preventDefault();
         var start = this.selectionStart;
         var end = this.selectionEnd;
-
         $(this).val($(this).val().substring(0, start)
             + "\t"
             + $(this).val().substring(end));
-
         this.selectionStart =
             this.selectionEnd = start + 1;
-    }
-});
-
-$('#input-text').keyup(() => {
-    if ($(this).text() !== currText) {
-        $("#validate-btn").removeClass('disabled');
     }
 });
 
 $('.tests-display').mouseenter(() => $('.tests').removeClass('d-none'));
 $('.tests-display').mouseleave(() => $('.tests').addClass('d-none'));
 
+function initTests(tests) {
+    $('#input-text').val(tests[3]);
+    tests.forEach((test, idx) => {
+        $('.tests').append(`<div class="test" id="test-${idx + 1}">Test ${idx + 1}</div>`);
+        $(`#test-${idx + 1}`).click(() => $('#input-text').val(test));
+    })
+}
+
+
+
+
 function dataItemLayout(predicate, object, indent) {
     let trueIndent = indent * 30;
+    predicate = removeUrls(predicate);
     return `<div class="data-item">
         <div class="info">
             <div class="predicate"><div style='width: ${trueIndent}px'></div><div>${predicate}</div></div>
@@ -52,17 +53,17 @@ function dataItemLayout(predicate, object, indent) {
 
 function failureLayout(failure, type) {
     let services = failure.services.map(x => {
-        return `<a href="${x.url || ''}" title="${x.description||""}">
+        return `<a href="${x.url || ''}" title="${x.description || ""}">
             <img class="service-icon" src="static/images/services/${x.service}.png" alt="${x.service}"/>
         </a>`
     }).join('');
     return `<div class="failure ${type}">
         <div class="property">
             <img src="static/images/icons/${type}.svg" alt="${type}">
-            <div>${clearURL(failure.property)}</div>
+            <div>${removeUrls(failure.property)}</div>
         </div>
         <div class="message">
-            <div class="text-justify">${clearURL(failure.message) || ""}.</div> 
+            <div class="text-justify">${removeUrls(failure.message) || ""}.</div> 
         </div>
         <div class="services"><div>${services}</div></div>
     </div>`
