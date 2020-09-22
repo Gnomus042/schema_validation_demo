@@ -1,5 +1,5 @@
 {
-  "@context": "https: //schema.org/",
+  "@context": "https://schema.org/",
   "@id": "http://example.org/recipe",
   "@type": "Recipe",
   "name": "Banana Bread Recipe",

@@ -1,0 +1,110 @@
+<#GoogleRecipe> @<#Recipe> AND{
+    schema:name .
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#name"
+    // techdoc:description "The name of the dish.";
+
+    schema:image . +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe"
+    // techdoc:description "Image of the completed dish.";
+
+    schema:aggregateRating .
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#aggregateRating"
+    // techdoc:description "Annotation for the average review score assigned to the item."
+    // techdoc:identifier "warning";
+
+    schema:author . +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#author"
+    // techdoc:description "The name of the person or organization that wrote the recipe."
+    // techdoc:identifier "warning";
+
+    schema:cookTime .
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#cookTime"
+    // techdoc:description "The time it takes to actually cook the dish in ISO 8601 format."
+    // techdoc:identifier "warning";
+
+    schema:datePublished .
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#datePublished"
+    // techdoc:description "The date the recipe was published in ISO 8601 format."
+    // techdoc:identifier "warning";
+
+    schema:description .
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#description"
+    // techdoc:description "A short summary describing the dish.."
+    // techdoc:identifier "warning";
+
+    schema:keywords .
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#keywords"
+    // techdoc:description "Other terms for your recipe such as the season, the holiday, or other descriptors."
+    // techdoc:identifier "warning";
+
+    schema:prepTime .
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#prepTime"
+    // techdoc:description "The length of time it takes to prepare the dish, in ISO 8601 format."
+    // techdoc:identifier "warning";
+
+    schema:recipeCategory  .
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#recipeCategoty"
+    // techdoc:description "The type of meal or course your recipe is about."
+    // techdoc:identifier "warning";
+
+    schema:recipeCuisine  .
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#recipeCusine"
+    // techdoc:description "The region associated with your recipe."
+    // techdoc:identifier "warning";
+
+    schema:recipeIngredient . +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#recipeIngredient"
+    // techdoc:description "An ingredient used in the recipe.."
+    // techdoc:identifier "warning";
+
+    schema:recipeInstructions . +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#recipeInstructions"
+    // techdoc:description "The steps to make the dish."
+    // techdoc:identifier "warning";
+
+    schema:recipeYield . +
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#recipeYield"
+    // techdoc:description "The quantity produced by the recipe. Specify the number of servings produced from this recipe with just a number."
+    // techdoc:identifier "warning";
+
+    schema:totalTime .
+    // techdoc:url "https://developers.google.com/search/docs/data-types/recipe#totalTime"
+    // techdoc:description "The total time it takes to prepare the cook the dish, in ISO 8601 format."
+    // techdoc:identifier "warning";
+}
+
+<#GoogleProduct1Recipe> @<#GoogleRecipe> AND {
+    schema:image . {4}
+    // techdoc:url "http://example.org"
+    // techdoc:description "Adding proper images will increase something by some%"
+    // techdoc:identifier "info";
+
+    schema:description .
+    // techdoc:url "http://example.org"
+    // techdoc:description "Adding description will increase something by some%"
+    // techdoc:identifier "info";
+}
+
+<#GoogleProduct2Recipe> @<#GoogleRecipe> AND {
+    schema:about .
+    // techdoc:url "http://example.org"
+    // techdoc:description "Adding schema:about will increase something by some%"
+    // techdoc:identifier "info";
+
+    schema:accessMode (@<#Text> AND /auditory|tactile|textual|visual/)
+    // techdoc:url "http://example.org"
+    // techdoc:description "Adding schema:accessMode will increase something by some%"
+    // techdoc:identifier "info";
+}
+
+<#GoogleProduct3Recipe> @<#GoogleRecipe> AND {
+    schema:author @<#Person>
+    // techdoc:url "http://example.org"
+    // techdoc:description "Adding schema:author will increase something by some%"
+    // techdoc:identifier "info";
+
+    schema:award (@<#Text> AND /award1|award2/)
+    // techdoc:url "http://example.org"
+    // techdoc:description "Adding schema:award will increase something by some%"
+    // techdoc:identifier "info";
+}
