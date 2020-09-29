@@ -1,33 +1,33 @@
-:MediaObject a sh:NodeShape;
+:ValidSchemaMediaObject a sh:NodeShape;
 	sh:targetClass schema:MediaObject;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:associatedArticle;
-		sh:node :NewsArticle;
+		sh:node :ValidSchemaNewsArticle;
 	];
 	sh:property [
 		sh:path schema:bitrate;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:contentSize;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:contentUrl;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	];
 	sh:property [
 		sh:path schema:duration;
-		sh:node :Duration;
+		sh:node :ValidSchemaDuration;
 	];
 	sh:property [
 		sh:path schema:embedUrl;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	];
 	sh:property [
 		sh:path schema:encodesCreativeWork;
-		sh:node :CreativeWork;
+		sh:node :ValidSchemaCreativeWork;
 	];
 	sh:property [
 		sh:path schema:encodingFormat;
@@ -52,15 +52,15 @@
 	];
 	sh:property [
 		sh:path schema:playerType;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:productionCompany;
-		sh:node :Organization;
+		sh:node :ValidSchemaOrganization;
 	];
 	sh:property [
 		sh:path schema:regionsAllowed;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:requiresSubscription;
@@ -78,7 +78,7 @@
 	];
 	sh:property [
 		sh:path schema:uploadDate;
-		sh:node :Date;
+		sh:node :ValidSchemaDate;
 	];
 	sh:property [
 		sh:path schema:width;

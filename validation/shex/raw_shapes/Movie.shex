@@ -1,12 +1,12 @@
-<#Movie> @<#CreativeWork> AND EXTRA a { 
+<#ValidSchemaMovie> @<#ValidSchemaCreativeWork> AND EXTRA a {
 	a [schema:Movie];
-	schema:actor @<#Person> * ;
-	schema:actors @<#Person> * ;
-	schema:countryOfOrigin @<#Country> * ;
-	schema:director @<#Person> * ;
-	schema:directors @<#Person> * ;
-	schema:duration @<#Duration> * ;
-	schema:musicBy (@<#Person> OR @<#MusicGroup>) * ;
-	schema:productionCompany @<#Organization> * ;
-	schema:trailer @<#VideoObject> * ;
+	schema:actor @<#ValidSchemaPerson> * ;
+	schema:actors @<#ValidSchemaPerson> * ;
+	schema:countryOfOrigin @<#ValidSchemaCountry> * ;
+	schema:director @<#ValidSchemaPerson> * ;
+	schema:directors @<#ValidSchemaPerson> * ;
+	schema:duration @<#ValidSchemaDuration> * ;
+	schema:musicBy (@<#ValidSchemaPerson> OR @<#ValidSchemaMusicGroup>) * ;
+	schema:productionCompany @<#ValidSchemaOrganization> * ;
+	schema:trailer @<#ValidSchemaVideoObject> * ;
 }

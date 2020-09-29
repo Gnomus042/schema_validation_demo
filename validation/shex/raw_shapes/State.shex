@@ -1,3 +1,3 @@
-<#State> @<#AdministrativeArea> AND EXTRA a { 
+<#ValidSchemaState> @<#ValidSchemaAdministrativeArea> AND EXTRA a {
 	a [schema:State];
 }

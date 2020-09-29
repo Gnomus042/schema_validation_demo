@@ -1,9 +1,9 @@
-:CommunicateAction a sh:NodeShape;
+:ValidSchemaCommunicateAction a sh:NodeShape;
 	sh:targetClass schema:CommunicateAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:about;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	];
 	sh:property [
 		sh:path schema:inLanguage;
@@ -14,7 +14,7 @@
 	];
 	sh:property [
 		sh:path schema:language;
-		sh:node :Language;
+		sh:node :ValidSchemaLanguage;
 	];
 	sh:property [
 		sh:path schema:recipient;

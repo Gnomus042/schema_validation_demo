@@ -1,4 +1,4 @@
-:GiveAction a sh:NodeShape;
+:ValidSchemaGiveAction a sh:NodeShape;
 	sh:targetClass schema:GiveAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

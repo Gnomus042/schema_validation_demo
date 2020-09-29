@@ -1,6 +1,6 @@
-<#MusicPlaylist> @<#CreativeWork> AND EXTRA a { 
+<#ValidSchemaMusicPlaylist> @<#ValidSchemaCreativeWork> AND EXTRA a {
 	a [schema:MusicRelease schema:MusicAlbum schema:MusicPlaylist];
-	schema:numTracks @<#Integer> * ;
-	schema:track (@<#MusicRecording> OR @<#ItemList>) * ;
-	schema:tracks @<#MusicRecording> * ;
+	schema:numTracks @<#ValidSchemaInteger> * ;
+	schema:track (@<#ValidSchemaMusicRecording> OR @<#ValidSchemaItemList>) * ;
+	schema:tracks @<#ValidSchemaMusicRecording> * ;
 }

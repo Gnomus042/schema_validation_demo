@@ -1,7 +1,7 @@
-:Map a sh:NodeShape;
+:ValidSchemaMap a sh:NodeShape;
 	sh:targetClass schema:Map;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:mapType;
-		sh:node :MapCategoryType;
+		sh:node :ValidSchemaMapCategoryType;
 	].

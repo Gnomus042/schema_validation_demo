@@ -1,4 +1,4 @@
-:Text a sh:NodeShape;
+:ValidSchemaText a sh:NodeShape;
     sh:or (
         [sh:datatype xsd:string]
         [sh:nodeKind sh:Literal]

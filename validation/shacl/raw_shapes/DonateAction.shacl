@@ -1,4 +1,4 @@
-:DonateAction a sh:NodeShape;
+:ValidSchemaDonateAction a sh:NodeShape;
 	sh:targetClass schema:DonateAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

@@ -1,4 +1,4 @@
-:Rating a sh:NodeShape;
+:ValidSchemaRating a sh:NodeShape;
 	sh:targetClass schema:Rating;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -24,7 +24,7 @@
 	];
 	sh:property [
 		sh:path schema:reviewAspect;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:worstRating;

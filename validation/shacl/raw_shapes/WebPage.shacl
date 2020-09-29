@@ -1,4 +1,4 @@
-:WebPage a sh:NodeShape;
+:ValidSchemaWebPage a sh:NodeShape;
 	sh:targetClass schema:WebPage;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,19 +10,19 @@
 	];
 	sh:property [
 		sh:path schema:lastReviewed;
-		sh:node :Date;
+		sh:node :ValidSchemaDate;
 	];
 	sh:property [
 		sh:path schema:mainContentOfPage;
-		sh:node :WebPageElement;
+		sh:node :ValidSchemaWebPageElement;
 	];
 	sh:property [
 		sh:path schema:primaryImageOfPage;
-		sh:node :ImageObject;
+		sh:node :ValidSchemaImageObject;
 	];
 	sh:property [
 		sh:path schema:relatedLink;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	];
 	sh:property [
 		sh:path schema:reviewedBy;
@@ -33,11 +33,11 @@
 	];
 	sh:property [
 		sh:path schema:significantLink;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	];
 	sh:property [
 		sh:path schema:significantLinks;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	];
 	sh:property [
 		sh:path schema:speakable;
@@ -48,5 +48,5 @@
 	];
 	sh:property [
 		sh:path schema:specialty;
-		sh:node :Specialty;
+		sh:node :ValidSchemaSpecialty;
 	].

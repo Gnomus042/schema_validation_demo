@@ -1,4 +1,4 @@
-:ReturnAction a sh:NodeShape;
+:ValidSchemaReturnAction a sh:NodeShape;
 	sh:targetClass schema:ReturnAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

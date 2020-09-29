@@ -1,7 +1,7 @@
-:InviteAction a sh:NodeShape;
+:ValidSchemaInviteAction a sh:NodeShape;
 	sh:targetClass schema:InviteAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:event;
-		sh:node :Event;
+		sh:node :ValidSchemaEvent;
 	].

@@ -1,3 +1,3 @@
-:MusicEvent a sh:NodeShape;
+:ValidSchemaMusicEvent a sh:NodeShape;
 	sh:targetClass schema:MusicEvent;
 	sh:nodeKind sh:BlankNodeOrIRI.

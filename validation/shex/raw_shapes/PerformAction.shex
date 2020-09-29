@@ -1,4 +1,4 @@
-<#PerformAction> @<#PlayAction> AND EXTRA a { 
+<#ValidSchemaPerformAction> @<#ValidSchemaPlayAction> AND EXTRA a {
 	a [schema:PerformAction];
-	schema:entertainmentBusiness @<#EntertainmentBusiness> * ;
+	schema:entertainmentBusiness @<#ValidSchemaEntertainmentBusiness> * ;
 }

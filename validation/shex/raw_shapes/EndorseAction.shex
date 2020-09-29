@@ -1,4 +1,4 @@
-<#EndorseAction> @<#ReactAction> AND EXTRA a { 
+<#ValidSchemaEndorseAction> @<#ValidSchemaReactAction> AND EXTRA a {
 	a [schema:EndorseAction];
-	schema:endorsee (@<#Organization> OR @<#Person>) * ;
+	schema:endorsee (@<#ValidSchemaOrganization> OR @<#ValidSchemaPerson>) * ;
 }

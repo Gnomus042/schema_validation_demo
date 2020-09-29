@@ -1,3 +1,3 @@
-:TextDigitalDocument a sh:NodeShape;
+:ValidSchemaTextDigitalDocument a sh:NodeShape;
 	sh:targetClass schema:TextDigitalDocument;
 	sh:nodeKind sh:BlankNodeOrIRI.

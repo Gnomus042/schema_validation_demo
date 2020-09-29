@@ -1,9 +1,9 @@
-<#GeoCoordinates> @<#StructuredValue> AND EXTRA a { 
+<#ValidSchemaGeoCoordinates> @<#ValidSchemaStructuredValue> AND EXTRA a {
 	a [schema:GeoCoordinates];
-	schema:address (@<#PostalAddress> OR @<#Text>) * ;
-	schema:addressCountry (@<#Country> OR @<#Text>) * ;
-	schema:elevation (@<#Number> OR @<#Text>) * ;
-	schema:latitude (@<#Text> OR @<#Number>) * ;
-	schema:longitude (@<#Text> OR @<#Number>) * ;
-	schema:postalCode @<#Text> * ;
+	schema:address (@<#ValidSchemaPostalAddress> OR @<#ValidSchemaText>) * ;
+	schema:addressCountry (@<#ValidSchemaCountry> OR @<#ValidSchemaText>) * ;
+	schema:elevation (@<#ValidSchemaNumber> OR @<#ValidSchemaText>) * ;
+	schema:latitude (@<#ValidSchemaText> OR @<#ValidSchemaNumber>) * ;
+	schema:longitude (@<#ValidSchemaText> OR @<#ValidSchemaNumber>) * ;
+	schema:postalCode @<#ValidSchemaText> * ;
 }

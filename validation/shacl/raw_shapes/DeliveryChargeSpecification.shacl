@@ -1,9 +1,9 @@
-:DeliveryChargeSpecification a sh:NodeShape;
+:ValidSchemaDeliveryChargeSpecification a sh:NodeShape;
 	sh:targetClass schema:DeliveryChargeSpecification;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:appliesToDeliveryMethod;
-		sh:node :DeliveryMethod;
+		sh:node :ValidSchemaDeliveryMethod;
 	];
 	sh:property [
 		sh:path schema:areaServed;

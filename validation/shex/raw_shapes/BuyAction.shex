@@ -1,6 +1,6 @@
-<#BuyAction> @<#TradeAction> AND EXTRA a { 
+<#ValidSchemaBuyAction> @<#ValidSchemaTradeAction> AND EXTRA a {
 	a [schema:BuyAction];
-	schema:seller (@<#Organization> OR @<#Person>) * ;
-	schema:vendor (@<#Organization> OR @<#Person>) * ;
-	schema:warrantyPromise @<#WarrantyPromise> * ;
+	schema:seller (@<#ValidSchemaOrganization> OR @<#ValidSchemaPerson>) * ;
+	schema:vendor (@<#ValidSchemaOrganization> OR @<#ValidSchemaPerson>) * ;
+	schema:warrantyPromise @<#ValidSchemaWarrantyPromise> * ;
 }

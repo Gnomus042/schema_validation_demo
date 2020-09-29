@@ -1,7 +1,7 @@
-<#DataFeedItem> @<#Intangible> AND EXTRA a { 
+<#ValidSchemaDataFeedItem> @<#ValidSchemaIntangible> AND EXTRA a {
 	a [schema:DataFeedItem];
-	schema:dateCreated (@<#Date> OR @<#DateTime>) * ;
-	schema:dateDeleted (@<#Date> OR @<#DateTime>) * ;
-	schema:dateModified (@<#DateTime> OR @<#Date>) * ;
-	schema:item @<#Thing> * ;
+	schema:dateCreated (@<#ValidSchemaDate> OR @<#ValidSchemaDateTime>) * ;
+	schema:dateDeleted (@<#ValidSchemaDate> OR @<#ValidSchemaDateTime>) * ;
+	schema:dateModified (@<#ValidSchemaDateTime> OR @<#ValidSchemaDate>) * ;
+	schema:item @<#ValidSchemaThing> * ;
 }

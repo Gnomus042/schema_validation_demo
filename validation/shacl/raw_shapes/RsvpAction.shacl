@@ -1,15 +1,15 @@
-:RsvpAction a sh:NodeShape;
+:ValidSchemaRsvpAction a sh:NodeShape;
 	sh:targetClass schema:RsvpAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:additionalNumberOfGuests;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:comment;
-		sh:node :Comment;
+		sh:node :ValidSchemaComment;
 	];
 	sh:property [
 		sh:path schema:rsvpResponse;
-		sh:node :RsvpResponseType;
+		sh:node :ValidSchemaRsvpResponseType;
 	].

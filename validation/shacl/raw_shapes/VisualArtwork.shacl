@@ -1,4 +1,4 @@
-:VisualArtwork a sh:NodeShape;
+:ValidSchemaVisualArtwork a sh:NodeShape;
 	sh:targetClass schema:VisualArtwork;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

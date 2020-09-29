@@ -1,4 +1,4 @@
-:DatedMoneySpecification a sh:NodeShape;
+:ValidSchemaDatedMoneySpecification a sh:NodeShape;
 	sh:targetClass schema:DatedMoneySpecification;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,7 +10,7 @@
 	];
 	sh:property [
 		sh:path schema:currency;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:endDate;

@@ -1,13 +1,13 @@
-:Article a sh:NodeShape;
+:ValidSchemaArticle a sh:NodeShape;
 	sh:targetClass schema:Article;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:articleBody;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:articleSection;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:pageEnd;
@@ -25,7 +25,7 @@
 	];
 	sh:property [
 		sh:path schema:pagination;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:speakable;
@@ -36,5 +36,5 @@
 	];
 	sh:property [
 		sh:path schema:wordCount;
-		sh:node :Integer;
+		sh:node :ValidSchemaInteger;
 	].

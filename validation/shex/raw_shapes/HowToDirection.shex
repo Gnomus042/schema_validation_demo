@@ -1,11 +1,11 @@
-<#HowToDirection> @<#CreativeWork> AND EXTRA a { 
+<#ValidSchemaHowToDirection> @<#ValidSchemaCreativeWork> AND EXTRA a {
 	a [schema:HowToDirection];
-	schema:afterMedia (@<#MediaObject> OR @<#URL>) * ;
-	schema:beforeMedia (@<#URL> OR @<#MediaObject>) * ;
-	schema:duringMedia (@<#URL> OR @<#MediaObject>) * ;
-	schema:performTime @<#Duration> * ;
-	schema:prepTime @<#Duration> * ;
-	schema:supply (@<#HowToSupply> OR @<#Text>) * ;
-	schema:tool (@<#HowToTool> OR @<#Text>) * ;
-	schema:totalTime @<#Duration> * ;
+	schema:afterMedia (@<#ValidSchemaMediaObject> OR @<#ValidSchemaURL>) * ;
+	schema:beforeMedia (@<#ValidSchemaURL> OR @<#ValidSchemaMediaObject>) * ;
+	schema:duringMedia (@<#ValidSchemaURL> OR @<#ValidSchemaMediaObject>) * ;
+	schema:performTime @<#ValidSchemaDuration> * ;
+	schema:prepTime @<#ValidSchemaDuration> * ;
+	schema:supply (@<#ValidSchemaHowToSupply> OR @<#ValidSchemaText>) * ;
+	schema:tool (@<#ValidSchemaHowToTool> OR @<#ValidSchemaText>) * ;
+	schema:totalTime @<#ValidSchemaDuration> * ;
 }

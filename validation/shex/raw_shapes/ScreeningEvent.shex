@@ -1,5 +1,5 @@
-<#ScreeningEvent> @<#Event> AND EXTRA a { 
+<#ValidSchemaScreeningEvent> @<#ValidSchemaEvent> AND EXTRA a {
 	a [schema:ScreeningEvent];
-	schema:videoFormat @<#Text> * ;
-	schema:workPresented @<#Movie> * ;
+	schema:videoFormat @<#ValidSchemaText> * ;
+	schema:workPresented @<#ValidSchemaMovie> * ;
 }

@@ -1,51 +1,51 @@
-:NutritionInformation a sh:NodeShape;
+:ValidSchemaNutritionInformation a sh:NodeShape;
 	sh:targetClass schema:NutritionInformation;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:calories;
-		sh:node :Energy;
+		sh:node :ValidSchemaEnergy;
 	];
 	sh:property [
 		sh:path schema:carbohydrateContent;
-		sh:node :Mass;
+		sh:node :ValidSchemaMass;
 	];
 	sh:property [
 		sh:path schema:cholesterolContent;
-		sh:node :Mass;
+		sh:node :ValidSchemaMass;
 	];
 	sh:property [
 		sh:path schema:fatContent;
-		sh:node :Mass;
+		sh:node :ValidSchemaMass;
 	];
 	sh:property [
 		sh:path schema:fiberContent;
-		sh:node :Mass;
+		sh:node :ValidSchemaMass;
 	];
 	sh:property [
 		sh:path schema:proteinContent;
-		sh:node :Mass;
+		sh:node :ValidSchemaMass;
 	];
 	sh:property [
 		sh:path schema:saturatedFatContent;
-		sh:node :Mass;
+		sh:node :ValidSchemaMass;
 	];
 	sh:property [
 		sh:path schema:servingSize;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:sodiumContent;
-		sh:node :Mass;
+		sh:node :ValidSchemaMass;
 	];
 	sh:property [
 		sh:path schema:sugarContent;
-		sh:node :Mass;
+		sh:node :ValidSchemaMass;
 	];
 	sh:property [
 		sh:path schema:transFatContent;
-		sh:node :Mass;
+		sh:node :ValidSchemaMass;
 	];
 	sh:property [
 		sh:path schema:unsaturatedFatContent;
-		sh:node :Mass;
+		sh:node :ValidSchemaMass;
 	].

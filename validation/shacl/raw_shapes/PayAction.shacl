@@ -1,4 +1,4 @@
-:PayAction a sh:NodeShape;
+:ValidSchemaPayAction a sh:NodeShape;
 	sh:targetClass schema:PayAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

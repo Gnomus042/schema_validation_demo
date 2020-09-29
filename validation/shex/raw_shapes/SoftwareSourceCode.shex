@@ -1,10 +1,10 @@
-<#SoftwareSourceCode> @<#CreativeWork> AND EXTRA a { 
+<#ValidSchemaSoftwareSourceCode> @<#ValidSchemaCreativeWork> AND EXTRA a {
 	a [schema:SoftwareSourceCode];
-	schema:codeRepository @<#URL> * ;
-	schema:codeSampleType @<#Text> * ;
-	schema:programmingLanguage (@<#Text> OR @<#ComputerLanguage>) * ;
-	schema:runtime @<#Text> * ;
-	schema:runtimePlatform @<#Text> * ;
-	schema:sampleType @<#Text> * ;
-	schema:targetProduct @<#SoftwareApplication> * ;
+	schema:codeRepository @<#ValidSchemaURL> * ;
+	schema:codeSampleType @<#ValidSchemaText> * ;
+	schema:programmingLanguage (@<#ValidSchemaText> OR @<#ValidSchemaComputerLanguage>) * ;
+	schema:runtime @<#ValidSchemaText> * ;
+	schema:runtimePlatform @<#ValidSchemaText> * ;
+	schema:sampleType @<#ValidSchemaText> * ;
+	schema:targetProduct @<#ValidSchemaSoftwareApplication> * ;
 }

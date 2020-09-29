@@ -1,1 +1,1 @@
-<#Distance> (@<#Text> AND /^[ ]*([1-9][0-9]*|0)[ ]*[a-zA-Z]*[ ]*$/) OR (@<#Quantity> AND EXTRA a { a [schema:Distance]; })
+<#ValidSchemaDistance> (@<#ValidSchemaText> AND /^[ ]*([1-9][0-9]*|0)[ ]*[a-zA-Z]*[ ]*$/) OR (@<#ValidSchemaQuantity> AND EXTRA a { a [schema:Distance]; })

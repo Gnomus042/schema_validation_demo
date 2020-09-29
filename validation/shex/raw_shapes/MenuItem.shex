@@ -1,7 +1,7 @@
-<#MenuItem> @<#Intangible> AND EXTRA a { 
+<#ValidSchemaMenuItem> @<#ValidSchemaIntangible> AND EXTRA a {
 	a [schema:MenuItem];
-	schema:menuAddOn (@<#MenuItem> OR @<#MenuSection>) * ;
-	schema:nutrition @<#NutritionInformation> * ;
-	schema:offers (@<#Demand> OR @<#Offer>) * ;
-	schema:suitableForDiet @<#RestrictedDiet> * ;
+	schema:menuAddOn (@<#ValidSchemaMenuItem> OR @<#ValidSchemaMenuSection>) * ;
+	schema:nutrition @<#ValidSchemaNutritionInformation> * ;
+	schema:offers (@<#ValidSchemaDemand> OR @<#ValidSchemaOffer>) * ;
+	schema:suitableForDiet @<#ValidSchemaRestrictedDiet> * ;
 }

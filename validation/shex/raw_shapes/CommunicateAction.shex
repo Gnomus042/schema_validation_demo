@@ -1,7 +1,7 @@
-<#CommunicateAction> @<#InteractAction> AND EXTRA a { 
+<#ValidSchemaCommunicateAction> @<#ValidSchemaInteractAction> AND EXTRA a {
 	a [schema:CheckInAction schema:InformAction schema:RsvpAction schema:ShareAction schema:ReplyAction schema:InviteAction schema:CheckOutAction schema:CommentAction schema:AskAction schema:ConfirmAction schema:CommunicateAction];
-	schema:about @<#Thing> * ;
-	schema:inLanguage (@<#Text> OR @<#Language>) * ;
-	schema:language @<#Language> * ;
-	schema:recipient (@<#Organization> OR @<#Audience> OR @<#ContactPoint> OR @<#Person>) * ;
+	schema:about @<#ValidSchemaThing> * ;
+	schema:inLanguage (@<#ValidSchemaText> OR @<#ValidSchemaLanguage>) * ;
+	schema:language @<#ValidSchemaLanguage> * ;
+	schema:recipient (@<#ValidSchemaOrganization> OR @<#ValidSchemaAudience> OR @<#ValidSchemaContactPoint> OR @<#ValidSchemaPerson>) * ;
 }

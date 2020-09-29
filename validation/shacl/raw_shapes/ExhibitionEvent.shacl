@@ -1,3 +1,3 @@
-:ExhibitionEvent a sh:NodeShape;
+:ValidSchemaExhibitionEvent a sh:NodeShape;
 	sh:targetClass schema:ExhibitionEvent;
 	sh:nodeKind sh:BlankNodeOrIRI.

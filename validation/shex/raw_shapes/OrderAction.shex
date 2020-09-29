@@ -1,4 +1,4 @@
-<#OrderAction> @<#TradeAction> AND EXTRA a { 
+<#ValidSchemaOrderAction> @<#ValidSchemaTradeAction> AND EXTRA a {
 	a [schema:OrderAction];
-	schema:deliveryMethod @<#DeliveryMethod> * ;
+	schema:deliveryMethod @<#ValidSchemaDeliveryMethod> * ;
 }

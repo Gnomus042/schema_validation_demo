@@ -1,4 +1,4 @@
-:ChooseAction a sh:NodeShape;
+:ValidSchemaChooseAction a sh:NodeShape;
 	sh:targetClass schema:ChooseAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

@@ -1,13 +1,13 @@
-:Accommodation a sh:NodeShape;
+:ValidSchemaAccommodation a sh:NodeShape;
 	sh:targetClass schema:Accommodation;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:amenityFeature;
-		sh:node :LocationFeatureSpecification;
+		sh:node :ValidSchemaLocationFeatureSpecification;
 	];
 	sh:property [
 		sh:path schema:floorSize;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:numberOfRooms;
@@ -18,7 +18,7 @@
 	];
 	sh:property [
 		sh:path schema:permittedUsage;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:petsAllowed;

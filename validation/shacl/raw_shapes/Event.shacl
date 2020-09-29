@@ -1,17 +1,17 @@
-:Event a sh:NodeShape;
+:ValidSchemaEvent a sh:NodeShape;
 	sh:targetClass schema:Event;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:about;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	];
 	sh:property [
 		sh:path schema:actor;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:aggregateRating;
-		sh:node :AggregateRating;
+		sh:node :ValidSchemaAggregateRating;
 	];
 	sh:property [
 		sh:path schema:attendee;
@@ -29,7 +29,7 @@
 	];
 	sh:property [
 		sh:path schema:audience;
-		sh:node :Audience;
+		sh:node :ValidSchemaAudience;
 	];
 	sh:property [
 		sh:path schema:composer;
@@ -47,7 +47,7 @@
 	];
 	sh:property [
 		sh:path schema:director;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:doorTime;
@@ -58,7 +58,7 @@
 	];
 	sh:property [
 		sh:path schema:duration;
-		sh:node :Duration;
+		sh:node :ValidSchemaDuration;
 	];
 	sh:property [
 		sh:path schema:endDate;
@@ -69,7 +69,7 @@
 	];
 	sh:property [
 		sh:path schema:eventStatus;
-		sh:node :EventStatusType;
+		sh:node :ValidSchemaEventStatusType;
 	];
 	sh:property [
 		sh:path schema:funder;
@@ -87,7 +87,7 @@
 	];
 	sh:property [
 		sh:path schema:isAccessibleForFree;
-		sh:node :Boolean;
+		sh:node :ValidSchemaBoolean;
 	];
 	sh:property [
 		sh:path schema:location;
@@ -100,7 +100,7 @@
 	];
 	sh:property [
 		sh:path schema:maximumAttendeeCapacity;
-		sh:node :Integer;
+		sh:node :ValidSchemaInteger;
 	];
 	sh:property [
 		sh:path schema:offers;
@@ -132,19 +132,19 @@
 	];
 	sh:property [
 		sh:path schema:previousStartDate;
-		sh:node :Date;
+		sh:node :ValidSchemaDate;
 	];
 	sh:property [
 		sh:path schema:recordedIn;
-		sh:node :CreativeWork;
+		sh:node :ValidSchemaCreativeWork;
 	];
 	sh:property [
 		sh:path schema:remainingAttendeeCapacity;
-		sh:node :Integer;
+		sh:node :ValidSchemaInteger;
 	];
 	sh:property [
 		sh:path schema:review;
-		sh:node :Review;
+		sh:node :ValidSchemaReview;
 	];
 	sh:property [
 		sh:path schema:sponsor;
@@ -162,15 +162,15 @@
 	];
 	sh:property [
 		sh:path schema:subEvent;
-		sh:node :Event;
+		sh:node :ValidSchemaEvent;
 	];
 	sh:property [
 		sh:path schema:subEvents;
-		sh:node :Event;
+		sh:node :ValidSchemaEvent;
 	];
 	sh:property [
 		sh:path schema:superEvent;
-		sh:node :Event;
+		sh:node :ValidSchemaEvent;
 	];
 	sh:property [
 		sh:path schema:translator;
@@ -181,13 +181,13 @@
 	];
 	sh:property [
 		sh:path schema:typicalAgeRange;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:workFeatured;
-		sh:node :CreativeWork;
+		sh:node :ValidSchemaCreativeWork;
 	];
 	sh:property [
 		sh:path schema:workPerformed;
-		sh:node :CreativeWork;
+		sh:node :ValidSchemaCreativeWork;
 	].

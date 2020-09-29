@@ -1,3 +1,3 @@
-:OrderStatus a sh:NodeShape;
+:ValidSchemaOrderStatus a sh:NodeShape;
 	sh:targetClass schema:OrderStatus;
 	sh:nodeKind sh:BlankNodeOrIRI.

@@ -1,7 +1,7 @@
-:LeaveAction a sh:NodeShape;
+:ValidSchemaLeaveAction a sh:NodeShape;
 	sh:targetClass schema:LeaveAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:event;
-		sh:node :Event;
+		sh:node :ValidSchemaEvent;
 	].

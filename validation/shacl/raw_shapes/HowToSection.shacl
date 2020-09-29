@@ -1,4 +1,4 @@
-:HowToSection a sh:NodeShape;
+:ValidSchemaHowToSection a sh:NodeShape;
 	sh:targetClass schema:HowToSection;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

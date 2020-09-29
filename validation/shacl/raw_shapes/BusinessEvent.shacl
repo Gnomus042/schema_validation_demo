@@ -1,3 +1,3 @@
-:BusinessEvent a sh:NodeShape;
+:ValidSchemaBusinessEvent a sh:NodeShape;
 	sh:targetClass schema:BusinessEvent;
 	sh:nodeKind sh:BlankNodeOrIRI.

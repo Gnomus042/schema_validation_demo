@@ -1,3 +1,3 @@
-<#ReserveAction> @<#PlanAction> AND EXTRA a { 
+<#ValidSchemaReserveAction> @<#ValidSchemaPlanAction> AND EXTRA a {
 	a [schema:ReserveAction];
 }

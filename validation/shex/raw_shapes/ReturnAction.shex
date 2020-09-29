@@ -1,4 +1,4 @@
-<#ReturnAction> @<#TransferAction> AND EXTRA a { 
+<#ValidSchemaReturnAction> @<#ValidSchemaTransferAction> AND EXTRA a {
 	a [schema:ReturnAction];
-	schema:recipient (@<#Organization> OR @<#Audience> OR @<#ContactPoint> OR @<#Person>) * ;
+	schema:recipient (@<#ValidSchemaOrganization> OR @<#ValidSchemaAudience> OR @<#ValidSchemaContactPoint> OR @<#ValidSchemaPerson>) * ;
 }

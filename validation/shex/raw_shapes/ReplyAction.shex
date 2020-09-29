@@ -1,4 +1,4 @@
-<#ReplyAction> @<#CommunicateAction> AND EXTRA a { 
+<#ValidSchemaReplyAction> @<#ValidSchemaCommunicateAction> AND EXTRA a {
 	a [schema:ReplyAction];
-	schema:resultComment @<#Comment> * ;
+	schema:resultComment @<#ValidSchemaComment> * ;
 }

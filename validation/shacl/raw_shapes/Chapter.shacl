@@ -1,4 +1,4 @@
-:Chapter a sh:NodeShape;
+:ValidSchemaChapter a sh:NodeShape;
 	sh:targetClass schema:Chapter;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -17,5 +17,5 @@
 	];
 	sh:property [
 		sh:path schema:pagination;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

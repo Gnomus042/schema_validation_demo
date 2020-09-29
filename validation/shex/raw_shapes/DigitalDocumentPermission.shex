@@ -1,5 +1,5 @@
-<#DigitalDocumentPermission> @<#Intangible> AND EXTRA a { 
+<#ValidSchemaDigitalDocumentPermission> @<#ValidSchemaIntangible> AND EXTRA a {
 	a [schema:DigitalDocumentPermission];
-	schema:grantee (@<#ContactPoint> OR @<#Audience> OR @<#Person> OR @<#Organization>) * ;
-	schema:permissionType @<#DigitalDocumentPermissionType> * ;
+	schema:grantee (@<#ValidSchemaContactPoint> OR @<#ValidSchemaAudience> OR @<#ValidSchemaPerson> OR @<#ValidSchemaOrganization>) * ;
+	schema:permissionType @<#ValidSchemaDigitalDocumentPermissionType> * ;
 }

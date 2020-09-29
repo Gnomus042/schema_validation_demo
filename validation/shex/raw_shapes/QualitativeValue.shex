@@ -1,11 +1,11 @@
-<#QualitativeValue> @<#Enumeration> AND EXTRA a { 
+<#ValidSchemaQualitativeValue> @<#ValidSchemaEnumeration> AND EXTRA a {
 	a [schema:BedType schema:DriveWheelConfigurationValue schema:SteeringPositionValue schema:QualitativeValue];
-	schema:additionalProperty @<#PropertyValue> * ;
-	schema:equal @<#QualitativeValue> * ;
-	schema:greater @<#QualitativeValue> * ;
-	schema:greaterOrEqual @<#QualitativeValue> * ;
-	schema:lesser @<#QualitativeValue> * ;
-	schema:lesserOrEqual @<#QualitativeValue> * ;
-	schema:nonEqual @<#QualitativeValue> * ;
-	schema:valueReference (@<#PropertyValue> OR @<#StructuredValue> OR @<#QualitativeValue> OR @<#QuantitativeValue> OR @<#Enumeration>) * ;
+	schema:additionalProperty @<#ValidSchemaPropertyValue> * ;
+	schema:equal @<#ValidSchemaQualitativeValue> * ;
+	schema:greater @<#ValidSchemaQualitativeValue> * ;
+	schema:greaterOrEqual @<#ValidSchemaQualitativeValue> * ;
+	schema:lesser @<#ValidSchemaQualitativeValue> * ;
+	schema:lesserOrEqual @<#ValidSchemaQualitativeValue> * ;
+	schema:nonEqual @<#ValidSchemaQualitativeValue> * ;
+	schema:valueReference (@<#ValidSchemaPropertyValue> OR @<#ValidSchemaStructuredValue> OR @<#ValidSchemaQualitativeValue> OR @<#ValidSchemaQuantitativeValue> OR @<#ValidSchemaEnumeration>) * ;
 }

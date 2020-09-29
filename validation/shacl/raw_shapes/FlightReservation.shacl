@@ -1,9 +1,9 @@
-:FlightReservation a sh:NodeShape;
+:ValidSchemaFlightReservation a sh:NodeShape;
 	sh:targetClass schema:FlightReservation;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:boardingGroup;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:passengerPriorityStatus;
@@ -14,9 +14,9 @@
 	];
 	sh:property [
 		sh:path schema:passengerSequenceNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:securityScreening;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

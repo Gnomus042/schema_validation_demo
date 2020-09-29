@@ -1,7 +1,7 @@
-<#Course> @<#CreativeWork> AND EXTRA a { 
+<#ValidSchemaCourse> @<#ValidSchemaCreativeWork> AND EXTRA a {
 	a [schema:Course];
-	schema:courseCode @<#Text> * ;
-	schema:coursePrerequisites (@<#Course> OR @<#AlignmentObject> OR @<#Text>) * ;
-	schema:educationalCredentialAwarded (@<#EducationalOccupationalCredential> OR @<#URL> OR @<#Text>) * ;
-	schema:hasCourseInstance @<#CourseInstance> * ;
+	schema:courseCode @<#ValidSchemaText> * ;
+	schema:coursePrerequisites (@<#ValidSchemaCourse> OR @<#ValidSchemaAlignmentObject> OR @<#ValidSchemaText>) * ;
+	schema:educationalCredentialAwarded (@<#ValidSchemaEducationalOccupationalCredential> OR @<#ValidSchemaURL> OR @<#ValidSchemaText>) * ;
+	schema:hasCourseInstance @<#ValidSchemaCourseInstance> * ;
 }

@@ -1,5 +1,5 @@
-<#UpdateAction> @<#Action> AND EXTRA a { 
+<#ValidSchemaUpdateAction> @<#ValidSchemaAction> AND EXTRA a {
 	a [schema:AppendAction schema:PrependAction schema:AddAction schema:InsertAction schema:ReplaceAction schema:DeleteAction schema:UpdateAction];
-	schema:collection @<#Thing> * ;
-	schema:targetCollection @<#Thing> * ;
+	schema:collection @<#ValidSchemaThing> * ;
+	schema:targetCollection @<#ValidSchemaThing> * ;
 }

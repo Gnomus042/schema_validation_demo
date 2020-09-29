@@ -1,10 +1,10 @@
-<#MovieSeries> @<#CreativeWorkSeries> AND EXTRA a { 
+<#ValidSchemaMovieSeries> @<#ValidSchemaCreativeWorkSeries> AND EXTRA a {
 	a [schema:MovieSeries];
-	schema:actor @<#Person> * ;
-	schema:actors @<#Person> * ;
-	schema:director @<#Person> * ;
-	schema:directors @<#Person> * ;
-	schema:musicBy (@<#Person> OR @<#MusicGroup>) * ;
-	schema:productionCompany @<#Organization> * ;
-	schema:trailer @<#VideoObject> * ;
+	schema:actor @<#ValidSchemaPerson> * ;
+	schema:actors @<#ValidSchemaPerson> * ;
+	schema:director @<#ValidSchemaPerson> * ;
+	schema:directors @<#ValidSchemaPerson> * ;
+	schema:musicBy (@<#ValidSchemaPerson> OR @<#ValidSchemaMusicGroup>) * ;
+	schema:productionCompany @<#ValidSchemaOrganization> * ;
+	schema:trailer @<#ValidSchemaVideoObject> * ;
 }

@@ -1,8 +1,8 @@
-<#NewsArticle> @<#Article> AND EXTRA a { 
+<#ValidSchemaNewsArticle> @<#ValidSchemaArticle> AND EXTRA a {
 	a [schema:NewsArticle];
-	schema:dateline @<#Text> * ;
-	schema:printColumn @<#Text> * ;
-	schema:printEdition @<#Text> * ;
-	schema:printPage @<#Text> * ;
-	schema:printSection @<#Text> * ;
+	schema:dateline @<#ValidSchemaText> * ;
+	schema:printColumn @<#ValidSchemaText> * ;
+	schema:printEdition @<#ValidSchemaText> * ;
+	schema:printPage @<#ValidSchemaText> * ;
+	schema:printSection @<#ValidSchemaText> * ;
 }

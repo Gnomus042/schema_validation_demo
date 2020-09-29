@@ -1,21 +1,21 @@
-:PriceSpecification a sh:NodeShape;
+:ValidSchemaPriceSpecification a sh:NodeShape;
 	sh:targetClass schema:PriceSpecification;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:eligibleQuantity;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:eligibleTransactionVolume;
-		sh:node :PriceSpecification;
+		sh:node :ValidSchemaPriceSpecification;
 	];
 	sh:property [
 		sh:path schema:maxPrice;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:minPrice;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:price;
@@ -26,7 +26,7 @@
 	];
 	sh:property [
 		sh:path schema:priceCurrency;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:validFrom;
@@ -44,5 +44,5 @@
 	];
 	sh:property [
 		sh:path schema:valueAddedTaxIncluded;
-		sh:node :Boolean;
+		sh:node :ValidSchemaBoolean;
 	].

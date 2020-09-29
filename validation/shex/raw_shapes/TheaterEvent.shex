@@ -1,3 +1,3 @@
-<#TheaterEvent> @<#Event> AND EXTRA a { 
+<#ValidSchemaTheaterEvent> @<#ValidSchemaEvent> AND EXTRA a {
 	a [schema:TheaterEvent];
 }

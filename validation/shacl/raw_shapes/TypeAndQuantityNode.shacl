@@ -1,13 +1,13 @@
-:TypeAndQuantityNode a sh:NodeShape;
+:ValidSchemaTypeAndQuantityNode a sh:NodeShape;
 	sh:targetClass schema:TypeAndQuantityNode;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:amountOfThisGood;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:businessFunction;
-		sh:node :BusinessFunction;
+		sh:node :ValidSchemaBusinessFunction;
 	];
 	sh:property [
 		sh:path schema:typeOfGood;
@@ -25,5 +25,5 @@
 	];
 	sh:property [
 		sh:path schema:unitText;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

@@ -1,3 +1,3 @@
-<#City> @<#AdministrativeArea> AND EXTRA a { 
+<#ValidSchemaCity> @<#ValidSchemaAdministrativeArea> AND EXTRA a {
 	a [schema:City];
 }

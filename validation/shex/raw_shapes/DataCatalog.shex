@@ -1,4 +1,4 @@
-<#DataCatalog> @<#CreativeWork> AND EXTRA a { 
+<#ValidSchemaDataCatalog> @<#ValidSchemaCreativeWork> AND EXTRA a {
 	a [schema:DataCatalog];
-	schema:dataset @<#Dataset> * ;
+	schema:dataset @<#ValidSchemaDataset> * ;
 }

@@ -1,27 +1,27 @@
-:Dataset a sh:NodeShape;
+:ValidSchemaDataset a sh:NodeShape;
 	sh:targetClass schema:Dataset;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:catalog;
-		sh:node :DataCatalog;
+		sh:node :ValidSchemaDataCatalog;
 	];
 	sh:property [
 		sh:path schema:datasetTimeInterval;
-		sh:node :DateTime;
+		sh:node :ValidSchemaDateTime;
 	];
 	sh:property [
 		sh:path schema:distribution;
-		sh:node :DataDownload;
+		sh:node :ValidSchemaDataDownload;
 	];
 	sh:property [
 		sh:path schema:includedDataCatalog;
-		sh:node :DataCatalog;
+		sh:node :ValidSchemaDataCatalog;
 	];
 	sh:property [
 		sh:path schema:includedInDataCatalog;
-		sh:node :DataCatalog;
+		sh:node :ValidSchemaDataCatalog;
 	];
 	sh:property [
 		sh:path schema:issn;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

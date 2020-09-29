@@ -1,4 +1,4 @@
-<#Corporation> @<#Organization> AND EXTRA a { 
+<#ValidSchemaCorporation> @<#ValidSchemaOrganization> AND EXTRA a {
 	a [schema:Corporation];
-	schema:tickerSymbol @<#Text> * ;
+	schema:tickerSymbol @<#ValidSchemaText> * ;
 }

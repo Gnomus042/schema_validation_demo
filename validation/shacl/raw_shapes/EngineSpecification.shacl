@@ -1,4 +1,4 @@
-:EngineSpecification a sh:NodeShape;
+:ValidSchemaEngineSpecification a sh:NodeShape;
 	sh:targetClass schema:EngineSpecification;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

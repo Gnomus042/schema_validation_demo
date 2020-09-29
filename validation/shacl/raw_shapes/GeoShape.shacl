@@ -1,4 +1,4 @@
-:GeoShape a sh:NodeShape;
+:ValidSchemaGeoShape a sh:NodeShape;
 	sh:targetClass schema:GeoShape;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -17,11 +17,11 @@
 	];
 	sh:property [
 		sh:path schema:box;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:circle;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:elevation;
@@ -32,13 +32,13 @@
 	];
 	sh:property [
 		sh:path schema:line;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:polygon;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:postalCode;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

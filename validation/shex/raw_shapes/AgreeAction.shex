@@ -1,3 +1,3 @@
-<#AgreeAction> @<#ReactAction> AND EXTRA a { 
+<#ValidSchemaAgreeAction> @<#ValidSchemaReactAction> AND EXTRA a {
 	a [schema:AgreeAction];
 }

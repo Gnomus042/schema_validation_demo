@@ -1,4 +1,4 @@
-<#PayAction> @<#TradeAction> AND EXTRA a { 
+<#ValidSchemaPayAction> @<#ValidSchemaTradeAction> AND EXTRA a {
 	a [schema:PayAction];
-	schema:recipient (@<#Organization> OR @<#Audience> OR @<#ContactPoint> OR @<#Person>) * ;
+	schema:recipient (@<#ValidSchemaOrganization> OR @<#ValidSchemaAudience> OR @<#ValidSchemaContactPoint> OR @<#ValidSchemaPerson>) * ;
 }

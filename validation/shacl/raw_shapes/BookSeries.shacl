@@ -1,3 +1,3 @@
-:BookSeries a sh:NodeShape;
+:ValidSchemaBookSeries a sh:NodeShape;
 	sh:targetClass schema:BookSeries;
 	sh:nodeKind sh:BlankNodeOrIRI.

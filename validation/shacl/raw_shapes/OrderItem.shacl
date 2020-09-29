@@ -1,21 +1,21 @@
-:OrderItem a sh:NodeShape;
+:ValidSchemaOrderItem a sh:NodeShape;
 	sh:targetClass schema:OrderItem;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:orderDelivery;
-		sh:node :ParcelDelivery;
+		sh:node :ValidSchemaParcelDelivery;
 	];
 	sh:property [
 		sh:path schema:orderItemNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:orderItemStatus;
-		sh:node :OrderStatus;
+		sh:node :ValidSchemaOrderStatus;
 	];
 	sh:property [
 		sh:path schema:orderQuantity;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:orderedItem;

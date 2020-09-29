@@ -1,3 +1,3 @@
-:PhysicalActivityCategory a sh:NodeShape;
+:ValidSchemaPhysicalActivityCategory a sh:NodeShape;
 	sh:targetClass schema:PhysicalActivityCategory;
 	sh:nodeKind sh:BlankNodeOrIRI.

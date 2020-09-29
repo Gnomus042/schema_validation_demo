@@ -1,5 +1,5 @@
-<#SpecialAnnouncement>  EXTRA a { 
+<#ValidSchemaSpecialAnnouncement>  EXTRA a {
 	a [schema:SpecialAnnouncement];
-	schema:category (@<#Thing> OR @<#URL> OR @<#PhysicalActivityCategory> OR @<#Text>) * ;
-	schema:datePosted (@<#DateTime> OR @<#Date>) * ;
+	schema:category (@<#ValidSchemaThing> OR @<#ValidSchemaURL> OR @<#ValidSchemaPhysicalActivityCategory> OR @<#ValidSchemaText>) * ;
+	schema:datePosted (@<#ValidSchemaDateTime> OR @<#ValidSchemaDate>) * ;
 }

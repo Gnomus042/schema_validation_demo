@@ -1,9 +1,9 @@
-:UserComments a sh:NodeShape;
+:ValidSchemaUserComments a sh:NodeShape;
 	sh:targetClass schema:UserComments;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:commentText;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:commentTime;
@@ -21,9 +21,9 @@
 	];
 	sh:property [
 		sh:path schema:discusses;
-		sh:node :CreativeWork;
+		sh:node :ValidSchemaCreativeWork;
 	];
 	sh:property [
 		sh:path schema:replyToUrl;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	].

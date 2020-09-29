@@ -1,4 +1,4 @@
-:LoanOrCredit a sh:NodeShape;
+:ValidSchemaLoanOrCredit a sh:NodeShape;
 	sh:targetClass schema:LoanOrCredit;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,11 +10,11 @@
 	];
 	sh:property [
 		sh:path schema:currency;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:loanTerm;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:requiredCollateral;

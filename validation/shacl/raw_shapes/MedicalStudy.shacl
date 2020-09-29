@@ -1,4 +1,4 @@
-:MedicalStudy a sh:NodeShape;
+:ValidSchemaMedicalStudy a sh:NodeShape;
 	sh:targetClass schema:MedicalStudy;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

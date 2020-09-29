@@ -1,3 +1,3 @@
-<#BedAndBreakfast> @<#LodgingBusiness> AND EXTRA a { 
+<#ValidSchemaBedAndBreakfast> @<#ValidSchemaLodgingBusiness> AND EXTRA a {
 	a [schema:BedAndBreakfast];
 }

@@ -1,7 +1,7 @@
-:WebApplication a sh:NodeShape;
+:ValidSchemaWebApplication a sh:NodeShape;
 	sh:targetClass schema:WebApplication;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:browserRequirements;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

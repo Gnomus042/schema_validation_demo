@@ -1,13 +1,13 @@
-:Game a sh:NodeShape;
+:ValidSchemaGame a sh:NodeShape;
 	sh:targetClass schema:Game;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:characterAttribute;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	];
 	sh:property [
 		sh:path schema:gameItem;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	];
 	sh:property [
 		sh:path schema:gameLocation;
@@ -19,9 +19,9 @@
 	];
 	sh:property [
 		sh:path schema:numberOfPlayers;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:quest;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	].

@@ -1,4 +1,4 @@
-<#EducationalAudience> @<#Audience> AND EXTRA a { 
+<#ValidSchemaEducationalAudience> @<#ValidSchemaAudience> AND EXTRA a {
 	a [schema:EducationalAudience];
-	schema:educationalRole @<#Text> * ;
+	schema:educationalRole @<#ValidSchemaText> * ;
 }

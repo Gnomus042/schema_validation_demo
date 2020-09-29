@@ -1,13 +1,13 @@
-<#MusicComposition> @<#CreativeWork> AND EXTRA a { 
+<#ValidSchemaMusicComposition> @<#ValidSchemaCreativeWork> AND EXTRA a {
 	a [schema:MusicComposition];
-	schema:composer (@<#Organization> OR @<#Person>) * ;
-	schema:firstPerformance @<#Event> * ;
-	schema:includedComposition @<#MusicComposition> * ;
-	schema:iswcCode @<#Text> * ;
-	schema:lyricist @<#Person> * ;
-	schema:lyrics @<#CreativeWork> * ;
-	schema:musicArrangement @<#MusicComposition> * ;
-	schema:musicCompositionForm @<#Text> * ;
-	schema:musicalKey @<#Text> * ;
-	schema:recordedAs @<#MusicRecording> * ;
+	schema:composer (@<#ValidSchemaOrganization> OR @<#ValidSchemaPerson>) * ;
+	schema:firstPerformance @<#ValidSchemaEvent> * ;
+	schema:includedComposition @<#ValidSchemaMusicComposition> * ;
+	schema:iswcCode @<#ValidSchemaText> * ;
+	schema:lyricist @<#ValidSchemaPerson> * ;
+	schema:lyrics @<#ValidSchemaCreativeWork> * ;
+	schema:musicArrangement @<#ValidSchemaMusicComposition> * ;
+	schema:musicCompositionForm @<#ValidSchemaText> * ;
+	schema:musicalKey @<#ValidSchemaText> * ;
+	schema:recordedAs @<#ValidSchemaMusicRecording> * ;
 }

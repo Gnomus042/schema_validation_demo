@@ -1,4 +1,4 @@
-:ContactPoint a sh:NodeShape;
+:ValidSchemaContactPoint a sh:NodeShape;
 	sh:targetClass schema:ContactPoint;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -19,23 +19,23 @@
 	];
 	sh:property [
 		sh:path schema:contactOption;
-		sh:node :ContactPointOption;
+		sh:node :ValidSchemaContactPointOption;
 	];
 	sh:property [
 		sh:path schema:contactType;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:email;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:faxNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:hoursAvailable;
-		sh:node :OpeningHoursSpecification;
+		sh:node :ValidSchemaOpeningHoursSpecification;
 	];
 	sh:property [
 		sh:path schema:productSupported;
@@ -54,5 +54,5 @@
 	];
 	sh:property [
 		sh:path schema:telephone;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

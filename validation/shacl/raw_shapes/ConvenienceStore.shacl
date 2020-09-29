@@ -1,3 +1,3 @@
-:ConvenienceStore a sh:NodeShape;
+:ValidSchemaConvenienceStore a sh:NodeShape;
 	sh:targetClass schema:ConvenienceStore;
 	sh:nodeKind sh:BlankNodeOrIRI.

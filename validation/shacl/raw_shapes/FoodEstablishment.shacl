@@ -1,4 +1,4 @@
-:FoodEstablishment a sh:NodeShape;
+:ValidSchemaFoodEstablishment a sh:NodeShape;
 	sh:targetClass schema:FoodEstablishment;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -27,9 +27,9 @@
 	];
 	sh:property [
 		sh:path schema:servesCuisine;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:starRating;
-		sh:node :Rating;
+		sh:node :ValidSchemaRating;
 	].

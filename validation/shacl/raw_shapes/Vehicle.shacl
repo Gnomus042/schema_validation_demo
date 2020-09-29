@@ -1,13 +1,13 @@
-:Vehicle a sh:NodeShape;
+:ValidSchemaVehicle a sh:NodeShape;
 	sh:targetClass schema:Vehicle;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:cargoVolume;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:dateVehicleFirstRegistered;
-		sh:node :Date;
+		sh:node :ValidSchemaDate;
 	];
 	sh:property [
 		sh:path schema:driveWheelConfiguration;
@@ -18,11 +18,11 @@
 	];
 	sh:property [
 		sh:path schema:fuelConsumption;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:fuelEfficiency;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:fuelType;
@@ -34,11 +34,11 @@
 	];
 	sh:property [
 		sh:path schema:knownVehicleDamages;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:mileageFromOdometer;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:numberOfAirbags;
@@ -77,39 +77,39 @@
 	];
 	sh:property [
 		sh:path schema:productionDate;
-		sh:node :Date;
+		sh:node :ValidSchemaDate;
 	];
 	sh:property [
 		sh:path schema:purchaseDate;
-		sh:node :Date;
+		sh:node :ValidSchemaDate;
 	];
 	sh:property [
 		sh:path schema:steeringPosition;
-		sh:node :SteeringPositionValue;
+		sh:node :ValidSchemaSteeringPositionValue;
 	];
 	sh:property [
 		sh:path schema:vehicleConfiguration;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:vehicleEngine;
-		sh:node :EngineSpecification;
+		sh:node :ValidSchemaEngineSpecification;
 	];
 	sh:property [
 		sh:path schema:vehicleIdentificationNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:vehicleInteriorColor;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:vehicleInteriorType;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:vehicleModelDate;
-		sh:node :Date;
+		sh:node :ValidSchemaDate;
 	];
 	sh:property [
 		sh:path schema:vehicleSeatingCapacity;

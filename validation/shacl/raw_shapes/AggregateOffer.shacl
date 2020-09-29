@@ -1,4 +1,4 @@
-:AggregateOffer a sh:NodeShape;
+:ValidSchemaAggregateOffer a sh:NodeShape;
 	sh:targetClass schema:AggregateOffer;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -17,7 +17,7 @@
 	];
 	sh:property [
 		sh:path schema:offerCount;
-		sh:node :Integer;
+		sh:node :ValidSchemaInteger;
 	];
 	sh:property [
 		sh:path schema:offers;

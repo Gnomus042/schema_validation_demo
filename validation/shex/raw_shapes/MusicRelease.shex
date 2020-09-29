@@ -1,9 +1,9 @@
-<#MusicRelease> @<#MusicPlaylist> AND EXTRA a { 
+<#ValidSchemaMusicRelease> @<#ValidSchemaMusicPlaylist> AND EXTRA a {
 	a [schema:MusicRelease];
-	schema:catalogNumber @<#Text> * ;
-	schema:creditedTo (@<#Organization> OR @<#Person>) * ;
-	schema:duration @<#Duration> * ;
-	schema:musicReleaseFormat @<#MusicReleaseFormatType> * ;
-	schema:recordLabel @<#Organization> * ;
-	schema:releaseOf @<#MusicAlbum> * ;
+	schema:catalogNumber @<#ValidSchemaText> * ;
+	schema:creditedTo (@<#ValidSchemaOrganization> OR @<#ValidSchemaPerson>) * ;
+	schema:duration @<#ValidSchemaDuration> * ;
+	schema:musicReleaseFormat @<#ValidSchemaMusicReleaseFormatType> * ;
+	schema:recordLabel @<#ValidSchemaOrganization> * ;
+	schema:releaseOf @<#ValidSchemaMusicAlbum> * ;
 }

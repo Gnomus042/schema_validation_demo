@@ -1,5 +1,5 @@
-<#MonetaryGrant>  EXTRA a { 
+<#ValidSchemaMonetaryGrant>  EXTRA a {
 	a [schema:MonetaryGrant];
-	schema:amount (@<#MonetaryAmount> OR @<#Number>) * ;
-	schema:funder (@<#Organization> OR @<#Person>) * ;
+	schema:amount (@<#ValidSchemaMonetaryAmount> OR @<#ValidSchemaNumber>) * ;
+	schema:funder (@<#ValidSchemaOrganization> OR @<#ValidSchemaPerson>) * ;
 }

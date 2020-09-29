@@ -1,7 +1,7 @@
-:DigitalDocument a sh:NodeShape;
+:ValidSchemaDigitalDocument a sh:NodeShape;
 	sh:targetClass schema:DigitalDocument;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:hasDigitalDocumentPermission;
-		sh:node :DigitalDocumentPermission;
+		sh:node :ValidSchemaDigitalDocumentPermission;
 	].

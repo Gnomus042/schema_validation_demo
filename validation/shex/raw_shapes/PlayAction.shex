@@ -1,5 +1,5 @@
-<#PlayAction> @<#Action> AND EXTRA a { 
+<#ValidSchemaPlayAction> @<#ValidSchemaAction> AND EXTRA a {
 	a [schema:ExerciseAction schema:PerformAction schema:PlayAction];
-	schema:audience @<#Audience> * ;
-	schema:event @<#Event> * ;
+	schema:audience @<#ValidSchemaAudience> * ;
+	schema:event @<#ValidSchemaEvent> * ;
 }

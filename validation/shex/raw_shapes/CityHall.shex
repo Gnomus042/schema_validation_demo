@@ -1,3 +1,3 @@
-<#CityHall> @<#GovernmentBuilding> AND EXTRA a { 
+<#ValidSchemaCityHall> @<#ValidSchemaGovernmentBuilding> AND EXTRA a {
 	a [schema:CityHall];
 }

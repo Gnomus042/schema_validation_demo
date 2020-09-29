@@ -1,4 +1,4 @@
-:ActionAccessSpecification a sh:NodeShape;
+:ValidSchemaActionAccessSpecification a sh:NodeShape;
 	sh:targetClass schema:ActionAccessSpecification;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -36,7 +36,7 @@
 	];
 	sh:property [
 		sh:path schema:expectsAcceptanceOf;
-		sh:node :Offer;
+		sh:node :ValidSchemaOffer;
 	];
 	sh:property [
 		sh:path schema:requiresSubscription;

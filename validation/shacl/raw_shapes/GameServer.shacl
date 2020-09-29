@@ -1,15 +1,15 @@
-:GameServer a sh:NodeShape;
+:ValidSchemaGameServer a sh:NodeShape;
 	sh:targetClass schema:GameServer;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:game;
-		sh:node :VideoGame;
+		sh:node :ValidSchemaVideoGame;
 	];
 	sh:property [
 		sh:path schema:playersOnline;
-		sh:node :Integer;
+		sh:node :ValidSchemaInteger;
 	];
 	sh:property [
 		sh:path schema:serverStatus;
-		sh:node :GameServerStatus;
+		sh:node :ValidSchemaGameServerStatus;
 	].

@@ -1,4 +1,4 @@
-<#FollowAction> @<#InteractAction> AND EXTRA a { 
+<#ValidSchemaFollowAction> @<#ValidSchemaInteractAction> AND EXTRA a {
 	a [schema:FollowAction];
-	schema:followee (@<#Organization> OR @<#Person>) * ;
+	schema:followee (@<#ValidSchemaOrganization> OR @<#ValidSchemaPerson>) * ;
 }

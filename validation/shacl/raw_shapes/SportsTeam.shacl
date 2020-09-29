@@ -1,11 +1,11 @@
-:SportsTeam a sh:NodeShape;
+:ValidSchemaSportsTeam a sh:NodeShape;
 	sh:targetClass schema:SportsTeam;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:athlete;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:coach;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	].

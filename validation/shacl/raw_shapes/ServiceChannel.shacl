@@ -1,4 +1,4 @@
-:ServiceChannel a sh:NodeShape;
+:ValidSchemaServiceChannel a sh:NodeShape;
 	sh:targetClass schema:ServiceChannel;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,29 +10,29 @@
 	];
 	sh:property [
 		sh:path schema:processingTime;
-		sh:node :Duration;
+		sh:node :ValidSchemaDuration;
 	];
 	sh:property [
 		sh:path schema:providesService;
-		sh:node :Service;
+		sh:node :ValidSchemaService;
 	];
 	sh:property [
 		sh:path schema:serviceLocation;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:servicePhone;
-		sh:node :ContactPoint;
+		sh:node :ValidSchemaContactPoint;
 	];
 	sh:property [
 		sh:path schema:servicePostalAddress;
-		sh:node :PostalAddress;
+		sh:node :ValidSchemaPostalAddress;
 	];
 	sh:property [
 		sh:path schema:serviceSmsNumber;
-		sh:node :ContactPoint;
+		sh:node :ValidSchemaContactPoint;
 	];
 	sh:property [
 		sh:path schema:serviceUrl;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	].

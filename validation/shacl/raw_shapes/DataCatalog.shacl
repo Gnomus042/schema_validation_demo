@@ -1,7 +1,7 @@
-:DataCatalog a sh:NodeShape;
+:ValidSchemaDataCatalog a sh:NodeShape;
 	sh:targetClass schema:DataCatalog;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:dataset;
-		sh:node :Dataset;
+		sh:node :ValidSchemaDataset;
 	].

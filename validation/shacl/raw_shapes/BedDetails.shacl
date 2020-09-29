@@ -1,9 +1,9 @@
-:BedDetails a sh:NodeShape;
+:ValidSchemaBedDetails a sh:NodeShape;
 	sh:targetClass schema:BedDetails;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:numberOfBeds;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:typeOfBed;

@@ -1,4 +1,4 @@
-:ItemList a sh:NodeShape;
+:ValidSchemaItemList a sh:NodeShape;
 	sh:targetClass schema:ItemList;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -18,5 +18,5 @@
 	];
 	sh:property [
 		sh:path schema:numberOfItems;
-		sh:node :Integer;
+		sh:node :ValidSchemaInteger;
 	].

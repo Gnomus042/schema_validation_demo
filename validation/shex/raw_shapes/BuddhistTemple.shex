@@ -1,3 +1,3 @@
-<#BuddhistTemple> @<#PlaceOfWorship> AND EXTRA a { 
+<#ValidSchemaBuddhistTemple> @<#ValidSchemaPlaceOfWorship> AND EXTRA a {
 	a [schema:BuddhistTemple];
 }

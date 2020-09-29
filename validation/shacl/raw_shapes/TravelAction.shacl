@@ -1,7 +1,7 @@
-:TravelAction a sh:NodeShape;
+:ValidSchemaTravelAction a sh:NodeShape;
 	sh:targetClass schema:TravelAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:distance;
-		sh:node :Distance;
+		sh:node :ValidSchemaDistance;
 	].

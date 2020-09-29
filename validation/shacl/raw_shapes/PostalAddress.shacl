@@ -1,4 +1,4 @@
-:PostalAddress a sh:NodeShape;
+:ValidSchemaPostalAddress a sh:NodeShape;
 	sh:targetClass schema:PostalAddress;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,21 +10,21 @@
 	];
 	sh:property [
 		sh:path schema:addressLocality;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:addressRegion;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:postOfficeBoxNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:postalCode;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:streetAddress;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

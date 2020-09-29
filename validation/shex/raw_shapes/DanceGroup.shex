@@ -1,3 +1,3 @@
-<#DanceGroup> @<#PerformingGroup> AND EXTRA a { 
+<#ValidSchemaDanceGroup> @<#ValidSchemaPerformingGroup> AND EXTRA a {
 	a [schema:DanceGroup];
 }

@@ -1,3 +1,3 @@
-:MusicReleaseFormatType a sh:NodeShape;
+:ValidSchemaMusicReleaseFormatType a sh:NodeShape;
 	sh:targetClass schema:MusicReleaseFormatType;
 	sh:nodeKind sh:BlankNodeOrIRI.

@@ -1,4 +1,4 @@
-:FoodEstablishmentReservation a sh:NodeShape;
+:ValidSchemaFoodEstablishmentReservation a sh:NodeShape;
 	sh:targetClass schema:FoodEstablishmentReservation;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

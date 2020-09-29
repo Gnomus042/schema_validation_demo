@@ -1,6 +1,6 @@
-<#InteractionCounter> @<#StructuredValue> AND EXTRA a { 
+<#ValidSchemaInteractionCounter> @<#ValidSchemaStructuredValue> AND EXTRA a {
 	a [schema:InteractionCounter];
-	schema:interactionService (@<#WebSite> OR @<#SoftwareApplication>) * ;
-	schema:interactionType @<#Action> * ;
-	schema:userInteractionCount @<#Integer> * ;
+	schema:interactionService (@<#ValidSchemaWebSite> OR @<#ValidSchemaSoftwareApplication>) * ;
+	schema:interactionType @<#ValidSchemaAction> * ;
+	schema:userInteractionCount @<#ValidSchemaInteger> * ;
 }

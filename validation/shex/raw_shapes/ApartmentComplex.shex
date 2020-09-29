@@ -1,4 +1,4 @@
-<#ApartmentComplex> @<#Residence> AND EXTRA a { 
+<#ValidSchemaApartmentComplex> @<#ValidSchemaResidence> AND EXTRA a {
 	a [schema:ApartmentComplex];
-	schema:petsAllowed (@<#Text> OR @<#Boolean>) * ;
+	schema:petsAllowed (@<#ValidSchemaText> OR @<#ValidSchemaBoolean>) * ;
 }

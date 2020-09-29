@@ -1,3 +1,3 @@
-<#DefenceEstablishment> @<#GovernmentBuilding> AND EXTRA a { 
+<#ValidSchemaDefenceEstablishment> @<#ValidSchemaGovernmentBuilding> AND EXTRA a {
 	a [schema:DefenceEstablishment];
 }

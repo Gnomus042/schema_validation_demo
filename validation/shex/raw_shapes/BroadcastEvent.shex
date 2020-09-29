@@ -1,6 +1,6 @@
-<#BroadcastEvent> @<#PublicationEvent> AND EXTRA a { 
+<#ValidSchemaBroadcastEvent> @<#ValidSchemaPublicationEvent> AND EXTRA a {
 	a [schema:BroadcastEvent];
-	schema:broadcastOfEvent @<#Event> * ;
-	schema:isLiveBroadcast @<#Boolean> * ;
-	schema:videoFormat @<#Text> * ;
+	schema:broadcastOfEvent @<#ValidSchemaEvent> * ;
+	schema:isLiveBroadcast @<#ValidSchemaBoolean> * ;
+	schema:videoFormat @<#ValidSchemaText> * ;
 }

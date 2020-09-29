@@ -1,5 +1,5 @@
-<#RentAction> @<#TradeAction> AND EXTRA a { 
+<#ValidSchemaRentAction> @<#ValidSchemaTradeAction> AND EXTRA a {
 	a [schema:RentAction];
-	schema:landlord (@<#Organization> OR @<#Person>) * ;
-	schema:realEstateAgent @<#RealEstateAgent> * ;
+	schema:landlord (@<#ValidSchemaOrganization> OR @<#ValidSchemaPerson>) * ;
+	schema:realEstateAgent @<#ValidSchemaRealEstateAgent> * ;
 }

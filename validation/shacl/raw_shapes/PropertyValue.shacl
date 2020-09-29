@@ -1,13 +1,13 @@
-:PropertyValue a sh:NodeShape;
+:ValidSchemaPropertyValue a sh:NodeShape;
 	sh:targetClass schema:PropertyValue;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:maxValue;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:minValue;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:propertyID;
@@ -25,7 +25,7 @@
 	];
 	sh:property [
 		sh:path schema:unitText;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:value;

@@ -1,7 +1,7 @@
-<#PublicationIssue> @<#CreativeWork> AND EXTRA a { 
+<#ValidSchemaPublicationIssue> @<#ValidSchemaCreativeWork> AND EXTRA a {
 	a [schema:PublicationIssue];
-	schema:issueNumber (@<#Text> OR @<#Integer>) * ;
-	schema:pageEnd (@<#Integer> OR @<#Text>) * ;
-	schema:pageStart (@<#Text> OR @<#Integer>) * ;
-	schema:pagination @<#Text> * ;
+	schema:issueNumber (@<#ValidSchemaText> OR @<#ValidSchemaInteger>) * ;
+	schema:pageEnd (@<#ValidSchemaInteger> OR @<#ValidSchemaText>) * ;
+	schema:pageStart (@<#ValidSchemaText> OR @<#ValidSchemaInteger>) * ;
+	schema:pagination @<#ValidSchemaText> * ;
 }

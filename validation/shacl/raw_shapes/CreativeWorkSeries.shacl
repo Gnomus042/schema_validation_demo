@@ -1,4 +1,4 @@
-:CreativeWorkSeries a sh:NodeShape;
+:ValidSchemaCreativeWorkSeries a sh:NodeShape;
 	sh:targetClass schema:CreativeWorkSeries;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,7 +10,7 @@
 	];
 	sh:property [
 		sh:path schema:issn;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:startDate;

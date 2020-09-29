@@ -1,3 +1,3 @@
-<#Language> @<#Intangible> AND EXTRA a { 
+<#ValidSchemaLanguage> @<#ValidSchemaIntangible> AND EXTRA a {
 	a [schema:Language];
 }

@@ -1,17 +1,17 @@
-:OpeningHoursSpecification a sh:NodeShape;
+:ValidSchemaOpeningHoursSpecification a sh:NodeShape;
 	sh:targetClass schema:OpeningHoursSpecification;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:closes;
-		sh:node :Time;
+		sh:node :ValidSchemaTime;
 	];
 	sh:property [
 		sh:path schema:dayOfWeek;
-		sh:node :DayOfWeek;
+		sh:node :ValidSchemaDayOfWeek;
 	];
 	sh:property [
 		sh:path schema:opens;
-		sh:node :Time;
+		sh:node :ValidSchemaTime;
 	];
 	sh:property [
 		sh:path schema:validFrom;

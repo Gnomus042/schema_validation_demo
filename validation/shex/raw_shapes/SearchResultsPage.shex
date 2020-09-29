@@ -1,3 +1,3 @@
-<#SearchResultsPage> @<#WebPage> AND EXTRA a { 
+<#ValidSchemaSearchResultsPage> @<#ValidSchemaWebPage> AND EXTRA a {
 	a [schema:SearchResultsPage];
 }

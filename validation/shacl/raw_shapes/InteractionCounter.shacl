@@ -1,4 +1,4 @@
-:InteractionCounter a sh:NodeShape;
+:ValidSchemaInteractionCounter a sh:NodeShape;
 	sh:targetClass schema:InteractionCounter;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,9 +10,9 @@
 	];
 	sh:property [
 		sh:path schema:interactionType;
-		sh:node :Action;
+		sh:node :ValidSchemaAction;
 	];
 	sh:property [
 		sh:path schema:userInteractionCount;
-		sh:node :Integer;
+		sh:node :ValidSchemaInteger;
 	].

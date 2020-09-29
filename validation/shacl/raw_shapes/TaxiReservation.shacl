@@ -1,4 +1,4 @@
-:TaxiReservation a sh:NodeShape;
+:ValidSchemaTaxiReservation a sh:NodeShape;
 	sh:targetClass schema:TaxiReservation;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,9 +10,9 @@
 	];
 	sh:property [
 		sh:path schema:pickupLocation;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:pickupTime;
-		sh:node :DateTime;
+		sh:node :ValidSchemaDateTime;
 	].

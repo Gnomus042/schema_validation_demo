@@ -1,25 +1,25 @@
-:Product a sh:NodeShape;
+:ValidSchemaProduct a sh:NodeShape;
 	sh:targetClass schema:Product;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:additionalProperty;
-		sh:node :PropertyValue;
+		sh:node :ValidSchemaPropertyValue;
 	];
 	sh:property [
 		sh:path schema:aggregateRating;
-		sh:node :AggregateRating;
+		sh:node :ValidSchemaAggregateRating;
 	];
 	sh:property [
 		sh:path schema:audience;
-		sh:node :Audience;
+		sh:node :ValidSchemaAudience;
 	];
 	sh:property [
 		sh:path schema:award;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:awards;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:brand;
@@ -39,7 +39,7 @@
 	];
 	sh:property [
 		sh:path schema:color;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:depth;
@@ -50,19 +50,19 @@
 	];
 	sh:property [
 		sh:path schema:gtin12;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:gtin13;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:gtin14;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:gtin8;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:height;
@@ -73,11 +73,11 @@
 	];
 	sh:property [
 		sh:path schema:isAccessoryOrSparePartFor;
-		sh:node :Product;
+		sh:node :ValidSchemaProduct;
 	];
 	sh:property [
 		sh:path schema:isConsumableFor;
-		sh:node :Product;
+		sh:node :ValidSchemaProduct;
 	];
 	sh:property [
 		sh:path schema:isRelatedTo;
@@ -95,7 +95,7 @@
 	];
 	sh:property [
 		sh:path schema:itemCondition;
-		sh:node :OfferItemCondition;
+		sh:node :ValidSchemaOfferItemCondition;
 	];
 	sh:property [
 		sh:path schema:logo;
@@ -106,7 +106,7 @@
 	];
 	sh:property [
 		sh:path schema:manufacturer;
-		sh:node :Organization;
+		sh:node :ValidSchemaOrganization;
 	];
 	sh:property [
 		sh:path schema:material;
@@ -125,7 +125,7 @@
 	];
 	sh:property [
 		sh:path schema:mpn;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:offers;
@@ -136,39 +136,39 @@
 	];
 	sh:property [
 		sh:path schema:productID;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:productionDate;
-		sh:node :Date;
+		sh:node :ValidSchemaDate;
 	];
 	sh:property [
 		sh:path schema:purchaseDate;
-		sh:node :Date;
+		sh:node :ValidSchemaDate;
 	];
 	sh:property [
 		sh:path schema:releaseDate;
-		sh:node :Date;
+		sh:node :ValidSchemaDate;
 	];
 	sh:property [
 		sh:path schema:review;
-		sh:node :Review;
+		sh:node :ValidSchemaReview;
 	];
 	sh:property [
 		sh:path schema:reviews;
-		sh:node :Review;
+		sh:node :ValidSchemaReview;
 	];
 	sh:property [
 		sh:path schema:sku;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:slogan;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:weight;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:width;

@@ -1,13 +1,13 @@
-:ListItem a sh:NodeShape;
+:ValidSchemaListItem a sh:NodeShape;
 	sh:targetClass schema:ListItem;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:item;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	];
 	sh:property [
 		sh:path schema:nextItem;
-		sh:node :ListItem;
+		sh:node :ValidSchemaListItem;
 	];
 	sh:property [
 		sh:path schema:position;
@@ -18,5 +18,5 @@
 	];
 	sh:property [
 		sh:path schema:previousItem;
-		sh:node :ListItem;
+		sh:node :ValidSchemaListItem;
 	].

@@ -1,3 +1,3 @@
-<#CancelAction> @<#PlanAction> AND EXTRA a { 
+<#ValidSchemaCancelAction> @<#ValidSchemaPlanAction> AND EXTRA a {
 	a [schema:CancelAction];
 }

@@ -1,11 +1,11 @@
-:PlayAction a sh:NodeShape;
+:ValidSchemaPlayAction a sh:NodeShape;
 	sh:targetClass schema:PlayAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:audience;
-		sh:node :Audience;
+		sh:node :ValidSchemaAudience;
 	];
 	sh:property [
 		sh:path schema:event;
-		sh:node :Event;
+		sh:node :ValidSchemaEvent;
 	].

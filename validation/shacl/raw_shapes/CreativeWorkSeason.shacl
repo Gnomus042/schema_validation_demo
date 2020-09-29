@@ -1,13 +1,13 @@
-:CreativeWorkSeason a sh:NodeShape;
+:ValidSchemaCreativeWorkSeason a sh:NodeShape;
 	sh:targetClass schema:CreativeWorkSeason;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:actor;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:director;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:endDate;
@@ -18,23 +18,23 @@
 	];
 	sh:property [
 		sh:path schema:episode;
-		sh:node :Episode;
+		sh:node :ValidSchemaEpisode;
 	];
 	sh:property [
 		sh:path schema:episodes;
-		sh:node :Episode;
+		sh:node :ValidSchemaEpisode;
 	];
 	sh:property [
 		sh:path schema:numberOfEpisodes;
-		sh:node :Integer;
+		sh:node :ValidSchemaInteger;
 	];
 	sh:property [
 		sh:path schema:partOfSeries;
-		sh:node :CreativeWorkSeries;
+		sh:node :ValidSchemaCreativeWorkSeries;
 	];
 	sh:property [
 		sh:path schema:productionCompany;
-		sh:node :Organization;
+		sh:node :ValidSchemaOrganization;
 	];
 	sh:property [
 		sh:path schema:seasonNumber;
@@ -52,5 +52,5 @@
 	];
 	sh:property [
 		sh:path schema:trailer;
-		sh:node :VideoObject;
+		sh:node :ValidSchemaVideoObject;
 	].

@@ -1,3 +1,3 @@
-:InstallAction a sh:NodeShape;
+:ValidSchemaInstallAction a sh:NodeShape;
 	sh:targetClass schema:InstallAction;
 	sh:nodeKind sh:BlankNodeOrIRI.

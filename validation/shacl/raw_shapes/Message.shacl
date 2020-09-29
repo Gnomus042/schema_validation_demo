@@ -1,4 +1,4 @@
-:Message a sh:NodeShape;
+:ValidSchemaMessage a sh:NodeShape;
 	sh:targetClass schema:Message;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -26,15 +26,15 @@
 	];
 	sh:property [
 		sh:path schema:dateReceived;
-		sh:node :DateTime;
+		sh:node :ValidSchemaDateTime;
 	];
 	sh:property [
 		sh:path schema:dateSent;
-		sh:node :DateTime;
+		sh:node :ValidSchemaDateTime;
 	];
 	sh:property [
 		sh:path schema:messageAttachment;
-		sh:node :CreativeWork;
+		sh:node :ValidSchemaCreativeWork;
 	];
 	sh:property [
 		sh:path schema:recipient;

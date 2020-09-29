@@ -1,3 +1,3 @@
-<#Playground> @<#CivicStructure> AND EXTRA a { 
+<#ValidSchemaPlayground> @<#ValidSchemaCivicStructure> AND EXTRA a {
 	a [schema:Playground];
 }

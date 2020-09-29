@@ -1,7 +1,7 @@
-<#BusTrip> @<#Trip> AND EXTRA a { 
+<#ValidSchemaBusTrip> @<#ValidSchemaTrip> AND EXTRA a {
 	a [schema:BusTrip];
-	schema:arrivalBusStop (@<#BusStop> OR @<#BusStation>) * ;
-	schema:busName @<#Text> * ;
-	schema:busNumber @<#Text> * ;
-	schema:departureBusStop (@<#BusStation> OR @<#BusStop>) * ;
+	schema:arrivalBusStop (@<#ValidSchemaBusStop> OR @<#ValidSchemaBusStation>) * ;
+	schema:busName @<#ValidSchemaText> * ;
+	schema:busNumber @<#ValidSchemaText> * ;
+	schema:departureBusStop (@<#ValidSchemaBusStation> OR @<#ValidSchemaBusStop>) * ;
 }

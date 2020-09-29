@@ -1,1 +1,1 @@
-<#Date> @<#Text> OR xsd:date
+<#ValidSchemaDate> @<#ValidSchemaText> OR xsd:date

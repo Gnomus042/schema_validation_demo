@@ -1,9 +1,9 @@
-:Brand a sh:NodeShape;
+:ValidSchemaBrand a sh:NodeShape;
 	sh:targetClass schema:Brand;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:aggregateRating;
-		sh:node :AggregateRating;
+		sh:node :ValidSchemaAggregateRating;
 	];
 	sh:property [
 		sh:path schema:logo;
@@ -14,9 +14,9 @@
 	];
 	sh:property [
 		sh:path schema:review;
-		sh:node :Review;
+		sh:node :ValidSchemaReview;
 	];
 	sh:property [
 		sh:path schema:slogan;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

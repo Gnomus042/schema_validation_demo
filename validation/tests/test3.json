@@ -38,7 +38,7 @@
   "recipeInstructions": "1. Cut and peel apples\n 2. Mix sugar and cinnamon. Use additional sugar for tart apples.\n...",
   "publisher": {
     "@type": "Organization",
-    "name": "Google",
+    "name": "ServiceB",
     "logo": {
       "@type": "ImageObject",
       "url": "http://cdn.ampproject.org/logo.jpg",

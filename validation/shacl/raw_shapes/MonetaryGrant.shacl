@@ -1,4 +1,4 @@
-:MonetaryGrant a sh:NodeShape;
+:ValidSchemaMonetaryGrant a sh:NodeShape;
 	sh:targetClass schema:MonetaryGrant;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

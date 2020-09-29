@@ -16,27 +16,27 @@ hierarchy = {
     'service': 'Schema',
     'nested': [
         {
-            'service': 'Google',
+            'service': 'ServiceA'
+        },
+        {
+            'service': 'ServiceB',
             'nested': [
                 {
-                    'service': 'GoogleProduct1'
+                    'service': 'ServiceBProduct1'
                 },
                 {
-                    'service': 'GoogleProduct2'
+                    'service': 'ServiceBProduct2'
                 },
                 {
-                    'service': 'GoogleProduct3'
+                    'service': 'ServiceBProduct3'
                 }
             ]
         },
         {
-            'service': 'Bing'
+            'service': 'ServiceC'
         },
         {
-            'service': 'Yandex'
-        },
-        {
-            'service': 'Pinterest'
+            'service': 'ServiceD'
         }
     ]
 }

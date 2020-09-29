@@ -1,4 +1,4 @@
-:ImageObject a sh:NodeShape;
+:ValidSchemaImageObject a sh:NodeShape;
 	sh:targetClass schema:ImageObject;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -17,7 +17,7 @@
 	];
 	sh:property [
 		sh:path schema:representativeOfPage;
-		sh:node :Boolean;
+		sh:node :ValidSchemaBoolean;
 	];
 	sh:property [
 		sh:path schema:thumbnail;

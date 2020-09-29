@@ -1,4 +1,4 @@
-:Offer a sh:NodeShape;
+:ValidSchemaOffer a sh:NodeShape;
 	sh:targetClass schema:Offer;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,15 +10,15 @@
 	];
 	sh:property [
 		sh:path schema:addOn;
-		sh:node :Offer;
+		sh:node :ValidSchemaOffer;
 	];
 	sh:property [
 		sh:path schema:advanceBookingRequirement;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:aggregateRating;
-		sh:node :AggregateRating;
+		sh:node :ValidSchemaAggregateRating;
 	];
 	sh:property [
 		sh:path schema:areaServed;
@@ -31,7 +31,7 @@
 	];
 	sh:property [
 		sh:path schema:availability;
-		sh:node :ItemAvailability;
+		sh:node :ValidSchemaItemAvailability;
 	];
 	sh:property [
 		sh:path schema:availabilityEnds;
@@ -51,15 +51,15 @@
 	];
 	sh:property [
 		sh:path schema:availableAtOrFrom;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:availableDeliveryMethod;
-		sh:node :DeliveryMethod;
+		sh:node :ValidSchemaDeliveryMethod;
 	];
 	sh:property [
 		sh:path schema:businessFunction;
-		sh:node :BusinessFunction;
+		sh:node :ValidSchemaBusinessFunction;
 	];
 	sh:property [
 		sh:path schema:category;
@@ -72,19 +72,19 @@
 	];
 	sh:property [
 		sh:path schema:deliveryLeadTime;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:eligibleCustomerType;
-		sh:node :BusinessEntityType;
+		sh:node :ValidSchemaBusinessEntityType;
 	];
 	sh:property [
 		sh:path schema:eligibleDuration;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:eligibleQuantity;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:eligibleRegion;
@@ -96,35 +96,35 @@
 	];
 	sh:property [
 		sh:path schema:eligibleTransactionVolume;
-		sh:node :PriceSpecification;
+		sh:node :ValidSchemaPriceSpecification;
 	];
 	sh:property [
 		sh:path schema:gtin12;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:gtin13;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:gtin14;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:gtin8;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:includesObject;
-		sh:node :TypeAndQuantityNode;
+		sh:node :ValidSchemaTypeAndQuantityNode;
 	];
 	sh:property [
 		sh:path schema:inventoryLevel;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:itemCondition;
-		sh:node :OfferItemCondition;
+		sh:node :ValidSchemaOfferItemCondition;
 	];
 	sh:property [
 		sh:path schema:itemOffered;
@@ -140,7 +140,7 @@
 	];
 	sh:property [
 		sh:path schema:mpn;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:offeredBy;
@@ -158,23 +158,23 @@
 	];
 	sh:property [
 		sh:path schema:priceCurrency;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:priceSpecification;
-		sh:node :PriceSpecification;
+		sh:node :ValidSchemaPriceSpecification;
 	];
 	sh:property [
 		sh:path schema:priceValidUntil;
-		sh:node :Date;
+		sh:node :ValidSchemaDate;
 	];
 	sh:property [
 		sh:path schema:review;
-		sh:node :Review;
+		sh:node :ValidSchemaReview;
 	];
 	sh:property [
 		sh:path schema:reviews;
-		sh:node :Review;
+		sh:node :ValidSchemaReview;
 	];
 	sh:property [
 		sh:path schema:seller;
@@ -185,11 +185,11 @@
 	];
 	sh:property [
 		sh:path schema:serialNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:sku;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:validFrom;
@@ -207,5 +207,5 @@
 	];
 	sh:property [
 		sh:path schema:warranty;
-		sh:node :WarrantyPromise;
+		sh:node :ValidSchemaWarrantyPromise;
 	].

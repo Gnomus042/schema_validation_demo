@@ -1,3 +1,3 @@
-<#HousePainter> @<#HomeAndConstructionBusiness> AND EXTRA a { 
+<#ValidSchemaHousePainter> @<#ValidSchemaHomeAndConstructionBusiness> AND EXTRA a {
 	a [schema:HousePainter];
 }

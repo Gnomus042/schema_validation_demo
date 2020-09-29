@@ -1,15 +1,15 @@
-:Blog a sh:NodeShape;
+:ValidSchemaBlog a sh:NodeShape;
 	sh:targetClass schema:Blog;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:blogPost;
-		sh:node :BlogPosting;
+		sh:node :ValidSchemaBlogPosting;
 	];
 	sh:property [
 		sh:path schema:blogPosts;
-		sh:node :BlogPosting;
+		sh:node :ValidSchemaBlogPosting;
 	];
 	sh:property [
 		sh:path schema:issn;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

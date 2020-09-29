@@ -1,4 +1,4 @@
-<#GovernmentService> @<#Service> AND EXTRA a { 
+<#ValidSchemaGovernmentService> @<#ValidSchemaService> AND EXTRA a {
 	a [schema:GovernmentService];
-	schema:serviceOperator @<#Organization> * ;
+	schema:serviceOperator @<#ValidSchemaOrganization> * ;
 }

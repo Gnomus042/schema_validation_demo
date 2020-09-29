@@ -1,3 +1,3 @@
-<#UserPlusOnes> @<#UserInteraction> AND EXTRA a { 
+<#ValidSchemaUserPlusOnes> @<#ValidSchemaUserInteraction> AND EXTRA a {
 	a [schema:UserPlusOnes];
 }

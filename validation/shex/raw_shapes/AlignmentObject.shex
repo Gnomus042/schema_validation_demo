@@ -1,8 +1,8 @@
-<#AlignmentObject> @<#Intangible> AND EXTRA a { 
+<#ValidSchemaAlignmentObject> @<#ValidSchemaIntangible> AND EXTRA a {
 	a [schema:AlignmentObject];
-	schema:alignmentType @<#Text> * ;
-	schema:educationalFramework @<#Text> * ;
-	schema:targetDescription @<#Text> * ;
-	schema:targetName @<#Text> * ;
-	schema:targetUrl @<#URL> * ;
+	schema:alignmentType @<#ValidSchemaText> * ;
+	schema:educationalFramework @<#ValidSchemaText> * ;
+	schema:targetDescription @<#ValidSchemaText> * ;
+	schema:targetName @<#ValidSchemaText> * ;
+	schema:targetUrl @<#ValidSchemaURL> * ;
 }

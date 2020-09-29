@@ -1,7 +1,7 @@
-<#Role> @<#Intangible> AND EXTRA a { 
+<#ValidSchemaRole> @<#ValidSchemaIntangible> AND EXTRA a {
 	a [schema:PerformanceRole schema:OrganizationRole schema:EmployeeRole schema:Role];
-	schema:endDate (@<#Date> OR @<#DateTime>) * ;
-	schema:namedPosition (@<#Text> OR @<#URL>) * ;
-	schema:roleName (@<#URL> OR @<#Text>) * ;
-	schema:startDate (@<#Date> OR @<#DateTime>) * ;
+	schema:endDate (@<#ValidSchemaDate> OR @<#ValidSchemaDateTime>) * ;
+	schema:namedPosition (@<#ValidSchemaText> OR @<#ValidSchemaURL>) * ;
+	schema:roleName (@<#ValidSchemaURL> OR @<#ValidSchemaText>) * ;
+	schema:startDate (@<#ValidSchemaDate> OR @<#ValidSchemaDateTime>) * ;
 }

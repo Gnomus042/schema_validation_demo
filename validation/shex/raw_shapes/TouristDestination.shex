@@ -1,4 +1,4 @@
-<#TouristDestination>  EXTRA a { 
+<#ValidSchemaTouristDestination>  EXTRA a {
 	a [schema:TouristDestination];
-	schema:touristType (@<#Text> OR @<#Audience>) * ;
+	schema:touristType (@<#ValidSchemaText> OR @<#ValidSchemaAudience>) * ;
 }

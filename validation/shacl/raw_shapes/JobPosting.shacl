@@ -1,4 +1,4 @@
-:JobPosting a sh:NodeShape;
+:ValidSchemaJobPosting a sh:NodeShape;
 	sh:targetClass schema:JobPosting;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -11,7 +11,7 @@
 	];
 	sh:property [
 		sh:path schema:benefits;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:datePosted;
@@ -22,7 +22,7 @@
 	];
 	sh:property [
 		sh:path schema:employmentType;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:estimatedSalary;
@@ -34,19 +34,19 @@
 	];
 	sh:property [
 		sh:path schema:experienceRequirements;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:hiringOrganization;
-		sh:node :Organization;
+		sh:node :ValidSchemaOrganization;
 	];
 	sh:property [
 		sh:path schema:incentiveCompensation;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:incentives;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:industry;
@@ -57,23 +57,23 @@
 	];
 	sh:property [
 		sh:path schema:jobBenefits;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:jobLocation;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:relevantOccupation;
-		sh:node :Occupation;
+		sh:node :ValidSchemaOccupation;
 	];
 	sh:property [
 		sh:path schema:responsibilities;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:salaryCurrency;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:skills;
@@ -84,11 +84,11 @@
 	];
 	sh:property [
 		sh:path schema:specialCommitments;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:title;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:validThrough;
@@ -99,5 +99,5 @@
 	];
 	sh:property [
 		sh:path schema:workHours;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

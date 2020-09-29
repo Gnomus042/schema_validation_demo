@@ -1,4 +1,4 @@
-:Grant a sh:NodeShape;
+:ValidSchemaGrant a sh:NodeShape;
 	sh:targetClass schema:Grant;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

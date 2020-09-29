@@ -1,4 +1,4 @@
-:PhysicalActivity a sh:NodeShape;
+:ValidSchemaPhysicalActivity a sh:NodeShape;
 	sh:targetClass schema:PhysicalActivity;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

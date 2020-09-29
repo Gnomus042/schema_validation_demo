@@ -1,7 +1,7 @@
-<#LoanOrCredit> @<#FinancialProduct> AND EXTRA a { 
+<#ValidSchemaLoanOrCredit> @<#ValidSchemaFinancialProduct> AND EXTRA a {
 	a [schema:CreditCard schema:LoanOrCredit];
-	schema:amount (@<#MonetaryAmount> OR @<#Number>) * ;
-	schema:currency @<#Text> * ;
-	schema:loanTerm @<#QuantitativeValue> * ;
-	schema:requiredCollateral (@<#Text> OR @<#Thing>) * ;
+	schema:amount (@<#ValidSchemaMonetaryAmount> OR @<#ValidSchemaNumber>) * ;
+	schema:currency @<#ValidSchemaText> * ;
+	schema:loanTerm @<#ValidSchemaQuantitativeValue> * ;
+	schema:requiredCollateral (@<#ValidSchemaText> OR @<#ValidSchemaThing>) * ;
 }

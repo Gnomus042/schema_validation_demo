@@ -1,4 +1,4 @@
-:Question a sh:NodeShape;
+:ValidSchemaQuestion a sh:NodeShape;
 	sh:targetClass schema:Question;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,11 +10,11 @@
 	];
 	sh:property [
 		sh:path schema:answerCount;
-		sh:node :Integer;
+		sh:node :ValidSchemaInteger;
 	];
 	sh:property [
 		sh:path schema:downvoteCount;
-		sh:node :Integer;
+		sh:node :ValidSchemaInteger;
 	];
 	sh:property [
 		sh:path schema:suggestedAnswer;
@@ -25,5 +25,5 @@
 	];
 	sh:property [
 		sh:path schema:upvoteCount;
-		sh:node :Integer;
+		sh:node :ValidSchemaInteger;
 	].

@@ -1,3 +1,3 @@
-<#Waterfall> @<#BodyOfWater> AND EXTRA a { 
+<#ValidSchemaWaterfall> @<#ValidSchemaBodyOfWater> AND EXTRA a {
 	a [schema:Waterfall];
 }

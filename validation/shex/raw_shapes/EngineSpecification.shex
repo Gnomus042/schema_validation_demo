@@ -1,4 +1,4 @@
-<#EngineSpecification> @<#StructuredValue> AND EXTRA a { 
+<#ValidSchemaEngineSpecification> @<#ValidSchemaStructuredValue> AND EXTRA a {
 	a [schema:EngineSpecification];
-	schema:fuelType (@<#QualitativeValue> OR @<#Text> OR @<#URL>) * ;
+	schema:fuelType (@<#ValidSchemaQualitativeValue> OR @<#ValidSchemaText> OR @<#ValidSchemaURL>) * ;
 }

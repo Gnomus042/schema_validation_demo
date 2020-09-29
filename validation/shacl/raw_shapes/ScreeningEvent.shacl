@@ -1,11 +1,11 @@
-:ScreeningEvent a sh:NodeShape;
+:ValidSchemaScreeningEvent a sh:NodeShape;
 	sh:targetClass schema:ScreeningEvent;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:videoFormat;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:workPresented;
-		sh:node :Movie;
+		sh:node :ValidSchemaMovie;
 	].

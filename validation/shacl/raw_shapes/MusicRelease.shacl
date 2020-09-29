@@ -1,9 +1,9 @@
-:MusicRelease a sh:NodeShape;
+:ValidSchemaMusicRelease a sh:NodeShape;
 	sh:targetClass schema:MusicRelease;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:catalogNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:creditedTo;
@@ -14,17 +14,17 @@
 	];
 	sh:property [
 		sh:path schema:duration;
-		sh:node :Duration;
+		sh:node :ValidSchemaDuration;
 	];
 	sh:property [
 		sh:path schema:musicReleaseFormat;
-		sh:node :MusicReleaseFormatType;
+		sh:node :ValidSchemaMusicReleaseFormatType;
 	];
 	sh:property [
 		sh:path schema:recordLabel;
-		sh:node :Organization;
+		sh:node :ValidSchemaOrganization;
 	];
 	sh:property [
 		sh:path schema:releaseOf;
-		sh:node :MusicAlbum;
+		sh:node :ValidSchemaMusicAlbum;
 	].

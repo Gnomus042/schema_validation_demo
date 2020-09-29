@@ -1,4 +1,4 @@
-:RealEstateListing a sh:NodeShape;
+:ValidSchemaRealEstateListing a sh:NodeShape;
 	sh:targetClass schema:RealEstateListing;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

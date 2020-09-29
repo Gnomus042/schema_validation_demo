@@ -1,4 +1,4 @@
-:HowToItem a sh:NodeShape;
+:ValidSchemaHowToItem a sh:NodeShape;
 	sh:targetClass schema:HowToItem;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

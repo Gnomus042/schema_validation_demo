@@ -1,13 +1,13 @@
-:LodgingBusiness a sh:NodeShape;
+:ValidSchemaLodgingBusiness a sh:NodeShape;
 	sh:targetClass schema:LodgingBusiness;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:amenityFeature;
-		sh:node :LocationFeatureSpecification;
+		sh:node :ValidSchemaLocationFeatureSpecification;
 	];
 	sh:property [
 		sh:path schema:audience;
-		sh:node :Audience;
+		sh:node :ValidSchemaAudience;
 	];
 	sh:property [
 		sh:path schema:availableLanguage;
@@ -46,5 +46,5 @@
 	];
 	sh:property [
 		sh:path schema:starRating;
-		sh:node :Rating;
+		sh:node :ValidSchemaRating;
 	].

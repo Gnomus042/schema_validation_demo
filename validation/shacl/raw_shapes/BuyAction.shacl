@@ -1,4 +1,4 @@
-:BuyAction a sh:NodeShape;
+:ValidSchemaBuyAction a sh:NodeShape;
 	sh:targetClass schema:BuyAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -17,5 +17,5 @@
 	];
 	sh:property [
 		sh:path schema:warrantyPromise;
-		sh:node :WarrantyPromise;
+		sh:node :ValidSchemaWarrantyPromise;
 	].

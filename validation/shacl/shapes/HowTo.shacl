@@ -1,4 +1,4 @@
-:HowTo a sh:NodeShape;
+:ValidSchemaHowTo a sh:NodeShape;
 	sh:targetClass schema:HowTo;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,11 +10,11 @@
 	];
 	sh:property [
 		sh:path schema:performTime;
-		sh:node :Duration;
+		sh:node :ValidSchemaDuration;
 	];
 	sh:property [
 		sh:path schema:prepTime;
-		sh:node :Duration;
+		sh:node :ValidSchemaDuration;
 	];
 	sh:property [
 		sh:path schema:step;
@@ -49,7 +49,7 @@
 	];
 	sh:property [
 		sh:path schema:totalTime;
-		sh:node :Duration;
+		sh:node :ValidSchemaDuration;
 	];
 	sh:property [
 		sh:path schema:yield;

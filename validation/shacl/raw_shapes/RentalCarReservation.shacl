@@ -1,19 +1,19 @@
-:RentalCarReservation a sh:NodeShape;
+:ValidSchemaRentalCarReservation a sh:NodeShape;
 	sh:targetClass schema:RentalCarReservation;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:dropoffLocation;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:dropoffTime;
-		sh:node :DateTime;
+		sh:node :ValidSchemaDateTime;
 	];
 	sh:property [
 		sh:path schema:pickupLocation;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:pickupTime;
-		sh:node :DateTime;
+		sh:node :ValidSchemaDateTime;
 	].

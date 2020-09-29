@@ -1,1 +1,1 @@
-<#URL> ((IRI OR LITERAL) AND CLOSED {}  AND /^(https?|gopher|ftps?):/)
+<#ValidSchemaURL> ((IRI OR LITERAL) AND CLOSED {}  AND /^(https?|gopher|ftps?):/)

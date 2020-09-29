@@ -1,10 +1,10 @@
-<#Permit> @<#Intangible> AND EXTRA a { 
+<#ValidSchemaPermit> @<#ValidSchemaIntangible> AND EXTRA a {
 	a [schema:GovernmentPermit schema:Permit];
-	schema:issuedBy @<#Organization> * ;
-	schema:issuedThrough @<#Service> * ;
-	schema:permitAudience @<#Audience> * ;
-	schema:validFor @<#Duration> * ;
-	schema:validFrom (@<#Date> OR @<#DateTime>) * ;
-	schema:validIn @<#AdministrativeArea> * ;
-	schema:validUntil @<#Date> * ;
+	schema:issuedBy @<#ValidSchemaOrganization> * ;
+	schema:issuedThrough @<#ValidSchemaService> * ;
+	schema:permitAudience @<#ValidSchemaAudience> * ;
+	schema:validFor @<#ValidSchemaDuration> * ;
+	schema:validFrom (@<#ValidSchemaDate> OR @<#ValidSchemaDateTime>) * ;
+	schema:validIn @<#ValidSchemaAdministrativeArea> * ;
+	schema:validUntil @<#ValidSchemaDate> * ;
 }
