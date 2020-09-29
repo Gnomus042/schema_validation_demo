@@ -1,3 +1,3 @@
-<#Church> @<#PlaceOfWorship> AND EXTRA a { 
+<#ValidSchemaChurch> @<#ValidSchemaPlaceOfWorship> AND EXTRA a {
 	a [schema:CatholicChurch schema:Church];
 }

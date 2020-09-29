@@ -1,4 +1,4 @@
-:FinancialProduct a sh:NodeShape;
+:ValidSchemaFinancialProduct a sh:NodeShape;
 	sh:targetClass schema:FinancialProduct;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

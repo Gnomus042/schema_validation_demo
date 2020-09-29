@@ -1,3 +1,3 @@
-<#FireStation> @<#CivicStructure> AND EXTRA a { 
+<#ValidSchemaFireStation> @<#ValidSchemaCivicStructure> AND EXTRA a {
 	a [schema:FireStation];
 }

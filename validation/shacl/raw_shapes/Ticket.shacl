@@ -1,4 +1,4 @@
-:Ticket a sh:NodeShape;
+:ValidSchemaTicket a sh:NodeShape;
 	sh:targetClass schema:Ticket;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,15 +10,15 @@
 	];
 	sh:property [
 		sh:path schema:issuedBy;
-		sh:node :Organization;
+		sh:node :ValidSchemaOrganization;
 	];
 	sh:property [
 		sh:path schema:priceCurrency;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:ticketNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:ticketToken;
@@ -29,7 +29,7 @@
 	];
 	sh:property [
 		sh:path schema:ticketedSeat;
-		sh:node :Seat;
+		sh:node :ValidSchemaSeat;
 	];
 	sh:property [
 		sh:path schema:totalPrice;

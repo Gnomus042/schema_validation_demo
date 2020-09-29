@@ -1,4 +1,4 @@
-:Occupation a sh:NodeShape;
+:ValidSchemaOccupation a sh:NodeShape;
 	sh:targetClass schema:Occupation;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -11,15 +11,15 @@
 	];
 	sh:property [
 		sh:path schema:experienceRequirements;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:occupationLocation;
-		sh:node :AdministrativeArea;
+		sh:node :ValidSchemaAdministrativeArea;
 	];
 	sh:property [
 		sh:path schema:responsibilities;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:skills;

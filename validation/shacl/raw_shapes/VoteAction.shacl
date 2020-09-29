@@ -1,7 +1,7 @@
-:VoteAction a sh:NodeShape;
+:ValidSchemaVoteAction a sh:NodeShape;
 	sh:targetClass schema:VoteAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:candidate;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	].

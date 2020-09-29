@@ -1,9 +1,9 @@
-:EducationalOccupationalProgram a sh:NodeShape;
+:ValidSchemaEducationalOccupationalProgram a sh:NodeShape;
 	sh:targetClass schema:EducationalOccupationalProgram;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:dayOfWeek;
-		sh:node :DayOfWeek;
+		sh:node :ValidSchemaDayOfWeek;
 	];
 	sh:property [
 		sh:path schema:educationalCredentialAwarded;

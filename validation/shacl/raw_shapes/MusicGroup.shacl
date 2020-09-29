@@ -1,13 +1,13 @@
-:MusicGroup a sh:NodeShape;
+:ValidSchemaMusicGroup a sh:NodeShape;
 	sh:targetClass schema:MusicGroup;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:album;
-		sh:node :MusicAlbum;
+		sh:node :ValidSchemaMusicAlbum;
 	];
 	sh:property [
 		sh:path schema:albums;
-		sh:node :MusicAlbum;
+		sh:node :ValidSchemaMusicAlbum;
 	];
 	sh:property [
 		sh:path schema:genre;
@@ -18,7 +18,7 @@
 	];
 	sh:property [
 		sh:path schema:musicGroupMember;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:track;
@@ -29,5 +29,5 @@
 	];
 	sh:property [
 		sh:path schema:tracks;
-		sh:node :MusicRecording;
+		sh:node :ValidSchemaMusicRecording;
 	].

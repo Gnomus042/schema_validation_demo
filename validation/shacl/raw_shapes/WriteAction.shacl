@@ -1,4 +1,4 @@
-:WriteAction a sh:NodeShape;
+:ValidSchemaWriteAction a sh:NodeShape;
 	sh:targetClass schema:WriteAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,5 +10,5 @@
 	];
 	sh:property [
 		sh:path schema:language;
-		sh:node :Language;
+		sh:node :ValidSchemaLanguage;
 	].

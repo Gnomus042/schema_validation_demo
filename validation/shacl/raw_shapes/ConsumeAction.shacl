@@ -1,11 +1,11 @@
-:ConsumeAction a sh:NodeShape;
+:ValidSchemaConsumeAction a sh:NodeShape;
 	sh:targetClass schema:ConsumeAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:actionAccessibilityRequirement;
-		sh:node :ActionAccessSpecification;
+		sh:node :ValidSchemaActionAccessSpecification;
 	];
 	sh:property [
 		sh:path schema:expectsAcceptanceOf;
-		sh:node :Offer;
+		sh:node :ValidSchemaOffer;
 	].

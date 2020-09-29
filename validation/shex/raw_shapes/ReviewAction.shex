@@ -1,4 +1,4 @@
-<#ReviewAction> @<#AssessAction> AND EXTRA a { 
+<#ValidSchemaReviewAction> @<#ValidSchemaAssessAction> AND EXTRA a {
 	a [schema:ReviewAction];
-	schema:resultReview @<#Review> * ;
+	schema:resultReview @<#ValidSchemaReview> * ;
 }

@@ -1,13 +1,13 @@
-:Invoice a sh:NodeShape;
+:ValidSchemaInvoice a sh:NodeShape;
 	sh:targetClass schema:Invoice;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:accountId;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:billingPeriod;
-		sh:node :Duration;
+		sh:node :ValidSchemaDuration;
 	];
 	sh:property [
 		sh:path schema:broker;
@@ -27,7 +27,7 @@
 	];
 	sh:property [
 		sh:path schema:confirmationNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:customer;
@@ -45,7 +45,7 @@
 	];
 	sh:property [
 		sh:path schema:paymentDue;
-		sh:node :DateTime;
+		sh:node :ValidSchemaDateTime;
 	];
 	sh:property [
 		sh:path schema:paymentDueDate;
@@ -56,11 +56,11 @@
 	];
 	sh:property [
 		sh:path schema:paymentMethod;
-		sh:node :PaymentMethod;
+		sh:node :ValidSchemaPaymentMethod;
 	];
 	sh:property [
 		sh:path schema:paymentMethodId;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:paymentStatus;
@@ -78,11 +78,11 @@
 	];
 	sh:property [
 		sh:path schema:referencesOrder;
-		sh:node :Order;
+		sh:node :ValidSchemaOrder;
 	];
 	sh:property [
 		sh:path schema:scheduledPaymentDate;
-		sh:node :Date;
+		sh:node :ValidSchemaDate;
 	];
 	sh:property [
 		sh:path schema:totalPaymentDue;

@@ -61,7 +61,7 @@ def find_unknown():
     unknown = set()
     for shex_file in os.listdir('shapes'):
         shape = open(f'shapes/{shex_file}').read()
-        links = set(re.findall("<#(.*?)>", shape))
+        links = set(re.findall("<#ValidSchema(.*?)>", shape))
         unknown = unknown.union(links.difference(defined_shapes))
     return sorted(list(unknown))
 
@@ -69,7 +69,7 @@ def find_unknown():
 def fill_temp_holes(shex):
     holes = find_unknown()
     for hole in holes:
-        shex = shex.replace(f'@<#{hole}>', f'{{ a [schema:{hole}] }}')
+        shex = shex.replace(f'@<#Valid{hole}>', f'{{ a [schema:{hole}] }}')
     return shex
 
 

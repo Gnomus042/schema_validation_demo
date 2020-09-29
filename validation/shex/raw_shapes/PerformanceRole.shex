@@ -1,4 +1,4 @@
-<#PerformanceRole> @<#Role> AND EXTRA a { 
+<#ValidSchemaPerformanceRole> @<#ValidSchemaRole> AND EXTRA a {
 	a [schema:PerformanceRole];
-	schema:characterName @<#Text> * ;
+	schema:characterName @<#ValidSchemaText> * ;
 }

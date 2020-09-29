@@ -1,3 +1,3 @@
-<#UserBlocks> @<#UserInteraction> AND EXTRA a { 
+<#ValidSchemaUserBlocks> @<#ValidSchemaUserInteraction> AND EXTRA a {
 	a [schema:UserBlocks];
 }

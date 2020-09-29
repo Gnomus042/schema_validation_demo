@@ -1,4 +1,4 @@
-<#InviteAction> @<#CommunicateAction> AND EXTRA a { 
+<#ValidSchemaInviteAction> @<#ValidSchemaCommunicateAction> AND EXTRA a {
 	a [schema:InviteAction];
-	schema:event @<#Event> * ;
+	schema:event @<#ValidSchemaEvent> * ;
 }

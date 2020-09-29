@@ -1,9 +1,9 @@
-:GeoCircle a sh:NodeShape;
+:ValidSchemaGeoCircle a sh:NodeShape;
 	sh:targetClass schema:GeoCircle;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:geoMidpoint;
-		sh:node :GeoCoordinates;
+		sh:node :ValidSchemaGeoCoordinates;
 	];
 	sh:property [
 		sh:path schema:geoRadius;

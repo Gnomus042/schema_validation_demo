@@ -1,3 +1,3 @@
-<#ToyStore> @<#Store> AND EXTRA a { 
+<#ValidSchemaToyStore> @<#ValidSchemaStore> AND EXTRA a {
 	a [schema:ToyStore];
 }

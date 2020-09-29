@@ -1,5 +1,5 @@
-<#MoveAction> @<#Action> AND EXTRA a { 
+<#ValidSchemaMoveAction> @<#ValidSchemaAction> AND EXTRA a {
 	a [schema:DepartAction schema:ArriveAction schema:TravelAction schema:MoveAction];
-	schema:fromLocation @<#Place> * ;
-	schema:toLocation @<#Place> * ;
+	schema:fromLocation @<#ValidSchemaPlace> * ;
+	schema:toLocation @<#ValidSchemaPlace> * ;
 }

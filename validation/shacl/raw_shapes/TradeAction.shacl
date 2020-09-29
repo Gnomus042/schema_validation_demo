@@ -1,4 +1,4 @@
-:TradeAction a sh:NodeShape;
+:ValidSchemaTradeAction a sh:NodeShape;
 	sh:targetClass schema:TradeAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,9 +10,9 @@
 	];
 	sh:property [
 		sh:path schema:priceCurrency;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:priceSpecification;
-		sh:node :PriceSpecification;
+		sh:node :ValidSchemaPriceSpecification;
 	].

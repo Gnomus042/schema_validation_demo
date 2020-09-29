@@ -1,4 +1,4 @@
-:AuthorizeAction a sh:NodeShape;
+:ValidSchemaAuthorizeAction a sh:NodeShape;
 	sh:targetClass schema:AuthorizeAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

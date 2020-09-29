@@ -1,21 +1,21 @@
-:Thing a sh:NodeShape;
+:ValidSchemaThing a sh:NodeShape;
 	sh:targetClass schema:Thing;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:additionalType;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	];
 	sh:property [
 		sh:path schema:alternateName;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:description;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:disambiguatingDescription;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:identifier;
@@ -41,15 +41,15 @@
 	];
 	sh:property [
 		sh:path schema:name;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:potentialAction;
-		sh:node :Action;
+		sh:node :ValidSchemaAction;
 	];
 	sh:property [
 		sh:path schema:sameAs;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	];
 	sh:property [
 		sh:path schema:subjectOf;
@@ -60,5 +60,5 @@
 	];
 	sh:property [
 		sh:path schema:url;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	].

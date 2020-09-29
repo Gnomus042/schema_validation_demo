@@ -1,9 +1,9 @@
-:Person a sh:NodeShape;
+:ValidSchemaPerson a sh:NodeShape;
 	sh:targetClass schema:Person;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:additionalName;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:address;
@@ -14,7 +14,7 @@
 	];
 	sh:property [
 		sh:path schema:affiliation;
-		sh:node :Organization;
+		sh:node :ValidSchemaOrganization;
 	];
 	sh:property [
 		sh:path schema:alumniOf;
@@ -25,19 +25,19 @@
 	];
 	sh:property [
 		sh:path schema:award;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:awards;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:birthDate;
-		sh:node :Date;
+		sh:node :ValidSchemaDate;
 	];
 	sh:property [
 		sh:path schema:birthPlace;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:brand;
@@ -48,7 +48,7 @@
 	];
 	sh:property [
 		sh:path schema:children;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:colleague;
@@ -59,43 +59,43 @@
 	];
 	sh:property [
 		sh:path schema:colleagues;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:contactPoint;
-		sh:node :ContactPoint;
+		sh:node :ValidSchemaContactPoint;
 	];
 	sh:property [
 		sh:path schema:contactPoints;
-		sh:node :ContactPoint;
+		sh:node :ValidSchemaContactPoint;
 	];
 	sh:property [
 		sh:path schema:deathDate;
-		sh:node :Date;
+		sh:node :ValidSchemaDate;
 	];
 	sh:property [
 		sh:path schema:deathPlace;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:duns;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:email;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:familyName;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:faxNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:follows;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:funder;
@@ -106,23 +106,23 @@
 	];
 	sh:property [
 		sh:path schema:givenName;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:globalLocationNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:hasOccupation;
-		sh:node :Occupation;
+		sh:node :ValidSchemaOccupation;
 	];
 	sh:property [
 		sh:path schema:hasOfferCatalog;
-		sh:node :OfferCatalog;
+		sh:node :ValidSchemaOfferCatalog;
 	];
 	sh:property [
 		sh:path schema:hasPOS;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:height;
@@ -140,27 +140,27 @@
 	];
 	sh:property [
 		sh:path schema:honorificPrefix;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:honorificSuffix;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:interactionStatistic;
-		sh:node :InteractionCounter;
+		sh:node :ValidSchemaInteractionCounter;
 	];
 	sh:property [
 		sh:path schema:isicV4;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:knows;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:makesOffer;
-		sh:node :Offer;
+		sh:node :ValidSchemaOffer;
 	];
 	sh:property [
 		sh:path schema:memberOf;
@@ -171,11 +171,11 @@
 	];
 	sh:property [
 		sh:path schema:naics;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:nationality;
-		sh:node :Country;
+		sh:node :ValidSchemaCountry;
 	];
 	sh:property [
 		sh:path schema:netWorth;
@@ -193,15 +193,15 @@
 	];
 	sh:property [
 		sh:path schema:parent;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:parents;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:performerIn;
-		sh:node :Event;
+		sh:node :ValidSchemaEvent;
 	];
 	sh:property [
 		sh:path schema:publishingPrinciples;
@@ -212,19 +212,19 @@
 	];
 	sh:property [
 		sh:path schema:relatedTo;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:seeks;
-		sh:node :Demand;
+		sh:node :ValidSchemaDemand;
 	];
 	sh:property [
 		sh:path schema:sibling;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:siblings;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:sponsor;
@@ -235,23 +235,23 @@
 	];
 	sh:property [
 		sh:path schema:spouse;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:taxID;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:telephone;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:vatID;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:weight;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:workLocation;
@@ -262,5 +262,5 @@
 	];
 	sh:property [
 		sh:path schema:worksFor;
-		sh:node :Organization;
+		sh:node :ValidSchemaOrganization;
 	].

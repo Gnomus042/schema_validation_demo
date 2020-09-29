@@ -1,4 +1,4 @@
-:AudioObject a sh:NodeShape;
+:ValidSchemaAudioObject a sh:NodeShape;
 	sh:targetClass schema:AudioObject;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,5 +10,5 @@
 	];
 	sh:property [
 		sh:path schema:transcript;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

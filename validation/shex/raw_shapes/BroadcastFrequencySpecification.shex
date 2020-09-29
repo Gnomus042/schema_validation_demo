@@ -1,4 +1,4 @@
-<#BroadcastFrequencySpecification> @<#Intangible> AND EXTRA a { 
+<#ValidSchemaBroadcastFrequencySpecification> @<#ValidSchemaIntangible> AND EXTRA a {
 	a [schema:BroadcastFrequencySpecification];
-	schema:broadcastFrequencyValue (@<#QuantitativeValue> OR @<#Number>) * ;
+	schema:broadcastFrequencyValue (@<#ValidSchemaQuantitativeValue> OR @<#ValidSchemaNumber>) * ;
 }

@@ -1,6 +1,6 @@
-<#TradeAction> @<#Action> AND EXTRA a { 
+<#ValidSchemaTradeAction> @<#ValidSchemaAction> AND EXTRA a {
 	a [schema:RentAction schema:PayAction schema:QuoteAction schema:OrderAction schema:BuyAction schema:PreOrderAction schema:TipAction schema:SellAction schema:DonateAction schema:TradeAction];
-	schema:price (@<#Text> OR @<#Number>) * ;
-	schema:priceCurrency @<#Text> * ;
-	schema:priceSpecification @<#PriceSpecification> * ;
+	schema:price (@<#ValidSchemaText> OR @<#ValidSchemaNumber>) * ;
+	schema:priceCurrency @<#ValidSchemaText> * ;
+	schema:priceSpecification @<#ValidSchemaPriceSpecification> * ;
 }

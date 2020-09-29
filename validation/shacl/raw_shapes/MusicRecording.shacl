@@ -1,4 +1,4 @@
-:MusicRecording a sh:NodeShape;
+:ValidSchemaMusicRecording a sh:NodeShape;
 	sh:targetClass schema:MusicRecording;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,21 +10,21 @@
 	];
 	sh:property [
 		sh:path schema:duration;
-		sh:node :Duration;
+		sh:node :ValidSchemaDuration;
 	];
 	sh:property [
 		sh:path schema:inAlbum;
-		sh:node :MusicAlbum;
+		sh:node :ValidSchemaMusicAlbum;
 	];
 	sh:property [
 		sh:path schema:inPlaylist;
-		sh:node :MusicPlaylist;
+		sh:node :ValidSchemaMusicPlaylist;
 	];
 	sh:property [
 		sh:path schema:isrcCode;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:recordingOf;
-		sh:node :MusicComposition;
+		sh:node :ValidSchemaMusicComposition;
 	].

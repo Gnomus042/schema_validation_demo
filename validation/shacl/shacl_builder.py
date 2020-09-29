@@ -47,7 +47,7 @@ def find_unknown():
     unknown = set()
     for shacl_file in os.listdir('shapes'):
         shape = open(f'shapes/{shacl_file}').read()
-        links = set(re.findall("sh:node :(.*?)[ \]][;\n]", shape))
+        links = set(re.findall("sh:node :ValidSchema(.*?)[ \]][;\n]", shape))
 
         unknown = unknown.union(links.difference(defined_shapes))
     return sorted(list(unknown))

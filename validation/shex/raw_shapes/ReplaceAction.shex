@@ -1,5 +1,5 @@
-<#ReplaceAction> @<#UpdateAction> AND EXTRA a { 
+<#ValidSchemaReplaceAction> @<#ValidSchemaUpdateAction> AND EXTRA a {
 	a [schema:ReplaceAction];
-	schema:replacee @<#Thing> * ;
-	schema:replacer @<#Thing> * ;
+	schema:replacee @<#ValidSchemaThing> * ;
+	schema:replacer @<#ValidSchemaThing> * ;
 }

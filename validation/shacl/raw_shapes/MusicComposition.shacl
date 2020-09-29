@@ -1,4 +1,4 @@
-:MusicComposition a sh:NodeShape;
+:ValidSchemaMusicComposition a sh:NodeShape;
 	sh:targetClass schema:MusicComposition;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,37 +10,37 @@
 	];
 	sh:property [
 		sh:path schema:firstPerformance;
-		sh:node :Event;
+		sh:node :ValidSchemaEvent;
 	];
 	sh:property [
 		sh:path schema:includedComposition;
-		sh:node :MusicComposition;
+		sh:node :ValidSchemaMusicComposition;
 	];
 	sh:property [
 		sh:path schema:iswcCode;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:lyricist;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:lyrics;
-		sh:node :CreativeWork;
+		sh:node :ValidSchemaCreativeWork;
 	];
 	sh:property [
 		sh:path schema:musicArrangement;
-		sh:node :MusicComposition;
+		sh:node :ValidSchemaMusicComposition;
 	];
 	sh:property [
 		sh:path schema:musicCompositionForm;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:musicalKey;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:recordedAs;
-		sh:node :MusicRecording;
+		sh:node :ValidSchemaMusicRecording;
 	].

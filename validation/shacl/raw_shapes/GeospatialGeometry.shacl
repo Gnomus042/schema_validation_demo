@@ -1,4 +1,4 @@
-:GeospatialGeometry a sh:NodeShape;
+:ValidSchemaGeospatialGeometry a sh:NodeShape;
 	sh:targetClass schema:GeospatialGeometry;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

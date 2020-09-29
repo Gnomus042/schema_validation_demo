@@ -1,4 +1,4 @@
-<#JoinAction> @<#InteractAction> AND EXTRA a { 
+<#ValidSchemaJoinAction> @<#ValidSchemaInteractAction> AND EXTRA a {
 	a [schema:JoinAction];
-	schema:event @<#Event> * ;
+	schema:event @<#ValidSchemaEvent> * ;
 }

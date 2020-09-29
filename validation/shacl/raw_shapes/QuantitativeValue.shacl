@@ -1,17 +1,17 @@
-:QuantitativeValue a sh:NodeShape;
+:ValidSchemaQuantitativeValue a sh:NodeShape;
 	sh:targetClass schema:QuantitativeValue;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:additionalProperty;
-		sh:node :PropertyValue;
+		sh:node :ValidSchemaPropertyValue;
 	];
 	sh:property [
 		sh:path schema:maxValue;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:minValue;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:unitCode;
@@ -22,7 +22,7 @@
 	];
 	sh:property [
 		sh:path schema:unitText;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:value;

@@ -1,3 +1,3 @@
-<#BookFormatType> @<#Enumeration> AND EXTRA a { 
+<#ValidSchemaBookFormatType> @<#ValidSchemaEnumeration> AND EXTRA a {
 	a [schema:BookFormatType];
 }

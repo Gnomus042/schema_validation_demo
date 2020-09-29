@@ -1,4 +1,4 @@
-:CssSelectorType a sh:NodeShape;
+:ValidSchemaCssSelectorType a sh:NodeShape;
 	sh:targetClass schema:CssSelectorType;
 	sh:or (
         [sh:node :Text]

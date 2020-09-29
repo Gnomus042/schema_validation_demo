@@ -1,4 +1,4 @@
-:PronounceableText a sh:NodeShape;
+:ValidSchemaPronounceableText a sh:NodeShape;
 	sh:targetClass schema:PronounceableText;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

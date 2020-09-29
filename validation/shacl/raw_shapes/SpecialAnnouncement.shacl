@@ -1,4 +1,4 @@
-:SpecialAnnouncement a sh:NodeShape;
+:ValidSchemaSpecialAnnouncement a sh:NodeShape;
 	sh:targetClass schema:SpecialAnnouncement;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

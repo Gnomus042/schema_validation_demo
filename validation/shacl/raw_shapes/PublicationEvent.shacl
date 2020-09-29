@@ -1,15 +1,15 @@
-:PublicationEvent a sh:NodeShape;
+:ValidSchemaPublicationEvent a sh:NodeShape;
 	sh:targetClass schema:PublicationEvent;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:free;
-		sh:node :Boolean;
+		sh:node :ValidSchemaBoolean;
 	];
 	sh:property [
 		sh:path schema:isAccessibleForFree;
-		sh:node :Boolean;
+		sh:node :ValidSchemaBoolean;
 	];
 	sh:property [
 		sh:path schema:publishedOn;
-		sh:node :BroadcastService;
+		sh:node :ValidSchemaBroadcastService;
 	].

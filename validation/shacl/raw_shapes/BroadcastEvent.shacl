@@ -1,15 +1,15 @@
-:BroadcastEvent a sh:NodeShape;
+:ValidSchemaBroadcastEvent a sh:NodeShape;
 	sh:targetClass schema:BroadcastEvent;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:broadcastOfEvent;
-		sh:node :Event;
+		sh:node :ValidSchemaEvent;
 	];
 	sh:property [
 		sh:path schema:isLiveBroadcast;
-		sh:node :Boolean;
+		sh:node :ValidSchemaBoolean;
 	];
 	sh:property [
 		sh:path schema:videoFormat;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

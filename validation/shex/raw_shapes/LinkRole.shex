@@ -1,4 +1,4 @@
-<#LinkRole>  EXTRA a { 
+<#ValidSchemaLinkRole>  EXTRA a {
 	a [schema:LinkRole];
-	schema:inLanguage (@<#Text> OR @<#Language>) * ;
+	schema:inLanguage (@<#ValidSchemaText> OR @<#ValidSchemaLanguage>) * ;
 }

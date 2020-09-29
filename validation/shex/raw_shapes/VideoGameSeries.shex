@@ -1,25 +1,25 @@
-<#VideoGameSeries> @<#CreativeWorkSeries> AND EXTRA a { 
+<#ValidSchemaVideoGameSeries> @<#ValidSchemaCreativeWorkSeries> AND EXTRA a {
 	a [schema:VideoGameSeries];
-	schema:actor @<#Person> * ;
-	schema:actors @<#Person> * ;
-	schema:characterAttribute @<#Thing> * ;
-	schema:cheatCode @<#CreativeWork> * ;
-	schema:containsSeason @<#CreativeWorkSeason> * ;
-	schema:director @<#Person> * ;
-	schema:directors @<#Person> * ;
-	schema:episode @<#Episode> * ;
-	schema:episodes @<#Episode> * ;
-	schema:gameItem @<#Thing> * ;
-	schema:gameLocation (@<#PostalAddress> OR @<#Place> OR @<#URL>) * ;
-	schema:gamePlatform (@<#Text> OR @<#Thing> OR @<#URL>) * ;
-	schema:musicBy (@<#Person> OR @<#MusicGroup>) * ;
-	schema:numberOfEpisodes @<#Integer> * ;
-	schema:numberOfPlayers @<#QuantitativeValue> * ;
-	schema:numberOfSeasons @<#Integer> * ;
-	schema:playMode @<#GamePlayMode> * ;
-	schema:productionCompany @<#Organization> * ;
-	schema:quest @<#Thing> * ;
-	schema:season (@<#CreativeWorkSeason> OR @<#URL>) * ;
-	schema:seasons @<#CreativeWorkSeason> * ;
-	schema:trailer @<#VideoObject> * ;
+	schema:actor @<#ValidSchemaPerson> * ;
+	schema:actors @<#ValidSchemaPerson> * ;
+	schema:characterAttribute @<#ValidSchemaThing> * ;
+	schema:cheatCode @<#ValidSchemaCreativeWork> * ;
+	schema:containsSeason @<#ValidSchemaCreativeWorkSeason> * ;
+	schema:director @<#ValidSchemaPerson> * ;
+	schema:directors @<#ValidSchemaPerson> * ;
+	schema:episode @<#ValidSchemaEpisode> * ;
+	schema:episodes @<#ValidSchemaEpisode> * ;
+	schema:gameItem @<#ValidSchemaThing> * ;
+	schema:gameLocation (@<#ValidSchemaPostalAddress> OR @<#ValidSchemaPlace> OR @<#ValidSchemaURL>) * ;
+	schema:gamePlatform (@<#ValidSchemaText> OR @<#ValidSchemaThing> OR @<#ValidSchemaURL>) * ;
+	schema:musicBy (@<#ValidSchemaPerson> OR @<#ValidSchemaMusicGroup>) * ;
+	schema:numberOfEpisodes @<#ValidSchemaInteger> * ;
+	schema:numberOfPlayers @<#ValidSchemaQuantitativeValue> * ;
+	schema:numberOfSeasons @<#ValidSchemaInteger> * ;
+	schema:playMode @<#ValidSchemaGamePlayMode> * ;
+	schema:productionCompany @<#ValidSchemaOrganization> * ;
+	schema:quest @<#ValidSchemaThing> * ;
+	schema:season (@<#ValidSchemaCreativeWorkSeason> OR @<#ValidSchemaURL>) * ;
+	schema:seasons @<#ValidSchemaCreativeWorkSeason> * ;
+	schema:trailer @<#ValidSchemaVideoObject> * ;
 }

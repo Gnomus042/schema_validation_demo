@@ -1,7 +1,7 @@
-:SocialMediaPosting a sh:NodeShape;
+:ValidSchemaSocialMediaPosting a sh:NodeShape;
 	sh:targetClass schema:SocialMediaPosting;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:sharedContent;
-		sh:node :CreativeWork;
+		sh:node :ValidSchemaCreativeWork;
 	].

@@ -1,5 +1,5 @@
-<#TechArticle> @<#Article> AND EXTRA a { 
+<#ValidSchemaTechArticle> @<#ValidSchemaArticle> AND EXTRA a {
 	a [schema:APIReference schema:TechArticle];
-	schema:dependencies @<#Text> * ;
-	schema:proficiencyLevel @<#Text> * ;
+	schema:dependencies @<#ValidSchemaText> * ;
+	schema:proficiencyLevel @<#ValidSchemaText> * ;
 }

@@ -1,3 +1,3 @@
-:Continent a sh:NodeShape;
+:ValidSchemaContinent a sh:NodeShape;
 	sh:targetClass schema:Continent;
 	sh:nodeKind sh:BlankNodeOrIRI.

@@ -1,4 +1,4 @@
-:PropertyValueSpecification a sh:NodeShape;
+:ValidSchemaPropertyValueSpecification a sh:NodeShape;
 	sh:targetClass schema:PropertyValueSpecification;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,41 +10,41 @@
 	];
 	sh:property [
 		sh:path schema:maxValue;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:minValue;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:multipleValues;
-		sh:node :Boolean;
+		sh:node :ValidSchemaBoolean;
 	];
 	sh:property [
 		sh:path schema:readonlyValue;
-		sh:node :Boolean;
+		sh:node :ValidSchemaBoolean;
 	];
 	sh:property [
 		sh:path schema:stepValue;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:valueMaxLength;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:valueMinLength;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:valueName;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:valuePattern;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:valueRequired;
-		sh:node :Boolean;
+		sh:node :ValidSchemaBoolean;
 	].

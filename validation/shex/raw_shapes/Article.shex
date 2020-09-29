@@ -1,10 +1,10 @@
-<#Article> @<#CreativeWork> AND EXTRA a { 
+<#ValidSchemaArticle> @<#ValidSchemaCreativeWork> AND EXTRA a {
 	a [schema:LiveBlogPosting schema:APIReference schema:SocialMediaPosting schema:DiscussionForumPosting schema:Report schema:TechArticle schema:ScholarlyArticle schema:BlogPosting schema:NewsArticle schema:Article];
-	schema:articleBody @<#Text> * ;
-	schema:articleSection @<#Text> * ;
-	schema:pageEnd (@<#Integer> OR @<#Text>) * ;
-	schema:pageStart (@<#Text> OR @<#Integer>) * ;
-	schema:pagination @<#Text> * ;
-	schema:speakable (@<#URL> OR @<#SpeakableSpecification>) * ;
-	schema:wordCount @<#Integer> * ;
+	schema:articleBody @<#ValidSchemaText> * ;
+	schema:articleSection @<#ValidSchemaText> * ;
+	schema:pageEnd (@<#ValidSchemaInteger> OR @<#ValidSchemaText>) * ;
+	schema:pageStart (@<#ValidSchemaText> OR @<#ValidSchemaInteger>) * ;
+	schema:pagination @<#ValidSchemaText> * ;
+	schema:speakable (@<#ValidSchemaURL> OR @<#ValidSchemaSpeakableSpecification>) * ;
+	schema:wordCount @<#ValidSchemaInteger> * ;
 }

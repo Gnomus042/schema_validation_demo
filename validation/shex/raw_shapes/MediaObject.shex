@@ -1,20 +1,20 @@
-<#MediaObject> @<#CreativeWork> AND EXTRA a { 
+<#ValidSchemaMediaObject> @<#ValidSchemaCreativeWork> AND EXTRA a {
 	a [schema:DataDownload schema:ImageObject schema:Barcode schema:MusicVideoObject schema:VideoObject schema:AudioObject schema:MediaObject];
-	schema:associatedArticle @<#NewsArticle> * ;
-	schema:bitrate @<#Text> * ;
-	schema:contentSize @<#Text> * ;
-	schema:contentUrl @<#URL> * ;
-	schema:duration @<#Duration> * ;
-	schema:embedUrl @<#URL> * ;
-	schema:encodesCreativeWork @<#CreativeWork> * ;
-	schema:encodingFormat (@<#URL> OR @<#Text>) * ;
-	schema:endTime (@<#DateTime> OR @<#Time>) * ;
-	schema:height (@<#QuantitativeValue> OR @<#Distance>) * ;
-	schema:playerType @<#Text> * ;
-	schema:productionCompany @<#Organization> * ;
-	schema:regionsAllowed @<#Place> * ;
-	schema:requiresSubscription (@<#MediaSubscription> OR @<#Boolean>) * ;
-	schema:startTime (@<#Time> OR @<#DateTime>) * ;
-	schema:uploadDate @<#Date> * ;
-	schema:width (@<#QuantitativeValue> OR @<#Distance>) * ;
+	schema:associatedArticle @<#ValidSchemaNewsArticle> * ;
+	schema:bitrate @<#ValidSchemaText> * ;
+	schema:contentSize @<#ValidSchemaText> * ;
+	schema:contentUrl @<#ValidSchemaURL> * ;
+	schema:duration @<#ValidSchemaDuration> * ;
+	schema:embedUrl @<#ValidSchemaURL> * ;
+	schema:encodesCreativeWork @<#ValidSchemaCreativeWork> * ;
+	schema:encodingFormat (@<#ValidSchemaURL> OR @<#ValidSchemaText>) * ;
+	schema:endTime (@<#ValidSchemaDateTime> OR @<#ValidSchemaTime>) * ;
+	schema:height (@<#ValidSchemaQuantitativeValue> OR @<#ValidSchemaDistance>) * ;
+	schema:playerType @<#ValidSchemaText> * ;
+	schema:productionCompany @<#ValidSchemaOrganization> * ;
+	schema:regionsAllowed @<#ValidSchemaPlace> * ;
+	schema:requiresSubscription (@<#ValidSchemaMediaSubscription> OR @<#ValidSchemaBoolean>) * ;
+	schema:startTime (@<#ValidSchemaTime> OR @<#ValidSchemaDateTime>) * ;
+	schema:uploadDate @<#ValidSchemaDate> * ;
+	schema:width (@<#ValidSchemaQuantitativeValue> OR @<#ValidSchemaDistance>) * ;
 }

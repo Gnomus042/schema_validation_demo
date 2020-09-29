@@ -1,4 +1,4 @@
-:DigitalDocumentPermission a sh:NodeShape;
+:ValidSchemaDigitalDocumentPermission a sh:NodeShape;
 	sh:targetClass schema:DigitalDocumentPermission;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -12,5 +12,5 @@
 	];
 	sh:property [
 		sh:path schema:permissionType;
-		sh:node :DigitalDocumentPermissionType;
+		sh:node :ValidSchemaDigitalDocumentPermissionType;
 	].

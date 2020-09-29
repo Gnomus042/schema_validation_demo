@@ -1,13 +1,13 @@
-:FloorPlan a sh:NodeShape;
+:ValidSchemaFloorPlan a sh:NodeShape;
 	sh:targetClass schema:FloorPlan;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:amenityFeature;
-		sh:node :LocationFeatureSpecification;
+		sh:node :ValidSchemaLocationFeatureSpecification;
 	];
 	sh:property [
 		sh:path schema:floorSize;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:numberOfRooms;

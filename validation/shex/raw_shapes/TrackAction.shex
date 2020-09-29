@@ -1,4 +1,4 @@
-<#TrackAction> @<#FindAction> AND EXTRA a { 
+<#ValidSchemaTrackAction> @<#ValidSchemaFindAction> AND EXTRA a {
 	a [schema:TrackAction];
-	schema:deliveryMethod @<#DeliveryMethod> * ;
+	schema:deliveryMethod @<#ValidSchemaDeliveryMethod> * ;
 }

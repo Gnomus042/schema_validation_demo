@@ -1,7 +1,7 @@
-<#FlightReservation> @<#Reservation> AND EXTRA a { 
+<#ValidSchemaFlightReservation> @<#ValidSchemaReservation> AND EXTRA a {
 	a [schema:FlightReservation];
-	schema:boardingGroup @<#Text> * ;
-	schema:passengerPriorityStatus (@<#QualitativeValue> OR @<#Text>) * ;
-	schema:passengerSequenceNumber @<#Text> * ;
-	schema:securityScreening @<#Text> * ;
+	schema:boardingGroup @<#ValidSchemaText> * ;
+	schema:passengerPriorityStatus (@<#ValidSchemaQualitativeValue> OR @<#ValidSchemaText>) * ;
+	schema:passengerSequenceNumber @<#ValidSchemaText> * ;
+	schema:securityScreening @<#ValidSchemaText> * ;
 }

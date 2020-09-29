@@ -1,4 +1,4 @@
-:EmployeeRole a sh:NodeShape;
+:ValidSchemaEmployeeRole a sh:NodeShape;
 	sh:targetClass schema:EmployeeRole;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -11,5 +11,5 @@
 	];
 	sh:property [
 		sh:path schema:salaryCurrency;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

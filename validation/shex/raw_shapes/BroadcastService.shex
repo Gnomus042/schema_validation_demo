@@ -1,13 +1,13 @@
-<#BroadcastService> @<#Service> AND EXTRA a { 
+<#ValidSchemaBroadcastService> @<#ValidSchemaService> AND EXTRA a {
 	a [schema:BroadcastService];
-	schema:area @<#Place> * ;
-	schema:broadcastAffiliateOf @<#Organization> * ;
-	schema:broadcastDisplayName @<#Text> * ;
-	schema:broadcastFrequency (@<#Text> OR @<#BroadcastFrequencySpecification>) * ;
-	schema:broadcastTimezone @<#Text> * ;
-	schema:broadcaster @<#Organization> * ;
-	schema:hasBroadcastChannel @<#BroadcastChannel> * ;
-	schema:inLanguage (@<#Text> OR @<#Language>) * ;
-	schema:parentService @<#BroadcastService> * ;
-	schema:videoFormat @<#Text> * ;
+	schema:area @<#ValidSchemaPlace> * ;
+	schema:broadcastAffiliateOf @<#ValidSchemaOrganization> * ;
+	schema:broadcastDisplayName @<#ValidSchemaText> * ;
+	schema:broadcastFrequency (@<#ValidSchemaText> OR @<#ValidSchemaBroadcastFrequencySpecification>) * ;
+	schema:broadcastTimezone @<#ValidSchemaText> * ;
+	schema:broadcaster @<#ValidSchemaOrganization> * ;
+	schema:hasBroadcastChannel @<#ValidSchemaBroadcastChannel> * ;
+	schema:inLanguage (@<#ValidSchemaText> OR @<#ValidSchemaLanguage>) * ;
+	schema:parentService @<#ValidSchemaBroadcastService> * ;
+	schema:videoFormat @<#ValidSchemaText> * ;
 }

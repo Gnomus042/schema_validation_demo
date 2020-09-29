@@ -1,3 +1,3 @@
-:BankAccount a sh:NodeShape;
+:ValidSchemaBankAccount a sh:NodeShape;
 	sh:targetClass schema:BankAccount;
 	sh:nodeKind sh:BlankNodeOrIRI.

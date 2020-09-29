@@ -1,4 +1,4 @@
-:BroadcastFrequencySpecification a sh:NodeShape;
+:ValidSchemaBroadcastFrequencySpecification a sh:NodeShape;
 	sh:targetClass schema:BroadcastFrequencySpecification;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

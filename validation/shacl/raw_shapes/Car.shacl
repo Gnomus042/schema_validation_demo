@@ -1,3 +1,3 @@
-:Car a sh:NodeShape;
+:ValidSchemaCar a sh:NodeShape;
 	sh:targetClass schema:Car;
 	sh:nodeKind sh:BlankNodeOrIRI.

@@ -1,4 +1,4 @@
-:CookAction a sh:NodeShape;
+:ValidSchemaCookAction a sh:NodeShape;
 	sh:targetClass schema:CookAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,9 +10,9 @@
 	];
 	sh:property [
 		sh:path schema:foodEvent;
-		sh:node :FoodEvent;
+		sh:node :ValidSchemaFoodEvent;
 	];
 	sh:property [
 		sh:path schema:recipe;
-		sh:node :Recipe;
+		sh:node :ValidSchemaRecipe;
 	].

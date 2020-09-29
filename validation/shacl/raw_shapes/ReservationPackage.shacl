@@ -1,7 +1,7 @@
-:ReservationPackage a sh:NodeShape;
+:ValidSchemaReservationPackage a sh:NodeShape;
 	sh:targetClass schema:ReservationPackage;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:subReservation;
-		sh:node :Reservation;
+		sh:node :ValidSchemaReservation;
 	].

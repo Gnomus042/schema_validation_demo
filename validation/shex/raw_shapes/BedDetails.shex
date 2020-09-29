@@ -1,5 +1,5 @@
-<#BedDetails> @<#Intangible> AND EXTRA a { 
+<#ValidSchemaBedDetails> @<#ValidSchemaIntangible> AND EXTRA a {
 	a [schema:BedDetails];
-	schema:numberOfBeds @<#Number> * ;
-	schema:typeOfBed (@<#Text> OR @<#BedType>) * ;
+	schema:numberOfBeds @<#ValidSchemaNumber> * ;
+	schema:typeOfBed (@<#ValidSchemaText> OR @<#ValidSchemaBedType>) * ;
 }

@@ -1,7 +1,7 @@
-<#Review> @<#CreativeWork> AND EXTRA a { 
+<#ValidSchemaReview> @<#ValidSchemaCreativeWork> AND EXTRA a {
 	a [schema:ClaimReview schema:Review];
-	schema:itemReviewed @<#Thing> * ;
-	schema:reviewAspect @<#Text> * ;
-	schema:reviewBody @<#Text> * ;
-	schema:reviewRating @<#Rating> * ;
+	schema:itemReviewed @<#ValidSchemaThing> * ;
+	schema:reviewAspect @<#ValidSchemaText> * ;
+	schema:reviewBody @<#ValidSchemaText> * ;
+	schema:reviewRating @<#ValidSchemaRating> * ;
 }

@@ -1,4 +1,4 @@
-:DefinedRegion a sh:NodeShape;
+:ValidSchemaDefinedRegion a sh:NodeShape;
 	sh:targetClass schema:DefinedRegion;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,9 +10,9 @@
 	];
 	sh:property [
 		sh:path schema:addressRegion;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:postalCode;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

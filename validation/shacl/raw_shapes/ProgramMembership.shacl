@@ -1,9 +1,9 @@
-:ProgramMembership a sh:NodeShape;
+:ValidSchemaProgramMembership a sh:NodeShape;
 	sh:targetClass schema:ProgramMembership;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:hostingOrganization;
-		sh:node :Organization;
+		sh:node :ValidSchemaOrganization;
 	];
 	sh:property [
 		sh:path schema:member;
@@ -21,9 +21,9 @@
 	];
 	sh:property [
 		sh:path schema:membershipNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:programName;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

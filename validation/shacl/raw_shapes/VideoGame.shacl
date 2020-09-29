@@ -1,25 +1,25 @@
-:VideoGame a sh:NodeShape;
+:ValidSchemaVideoGame a sh:NodeShape;
 	sh:targetClass schema:VideoGame;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:actor;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:actors;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:cheatCode;
-		sh:node :CreativeWork;
+		sh:node :ValidSchemaCreativeWork;
 	];
 	sh:property [
 		sh:path schema:director;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:directors;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:gamePlatform;
@@ -31,11 +31,11 @@
 	];
 	sh:property [
 		sh:path schema:gameServer;
-		sh:node :GameServer;
+		sh:node :ValidSchemaGameServer;
 	];
 	sh:property [
 		sh:path schema:gameTip;
-		sh:node :CreativeWork;
+		sh:node :ValidSchemaCreativeWork;
 	];
 	sh:property [
 		sh:path schema:musicBy;
@@ -46,9 +46,9 @@
 	];
 	sh:property [
 		sh:path schema:playMode;
-		sh:node :GamePlayMode;
+		sh:node :ValidSchemaGamePlayMode;
 	];
 	sh:property [
 		sh:path schema:trailer;
-		sh:node :VideoObject;
+		sh:node :ValidSchemaVideoObject;
 	].

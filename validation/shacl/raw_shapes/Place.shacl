@@ -1,9 +1,9 @@
-:Place a sh:NodeShape;
+:ValidSchemaPlace a sh:NodeShape;
 	sh:targetClass schema:Place;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:additionalProperty;
-		sh:node :PropertyValue;
+		sh:node :ValidSchemaPropertyValue;
 	];
 	sh:property [
 		sh:path schema:address;
@@ -14,39 +14,39 @@
 	];
 	sh:property [
 		sh:path schema:aggregateRating;
-		sh:node :AggregateRating;
+		sh:node :ValidSchemaAggregateRating;
 	];
 	sh:property [
 		sh:path schema:amenityFeature;
-		sh:node :LocationFeatureSpecification;
+		sh:node :ValidSchemaLocationFeatureSpecification;
 	];
 	sh:property [
 		sh:path schema:branchCode;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:containedIn;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:containedInPlace;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:containsPlace;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:event;
-		sh:node :Event;
+		sh:node :ValidSchemaEvent;
 	];
 	sh:property [
 		sh:path schema:events;
-		sh:node :Event;
+		sh:node :ValidSchemaEvent;
 	];
 	sh:property [
 		sh:path schema:faxNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:geo;
@@ -127,7 +127,7 @@
 	];
 	sh:property [
 		sh:path schema:globalLocationNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:hasMap;
@@ -138,11 +138,11 @@
 	];
 	sh:property [
 		sh:path schema:isAccessibleForFree;
-		sh:node :Boolean;
+		sh:node :ValidSchemaBoolean;
 	];
 	sh:property [
 		sh:path schema:isicV4;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:latitude;
@@ -167,19 +167,19 @@
 	];
 	sh:property [
 		sh:path schema:map;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	];
 	sh:property [
 		sh:path schema:maps;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	];
 	sh:property [
 		sh:path schema:maximumAttendeeCapacity;
-		sh:node :Integer;
+		sh:node :ValidSchemaInteger;
 	];
 	sh:property [
 		sh:path schema:openingHoursSpecification;
-		sh:node :OpeningHoursSpecification;
+		sh:node :ValidSchemaOpeningHoursSpecification;
 	];
 	sh:property [
 		sh:path schema:photo;
@@ -197,29 +197,29 @@
 	];
 	sh:property [
 		sh:path schema:publicAccess;
-		sh:node :Boolean;
+		sh:node :ValidSchemaBoolean;
 	];
 	sh:property [
 		sh:path schema:review;
-		sh:node :Review;
+		sh:node :ValidSchemaReview;
 	];
 	sh:property [
 		sh:path schema:reviews;
-		sh:node :Review;
+		sh:node :ValidSchemaReview;
 	];
 	sh:property [
 		sh:path schema:slogan;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:smokingAllowed;
-		sh:node :Boolean;
+		sh:node :ValidSchemaBoolean;
 	];
 	sh:property [
 		sh:path schema:specialOpeningHoursSpecification;
-		sh:node :OpeningHoursSpecification;
+		sh:node :ValidSchemaOpeningHoursSpecification;
 	];
 	sh:property [
 		sh:path schema:telephone;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

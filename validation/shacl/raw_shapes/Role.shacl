@@ -1,4 +1,4 @@
-:Role a sh:NodeShape;
+:ValidSchemaRole a sh:NodeShape;
 	sh:targetClass schema:Role;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

@@ -1,9 +1,9 @@
-:Schedule a sh:NodeShape;
+:ValidSchemaSchedule a sh:NodeShape;
 	sh:targetClass schema:Schedule;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:duration;
-		sh:node :Duration;
+		sh:node :ValidSchemaDuration;
 	];
 	sh:property [
 		sh:path schema:endDate;

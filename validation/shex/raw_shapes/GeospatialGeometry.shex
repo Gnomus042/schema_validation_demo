@@ -1,13 +1,13 @@
-<#GeospatialGeometry>  EXTRA a { 
+<#ValidSchemaGeospatialGeometry>  EXTRA a {
 	a [schema:GeospatialGeometry];
-	schema:geoContains (@<#GeospatialGeometry> OR @<#Place>) * ;
-	schema:geoCoveredBy (@<#Place> OR @<#GeospatialGeometry>) * ;
-	schema:geoCovers (@<#GeospatialGeometry> OR @<#Place>) * ;
-	schema:geoCrosses (@<#GeospatialGeometry> OR @<#Place>) * ;
-	schema:geoDisjoint (@<#Place> OR @<#GeospatialGeometry>) * ;
-	schema:geoEquals (@<#Place> OR @<#GeospatialGeometry>) * ;
-	schema:geoIntersects (@<#GeospatialGeometry> OR @<#Place>) * ;
-	schema:geoOverlaps (@<#GeospatialGeometry> OR @<#Place>) * ;
-	schema:geoTouches (@<#GeospatialGeometry> OR @<#Place>) * ;
-	schema:geoWithin (@<#Place> OR @<#GeospatialGeometry>) * ;
+	schema:geoContains (@<#ValidSchemaGeospatialGeometry> OR @<#ValidSchemaPlace>) * ;
+	schema:geoCoveredBy (@<#ValidSchemaPlace> OR @<#ValidSchemaGeospatialGeometry>) * ;
+	schema:geoCovers (@<#ValidSchemaGeospatialGeometry> OR @<#ValidSchemaPlace>) * ;
+	schema:geoCrosses (@<#ValidSchemaGeospatialGeometry> OR @<#ValidSchemaPlace>) * ;
+	schema:geoDisjoint (@<#ValidSchemaPlace> OR @<#ValidSchemaGeospatialGeometry>) * ;
+	schema:geoEquals (@<#ValidSchemaPlace> OR @<#ValidSchemaGeospatialGeometry>) * ;
+	schema:geoIntersects (@<#ValidSchemaGeospatialGeometry> OR @<#ValidSchemaPlace>) * ;
+	schema:geoOverlaps (@<#ValidSchemaGeospatialGeometry> OR @<#ValidSchemaPlace>) * ;
+	schema:geoTouches (@<#ValidSchemaGeospatialGeometry> OR @<#ValidSchemaPlace>) * ;
+	schema:geoWithin (@<#ValidSchemaPlace> OR @<#ValidSchemaGeospatialGeometry>) * ;
 }

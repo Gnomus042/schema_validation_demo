@@ -1,4 +1,4 @@
-:TipAction a sh:NodeShape;
+:ValidSchemaTipAction a sh:NodeShape;
 	sh:targetClass schema:TipAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

@@ -1,7 +1,7 @@
-:ReviewAction a sh:NodeShape;
+:ValidSchemaReviewAction a sh:NodeShape;
 	sh:targetClass schema:ReviewAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:resultReview;
-		sh:node :Review;
+		sh:node :ValidSchemaReview;
 	].

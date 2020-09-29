@@ -1,5 +1,5 @@
-<#WarrantyPromise> @<#StructuredValue> AND EXTRA a { 
+<#ValidSchemaWarrantyPromise> @<#ValidSchemaStructuredValue> AND EXTRA a {
 	a [schema:WarrantyPromise];
-	schema:durationOfWarranty @<#QuantitativeValue> * ;
-	schema:warrantyScope @<#WarrantyScope> * ;
+	schema:durationOfWarranty @<#ValidSchemaQuantitativeValue> * ;
+	schema:warrantyScope @<#ValidSchemaWarrantyScope> * ;
 }

@@ -1,7 +1,7 @@
-:WinAction a sh:NodeShape;
+:ValidSchemaWinAction a sh:NodeShape;
 	sh:targetClass schema:WinAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:loser;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	].

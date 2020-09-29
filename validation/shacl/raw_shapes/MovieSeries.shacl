@@ -1,21 +1,21 @@
-:MovieSeries a sh:NodeShape;
+:ValidSchemaMovieSeries a sh:NodeShape;
 	sh:targetClass schema:MovieSeries;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:actor;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:actors;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:director;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:directors;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:musicBy;
@@ -26,9 +26,9 @@
 	];
 	sh:property [
 		sh:path schema:productionCompany;
-		sh:node :Organization;
+		sh:node :ValidSchemaOrganization;
 	];
 	sh:property [
 		sh:path schema:trailer;
-		sh:node :VideoObject;
+		sh:node :ValidSchemaVideoObject;
 	].

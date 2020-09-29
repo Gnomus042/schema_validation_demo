@@ -1,4 +1,4 @@
-:Suite a sh:NodeShape;
+:ValidSchemaSuite a sh:NodeShape;
 	sh:targetClass schema:Suite;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -18,5 +18,5 @@
 	];
 	sh:property [
 		sh:path schema:occupancy;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	].

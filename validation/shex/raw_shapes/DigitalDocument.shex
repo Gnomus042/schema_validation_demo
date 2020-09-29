@@ -1,4 +1,4 @@
-<#DigitalDocument> @<#CreativeWork> AND EXTRA a { 
+<#ValidSchemaDigitalDocument> @<#ValidSchemaCreativeWork> AND EXTRA a {
 	a [schema:SpreadsheetDigitalDocument schema:NoteDigitalDocument schema:TextDigitalDocument schema:PresentationDigitalDocument schema:DigitalDocument];
-	schema:hasDigitalDocumentPermission @<#DigitalDocumentPermission> * ;
+	schema:hasDigitalDocumentPermission @<#ValidSchemaDigitalDocumentPermission> * ;
 }

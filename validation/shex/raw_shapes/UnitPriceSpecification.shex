@@ -1,8 +1,8 @@
-<#UnitPriceSpecification> @<#PriceSpecification> AND EXTRA a { 
+<#ValidSchemaUnitPriceSpecification> @<#ValidSchemaPriceSpecification> AND EXTRA a {
 	a [schema:UnitPriceSpecification];
-	schema:billingIncrement @<#Number> * ;
-	schema:priceType @<#Text> * ;
-	schema:referenceQuantity @<#QuantitativeValue> * ;
-	schema:unitCode (@<#URL> OR @<#Text>) * ;
-	schema:unitText @<#Text> * ;
+	schema:billingIncrement @<#ValidSchemaNumber> * ;
+	schema:priceType @<#ValidSchemaText> * ;
+	schema:referenceQuantity @<#ValidSchemaQuantitativeValue> * ;
+	schema:unitCode (@<#ValidSchemaURL> OR @<#ValidSchemaText>) * ;
+	schema:unitText @<#ValidSchemaText> * ;
 }

@@ -1,7 +1,7 @@
-:TrackAction a sh:NodeShape;
+:ValidSchemaTrackAction a sh:NodeShape;
 	sh:targetClass schema:TrackAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:deliveryMethod;
-		sh:node :DeliveryMethod;
+		sh:node :ValidSchemaDeliveryMethod;
 	].

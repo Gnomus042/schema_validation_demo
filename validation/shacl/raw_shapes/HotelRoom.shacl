@@ -1,4 +1,4 @@
-:HotelRoom a sh:NodeShape;
+:ValidSchemaHotelRoom a sh:NodeShape;
 	sh:targetClass schema:HotelRoom;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -11,5 +11,5 @@
 	];
 	sh:property [
 		sh:path schema:occupancy;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	].

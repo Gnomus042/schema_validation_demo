@@ -1,4 +1,4 @@
-:URL a sh:NodeShape;
+:ValidSchemaSchemaURL a sh:NodeShape;
     sh:or (
         [sh:nodeKind sh:IRI]
         [sh:pattern "^(https?|gopher|ftps?):"]

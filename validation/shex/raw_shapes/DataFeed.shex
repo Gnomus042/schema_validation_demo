@@ -1,4 +1,4 @@
-<#DataFeed> @<#Dataset> AND EXTRA a { 
+<#ValidSchemaDataFeed> @<#ValidSchemaDataset> AND EXTRA a {
 	a [schema:DataFeed];
-	schema:dataFeedElement (@<#DataFeedItem> OR @<#Thing> OR @<#Text>) * ;
+	schema:dataFeedElement (@<#ValidSchemaDataFeedItem> OR @<#ValidSchemaThing> OR @<#ValidSchemaText>) * ;
 }

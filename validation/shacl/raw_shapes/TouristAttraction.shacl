@@ -1,4 +1,4 @@
-:TouristAttraction a sh:NodeShape;
+:ValidSchemaTouristAttraction a sh:NodeShape;
 	sh:targetClass schema:TouristAttraction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

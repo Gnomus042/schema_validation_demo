@@ -1,7 +1,7 @@
-:LoseAction a sh:NodeShape;
+:ValidSchemaLoseAction a sh:NodeShape;
 	sh:targetClass schema:LoseAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:winner;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	].

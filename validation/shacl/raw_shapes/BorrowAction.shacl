@@ -1,4 +1,4 @@
-:BorrowAction a sh:NodeShape;
+:ValidSchemaBorrowAction a sh:NodeShape;
 	sh:targetClass schema:BorrowAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

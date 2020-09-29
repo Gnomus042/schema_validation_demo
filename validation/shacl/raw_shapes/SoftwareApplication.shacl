@@ -1,4 +1,4 @@
-:SoftwareApplication a sh:NodeShape;
+:ValidSchemaSoftwareApplication a sh:NodeShape;
 	sh:targetClass schema:SoftwareApplication;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -17,27 +17,27 @@
 	];
 	sh:property [
 		sh:path schema:applicationSuite;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:availableOnDevice;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:countriesNotSupported;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:countriesSupported;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:device;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:downloadUrl;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	];
 	sh:property [
 		sh:path schema:featureList;
@@ -48,11 +48,11 @@
 	];
 	sh:property [
 		sh:path schema:fileSize;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:installUrl;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	];
 	sh:property [
 		sh:path schema:memoryRequirements;
@@ -63,15 +63,15 @@
 	];
 	sh:property [
 		sh:path schema:operatingSystem;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:permissions;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:processorRequirements;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:releaseNotes;
@@ -96,11 +96,11 @@
 	];
 	sh:property [
 		sh:path schema:softwareAddOn;
-		sh:node :SoftwareApplication;
+		sh:node :ValidSchemaSoftwareApplication;
 	];
 	sh:property [
 		sh:path schema:softwareHelp;
-		sh:node :CreativeWork;
+		sh:node :ValidSchemaCreativeWork;
 	];
 	sh:property [
 		sh:path schema:softwareRequirements;
@@ -111,7 +111,7 @@
 	];
 	sh:property [
 		sh:path schema:softwareVersion;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:storageRequirements;
@@ -122,5 +122,5 @@
 	];
 	sh:property [
 		sh:path schema:supportingData;
-		sh:node :DataFeed;
+		sh:node :ValidSchemaDataFeed;
 	].

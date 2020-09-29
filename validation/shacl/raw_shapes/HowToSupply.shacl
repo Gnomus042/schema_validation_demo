@@ -1,4 +1,4 @@
-:HowToSupply a sh:NodeShape;
+:ValidSchemaHowToSupply a sh:NodeShape;
 	sh:targetClass schema:HowToSupply;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

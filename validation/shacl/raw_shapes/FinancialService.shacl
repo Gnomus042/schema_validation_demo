@@ -1,4 +1,4 @@
-:FinancialService a sh:NodeShape;
+:ValidSchemaFinancialService a sh:NodeShape;
 	sh:targetClass schema:FinancialService;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

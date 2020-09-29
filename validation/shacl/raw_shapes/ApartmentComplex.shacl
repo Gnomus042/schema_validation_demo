@@ -1,4 +1,4 @@
-:ApartmentComplex a sh:NodeShape;
+:ValidSchemaApartmentComplex a sh:NodeShape;
 	sh:targetClass schema:ApartmentComplex;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

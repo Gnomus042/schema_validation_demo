@@ -1,4 +1,4 @@
-:CourseInstance a sh:NodeShape;
+:ValidSchemaCourseInstance a sh:NodeShape;
 	sh:targetClass schema:CourseInstance;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,5 +10,5 @@
 	];
 	sh:property [
 		sh:path schema:instructor;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	].

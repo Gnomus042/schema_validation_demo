@@ -1,3 +1,3 @@
-<#Pharmacy> @<#MedicalOrganization> AND EXTRA a { 
+<#ValidSchemaPharmacy> @<#ValidSchemaMedicalOrganization> AND EXTRA a {
 	a [schema:Pharmacy];
 }

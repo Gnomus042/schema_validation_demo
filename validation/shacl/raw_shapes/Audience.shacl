@@ -1,11 +1,11 @@
-:Audience a sh:NodeShape;
+:ValidSchemaAudience a sh:NodeShape;
 	sh:targetClass schema:Audience;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:audienceType;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:geographicArea;
-		sh:node :AdministrativeArea;
+		sh:node :ValidSchemaAdministrativeArea;
 	].

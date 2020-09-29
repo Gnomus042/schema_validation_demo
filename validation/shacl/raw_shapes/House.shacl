@@ -1,4 +1,4 @@
-:House a sh:NodeShape;
+:ValidSchemaHouse a sh:NodeShape;
 	sh:targetClass schema:House;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

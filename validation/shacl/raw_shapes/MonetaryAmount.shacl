@@ -1,17 +1,17 @@
-:MonetaryAmount a sh:NodeShape;
+:ValidSchemaMonetaryAmount a sh:NodeShape;
 	sh:targetClass schema:MonetaryAmount;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:currency;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:maxValue;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:minValue;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:validFrom;

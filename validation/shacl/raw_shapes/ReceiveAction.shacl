@@ -1,9 +1,9 @@
-:ReceiveAction a sh:NodeShape;
+:ValidSchemaReceiveAction a sh:NodeShape;
 	sh:targetClass schema:ReceiveAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:deliveryMethod;
-		sh:node :DeliveryMethod;
+		sh:node :ValidSchemaDeliveryMethod;
 	];
 	sh:property [
 		sh:path schema:sender;

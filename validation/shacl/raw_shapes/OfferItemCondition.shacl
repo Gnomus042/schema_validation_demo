@@ -1,3 +1,3 @@
-:OfferItemCondition a sh:NodeShape;
+:ValidSchemaOfferItemCondition a sh:NodeShape;
 	sh:targetClass schema:OfferItemCondition;
 	sh:nodeKind sh:BlankNodeOrIRI.

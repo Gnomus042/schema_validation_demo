@@ -1,57 +1,57 @@
-:CreativeWork a sh:NodeShape;
+:ValidSchemaCreativeWork a sh:NodeShape;
 	sh:targetClass schema:CreativeWork;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:about;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	];
 	sh:property [
 		sh:path schema:accessMode;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:accessModeSufficient;
-		sh:node :ItemList;
+		sh:node :ValidSchemaItemList;
 	];
 	sh:property [
 		sh:path schema:accessibilityAPI;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:accessibilityControl;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:accessibilityFeature;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:accessibilityHazard;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:accessibilitySummary;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:accountablePerson;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:aggregateRating;
-		sh:node :AggregateRating;
+		sh:node :ValidSchemaAggregateRating;
 	];
 	sh:property [
 		sh:path schema:alternativeHeadline;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:associatedMedia;
-		sh:node :MediaObject;
+		sh:node :ValidSchemaMediaObject;
 	];
 	sh:property [
 		sh:path schema:audience;
-		sh:node :Audience;
+		sh:node :ValidSchemaAudience;
 	];
 	sh:property [
 		sh:path schema:audio;
@@ -70,15 +70,15 @@
 	];
 	sh:property [
 		sh:path schema:award;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:awards;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:character;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:citation;
@@ -89,15 +89,15 @@
 	];
 	sh:property [
 		sh:path schema:comment;
-		sh:node :Comment;
+		sh:node :ValidSchemaComment;
 	];
 	sh:property [
 		sh:path schema:commentCount;
-		sh:node :Integer;
+		sh:node :ValidSchemaInteger;
 	];
 	sh:property [
 		sh:path schema:contentLocation;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:contentRating;
@@ -122,7 +122,7 @@
 	];
 	sh:property [
 		sh:path schema:copyrightYear;
-		sh:node :Number;
+		sh:node :ValidSchemaNumber;
 	];
 	sh:property [
 		sh:path schema:creator;
@@ -154,23 +154,23 @@
 	];
 	sh:property [
 		sh:path schema:discussionUrl;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	];
 	sh:property [
 		sh:path schema:editor;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:educationalAlignment;
-		sh:node :AlignmentObject;
+		sh:node :ValidSchemaAlignmentObject;
 	];
 	sh:property [
 		sh:path schema:educationalUse;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:encoding;
-		sh:node :MediaObject;
+		sh:node :ValidSchemaMediaObject;
 	];
 	sh:property [
 		sh:path schema:encodingFormat;
@@ -181,15 +181,15 @@
 	];
 	sh:property [
 		sh:path schema:encodings;
-		sh:node :MediaObject;
+		sh:node :ValidSchemaMediaObject;
 	];
 	sh:property [
 		sh:path schema:exampleOfWork;
-		sh:node :CreativeWork;
+		sh:node :ValidSchemaCreativeWork;
 	];
 	sh:property [
 		sh:path schema:expires;
-		sh:node :Date;
+		sh:node :ValidSchemaDate;
 	];
 	sh:property [
 		sh:path schema:fileFormat;
@@ -214,11 +214,11 @@
 	];
 	sh:property [
 		sh:path schema:hasPart;
-		sh:node :CreativeWork;
+		sh:node :ValidSchemaCreativeWork;
 	];
 	sh:property [
 		sh:path schema:headline;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:inLanguage;
@@ -229,15 +229,15 @@
 	];
 	sh:property [
 		sh:path schema:interactionStatistic;
-		sh:node :InteractionCounter;
+		sh:node :ValidSchemaInteractionCounter;
 	];
 	sh:property [
 		sh:path schema:interactivityType;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:isAccessibleForFree;
-		sh:node :Boolean;
+		sh:node :ValidSchemaBoolean;
 	];
 	sh:property [
 		sh:path schema:isBasedOn;
@@ -257,7 +257,7 @@
 	];
 	sh:property [
 		sh:path schema:isFamilyFriendly;
-		sh:node :Boolean;
+		sh:node :ValidSchemaBoolean;
 	];
 	sh:property [
 		sh:path schema:isPartOf;
@@ -268,11 +268,11 @@
 	];
 	sh:property [
 		sh:path schema:keywords;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:learningResourceType;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:license;
@@ -283,11 +283,11 @@
 	];
 	sh:property [
 		sh:path schema:locationCreated;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:mainEntity;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	];
 	sh:property [
 		sh:path schema:material;
@@ -299,7 +299,7 @@
 	];
 	sh:property [
 		sh:path schema:mentions;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	];
 	sh:property [
 		sh:path schema:offers;
@@ -331,7 +331,7 @@
 	];
 	sh:property [
 		sh:path schema:publication;
-		sh:node :PublicationEvent;
+		sh:node :ValidSchemaPublicationEvent;
 	];
 	sh:property [
 		sh:path schema:publisher;
@@ -349,19 +349,19 @@
 	];
 	sh:property [
 		sh:path schema:recordedAt;
-		sh:node :Event;
+		sh:node :ValidSchemaEvent;
 	];
 	sh:property [
 		sh:path schema:releasedEvent;
-		sh:node :PublicationEvent;
+		sh:node :ValidSchemaPublicationEvent;
 	];
 	sh:property [
 		sh:path schema:review;
-		sh:node :Review;
+		sh:node :ValidSchemaReview;
 	];
 	sh:property [
 		sh:path schema:reviews;
-		sh:node :Review;
+		sh:node :ValidSchemaReview;
 	];
 	sh:property [
 		sh:path schema:schemaVersion;
@@ -372,15 +372,15 @@
 	];
 	sh:property [
 		sh:path schema:sourceOrganization;
-		sh:node :Organization;
+		sh:node :ValidSchemaOrganization;
 	];
 	sh:property [
 		sh:path schema:spatial;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:spatialCoverage;
-		sh:node :Place;
+		sh:node :ValidSchemaPlace;
 	];
 	sh:property [
 		sh:path schema:sponsor;
@@ -406,15 +406,15 @@
 	];
 	sh:property [
 		sh:path schema:text;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:thumbnailUrl;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	];
 	sh:property [
 		sh:path schema:timeRequired;
-		sh:node :Duration;
+		sh:node :ValidSchemaDuration;
 	];
 	sh:property [
 		sh:path schema:translator;
@@ -425,7 +425,7 @@
 	];
 	sh:property [
 		sh:path schema:typicalAgeRange;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:version;
@@ -443,5 +443,5 @@
 	];
 	sh:property [
 		sh:path schema:workExample;
-		sh:node :CreativeWork;
+		sh:node :ValidSchemaCreativeWork;
 	].

@@ -1,13 +1,13 @@
-<#VideoObject> @<#MediaObject> AND EXTRA a { 
+<#ValidSchemaVideoObject> @<#ValidSchemaMediaObject> AND EXTRA a {
 	a [schema:VideoObject];
-	schema:actor @<#Person> * ;
-	schema:actors @<#Person> * ;
-	schema:caption (@<#Text> OR @<#MediaObject>) * ;
-	schema:director @<#Person> * ;
-	schema:directors @<#Person> * ;
-	schema:musicBy (@<#Person> OR @<#MusicGroup>) * ;
-	schema:thumbnail @<#ImageObject> * ;
-	schema:transcript @<#Text> * ;
-	schema:videoFrameSize @<#Text> * ;
-	schema:videoQuality @<#Text> * ;
+	schema:actor @<#ValidSchemaPerson> * ;
+	schema:actors @<#ValidSchemaPerson> * ;
+	schema:caption (@<#ValidSchemaText> OR @<#ValidSchemaMediaObject>) * ;
+	schema:director @<#ValidSchemaPerson> * ;
+	schema:directors @<#ValidSchemaPerson> * ;
+	schema:musicBy (@<#ValidSchemaPerson> OR @<#ValidSchemaMusicGroup>) * ;
+	schema:thumbnail @<#ValidSchemaImageObject> * ;
+	schema:transcript @<#ValidSchemaText> * ;
+	schema:videoFrameSize @<#ValidSchemaText> * ;
+	schema:videoQuality @<#ValidSchemaText> * ;
 }

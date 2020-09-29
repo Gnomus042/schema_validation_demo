@@ -1,11 +1,11 @@
-:MenuSection a sh:NodeShape;
+:ValidSchemaMenuSection a sh:NodeShape;
 	sh:targetClass schema:MenuSection;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:hasMenuItem;
-		sh:node :MenuItem;
+		sh:node :ValidSchemaMenuItem;
 	];
 	sh:property [
 		sh:path schema:hasMenuSection;
-		sh:node :MenuSection;
+		sh:node :ValidSchemaMenuSection;
 	].

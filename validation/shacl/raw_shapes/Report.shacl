@@ -1,7 +1,7 @@
-:Report a sh:NodeShape;
+:ValidSchemaReport a sh:NodeShape;
 	sh:targetClass schema:Report;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:reportNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

@@ -1,4 +1,4 @@
-:PublicationVolume a sh:NodeShape;
+:ValidSchemaPublicationVolume a sh:NodeShape;
 	sh:targetClass schema:PublicationVolume;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -17,7 +17,7 @@
 	];
 	sh:property [
 		sh:path schema:pagination;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:volumeNumber;

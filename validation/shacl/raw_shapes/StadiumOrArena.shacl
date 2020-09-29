@@ -1,3 +1,3 @@
-:StadiumOrArena a sh:NodeShape;
+:ValidSchemaStadiumOrArena a sh:NodeShape;
 	sh:targetClass schema:StadiumOrArena;
 	sh:nodeKind sh:BlankNodeOrIRI.

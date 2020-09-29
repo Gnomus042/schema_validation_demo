@@ -1,5 +1,5 @@
-<#MediaSubscription> @<#Intangible> AND EXTRA a { 
+<#ValidSchemaMediaSubscription> @<#ValidSchemaIntangible> AND EXTRA a {
 	a [schema:MediaSubscription];
-	schema:authenticator @<#Organization> * ;
-	schema:expectsAcceptanceOf @<#Offer> * ;
+	schema:authenticator @<#ValidSchemaOrganization> * ;
+	schema:expectsAcceptanceOf @<#ValidSchemaOffer> * ;
 }

@@ -1,9 +1,9 @@
-:Course a sh:NodeShape;
+:ValidSchemaCourse a sh:NodeShape;
 	sh:targetClass schema:Course;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:courseCode;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:coursePrerequisites;
@@ -23,5 +23,5 @@
 	];
 	sh:property [
 		sh:path schema:hasCourseInstance;
-		sh:node :CourseInstance;
+		sh:node :ValidSchemaCourseInstance;
 	].

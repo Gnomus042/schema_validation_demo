@@ -1,4 +1,4 @@
-:Boolean a sh:NodeShape;
+:ValidSchemaBoolean a sh:NodeShape;
     sh:or (
         [sh:nodeKind sh:Literal]
         [sh:datatype xsd:boolean]

@@ -1,4 +1,4 @@
-:FollowAction a sh:NodeShape;
+:ValidSchemaFollowAction a sh:NodeShape;
 	sh:targetClass schema:FollowAction;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

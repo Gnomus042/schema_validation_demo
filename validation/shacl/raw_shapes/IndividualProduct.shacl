@@ -1,7 +1,7 @@
-:IndividualProduct a sh:NodeShape;
+:ValidSchemaIndividualProduct a sh:NodeShape;
 	sh:targetClass schema:IndividualProduct;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:serialNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

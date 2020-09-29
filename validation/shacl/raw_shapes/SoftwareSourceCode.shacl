@@ -1,13 +1,13 @@
-:SoftwareSourceCode a sh:NodeShape;
+:ValidSchemaSoftwareSourceCode a sh:NodeShape;
 	sh:targetClass schema:SoftwareSourceCode;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:codeRepository;
-		sh:node :URL;
+		sh:node :ValidSchemaURL;
 	];
 	sh:property [
 		sh:path schema:codeSampleType;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:programmingLanguage;
@@ -18,17 +18,17 @@
 	];
 	sh:property [
 		sh:path schema:runtime;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:runtimePlatform;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:sampleType;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:targetProduct;
-		sh:node :SoftwareApplication;
+		sh:node :ValidSchemaSoftwareApplication;
 	].

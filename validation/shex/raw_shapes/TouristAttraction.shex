@@ -1,5 +1,5 @@
-<#TouristAttraction> @<#Place> AND EXTRA a { 
+<#ValidSchemaTouristAttraction> @<#ValidSchemaPlace> AND EXTRA a {
 	a [schema:TouristAttraction];
-	schema:availableLanguage (@<#Text> OR @<#Language>) * ;
-	schema:touristType (@<#Text> OR @<#Audience>) * ;
+	schema:availableLanguage (@<#ValidSchemaText> OR @<#ValidSchemaLanguage>) * ;
+	schema:touristType (@<#ValidSchemaText> OR @<#ValidSchemaAudience>) * ;
 }

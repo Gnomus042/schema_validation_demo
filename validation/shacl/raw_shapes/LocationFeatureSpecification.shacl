@@ -1,9 +1,9 @@
-:LocationFeatureSpecification a sh:NodeShape;
+:ValidSchemaLocationFeatureSpecification a sh:NodeShape;
 	sh:targetClass schema:LocationFeatureSpecification;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:hoursAvailable;
-		sh:node :OpeningHoursSpecification;
+		sh:node :ValidSchemaOpeningHoursSpecification;
 	];
 	sh:property [
 		sh:path schema:validFrom;

@@ -1,4 +1,4 @@
-<#PlanAction> @<#OrganizeAction> AND EXTRA a { 
+<#ValidSchemaPlanAction> @<#ValidSchemaOrganizeAction> AND EXTRA a {
 	a [schema:ScheduleAction schema:CancelAction schema:ReserveAction schema:PlanAction];
-	schema:scheduledTime @<#DateTime> * ;
+	schema:scheduledTime @<#ValidSchemaDateTime> * ;
 }

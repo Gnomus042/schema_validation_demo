@@ -1,4 +1,4 @@
-:Reservation a sh:NodeShape;
+:ValidSchemaReservation a sh:NodeShape;
 	sh:targetClass schema:Reservation;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,7 +10,7 @@
 	];
 	sh:property [
 		sh:path schema:bookingTime;
-		sh:node :DateTime;
+		sh:node :ValidSchemaDateTime;
 	];
 	sh:property [
 		sh:path schema:broker;
@@ -21,15 +21,15 @@
 	];
 	sh:property [
 		sh:path schema:modifiedTime;
-		sh:node :DateTime;
+		sh:node :ValidSchemaDateTime;
 	];
 	sh:property [
 		sh:path schema:priceCurrency;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:programMembershipUsed;
-		sh:node :ProgramMembership;
+		sh:node :ValidSchemaProgramMembership;
 	];
 	sh:property [
 		sh:path schema:provider;
@@ -40,19 +40,19 @@
 	];
 	sh:property [
 		sh:path schema:reservationFor;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	];
 	sh:property [
 		sh:path schema:reservationId;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:reservationStatus;
-		sh:node :ReservationStatusType;
+		sh:node :ValidSchemaReservationStatusType;
 	];
 	sh:property [
 		sh:path schema:reservedTicket;
-		sh:node :Ticket;
+		sh:node :ValidSchemaTicket;
 	];
 	sh:property [
 		sh:path schema:totalPrice;

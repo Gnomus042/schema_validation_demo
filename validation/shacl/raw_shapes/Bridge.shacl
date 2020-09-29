@@ -1,3 +1,3 @@
-:Bridge a sh:NodeShape;
+:ValidSchemaBridge a sh:NodeShape;
 	sh:targetClass schema:Bridge;
 	sh:nodeKind sh:BlankNodeOrIRI.

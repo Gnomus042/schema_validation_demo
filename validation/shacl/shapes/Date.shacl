@@ -1,4 +1,4 @@
-:Date a sh:NodeShape;
+:ValidSchemaDate a sh:NodeShape;
     sh:or(
         [
             sh:nodeKind sh:Literal;

@@ -1,6 +1,6 @@
-<#FinancialProduct> @<#Service> AND EXTRA a { 
+<#ValidSchemaFinancialProduct> @<#ValidSchemaService> AND EXTRA a {
 	a [schema:CurrencyConversionService schema:PaymentService schema:LoanOrCredit schema:DepositAccount schema:PaymentCard schema:BankAccount schema:InvestmentOrDeposit schema:CreditCard schema:FinancialProduct];
-	schema:annualPercentageRate (@<#Number> OR @<#QuantitativeValue>) * ;
-	schema:feesAndCommissionsSpecification (@<#Text> OR @<#URL>) * ;
-	schema:interestRate (@<#QuantitativeValue> OR @<#Number>) * ;
+	schema:annualPercentageRate (@<#ValidSchemaNumber> OR @<#ValidSchemaQuantitativeValue>) * ;
+	schema:feesAndCommissionsSpecification (@<#ValidSchemaText> OR @<#ValidSchemaURL>) * ;
+	schema:interestRate (@<#ValidSchemaQuantitativeValue> OR @<#ValidSchemaNumber>) * ;
 }

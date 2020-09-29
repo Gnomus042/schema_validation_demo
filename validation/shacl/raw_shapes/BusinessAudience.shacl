@@ -1,15 +1,15 @@
-:BusinessAudience a sh:NodeShape;
+:ValidSchemaBusinessAudience a sh:NodeShape;
 	sh:targetClass schema:BusinessAudience;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:numberOfEmployees;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:yearlyRevenue;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:yearsInOperation;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	].

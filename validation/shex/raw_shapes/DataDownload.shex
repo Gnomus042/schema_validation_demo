@@ -1,3 +1,3 @@
-<#DataDownload> @<#MediaObject> AND EXTRA a { 
+<#ValidSchemaDataDownload> @<#ValidSchemaMediaObject> AND EXTRA a {
 	a [schema:DataDownload];
 }

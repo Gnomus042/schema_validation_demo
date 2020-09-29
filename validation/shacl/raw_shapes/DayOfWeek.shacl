@@ -1,3 +1,3 @@
-:DayOfWeek a sh:NodeShape;
+:ValidSchemaDayOfWeek a sh:NodeShape;
 	sh:targetClass schema:DayOfWeek;
 	sh:nodeKind sh:BlankNodeOrIRI.

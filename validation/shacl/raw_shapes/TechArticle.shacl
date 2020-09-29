@@ -1,11 +1,11 @@
-:TechArticle a sh:NodeShape;
+:ValidSchemaTechArticle a sh:NodeShape;
 	sh:targetClass schema:TechArticle;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:dependencies;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:proficiencyLevel;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	].

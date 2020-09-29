@@ -1,9 +1,9 @@
-:Action a sh:NodeShape;
+:ValidSchemaAction a sh:NodeShape;
 	sh:targetClass schema:Action;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:actionStatus;
-		sh:node :ActionStatusType;
+		sh:node :ValidSchemaActionStatusType;
 	];
 	sh:property [
 		sh:path schema:agent;
@@ -21,11 +21,11 @@
 	];
 	sh:property [
 		sh:path schema:error;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	];
 	sh:property [
 		sh:path schema:instrument;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	];
 	sh:property [
 		sh:path schema:location;
@@ -38,7 +38,7 @@
 	];
 	sh:property [
 		sh:path schema:object;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	];
 	sh:property [
 		sh:path schema:participant;
@@ -49,7 +49,7 @@
 	];
 	sh:property [
 		sh:path schema:result;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	];
 	sh:property [
 		sh:path schema:startTime;
@@ -60,5 +60,5 @@
 	];
 	sh:property [
 		sh:path schema:target;
-		sh:node :EntryPoint;
+		sh:node :ValidSchemaEntryPoint;
 	].

@@ -1,4 +1,4 @@
-:DataFeed a sh:NodeShape;
+:ValidSchemaDataFeed a sh:NodeShape;
 	sh:targetClass schema:DataFeed;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [

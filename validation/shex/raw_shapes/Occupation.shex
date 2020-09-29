@@ -1,8 +1,8 @@
-<#Occupation> @<#Intangible> AND EXTRA a { 
+<#ValidSchemaOccupation> @<#ValidSchemaIntangible> AND EXTRA a {
 	a [schema:Occupation];
-	schema:estimatedSalary (@<#Number> OR @<#MonetaryAmountDistribution> OR @<#MonetaryAmount>) * ;
-	schema:experienceRequirements @<#Text> * ;
-	schema:occupationLocation @<#AdministrativeArea> * ;
-	schema:responsibilities @<#Text> * ;
-	schema:skills (@<#Text> OR @<#DefinedTerm>) * ;
+	schema:estimatedSalary (@<#ValidSchemaNumber> OR @<#ValidSchemaMonetaryAmountDistribution> OR @<#ValidSchemaMonetaryAmount>) * ;
+	schema:experienceRequirements @<#ValidSchemaText> * ;
+	schema:occupationLocation @<#ValidSchemaAdministrativeArea> * ;
+	schema:responsibilities @<#ValidSchemaText> * ;
+	schema:skills (@<#ValidSchemaText> OR @<#ValidSchemaDefinedTerm>) * ;
 }

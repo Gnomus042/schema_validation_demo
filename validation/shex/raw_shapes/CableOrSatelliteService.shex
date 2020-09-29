@@ -1,3 +1,3 @@
-<#CableOrSatelliteService> @<#Service> AND EXTRA a { 
+<#ValidSchemaCableOrSatelliteService> @<#ValidSchemaService> AND EXTRA a {
 	a [schema:CableOrSatelliteService];
 }

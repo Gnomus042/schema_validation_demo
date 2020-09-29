@@ -1,4 +1,4 @@
-:Apartment a sh:NodeShape;
+:ValidSchemaApartment a sh:NodeShape;
 	sh:targetClass schema:Apartment;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,5 +10,5 @@
 	];
 	sh:property [
 		sh:path schema:occupancy;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	].

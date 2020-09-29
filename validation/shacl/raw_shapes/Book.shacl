@@ -1,23 +1,23 @@
-:Book a sh:NodeShape;
+:ValidSchemaBook a sh:NodeShape;
 	sh:targetClass schema:Book;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:bookEdition;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:bookFormat;
-		sh:node :BookFormatType;
+		sh:node :ValidSchemaBookFormatType;
 	];
 	sh:property [
 		sh:path schema:illustrator;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:isbn;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:numberOfPages;
-		sh:node :Integer;
+		sh:node :ValidSchemaInteger;
 	].

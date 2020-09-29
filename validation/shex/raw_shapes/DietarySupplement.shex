@@ -1,4 +1,4 @@
-<#DietarySupplement>  EXTRA a { 
+<#ValidSchemaDietarySupplement>  EXTRA a {
 	a [schema:DietarySupplement];
-	schema:manufacturer @<#Organization> * ;
+	schema:manufacturer @<#ValidSchemaOrganization> * ;
 }

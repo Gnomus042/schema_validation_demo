@@ -1,4 +1,4 @@
-:Flight a sh:NodeShape;
+:ValidSchemaFlight a sh:NodeShape;
 	sh:targetClass schema:Flight;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
@@ -10,35 +10,35 @@
 	];
 	sh:property [
 		sh:path schema:arrivalAirport;
-		sh:node :Airport;
+		sh:node :ValidSchemaAirport;
 	];
 	sh:property [
 		sh:path schema:arrivalGate;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:arrivalTerminal;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:boardingPolicy;
-		sh:node :BoardingPolicyType;
+		sh:node :ValidSchemaBoardingPolicyType;
 	];
 	sh:property [
 		sh:path schema:carrier;
-		sh:node :Organization;
+		sh:node :ValidSchemaOrganization;
 	];
 	sh:property [
 		sh:path schema:departureAirport;
-		sh:node :Airport;
+		sh:node :ValidSchemaAirport;
 	];
 	sh:property [
 		sh:path schema:departureGate;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:departureTerminal;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:estimatedFlightDuration;
@@ -56,11 +56,11 @@
 	];
 	sh:property [
 		sh:path schema:flightNumber;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:mealService;
-		sh:node :Text;
+		sh:node :ValidSchemaText;
 	];
 	sh:property [
 		sh:path schema:seller;
@@ -71,5 +71,5 @@
 	];
 	sh:property [
 		sh:path schema:webCheckinTime;
-		sh:node :DateTime;
+		sh:node :ValidSchemaDateTime;
 	].

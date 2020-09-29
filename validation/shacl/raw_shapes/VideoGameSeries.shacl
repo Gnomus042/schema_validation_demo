@@ -1,45 +1,45 @@
-:VideoGameSeries a sh:NodeShape;
+:ValidSchemaVideoGameSeries a sh:NodeShape;
 	sh:targetClass schema:VideoGameSeries;
 	sh:nodeKind sh:BlankNodeOrIRI;
 	sh:property [
 		sh:path schema:actor;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:actors;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:characterAttribute;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	];
 	sh:property [
 		sh:path schema:cheatCode;
-		sh:node :CreativeWork;
+		sh:node :ValidSchemaCreativeWork;
 	];
 	sh:property [
 		sh:path schema:containsSeason;
-		sh:node :CreativeWorkSeason;
+		sh:node :ValidSchemaCreativeWorkSeason;
 	];
 	sh:property [
 		sh:path schema:director;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:directors;
-		sh:node :Person;
+		sh:node :ValidSchemaPerson;
 	];
 	sh:property [
 		sh:path schema:episode;
-		sh:node :Episode;
+		sh:node :ValidSchemaEpisode;
 	];
 	sh:property [
 		sh:path schema:episodes;
-		sh:node :Episode;
+		sh:node :ValidSchemaEpisode;
 	];
 	sh:property [
 		sh:path schema:gameItem;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	];
 	sh:property [
 		sh:path schema:gameLocation;
@@ -66,27 +66,27 @@
 	];
 	sh:property [
 		sh:path schema:numberOfEpisodes;
-		sh:node :Integer;
+		sh:node :ValidSchemaInteger;
 	];
 	sh:property [
 		sh:path schema:numberOfPlayers;
-		sh:node :QuantitativeValue;
+		sh:node :ValidSchemaQuantitativeValue;
 	];
 	sh:property [
 		sh:path schema:numberOfSeasons;
-		sh:node :Integer;
+		sh:node :ValidSchemaInteger;
 	];
 	sh:property [
 		sh:path schema:playMode;
-		sh:node :GamePlayMode;
+		sh:node :ValidSchemaGamePlayMode;
 	];
 	sh:property [
 		sh:path schema:productionCompany;
-		sh:node :Organization;
+		sh:node :ValidSchemaOrganization;
 	];
 	sh:property [
 		sh:path schema:quest;
-		sh:node :Thing;
+		sh:node :ValidSchemaThing;
 	];
 	sh:property [
 		sh:path schema:season;
@@ -97,9 +97,9 @@
 	];
 	sh:property [
 		sh:path schema:seasons;
-		sh:node :CreativeWorkSeason;
+		sh:node :ValidSchemaCreativeWorkSeason;
 	];
 	sh:property [
 		sh:path schema:trailer;
-		sh:node :VideoObject;
+		sh:node :ValidSchemaVideoObject;
 	].

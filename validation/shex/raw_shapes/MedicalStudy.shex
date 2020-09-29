@@ -1,4 +1,4 @@
-<#MedicalStudy>  EXTRA a { 
+<#ValidSchemaMedicalStudy>  EXTRA a {
 	a [schema:MedicalStudy];
-	schema:sponsor (@<#Organization> OR @<#Person>) * ;
+	schema:sponsor (@<#ValidSchemaOrganization> OR @<#ValidSchemaPerson>) * ;
 }
