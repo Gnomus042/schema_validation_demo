@@ -1,4 +1,4 @@
-#  Copyright 2020 Anastasiia Byvsheva & Dan Brickley
+#  Copyright 2020 Google LLC
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -62,7 +62,7 @@ def shacl_shapes_full():
 @app.route('/shacl/subclasses')
 def shacl_subclasses():
     subclasses_path = os.path.join(os.curdir, 'validation', 'shacl', 'subclasses.ttl')
-    return open(subclasses_path).read()
+    return send_file(subclasses_path)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Anastasiia Byvsheva & Dan Brickley
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 async function validateShacl(data, baseUrl) {
     let report = await shaclValidator.validate(data, {baseUrl: baseUrl});
     report.failures.forEach(failure => {
-        failure.service = shapeToService[removeUrls(failure.shape)];
+        failure.service = shapeToService[failure.shape.replace('http://example.org/', '')];
     });
     removeDisabled(hierarchy, report);
     return report;
